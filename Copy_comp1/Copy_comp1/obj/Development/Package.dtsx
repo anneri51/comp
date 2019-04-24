@@ -1,0 +1,1246 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/24/2019 11:56:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-2U05PPG"
+  DTS:CreatorName="DESKTOP-2U05PPG\anner"
+  DTS:DTSID="{3093E783-75C6-4F02-966E-5303C4D9C499}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{4A81EFCC-3628-4F76-A3EE-D2B3AF78C74B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Datenflusstask"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{A0559388-3818-403A-BEBC-9E4562B96B2D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Datenflusstask"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Datenflusstask\ODBC-Quelle"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Quelle"
+              name="ODBC-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Der Name der abzurufenden Tabelle."
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."IMP_BA_GRENZBELEGE"</property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  expressionType="Notify"
+                  name="SqlCommand"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch abgerufen werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Bestimmt, wie die Komponente CHAR-Spalten verfügbar macht. Wenn False, werden CHAR-Spalten als (Multi-)Byte-Zeichenfolgen (DT_STR) verfügbar gemacht, wenn True, werden CHAR-Spalten als breite Zeichenfolgen (DT_WSTR) verfügbar gemacht."
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der Modus für den Zugriff auf die Datenbank."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Abrufen von Daten."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\ODBC-Quelle.Connections[ODBCConnection]"
+                  connectionManagerID="{D23A613A-646B-40B2-B74C-F2B6A83076F7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]"
+                  errorRowDisposition="FailComponent"
+                  name="Ausgabe der ODBC-Quelle"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZEICHNUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZEICHNUNG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZEICHNUNG]"
+                      name="BEZEICHNUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DATUM]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DATUM]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DATUM]"
+                      name="DATUM" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[UHRZEIT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[UHRZEIT]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[UHRZEIT]"
+                      name="UHRZEIT" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZWECK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZWECK]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZWECK]"
+                      name="ZWECK" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN5]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN5]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN5]"
+                      name="COLUMN5" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BETRAG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BETRAG]"
+                      name="BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN7]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN7]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN7]"
+                      name="COLUMN7" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN8]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN8]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN8]"
+                      name="COLUMN8" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN9]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN9]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN9]"
+                      name="COLUMN9" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN10]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN10]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN10]"
+                      name="COLUMN10" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN11]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN11]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN11]"
+                      name="COLUMN11" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN12]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN12]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN12]"
+                      name="COLUMN12" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN13]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN13]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN13]"
+                      name="COLUMN13" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN14]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN14]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN14]"
+                      name="COLUMN14" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BUCHUNG]"
+                      name="FK_BUCHUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      name="PK_IMP_BA_GRENZBELEGE" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ARBEITSTAG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ARBEITSTAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ARBEITSTAG]"
+                      name="FK_ARBEITSTAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_IMP_BA_BEL]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_IMP_BA_BEL]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_IMP_BA_BEL]"
+                      name="FK_IMP_BA_BEL" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KENNZEICHEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KENNZEICHEN]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KENNZEICHEN]"
+                      name="KENNZEICHEN" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_INVENTAR]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_INVENTAR]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_INVENTAR]"
+                      name="FK_INVENTAR" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[WÄHRUNG_BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[WÄHRUNG_BETRAG]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[WÄHRUNG_BETRAG]"
+                      name="WÄHRUNG_BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_LEX_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_LEX_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_LEX_BUCHUNG]"
+                      name="FK_LEX_BUCHUNG" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZEICHNUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEZEICHNUNG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DATUM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="DATUM" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[UHRZEIT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="UHRZEIT" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZWECK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ZWECK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN5" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BETRAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN7" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN8" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN9" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN10" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN11]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN11" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN12]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN12" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN13]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN13" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN14]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN14" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BUCHUNG]"
+                      dataType="r8"
+                      name="FK_BUCHUNG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      dataType="r8"
+                      name="PK_IMP_BA_GRENZBELEGE" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ARBEITSTAG]"
+                      dataType="r8"
+                      name="FK_ARBEITSTAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_IMP_BA_BEL]"
+                      dataType="r8"
+                      name="FK_IMP_BA_BEL" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KENNZEICHEN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="KENNZEICHEN" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_INVENTAR]"
+                      dataType="r8"
+                      name="FK_INVENTAR" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[WÄHRUNG_BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="WÄHRUNG_BETRAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_LEX_BUCHUNG]"
+                      dataType="r8"
+                      name="FK_LEX_BUCHUNG" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der ODBC-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEZEICHNUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZEICHNUNG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEZEICHNUNG]"
+                      name="BEZEICHNUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[DATUM]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DATUM]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[DATUM]"
+                      name="DATUM" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[UHRZEIT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[UHRZEIT]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[UHRZEIT]"
+                      name="UHRZEIT" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ZWECK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZWECK]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ZWECK]"
+                      name="ZWECK" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN5]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN5]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN5]"
+                      name="COLUMN5" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BETRAG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BETRAG]"
+                      name="BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN7]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN7]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN7]"
+                      name="COLUMN7" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN8]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN8]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN8]"
+                      name="COLUMN8" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN9]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN9]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN9]"
+                      name="COLUMN9" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN10]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN10]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN10]"
+                      name="COLUMN10" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN11]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN11]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN11]"
+                      name="COLUMN11" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN12]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN12]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN12]"
+                      name="COLUMN12" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN13]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN13]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN13]"
+                      name="COLUMN13" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN14]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[COLUMN14]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[COLUMN14]"
+                      name="COLUMN14" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_BUCHUNG]"
+                      name="FK_BUCHUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      name="PK_IMP_BA_GRENZBELEGE" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_ARBEITSTAG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ARBEITSTAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_ARBEITSTAG]"
+                      name="FK_ARBEITSTAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_IMP_BA_BEL]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_IMP_BA_BEL]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_IMP_BA_BEL]"
+                      name="FK_IMP_BA_BEL" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KENNZEICHEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KENNZEICHEN]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KENNZEICHEN]"
+                      name="KENNZEICHEN" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_INVENTAR]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_INVENTAR]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_INVENTAR]"
+                      name="FK_INVENTAR" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[WÄHRUNG_BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[WÄHRUNG_BETRAG]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[WÄHRUNG_BETRAG]"
+                      name="WÄHRUNG_BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_LEX_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_LEX_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_LEX_BUCHUNG]"
+                      name="FK_LEX_BUCHUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Datenflusstask\ODBC-Ziel"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Ziel"
+              name="ODBC-Ziel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Einfügen von Daten. Mögliche Werte sind 'Batch' und 'Zeile für Zeile'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Zieltabelle"
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."IMP_BA_GRENZBELEGE"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch eingefügt werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Zeilen, die in derselben Transaktion eingefügt werden."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Datenflusstask\ODBC-Ziel.Connections[ODBCConnection]"
+                  connectionManagerID="{f721a25c-f775-4804-b8cc-644b9b47b4dd}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company 1]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des ODBC-Ziels"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BEZEICHNUNG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BEZEICHNUNG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZEICHNUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZEICHNUNG]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[DATUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="DATUM"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DATUM]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DATUM]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[UHRZEIT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="UHRZEIT"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[UHRZEIT]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[UHRZEIT]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[ZWECK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="ZWECK"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZWECK]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZWECK]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN5]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN5"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN5]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN5]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BETRAG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BETRAG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BETRAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BETRAG]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN7]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN7"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN7]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN7]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN8]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN8]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN8]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN9]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN9"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN9]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN9]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN10]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN10"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN10]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN10]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN11]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN11"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN11]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN11]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN12]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN12"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN12]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN12]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN13]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN13"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN13]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN13]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[COLUMN14]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="COLUMN14"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN14]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[COLUMN14]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_BUCHUNG]"
+                      cachedDataType="r8"
+                      cachedName="FK_BUCHUNG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BUCHUNG]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      cachedDataType="r8"
+                      cachedName="PK_IMP_BA_GRENZBELEGE"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_IMP_BA_GRENZBELEGE]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_ARBEITSTAG]"
+                      cachedDataType="r8"
+                      cachedName="FK_ARBEITSTAG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ARBEITSTAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ARBEITSTAG]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_IMP_BA_BEL]"
+                      cachedDataType="r8"
+                      cachedName="FK_IMP_BA_BEL"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_IMP_BA_BEL]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_IMP_BA_BEL]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[KENNZEICHEN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="KENNZEICHEN"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KENNZEICHEN]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KENNZEICHEN]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_INVENTAR]"
+                      cachedDataType="r8"
+                      cachedName="FK_INVENTAR"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_INVENTAR]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_INVENTAR]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[WÄHRUNG_BETRAG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="WÄHRUNG_BETRAG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[WÄHRUNG_BETRAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[WÄHRUNG_BETRAG]" />
+                    <inputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_LEX_BUCHUNG]"
+                      cachedDataType="r8"
+                      cachedName="FK_LEX_BUCHUNG"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_LEX_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_LEX_BUCHUNG]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZEICHNUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEZEICHNUNG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DATUM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="DATUM" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[UHRZEIT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="UHRZEIT" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZWECK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ZWECK" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN5" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BETRAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN7]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN7" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN8]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN8" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN9]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN9" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN10" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN11]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN11" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN12]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN12" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN13]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN13" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN14]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="COLUMN14" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BUCHUNG]"
+                      dataType="r8"
+                      name="FK_BUCHUNG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      dataType="r8"
+                      name="PK_IMP_BA_GRENZBELEGE" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ARBEITSTAG]"
+                      dataType="r8"
+                      name="FK_ARBEITSTAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_IMP_BA_BEL]"
+                      dataType="r8"
+                      name="FK_IMP_BA_BEL" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KENNZEICHEN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="KENNZEICHEN" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_INVENTAR]"
+                      dataType="r8"
+                      name="FK_INVENTAR" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[WÄHRUNG_BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="WÄHRUNG_BETRAG" />
+                    <externalMetadataColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_LEX_BUCHUNG]"
+                      dataType="r8"
+                      name="FK_LEX_BUCHUNG" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des ODBC-Ziels">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEZEICHNUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZEICHNUNG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEZEICHNUNG]"
+                      name="BEZEICHNUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[DATUM]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DATUM]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[DATUM]"
+                      name="DATUM" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[UHRZEIT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[UHRZEIT]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[UHRZEIT]"
+                      name="UHRZEIT" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ZWECK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZWECK]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ZWECK]"
+                      name="ZWECK" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN5]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN5]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN5]"
+                      name="COLUMN5" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BETRAG]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BETRAG]"
+                      name="BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN7]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN7]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN7]"
+                      name="COLUMN7" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN8]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN8]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN8]"
+                      name="COLUMN8" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN9]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN9]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN9]"
+                      name="COLUMN9" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN10]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN10]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN10]"
+                      name="COLUMN10" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN11]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN11]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN11]"
+                      name="COLUMN11" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN12]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN12]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN12]"
+                      name="COLUMN12" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN13]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN13]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN13]"
+                      name="COLUMN13" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN14]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[COLUMN14]"
+                      length="4000"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[COLUMN14]"
+                      name="COLUMN14" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_BUCHUNG]"
+                      name="FK_BUCHUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_IMP_BA_GRENZBELEGE]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_IMP_BA_GRENZBELEGE]"
+                      name="PK_IMP_BA_GRENZBELEGE" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_ARBEITSTAG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ARBEITSTAG]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_ARBEITSTAG]"
+                      name="FK_ARBEITSTAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_IMP_BA_BEL]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_IMP_BA_BEL]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_IMP_BA_BEL]"
+                      name="FK_IMP_BA_BEL" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KENNZEICHEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KENNZEICHEN]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KENNZEICHEN]"
+                      name="KENNZEICHEN" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_INVENTAR]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_INVENTAR]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_INVENTAR]"
+                      name="FK_INVENTAR" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[WÄHRUNG_BETRAG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[WÄHRUNG_BETRAG]"
+                      length="20"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[WÄHRUNG_BETRAG]"
+                      name="WÄHRUNG_BETRAG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_LEX_BUCHUNG]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_LEX_BUCHUNG]"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_LEX_BUCHUNG]"
+                      name="FK_LEX_BUCHUNG" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Datenflusstask\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Datenflusstask.Paths[Ausgabe der ODBC-Quelle]"
+              endId="Package\Datenflusstask\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+              name="Ausgabe der ODBC-Quelle"
+              startId="Package\Datenflusstask\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="147.5,42"
+          Id="Package\Datenflusstask"
+          TopLeft="69.25,41.75" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Datenflusstask">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Datenflusstask\ODBC-Quelle"
+          TopLeft="89,50.5" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\Datenflusstask\ODBC-Ziel"
+          TopLeft="121.5,135.75" />
+        <EdgeLayout
+          Id="Package\Datenflusstask.Paths[Ausgabe der ODBC-Quelle]"
+          TopLeft="159,92.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,43.25"
+              Start="0,0"
+              End="26,35.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.625"
+                    Point2="0,21.625"
+                    Point3="4,21.625" />
+                  <mssgle:LineSegment
+                    End="22,21.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,21.625"
+                    Point2="26,21.625"
+                    Point3="26,25.625" />
+                  <mssgle:LineSegment
+                    End="26,35.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenflusstask\ODBC-Quelle">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Datenflusstask\ODBC-Ziel">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

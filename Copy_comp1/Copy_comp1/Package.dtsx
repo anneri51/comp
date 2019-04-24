@@ -1,0 +1,1891 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/24/2019 11:56:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-2U05PPG"
+  DTS:CreatorName="DESKTOP-2U05PPG\anner"
+  DTS:DTSID="{3093E783-75C6-4F02-966E-5303C4D9C499}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{43C47931-FC67-4CC3-9E09-CB01E8DD5A0C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\t_bANK"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{A0559388-3818-403A-BEBC-9E4562B96B2D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="t_bANK"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\t_bANK\ODBC-Quelle"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Quelle"
+              name="ODBC-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Der Name der abzurufenden Tabelle."
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."IMP_BA_GRENZBELEGE"</property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from "COMPANY".t_bANK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch abgerufen werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Bestimmt, wie die Komponente CHAR-Spalten verfügbar macht. Wenn False, werden CHAR-Spalten als (Multi-)Byte-Zeichenfolgen (DT_STR) verfügbar gemacht, wenn True, werden CHAR-Spalten als breite Zeichenfolgen (DT_WSTR) verfügbar gemacht."
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der Modus für den Zugriff auf die Datenbank."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Abrufen von Daten."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\t_bANK\ODBC-Quelle.Connections[ODBCConnection]"
+                  connectionManagerID="{D23A613A-646B-40B2-B74C-F2B6A83076F7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]"
+                  errorRowDisposition="FailComponent"
+                  name="Ausgabe der ODBC-Quelle"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANK]"
+                      name="PK_BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BANK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BANK]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BANK]"
+                      name="BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ORT]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ORT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ORT]"
+                      name="FK_ORT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_HAUPTBANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_HAUPTBANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_HAUPTBANK]"
+                      name="FK_HAUPTBANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANK]"
+                      dataType="r8"
+                      name="PK_BANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BANK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ORT]"
+                      dataType="r8"
+                      name="FK_ORT" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_HAUPTBANK]"
+                      dataType="r8"
+                      name="FK_HAUPTBANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      name="CREATED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="MODIFIED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      name="MODIFIED_AT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der ODBC-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_BANK]"
+                      name="PK_BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BANK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BANK]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BANK]"
+                      name="BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_ORT]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_ORT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_ORT]"
+                      name="FK_ORT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_HAUPTBANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_HAUPTBANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_HAUPTBANK]"
+                      name="FK_HAUPTBANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\t_bANK\ODBC-Ziel"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Ziel"
+              name="ODBC-Ziel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Einfügen von Daten. Mögliche Werte sind 'Batch' und 'Zeile für Zeile'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Zieltabelle"
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."T_BANK"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch eingefügt werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Zeilen, die in derselben Transaktion eingefügt werden."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\t_bANK\ODBC-Ziel.Connections[ODBCConnection]"
+                  connectionManagerID="{f721a25c-f775-4804-b8cc-644b9b47b4dd}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company 1]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des ODBC-Ziels"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_HAUPTBANK]"
+                      cachedDataType="r8"
+                      cachedName="FK_HAUPTBANK"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_HAUPTBANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_HAUPTBANK]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_ORT]"
+                      cachedDataType="r8"
+                      cachedName="FK_ORT"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ORT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_ORT]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="MODIFIED_AT"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="MODIFIED_BY"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BANK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BANK"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BANK]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CREATED_AT"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[PK_BANK]"
+                      cachedDataType="r8"
+                      cachedName="PK_BANK"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANK]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANK]" />
+                    <inputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="CREATED_BY"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      lineageId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANK]"
+                      dataType="r8"
+                      name="PK_BANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BANK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ORT]"
+                      dataType="r8"
+                      name="FK_ORT" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_HAUPTBANK]"
+                      dataType="r8"
+                      name="FK_HAUPTBANK" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      name="CREATED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="MODIFIED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      name="MODIFIED_AT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des ODBC-Ziels">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANK]"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_BANK]"
+                      name="PK_BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BANK]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BANK]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BANK]"
+                      name="BANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_ORT]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_ORT]"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_ORT]"
+                      name="FK_ORT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_HAUPTBANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_HAUPTBANK]"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_HAUPTBANK]"
+                      name="FK_HAUPTBANK" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\t_bANK\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\t_bANK.Paths[Ausgabe der ODBC-Quelle]"
+              endId="Package\t_bANK\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+              name="Ausgabe der ODBC-Quelle"
+              startId="Package\t_bANK\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\T_BANKKONTO"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Datenflusstask"
+      DTS:DTSID="{fa09a27f-d695-4f2c-adc8-3fe657cdc9d0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="T_BANKKONTO"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\T_BANKKONTO\ODBC-Quelle"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Quelle"
+              name="ODBC-Quelle"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Der Name der abzurufenden Tabelle."
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."IMP_BA_GRENZBELEGE"</property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from "COMPANY".t_bANKKONTO</property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch abgerufen werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Bestimmt, wie die Komponente CHAR-Spalten verfügbar macht. Wenn False, werden CHAR-Spalten als (Multi-)Byte-Zeichenfolgen (DT_STR) verfügbar gemacht, wenn True, werden CHAR-Spalten als breite Zeichenfolgen (DT_WSTR) verfügbar gemacht."
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der Modus für den Zugriff auf die Datenbank."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Abrufen von Daten."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\T_BANKKONTO\ODBC-Quelle.Connections[ODBCConnection]"
+                  connectionManagerID="{D23A613A-646B-40B2-B74C-F2B6A83076F7}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]"
+                  errorRowDisposition="FailComponent"
+                  name="Ausgabe der ODBC-Quelle"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANKKONTO]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANKKONTO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANKKONTO]"
+                      name="PK_BANKKONTO" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BANK]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BANK]"
+                      name="FK_BANK" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[IBAN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[IBAN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[IBAN]"
+                      name="IBAN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BIC]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BIC]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BIC]"
+                      name="BIC" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KONTONR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KONTONR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KONTONR]"
+                      name="KONTONR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BLZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BLZ]"
+                      name="BLZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITKARTENNR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITKARTENNR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITKARTENNR]"
+                      name="KREDITKARTENNR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZ]"
+                      name="BEZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_KONTOTYP]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_KONTOTYP]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_KONTOTYP]"
+                      name="FK_KONTOTYP" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITLINIE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITLINIE]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITLINIE]"
+                      name="KREDITLINIE" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ERÖFFUNGSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ERÖFFUNGSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ERÖFFUNGSDATUM]"
+                      name="ERÖFFUNGSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[SCHLUSSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[SCHLUSSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[SCHLUSSDATUM]"
+                      name="SCHLUSSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZUGANG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZUGANG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZUGANG]"
+                      name="ZUGANG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PIN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PIN]"
+                      name="PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DIBA_KEY]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DIBA_KEY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DIBA_KEY]"
+                      name="DIBA_KEY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[TELEBANKING_PIN]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[TELEBANKING_PIN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[TELEBANKING_PIN]"
+                      name="TELEBANKING_PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEMERKUNGEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEMERKUNGEN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEMERKUNGEN]"
+                      name="BEMERKUNGEN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KARTENSPERRUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KARTENSPERRUNG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KARTENSPERRUNG]"
+                      name="KARTENSPERRUNG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID]"
+                      name="VALID" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_FROM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_FROM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_FROM]"
+                      name="VALID_FROM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_TO]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_TO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_TO]"
+                      name="VALID_TO" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANKKONTO]"
+                      dataType="r8"
+                      name="PK_BANKKONTO" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BANK]"
+                      dataType="r8"
+                      name="FK_BANK" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[IBAN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="IBAN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BIC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BIC" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KONTONR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KONTONR" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BLZ" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      name="CREATED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="MODIFIED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      name="MODIFIED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITKARTENNR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KREDITKARTENNR" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEZ" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_KONTOTYP]"
+                      dataType="r8"
+                      name="FK_KONTOTYP" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITLINIE]"
+                      dataType="r8"
+                      name="KREDITLINIE" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ERÖFFUNGSDATUM]"
+                      dataType="dbTimeStamp"
+                      name="ERÖFFUNGSDATUM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[SCHLUSSDATUM]"
+                      dataType="dbTimeStamp"
+                      name="SCHLUSSDATUM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZUGANG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ZUGANG" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="PIN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DIBA_KEY]"
+                      dataType="r8"
+                      name="DIBA_KEY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[TELEBANKING_PIN]"
+                      dataType="r8"
+                      name="TELEBANKING_PIN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEMERKUNGEN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEMERKUNGEN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KARTENSPERRUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KARTENSPERRUNG" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID]"
+                      dataType="r8"
+                      name="VALID" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_FROM]"
+                      dataType="dbTimeStamp"
+                      name="VALID_FROM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_TO]"
+                      dataType="dbTimeStamp"
+                      name="VALID_TO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der ODBC-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_BANKKONTO]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PK_BANKKONTO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PK_BANKKONTO]"
+                      name="PK_BANKKONTO" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_BANK]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_BANK]"
+                      name="FK_BANK" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[IBAN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[IBAN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[IBAN]"
+                      name="IBAN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BIC]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BIC]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BIC]"
+                      name="BIC" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KONTONR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KONTONR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KONTONR]"
+                      name="KONTONR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BLZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BLZ]"
+                      name="BLZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KREDITKARTENNR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITKARTENNR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KREDITKARTENNR]"
+                      name="KREDITKARTENNR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEZ]"
+                      name="BEZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_KONTOTYP]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[FK_KONTOTYP]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[FK_KONTOTYP]"
+                      name="FK_KONTOTYP" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KREDITLINIE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KREDITLINIE]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KREDITLINIE]"
+                      name="KREDITLINIE" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ERÖFFUNGSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ERÖFFUNGSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ERÖFFUNGSDATUM]"
+                      name="ERÖFFUNGSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[SCHLUSSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[SCHLUSSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[SCHLUSSDATUM]"
+                      name="SCHLUSSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ZUGANG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[ZUGANG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ZUGANG]"
+                      name="ZUGANG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[PIN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[PIN]"
+                      name="PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[DIBA_KEY]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[DIBA_KEY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[DIBA_KEY]"
+                      name="DIBA_KEY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[TELEBANKING_PIN]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[TELEBANKING_PIN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[TELEBANKING_PIN]"
+                      name="TELEBANKING_PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEMERKUNGEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[BEMERKUNGEN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[BEMERKUNGEN]"
+                      name="BEMERKUNGEN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KARTENSPERRUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[KARTENSPERRUNG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[KARTENSPERRUNG]"
+                      name="KARTENSPERRUNG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID]"
+                      name="VALID" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID_FROM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_FROM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID_FROM]"
+                      name="VALID_FROM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID_TO]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].ExternalColumns[VALID_TO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[VALID_TO]"
+                      name="VALID_TO" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Fehlerausgabe der ODBC-Quelle].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\T_BANKKONTO\ODBC-Ziel"
+              componentClassID="Attunity.SSISODBCDst"
+              contactInfo="ODBC Destination;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC-Ziel"
+              name="ODBC-Ziel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Methode zum Einfügen von Daten. Mögliche Werte sind 'Batch' und 'Zeile für Zeile'."
+                  expressionType="Notify"
+                  name="InsertMethod"
+                  typeConverter="InsertMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt, wie die Komponente Spalten der (Multi-)Byte-Zeichenfolgentypen (d. h. SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR) bindet. Mögliche Optionen: Unicode (SQL_C_WCHAR) und ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Der ODBC-C-Datentyp zum Binden numerischer Daten."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.String"
+                  description="Zieltabelle"
+                  expressionType="Notify"
+                  name="TableName">"COMPANY"."T_BANKKONTO"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Geben Sie die Anzahl der Zeilen an, die pro Batch eingefügt werden."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Zeilen, die in derselben Transaktion eingefügt werden."
+                  expressionType="Notify"
+                  name="TransactionSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bestimmt die Segmentgrößenbelegung für LOB-Spalten."
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden, für die auf die Ausführung einer SQL-Anweisung gewartet werden soll, bevor zur Anwendung zurückgekehrt wird."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Die Codepage, die verwendet werden soll, wenn in der Datenquelle keine Codepageinformationen verfügbar sind."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\T_BANKKONTO\ODBC-Ziel.Connections[ODBCConnection]"
+                  connectionManagerID="{f721a25c-f775-4804-b8cc-644b9b47b4dd}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[comp.company 1]"
+                  description="Die ODBC-Laufzeitverbindung"
+                  name="ODBCConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des ODBC-Ziels"
+                  truncationRowDisposition="FailComponent">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[DIBA_KEY]"
+                      cachedDataType="r8"
+                      cachedName="DIBA_KEY"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DIBA_KEY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[DIBA_KEY]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[ERÖFFUNGSDATUM]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ERÖFFUNGSDATUM"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ERÖFFUNGSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ERÖFFUNGSDATUM]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BEZ]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BEZ"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZ]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEZ]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[IBAN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="IBAN"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[IBAN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[IBAN]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[PK_BANKKONTO]"
+                      cachedDataType="r8"
+                      cachedName="PK_BANKKONTO"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANKKONTO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PK_BANKKONTO]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_BANK]"
+                      cachedDataType="r8"
+                      cachedName="FK_BANK"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BANK]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_BANK]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BIC]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BIC"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BIC]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BIC]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[KONTONR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="KONTONR"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KONTONR]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KONTONR]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BLZ]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BLZ"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BLZ]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BLZ]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="MODIFIED_AT"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_AT]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="CREATED_BY"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_BY]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CREATED_AT"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[CREATED_AT]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="MODIFIED_BY"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[MODIFIED_BY]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[KREDITKARTENNR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="KREDITKARTENNR"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITKARTENNR]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITKARTENNR]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[FK_KONTOTYP]"
+                      cachedDataType="r8"
+                      cachedName="FK_KONTOTYP"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_KONTOTYP]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[FK_KONTOTYP]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[KREDITLINIE]"
+                      cachedDataType="r8"
+                      cachedName="KREDITLINIE"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITLINIE]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KREDITLINIE]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[SCHLUSSDATUM]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SCHLUSSDATUM"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[SCHLUSSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[SCHLUSSDATUM]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[ZUGANG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="ZUGANG"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZUGANG]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[ZUGANG]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[PIN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="PIN"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PIN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[PIN]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[TELEBANKING_PIN]"
+                      cachedDataType="r8"
+                      cachedName="TELEBANKING_PIN"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[TELEBANKING_PIN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[TELEBANKING_PIN]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[BEMERKUNGEN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="BEMERKUNGEN"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEMERKUNGEN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[BEMERKUNGEN]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[KARTENSPERRUNG]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="KARTENSPERRUNG"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KARTENSPERRUNG]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[KARTENSPERRUNG]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[VALID]"
+                      cachedDataType="r8"
+                      cachedName="VALID"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[VALID_FROM]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="VALID_FROM"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_FROM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_FROM]" />
+                    <inputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].Columns[VALID_TO]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="VALID_TO"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_TO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle].Columns[VALID_TO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANKKONTO]"
+                      dataType="r8"
+                      name="PK_BANKKONTO" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BANK]"
+                      dataType="r8"
+                      name="FK_BANK" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[IBAN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="IBAN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BIC]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BIC" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KONTONR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KONTONR" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BLZ" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      name="CREATED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="MODIFIED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      name="MODIFIED_AT" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITKARTENNR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KREDITKARTENNR" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZ]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEZ" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_KONTOTYP]"
+                      dataType="r8"
+                      name="FK_KONTOTYP" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITLINIE]"
+                      dataType="r8"
+                      name="KREDITLINIE" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ERÖFFUNGSDATUM]"
+                      dataType="dbTimeStamp"
+                      name="ERÖFFUNGSDATUM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[SCHLUSSDATUM]"
+                      dataType="dbTimeStamp"
+                      name="SCHLUSSDATUM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZUGANG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ZUGANG" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PIN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="PIN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DIBA_KEY]"
+                      dataType="r8"
+                      name="DIBA_KEY" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[TELEBANKING_PIN]"
+                      dataType="r8"
+                      name="TELEBANKING_PIN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEMERKUNGEN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BEMERKUNGEN" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KARTENSPERRUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="KARTENSPERRUNG" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID]"
+                      dataType="r8"
+                      name="VALID" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_FROM]"
+                      dataType="dbTimeStamp"
+                      name="VALID_FROM" />
+                    <externalMetadataColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_TO]"
+                      dataType="dbTimeStamp"
+                      name="VALID_TO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des ODBC-Ziels">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_BANKKONTO]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PK_BANKKONTO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PK_BANKKONTO]"
+                      name="PK_BANKKONTO" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_BANK]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_BANK]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_BANK]"
+                      name="FK_BANK" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[IBAN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[IBAN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[IBAN]"
+                      name="IBAN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BIC]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BIC]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BIC]"
+                      name="BIC" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KONTONR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KONTONR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KONTONR]"
+                      name="KONTONR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BLZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BLZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BLZ]"
+                      name="BLZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_BY]"
+                      name="CREATED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[CREATED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[CREATED_AT]"
+                      name="CREATED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_BY]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_BY]"
+                      name="MODIFIED_BY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[MODIFIED_AT]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[MODIFIED_AT]"
+                      name="MODIFIED_AT" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KREDITKARTENNR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITKARTENNR]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KREDITKARTENNR]"
+                      name="KREDITKARTENNR" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEZ]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEZ]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEZ]"
+                      name="BEZ" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_KONTOTYP]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[FK_KONTOTYP]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[FK_KONTOTYP]"
+                      name="FK_KONTOTYP" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KREDITLINIE]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KREDITLINIE]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KREDITLINIE]"
+                      name="KREDITLINIE" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ERÖFFUNGSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ERÖFFUNGSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ERÖFFUNGSDATUM]"
+                      name="ERÖFFUNGSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[SCHLUSSDATUM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[SCHLUSSDATUM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[SCHLUSSDATUM]"
+                      name="SCHLUSSDATUM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ZUGANG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[ZUGANG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ZUGANG]"
+                      name="ZUGANG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PIN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[PIN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[PIN]"
+                      name="PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[DIBA_KEY]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[DIBA_KEY]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[DIBA_KEY]"
+                      name="DIBA_KEY" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[TELEBANKING_PIN]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[TELEBANKING_PIN]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[TELEBANKING_PIN]"
+                      name="TELEBANKING_PIN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEMERKUNGEN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[BEMERKUNGEN]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[BEMERKUNGEN]"
+                      name="BEMERKUNGEN" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KARTENSPERRUNG]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[KARTENSPERRUNG]"
+                      length="4000"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[KARTENSPERRUNG]"
+                      name="KARTENSPERRUNG" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID]"
+                      dataType="r8"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID]"
+                      name="VALID" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID_FROM]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_FROM]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID_FROM]"
+                      name="VALID_FROM" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID_TO]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels].ExternalColumns[VALID_TO]"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[VALID_TO]"
+                      name="VALID_TO" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\T_BANKKONTO\ODBC-Ziel.Outputs[Fehlerausgabe des ODBC-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\T_BANKKONTO.Paths[Ausgabe der ODBC-Quelle]"
+              endId="Package\T_BANKKONTO\ODBC-Ziel.Inputs[Eingabe des ODBC-Ziels]"
+              name="Ausgabe der ODBC-Quelle"
+              startId="Package\T_BANKKONTO\ODBC-Quelle.Outputs[Ausgabe der ODBC-Quelle]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Dieser CDATA-Abschnitt enthält die Layoutinformationen des Pakets, z.B. Informationen wie X-/Y-Koordinaten, Breite und Höhe.-->
+<!--Wenn Sie diesen Abschnitt manuell ändern und Ihnen ein Fehler unterläuft, können Sie ihn löschen. -->
+<!--Das Paket kann zwar weiterhin normal geladen werden, aber frühere Layoutinformationen gehen verloren, und die Elemente auf der Entwurfsoberfläche werden vom Designer automatisch neu angeordnet.-->
+<Objects
+  Version="8">
+  <!--Jeder darunter liegende Knoten enthält Eigenschaften, die sich nicht auf das Laufzeitverhalten auswirken.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="114,42"
+          Id="Package\t_bANK"
+          TopLeft="69.25,41.75" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\T_BANKKONTO"
+          TopLeft="118.25,116.25" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\t_bANK">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\t_bANK\ODBC-Quelle"
+          TopLeft="89,50.5" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\t_bANK\ODBC-Ziel"
+          TopLeft="121.5,135.75" />
+        <EdgeLayout
+          Id="Package\t_bANK.Paths[Ausgabe der ODBC-Quelle]"
+          TopLeft="159,92.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,43.25"
+              Start="0,0"
+              End="26,35.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.625"
+                    Point2="0,21.625"
+                    Point3="4,21.625" />
+                  <mssgle:LineSegment
+                    End="22,21.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,21.625"
+                    Point2="26,21.625"
+                    Point3="26,25.625" />
+                  <mssgle:LineSegment
+                    End="26,35.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\t_bANK\ODBC-Quelle">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\t_bANK\ODBC-Ziel">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\T_BANKKONTO">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\T_BANKKONTO\ODBC-Quelle"
+          TopLeft="89,50.5" />
+        <NodeLayout
+          Size="127,42"
+          Id="Package\T_BANKKONTO\ODBC-Ziel"
+          TopLeft="121.5,135.75" />
+        <EdgeLayout
+          Id="Package\T_BANKKONTO.Paths[Ausgabe der ODBC-Quelle]"
+          TopLeft="159,92.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,43.25"
+              Start="0,0"
+              End="26,35.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.625"
+                    Point2="0,21.625"
+                    Point3="4,21.625" />
+                  <mssgle:LineSegment
+                    End="22,21.625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,21.625"
+                    Point2="26,21.625"
+                    Point3="26,25.625" />
+                  <mssgle:LineSegment
+                    End="26,35.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\T_BANKKONTO\ODBC-Ziel">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

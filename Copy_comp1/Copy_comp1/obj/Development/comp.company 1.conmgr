@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="comp.company 1"
+  DTS:DTSID="{f721a25c-f775-4804-b8cc-644b9b47b4dd}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=company;Dsn=comp_do_32_2;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAb/k7+ve8I0C+c273r4rQ4gAAAAACAAAAAAAQZgAAAAEAACAAAABMz+wN7wm2Ttq9HelLXIVYyUQ6lc3CHaWHueWvif+ZAgAAAAAOgAAAAAIAACAAAADS8FtxGmWSnDD/oG5MA77OM8fSEtdhbOJJ+6Pcv68C2nAAAADnM6ROOsLMHh1WnJAPht282pn07TP2OUR6OyQH5D3/YovJ56nVDaXA2lhMG9pzdvDdty0jfZ8gYaxfdRWmxYQHxqy+KthbG5IbkfGJGmFtWw6mCfHVekH1BD6Ts8vuzaSQ0ahW4Z1mlBUEEmsO/+VuQAAAAHBlpjgthVqyCGxCSUHBoEL+iUx0djeYPJegWOWxBKDK0JcUG/XfgFJczwRwFfULWn5z4Q2J3J22BJra6T0VQJo=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

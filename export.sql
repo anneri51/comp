@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Samstag-Mai-09-2020   
+--  Datei erstellt -Donnerstag-Mai-14-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -70,15 +70,7 @@ DROP SEQUENCE "COMPANY"."KAS_KASSE_SEQ";
 DROP SEQUENCE "COMPANY"."KAS_KASSE_SEQ1";
 DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ";
 DROP SEQUENCE "COMPANY"."KTO_GIROKONTO_SEQ";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ1";
 DROP SEQUENCE "COMPANY"."KTO_GIROKONTO_SEQ1";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ2";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ3";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ4";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ5";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ6";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ7";
-DROP SEQUENCE "COMPANY"."KTO_Girokonto_SEQ8";
 DROP SEQUENCE "COMPANY"."KTO_Girokonto_SE8";
 DROP SEQUENCE "COMPANY"."KTO_KONTO_SEQ";
 DROP SEQUENCE "COMPANY"."KTO_Kreditkarte_SEQ";
@@ -329,6 +321,7 @@ DROP SEQUENCE "COMPANY"."T_REL_VERPFL_BELEG_ORT_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_VERPFL_BELEG_SRC_SEQ";
 DROP SEQUENCE "COMPANY"."T_RV_AUSZUG_PAGE_DET_SEQ";
 DROP SEQUENCE "COMPANY"."T_RV_AUSZUG_PAGE_SEQ";
+DROP SEQUENCE "COMPANY"."T_RV_AUSZUG_SEQ";
 DROP SEQUENCE "COMPANY"."T_SEPA_VORLAGEN_SEQ";
 DROP SEQUENCE "COMPANY"."T_STD_GROUP_SEQ";
 DROP SEQUENCE "COMPANY"."T_STD_GROUP_SEQ1";
@@ -354,6 +347,7 @@ DROP SEQUENCE "COMPANY"."T_STROMABLESUNG_SEQ1";
 DROP SEQUENCE "COMPANY"."T_STUNDENZETTEL_SEQ";
 DROP SEQUENCE "COMPANY"."T_TEMP_BELEG_SEQ";
 DROP SEQUENCE "COMPANY"."T_UMTAUSCHKURS_SEQ";
+DROP SEQUENCE "COMPANY"."T_UNTERLAGEN_SEQ";
 DROP SEQUENCE "COMPANY"."T_USER_SEQ";
 DROP SEQUENCE "COMPANY"."T_VERBRAUCHSMATERIAL_SEQ";
 DROP SEQUENCE "COMPANY"."T_VERBRAUCHSMAT_TYP_SEQ";
@@ -648,6 +642,7 @@ DROP TABLE "COMPANY"."T_TEMP_BELEG" cascade constraints;
 DROP TABLE "COMPANY"."T_TEST" cascade constraints;
 DROP TABLE "COMPANY"."T_UMSATZART" cascade constraints;
 DROP TABLE "COMPANY"."T_UMTAUSCHKURS" cascade constraints;
+DROP TABLE "COMPANY"."T_UNTERLAGEN" cascade constraints;
 DROP TABLE "COMPANY"."T_USER" cascade constraints;
 DROP TABLE "COMPANY"."T_VERBRAUCHSMATERIAL" cascade constraints;
 DROP TABLE "COMPANY"."T_VERBRAUCHSMAT_TYP" cascade constraints;
@@ -735,6 +730,8 @@ DROP PROCEDURE "COMPANY"."LOAD_KTBL_2020";
 DROP PROCEDURE "COMPANY"."P_ADD_INP_BEL_ALL_FROM_ZUS";
 DROP PROCEDURE "COMPANY"."P_ADD_INP_BEL_ALL_FROM_ZUS2";
 DROP PROCEDURE "COMPANY"."P_ADD_INP_BELEGE_FROM_LEX";
+DROP PROCEDURE "COMPANY"."P_ADD_INP_FROM_ZUS2";
+DROP PROCEDURE "COMPANY"."P_ADD_INV_ZAHLUNG";
 DROP PROCEDURE "COMPANY"."P_ADD_NEW_INP_BEL_KTO";
 DROP PROCEDURE "COMPANY"."P_ADD_REL";
 DROP PROCEDURE "COMPANY"."P_ADD_REL_FROM_LEX";
@@ -752,6 +749,7 @@ DROP PROCEDURE "COMPANY"."P_KEINE_LEX_BUCHUNG";
 DROP PROCEDURE "COMPANY"."P_NEW_DUPLIKAT";
 DROP PROCEDURE "COMPANY"."PR_INP_BEL";
 DROP PROCEDURE "COMPANY"."PR_INP_BEL_POS1";
+DROP PROCEDURE "COMPANY"."P_SET_FK_EIN_AUS";
 DROP PROCEDURE "COMPANY"."P_SET_NAECHSTE_ZAHLUNG";
 DROP PACKAGE "COMPANY"."EBA_DEMO_IG_TEXT_PKG";
 DROP PACKAGE "COMPANY"."EBA_DEMO_MD_DATA_PKG";
@@ -1223,7 +1221,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence IMP_RE_LEXWARE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."IMP_RE_LEXWARE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."IMP_RE_LEXWARE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence IMP_TEL_MOBILCOM_RECH_OV_SEQ
 --------------------------------------------------------
@@ -1258,7 +1256,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence INP_BELEGE_ALL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."INP_BELEGE_ALL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 6841 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."INP_BELEGE_ALL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 7981 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence INP_BELEGE_ALL_SEQ1
 --------------------------------------------------------
@@ -1278,7 +1276,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KAS_KASSE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KAS_KASSE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9381 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KAS_KASSE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9481 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KAS_KASSE_SEQ1
 --------------------------------------------------------
@@ -1293,52 +1291,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KTO_GIROKONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16564 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ1
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16604 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_GIROKONTO_SEQ1
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."KTO_GIROKONTO_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ2
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ2"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ3
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ3"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ4
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ4"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ5
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ5"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 2876 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ6
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ6"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ7
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ7"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 3101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence KTO_Girokonto_SEQ8
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."KTO_Girokonto_SEQ8"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_Girokonto_SE8
 --------------------------------------------------------
@@ -1348,7 +1306,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KTO_KONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9821 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9941 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_Kreditkarte_SEQ
 --------------------------------------------------------
@@ -1828,7 +1786,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_ABL_ORDNER_PAGE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_ABL_ORDNER_PAGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 2981 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_ABL_ORDNER_PAGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 3001 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_ABL_ORDNER_SEQ
 --------------------------------------------------------
@@ -1853,7 +1811,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_ADRESSE_SCHNELL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_ADRESSE_SCHNELL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 181 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_ADRESSE_SCHNELL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 221 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_ADRESSE_SEQ
 --------------------------------------------------------
@@ -2023,12 +1981,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_GESCHAEFTSPARTNER_SEQ1
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_GESCHAEFTSPARTNER_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 741 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_GESCHAEFTSPARTNER_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 861 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_GESCHAEFTSPARTNERTYP_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_GESCHAEFTSPARTNERTYP_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 221 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_GESCHAEFTSPARTNERTYP_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 301 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_HEIZUNGSABLESUNG_SEQ
 --------------------------------------------------------
@@ -2058,12 +2016,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_INTERNETPORTAL_APP_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_INTERNETPORTAL_APP_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 141 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_INTERNETPORTAL_APP_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 161 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_INVENTARE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_INVENTARE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 241 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_INVENTARE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 261 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_INVENTARE_SEQ1
 --------------------------------------------------------
@@ -2153,7 +2111,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_KONTO_BUCH_KAT_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_KONTO_BUCH_KAT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 834 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_KONTO_BUCH_KAT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 854 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KONTO_BUCH_SEQ
 --------------------------------------------------------
@@ -2263,7 +2221,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_ORT_SEQ1
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_ORT_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 481 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_ORT_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 521 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_PACKUNGSTYP_SEQ
 --------------------------------------------------------
@@ -2393,7 +2351,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_INVENTAR_ZAHLUNG_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_INVENTAR_ZAHLUNG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 921 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_INVENTAR_ZAHLUNG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 4081 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_INV_VERBRAUCHSMAT_SEQ
 --------------------------------------------------------
@@ -2463,7 +2421,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_KONTO_AUSZUG_GIR_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5601 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5641 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_LAGERORT_ARTIKEL_SEQ
 --------------------------------------------------------
@@ -2473,7 +2431,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_LEX_KTO_BEL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_LEX_KTO_BEL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 18661 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_LEX_KTO_BEL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 18901 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_LEX_KTO_BEL_SEQ1
 --------------------------------------------------------
@@ -2590,6 +2548,11 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 
    CREATE SEQUENCE  "COMPANY"."T_RV_AUSZUG_PAGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
+--  DDL for Sequence T_RV_AUSZUG_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_RV_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
 --  DDL for Sequence T_SEPA_VORLAGEN_SEQ
 --------------------------------------------------------
 
@@ -2603,7 +2566,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_STD_GROUP_SEQ1
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_STD_GROUP_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 401 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_STD_GROUP_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 421 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_STD_SEQ
 --------------------------------------------------------
@@ -2714,6 +2677,11 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."T_UMTAUSCHKURS_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_UNTERLAGEN_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_UNTERLAGEN_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_USER_SEQ
 --------------------------------------------------------
@@ -5462,14 +5430,34 @@ Liegenschaftsnutzer
 	"FK_MAIN_KEY_ZAHLUNG" NUMBER, 
 	"LIZENZNUMMER" VARCHAR2(4000 BYTE), 
 	"PRODUKT" NUMBER, 
-	"RECHNUNGSBETRAG" NUMBER
+	"RECHNUNGSBETRAG" NUMBER, 
+	"ZAHLUNG" NUMBER, 
+	"ZAHLUNGSBETRAG" NUMBER, 
+	"ZAHLUNGSDATUM" DATE, 
+	"FK_ZAHLUNGSDATUM" NUMBER, 
+	"ZAHLUNGSKOMMENTAR" VARCHAR2(4000 BYTE), 
+	"ZAHLUNGSSTATUS" VARCHAR2(4000 BYTE), 
+	"FK_ZAHLUNGSSTATUS" NUMBER, 
+	"RECHNUNGSKORREKTUR" NUMBER, 
+	"RECHNUNGSKORREKTURDATUM" DATE, 
+	"FK_RECHNUNGSKORREKTURDATUM" NUMBER, 
+	"RECHNUNGSKORREKTURKOMMENTAR" VARCHAR2(4000 BYTE), 
+	"RECHNUNGSKORREKTURBETRAG" NUMBER, 
+	"FK_INVENTAR" NUMBER, 
+	"RECHNUNG" BLOB
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" ;
+  TABLESPACE "USERS" 
+ LOB ("RECHNUNG") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) ;
 --------------------------------------------------------
 --  DDL for Table IMP_STD_196
 --------------------------------------------------------
@@ -5946,7 +5934,8 @@ Liegenschaftsnutzer
 	"DATUM_FINANZAMT_ÜBERG" DATE, 
 	"GESAMT_BETRAG" NUMBER, 
 	"GEBÜHREN" NUMBER, 
-	"DATUM_LEX_BUCHUNG_OK" DATE
+	"DATUM_LEX_BUCHUNG_OK" DATE, 
+	"DATUM_VAR" VARCHAR2(500 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -6009,7 +5998,8 @@ Liegenschaftsnutzer
 	"DUPL_BEMERKUNG" VARCHAR2(4000 BYTE), 
 	"FLG_KREDITKARTENBUCHUNG" NUMBER DEFAULT 0, 
 	"LOAD_DATE" DATE, 
-	"DATUM_LEX_BUCHUNG_OK" DATE
+	"DATUM_LEX_BUCHUNG_OK" DATE, 
+	"FK_EIN_AUS" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -6052,7 +6042,8 @@ Liegenschaftsnutzer
 	"FK_DUPL_STATUS" NUMBER, 
 	"DUPL_DATUM_OK" DATE, 
 	"DUPL_BEMERKUNG" VARCHAR2(4000 BYTE), 
-	"DATUM_LEX_BUCHUNG_OK" DATE
+	"DATUM_LEX_BUCHUNG_OK" DATE, 
+	"FK_EIN_AUS" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -6122,7 +6113,8 @@ Liegenschaftsnutzer
 	"FK_DUPL_STATUS" NUMBER, 
 	"DUPL_DATUM_OK" DATE, 
 	"DUPL_BERMERKUNG" VARCHAR2(4000 BYTE), 
-	"DATUM_LEX_BUCHUNG_OK" DATE
+	"DATUM_LEX_BUCHUNG_OK" DATE, 
+	"FK_EIN_AUS" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -6161,7 +6153,8 @@ Liegenschaftsnutzer
 	"FK_DUPL_STATUS" NUMBER, 
 	"DATUM_DUPL_OK" DATE, 
 	"DUPL_BEMERKUNG" VARCHAR2(4000 BYTE), 
-	"DATUM_LEX_BUCHUNG_OK" DATE
+	"DATUM_LEX_BUCHUNG_OK" DATE, 
+	"FK_EIN_AUS" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -10761,6 +10754,28 @@ Liegenschaftsnutzer
 	"CREATED_AT" DATE, 
 	"MODIFIED_BY" VARCHAR2(4000 CHAR), 
 	"MODIFIED_AT" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table T_UNTERLAGEN
+--------------------------------------------------------
+
+  CREATE TABLE "COMPANY"."T_UNTERLAGEN" 
+   (	"PK_UNTERLAGEN" NUMBER, 
+	"ART" VARCHAR2(4000 BYTE), 
+	"NR" VARCHAR2(4000 BYTE), 
+	"AUSSTELLUNGSDATUM" DATE, 
+	"ABLAUFDATUM" DATE, 
+	"AUSSTELLUNGSBEHÖRDE" VARCHAR2(4000 BYTE), 
+	"CREATED_AT" DATE DEFAULT SYSDATE, 
+	"COMM" VARCHAR2(4000 BYTE), 
+	"FÜHRERSCHEINKLASSEN" VARCHAR2(4000 BYTE), 
+	"FÜHRERSCHEINKLASSEN1" VARCHAR2(4000 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -18092,6 +18107,16 @@ where v.fk_monat = 1 and fk_jahr = 2020
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 --------------------------------------------------------
+--  DDL for Index T_UNTERLAGEN_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "COMPANY"."T_UNTERLAGEN_PK" ON "COMPANY"."T_UNTERLAGEN" ("PK_UNTERLAGEN") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
 --  DDL for Index EBA_DEMO_MD_TSK_LINK_PRJ_IDX
 --------------------------------------------------------
 
@@ -20688,13 +20713,103 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG1" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG2" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG2" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG3
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG3" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG3" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG4
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG4" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG4" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG5
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG5" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG5" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG6
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG6" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG6" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger IMP_RE_LEXWARE_TRG7
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG7" 
+BEFORE INSERT ON IMP_RE_LEXWARE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
     IF INSERTING AND :NEW.PK_IMP_RE_LEXWARE IS NULL THEN
       SELECT IMP_RE_LEXWARE_SEQ.NEXTVAL INTO :NEW.PK_IMP_RE_LEXWARE FROM SYS.DUAL;
     END IF;
   END COLUMN_SEQUENCES;
 END;
 /
-ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG1" ENABLE;
+ALTER TRIGGER "COMPANY"."IMP_RE_LEXWARE_TRG7" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger IMP_TEL_MOBILCOM_RECH_OV_TRG
 --------------------------------------------------------
@@ -21348,13 +21463,28 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."KAS_KASSE_TRG10" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger KAS_KASSE_TRG11
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."KAS_KASSE_TRG11" 
+BEFORE INSERT ON KAS_KASSE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
     IF INSERTING AND :NEW.PK_KAS_KASSE IS NULL THEN
       SELECT KAS_KASSE_SEQ.NEXTVAL INTO :NEW.PK_KAS_KASSE FROM SYS.DUAL;
     END IF;
   END COLUMN_SEQUENCES;
 END;
 /
-ALTER TRIGGER "COMPANY"."KAS_KASSE_TRG10" ENABLE;
+ALTER TRIGGER "COMPANY"."KAS_KASSE_TRG11" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger KAS_KASSE_TRG2
 --------------------------------------------------------
@@ -25727,6 +25857,38 @@ BEGIN
 END;
 /
 ALTER TRIGGER "COMPANY"."T_UMTAUSCHKURS_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_UNTERLAGEN_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_UNTERLAGEN_TRG" 
+BEFORE INSERT ON T_UNTERLAGEN 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_UNTERLAGEN_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_UNTERLAGEN_TRG1
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_UNTERLAGEN_TRG1" 
+BEFORE INSERT ON T_UNTERLAGEN 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.PK_UNTERLAGEN IS NULL THEN
+      SELECT T_UNTERLAGEN_SEQ.NEXTVAL INTO :NEW.PK_UNTERLAGEN FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_UNTERLAGEN_TRG1" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger T_USER_TRG
 --------------------------------------------------------
@@ -30385,12 +30547,14 @@ end;
 --------------------------------------------------------
 set define off;
 
-  CREATE OR REPLACE EDITIONABLE PROCEDURE "COMPANY"."P_ADD_INP_BELEGE_FROM_LEX" (p_page number, p_jahr number, p_relation varchar2) as
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "COMPANY"."P_ADD_INP_BELEGE_FROM_LEX" (p_pk_inp_belege_all number, p_page number, p_jahr number, p_relation varchar2) as
  v_page number;
  v_jahr number ;
+ v_pk_inp_belege_all number;
 begin
 v_page := P_page;
 v_jahr := p_jahr;
+
 for i in (
 select relation
 from t_lex_long ll
@@ -30401,7 +30565,10 @@ where jahr = v_jahr and status is null
 and pk_inp_belege_all is null and ( relation = p_relation or p_relation is null)
 ) loop 
 
+   
+    
     insert into inp_belege_ALL (
+            pk_inp_belege_all,
 
             bel_datum,
             bezeichnung,
@@ -30416,7 +30583,9 @@ and pk_inp_belege_all is null and ( relation = p_relation or p_relation is null)
             modify_at
             )
 
-  select case when  instr(belegdat,'-')>0 then substr(belegdat, 9,2) || '.' || substr(belegdat, 6,2) || '.' || substr(belegdat, 1,4) else  BELEGDAT end bt,
+  select 
+            p_pk_inp_belege_all,
+            case when  instr(belegdat,'-')>0 then substr(belegdat, 9,2) || '.' || substr(belegdat, 6,2) || '.' || substr(belegdat, 1,4) else  BELEGDAT end bt,
             Buchungstext,
             abs(BetragEUR) Betrag,
             6 Status,
@@ -30432,6 +30601,337 @@ and pk_inp_belege_all is null and ( relation = p_relation or p_relation is null)
             commit;
 
 end loop;
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_ADD_INP_FROM_ZUS2
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "COMPANY"."P_ADD_INP_FROM_ZUS2" (p_fk_main_key number) as
+  v_inp number;
+begin
+for i in  (
+select zus.fk_Main_key 
+    --, max(inp.FK_Kategorie) FK_Kategorie, arb.jahr, inp.dummy, zus.bucht_jahr, zus."FK_Kontotyp"
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ left join t_arbeitstage arb on arb.pk_arbeitstage = inp.fk_arbeitstag
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null and inp.pk_inp_belege_all is null 
+and zus.fk_main_key = p_fk_main_key or p_fk_main_key is null
+group by zus.fk_Main_key
+--arb.jahr, inp.dummy, zus.bucht_jahr, zus."FK_Kontotyp"
+) loop
+
+v_inp := inp_belege_all_seq.nextval;
+INSERT INTO inp_belege_all (
+pk_inp_belege_all,
+
+    fk_kategorie,
+    fk_arbeitstag,
+    fk_buchung,
+ --   fk_zahlungsart,
+    fk_verwendungszweck,
+    fk_location,
+
+    bezeichnung,
+    --bel_datum,
+    brutto_betrag,
+   -- fk_waehrung,
+    comm_sonstiges,
+   -- beleg_uhrzeit,
+
+    brutto_betrag_incl_trinkg,
+   -- fk_frmdw,
+    frmdw_brutto_betrag,
+    frmdw_brutto_incl_trinkg,
+    brutto_betrag_eur,
+
+    brutto_incl_trinkg_eur,
+    --la_datum,
+    --fk_la_wdh,
+    fk_status,
+    FK_ABL_ORDNER_PAGE
+)   
+select 
+v_inp ,
+    zus."FK_Kategorie",
+    zus.fk_buchungstag,
+    zus.fk_main_key, --fk_buchung,
+    --umsatzart fk_zahlungsart,
+    zus."FK_Verwendungszweck",  
+    fk_location,
+
+    zus.buchungstext, --bezeichnung,
+    --zus."Buchungstag", --bel_datum,
+    abs(zus."Betrag"), ---brutto_betrag,
+    zus.fk_main_key || chr(10) || zus."Buchungstag" || chr(10) || zus."Fremdwährung", --comm_sonstiges,
+   -- zus."Buchungstag", --beleg-uhrzeit,
+
+
+    zus."Betrag", ---brutto_betrag_incl_trinkg,
+    --zus."Fremdwährung", --fk_frmdw,
+    abs(zus."Fremdwährungsbetrag"), --frmdw_brutto_betrag,
+    abs(zus."Fremdwährungsbetrag"), --frmdw_brutto_incl_trinkg,
+    abs(zus."Betrag"), ---brutto_betrag_eur,
+
+    abs(zus."Betrag"), ---brutto_incl_trinkg_eur, 
+   -- zus.wertt_tag ||'.'||zus.wertt_monat||'.'|| zus.wertt_jahr, 
+   -- zus.wiederholung,    
+    10 ,  --fk_status
+    2942 p_FK_ABL_ORDNER_PAGE
+    from  v_konten_zus zus 
+      left join kto_girokonto gir on zus.fk_main_key = gir.fk_main_key
+      left join kto_kreditkarte kred on kred.fk_main_key = zus.fk_main_key
+
+    where zus.fk_main_key = i.fk_main_key ;
+
+    commit;
+
+    for j in (select * from t_rel_lex_kto_bel where fk_main_key = i.fk_Main_key  and fk_inp_belege_all is null) loop
+
+   -- insert into t_rel_lex_kto_bel (fk_main_key, fk_inp_belege_all)
+  --  values (j.fk_main_key,v_inp );
+   update t_rel_lex_kto_bel set fk_inp_belege_all = v_inp where pk_rel_lex_kto_bel = j.pk_rel_lex_kto_bel;
+   commit;
+
+    commit;
+
+    end loop;
+
+    commit;
+end loop;
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_ADD_INV_ZAHLUNG
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "COMPANY"."P_ADD_INV_ZAHLUNG" as
+begin
+
+merge into t_rel_inventar_zahlung t1
+using (
+
+select zus.fk_Main_key || ',',  16 fk_inventar
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus where instr(Buchungstext, 'HUK')>0 
+ --and instr(Buchungstext, 'M-R 7408')>0
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+
+group by zus.fk_Main_key,  inp.fk_inventar
+
+) t2 on (t1.fk_main_key = t2.fk_main_key and t1.fk_inventar = t2.fk_inventar)
+when not matched then
+insert (
+ t1.fk_Main_key,
+ t1.fk_inventar,
+ t1.created_at
+
+
+)
+values (
+ t2.fk_Main_key,
+ t2.fk_inventar,
+ sysdate
+
+);
+commit;
+--==
+merge into t_rel_inventar_zahlung t1
+using (
+
+select zus.fk_Main_key,  inp.fk_inventar
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ left join v_konten_zus zus on zus.fk_main_key = relbel.fk_main_key
+group by zus.fk_Main_key,  inp.fk_inventar
+
+) t2 on (t1.fk_main_key = t2.fk_main_key and t1.fk_inventar = t2.fk_inventar)
+when not matched then
+insert (
+ t1.fk_Main_key,
+ t1.fk_inventar,
+ t1.created_at
+
+
+)
+values (
+ t2.fk_Main_key,
+ t2.fk_inventar,
+ sysdate
+
+);
+commit;
+
+--==
+merge into kto_girokonto t1
+using (
+select zus.fk_Main_key , inp.FK_Kategorie
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key,   inp.FK_Kategorie  
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Kategorie" = t2.fk_kategorie;
+commit;
+
+merge into kto_kreditkarte t1
+using (
+select zus.fk_Main_key , inp.FK_Kategorie
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key,   inp.FK_Kategorie  
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Kategorie" = t2.fk_kategorie;
+commit;
+
+
+merge into kto_girokonto t1
+using (
+select zus.fk_Main_key , max(inp.FK_Verwendungszweck) FK_Verwendungszweck
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null and inp.fk_verwendungszweck is not null
+group by zus.fk_Main_key,   inp.FK_verwendungszweck 
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Verwendungszweck" = t2.fk_verwendungszweck;
+commit;
+
+merge into kto_tagesgeldkonto t1
+using (
+select zus.fk_Main_key , inp.FK_Kategorie
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key,   inp.FK_Kategorie  
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Kategorie" = t2.fk_kategorie;
+commit;
+
+merge into kto_tagesgeldkonto t1
+using (
+select zus.fk_Main_key , max(inp.FK_Verwendungszweck) FK_Verwendungszweck, "FK_Kontotyp"
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Verwendungszweck" is null and inp.fk_verwendungszweck is not null
+group by zus.fk_Main_key,   inp.FK_verwendungszweck ,"FK_Kontotyp"
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Verwendungszweck" = t2.fk_verwendungszweck;
+commit;
+
+merge into kto_tagesgeldkonto t1
+using (
+select zus.fk_Main_key , inp.FK_Kategorie, zus."FK_Kategorie", "FK_Kontotyp"
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key,   inp.FK_Kategorie  , zus."FK_Kategorie", "FK_Kontotyp"
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Kategorie" = t2.fk_kategorie;
+commit;
+
+
+
+merge into kas_kasse t1
+using (
+select zus.fk_Main_key , inp.FK_Kategorie, zus."FK_Kategorie", "FK_Kontotyp"
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key,   inp.FK_Kategorie  , zus."FK_Kategorie", "FK_Kontotyp"
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1.FK_Kategorie = t2.fk_kategorie;
+commit;
+
+
+merge into kto_paypal t1
+using (
+select zus.fk_Main_key , max(inp.FK_Kategorie) FK_Kategorie
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Kategorie" is null
+group by zus.fk_Main_key
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Kategorie" = t2.fk_kategorie;
+commit;
+
+
+
+
+merge into kto_girokonto t1
+using (
+select zus.fk_Main_key , max(inp.FK_Verwendungszweck) FK_Verwendungszweck, count(*), "FK_Kontotyp"
+from t_rel_lex_kto_bel relbel
+ left join (select * from inp_belege_all ) inp on relbel.fk_inp_belege_all = inp.pk_inp_belege_all
+ join (select * from v_konten_zus 
+ ) zus on zus.fk_main_key = relbel.fk_main_key
+where zus."FK_Verwendungszweck" is null and inp.fk_verwendungszweck is not null
+
+group by zus.fk_Main_key,   inp.FK_verwendungszweck , "FK_Kontotyp"
+
+
+) t2 on (t1.fk_main_key = t2.fk_main_key )
+when matched then
+update set
+t1."FK_Verwendungszweck" = t2.fk_verwendungszweck;
+commit;
+
 end;
 
 /
@@ -31666,6 +32166,68 @@ select
 from   inp_belege_pos_all
 where pk_inp_belege_pos_all = p_Pk_inp_bel; -- :Pk_inp_bel;
 commit;
+end;
+
+/
+--------------------------------------------------------
+--  DDL for Procedure P_SET_FK_EIN_AUS
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "COMPANY"."P_SET_FK_EIN_AUS" as
+
+begin
+
+--== kasse
+update kas_kasse set fk_ein_aus =0 where betrag =0 and fk_ein_aus is null;
+commit;
+
+update kas_kasse set fk_ein_aus =1 where betrag >0 and fk_ein_aus is null;
+commit;
+
+update kas_kasse set fk_ein_aus =2 where betrag <0 and fk_ein_aus is null;
+commit;
+
+--== girokonto
+update kto_girokonto set fk_ein_aus =0 where "Betrag" =0 and fk_ein_aus is null;
+commit;
+
+update kto_girokonto set fk_ein_aus =1 where "Betrag">0 and fk_ein_aus is null;
+commit;
+
+update kto_girokonto set fk_ein_aus =2 where "Betrag" <0 and fk_ein_aus is null;
+commit;
+
+--== kreditkarte
+update kto_kreditkarte set fk_ein_aus =0 where "Betrag"  =0 and fk_ein_aus is null;
+commit;
+
+update kto_kreditkarte set fk_ein_aus =1 where "Betrag"  >0 and fk_ein_aus is null;
+commit;
+
+update kto_kreditkarte set fk_ein_aus =2 where "Betrag"  <0 and fk_ein_aus is null;
+commit;
+
+--== tagesgeldkonto
+update kto_tagesgeldkonto set fk_ein_aus =0 where "Betrag" =0 and fk_ein_aus is null;
+commit;
+
+update kto_tagesgeldkonto set fk_ein_aus =1 where "Betrag" >0 and fk_ein_aus is null;
+commit;
+
+update kto_tagesgeldkonto set fk_ein_aus =2 where "Betrag" <0 and fk_ein_aus is null;
+commit;
+
+--== paypal
+update kto_paypal set fk_ein_aus =0 where "Brutto" =0 and fk_ein_aus is null;
+commit;
+
+update kto_paypal set fk_ein_aus =1 where "Brutto" >0 and fk_ein_aus is null;
+commit;
+
+update kto_paypal set fk_ein_aus =2 where "Brutto" <0 and fk_ein_aus is null;
+commit;
+
 end;
 
 /
@@ -46088,3 +46650,1068 @@ END;
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "COMPANY"."T_REL_INVENTAR_BARZAHL" MODIFY ("PK_REL_INV_BARZAHL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_STEUER_MONAT_TODO
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_MONAT_TODO" MODIFY ("PK_STEUER_MONAT_TODO" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_STEUER_MONAT_TODO" ADD CONSTRAINT "T_STEUER_MONAT_TODO_PK" PRIMARY KEY ("PK_STEUER_MONAT_TODO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_KONT_BUCH_LEX_BUCH
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_KONT_BUCH_LEX_BUCH" ADD CONSTRAINT "T_REL_KONT_BUCH_LEX_BUCH_PK" PRIMARY KEY ("PK_REL_KONT_BUCH_LEX_BUCH")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_KONT_BUCH_LEX_BUCH" MODIFY ("PK_REL_KONT_BUCH_LEX_BUCH" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_INVENTAR_ZAHLUNG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_INVENTAR_ZAHLUNG" ADD CONSTRAINT "PK_T_REL_INVENTAR_ZAHLUNG" PRIMARY KEY ("PK_REL_INV_ZAHLUNG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_INVENTAR_ZAHLUNG" MODIFY ("PK_REL_INV_ZAHLUNG" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_TEL_MOBILCOM_RECH_OV
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_TEL_MOBILCOM_RECH_OV" ADD CONSTRAINT "A3_Zus_Gruppierung_Ein_PK" PRIMARY KEY ("PK_IMP_TEL_MOBILCOM_RECH_OV")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_TEL_MOBILCOM_RECH_OV" MODIFY ("PK_IMP_TEL_MOBILCOM_RECH_OV" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EBA_DEMO_MD_MILESTONES
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("PROJECT_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("NAME" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("DUE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("CREATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("CREATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("UPDATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" MODIFY ("UPDATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" ADD CONSTRAINT "EBA_DEMO_MD_MILESTONES_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_INVENTARE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_INVENTARE" MODIFY ("PK_INVENTAR" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_INVENTARE" ADD CONSTRAINT "T_INVENTARE_PK" PRIMARY KEY ("PK_INVENTAR")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_INV_VERBRAUCHSMAT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_INV_VERBRAUCHSMAT" MODIFY ("PK_REL_INV_VERBRAUCHSMAT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_INV_VERBRAUCHSMAT" ADD CONSTRAINT "T_REL_INV_VERBRAUCHSMAT_PK" PRIMARY KEY ("PK_REL_INV_VERBRAUCHSMAT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_LOCATION
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_LOCATION" MODIFY ("PK_LOCATION" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_LOCATION" ADD CONSTRAINT "T_LOCATION_PK" PRIMARY KEY ("PK_LOCATION")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_LOCATION" ADD CONSTRAINT "CON_LOCATION" UNIQUE ("LOCATION", "FK_LOCATION_TYPE", "FK_ADRESSE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_KONTENPLAN_KONTEN_KL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_KL" MODIFY ("PK_KONTENPLAN_KONTEN_KL" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_KL" ADD CONSTRAINT "T_KONTENPLAN_KONTEN_KL_PK" PRIMARY KEY ("PK_KONTENPLAN_KONTEN_KL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table APEX$_WS_LINKS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" MODIFY ("WS_APP_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" MODIFY ("LINK_NAME" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" MODIFY ("URL" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" MODIFY ("CREATED_ON" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" MODIFY ("CREATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" ADD CONSTRAINT "APEX$_WS_LINKS_CL_CK" CHECK (component_level in ('WEBSHEET','ROW','WORKSPACE','WEBPAGE')) ENABLE;
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" ADD CONSTRAINT "APEX$_WS_LINKS_SH_CK" CHECK (show_on_homepage in ('Y','N')) ENABLE;
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" ADD CONSTRAINT "APEX$_WS_LINKS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_OFFENE_EINGANGSRECHNUNGEN
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_OFFENE_EINGANGSRECHNUNGEN" ADD CONSTRAINT "T_OFFENE_EINGANGSRECHNUNGE_PK" PRIMARY KEY ("PK_OFFENE_RECHNUNGEN")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_OFFENE_EINGANGSRECHNUNGEN" MODIFY ("PK_OFFENE_RECHNUNGEN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_BEL_BUCH
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_BEL_BUCH" ADD CONSTRAINT "IMP_BA_BEL_BUCH_PK" PRIMARY KEY ("IMP_BA_BEL_BUCH")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_BEL_BUCH" MODIFY ("IMP_BA_BEL_BUCH" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_LEX_SUSA
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_LEX_SUSA" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."IMP_LEX_SUSA" ADD CONSTRAINT "IMP_LEX_SUSA_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_PARKTICKETS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_PARKTICKETS" ADD CONSTRAINT "IMP_BA_PARKTICKETS_PK" PRIMARY KEY ("PK_IMP_BA_PARKTICKETS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_PARKTICKETS" MODIFY ("PK_IMP_BA_PARKTICKETS" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_ORGANISATIONSEINHEIT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ORGANISATIONSEINHEIT" MODIFY ("PK_ORGANISATIONSEINHEIT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ORGANISATIONSEINHEIT" ADD CONSTRAINT "T_ORGANISATIONSEINHEIT_PK" PRIMARY KEY ("PK_ORGANISATIONSEINHEIT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_KONTENPLAN_KONTEN_TYP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_TYP" MODIFY ("PK_KONTENPLAN_KONTEN_TYP" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_TYP" ADD CONSTRAINT "T_KONTENPLAN_KONTEN_TYP_PK" PRIMARY KEY ("PK_KONTENPLAN_KONTEN_TYP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_KONTROLLE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_KONTROLLE" ADD CONSTRAINT "T_KONTROLLE_PK" PRIMARY KEY ("PK_KONTROLLE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_KONTROLLE" MODIFY ("PK_KONTROLLE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_KONTENPLAN_KONTEN_KAT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_KAT" MODIFY ("PK_KONTENPLAN_KONTEN_KAT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_KAT" ADD CONSTRAINT "T_KONTENPLAN_KONTEN_KAT_PK" PRIMARY KEY ("PK_KONTENPLAN_KONTEN_KAT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DR$EBA_DEMO_IG_TEXT_FTX$I
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DR$EBA_DEMO_IG_TEXT_FTX$I" MODIFY ("TOKEN_TEXT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DR$EBA_DEMO_IG_TEXT_FTX$I" MODIFY ("TOKEN_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DR$EBA_DEMO_IG_TEXT_FTX$I" MODIFY ("TOKEN_FIRST" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DR$EBA_DEMO_IG_TEXT_FTX$I" MODIFY ("TOKEN_LAST" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DR$EBA_DEMO_IG_TEXT_FTX$I" MODIFY ("TOKEN_COUNT" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_KONTAKT_KONTAKTTYP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_KONTAKT_KONTAKTTYP" MODIFY ("PK_REL_KON_KONT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_KONTAKT_KONTAKTTYP" ADD CONSTRAINT "T_REL_KONTAKT_KONTAKTTYP_PK" PRIMARY KEY ("PK_REL_KON_KONT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_QUELLENTYP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_QUELLENTYP" MODIFY ("PK_QUELLENTYP" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_QUELLENTYP" ADD CONSTRAINT "T_QUELLENTYP_PK" PRIMARY KEY ("PK_QUELLENTYP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_TEXTILREINIGUNG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_TEXTILREINIGUNG" ADD CONSTRAINT "IMP_BA_TEXTILREINIGUNG_PK" PRIMARY KEY ("PK_IMP_BA_TEXTILREINIGUNG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_TEXTILREINIGUNG" MODIFY ("PK_IMP_BA_TEXTILREINIGUNG" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_FRAGE_LÖS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_FRAGE_LÖS" ADD CONSTRAINT "T_REL_FRAGE_LÖS_PK" PRIMARY KEY ("PK_FRAGE_LÖS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_FRAGE_LÖS" MODIFY ("PK_FRAGE_LÖS" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_BEITRAG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_BEITRAG" ADD CONSTRAINT "T_BEITRAG_PK" PRIMARY KEY ("PK_BEITRAG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_BEITRAG" MODIFY ("PK_BEITRAG" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_STEUER_LOHNSTEUERKARTE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_LOHNSTEUERKARTE" ADD CONSTRAINT "T_STEUER_LOHNSTEUERKARTE_PK" PRIMARY KEY ("PK_STEUER_LOHNSTEUERKARTE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_STEUER_LOHNSTEUERKARTE" MODIFY ("PK_STEUER_LOHNSTEUERKARTE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EBA_DEMO_MD_TASK_TODOS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("PROJECT_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("TASK_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("NAME" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("CREATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("CREATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("UPDATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" MODIFY ("UPDATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_TODOS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_GESCHAEFTSPARTNER
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_GESCHAEFTSPARTNER" MODIFY ("PK_GESCHAEFTSPARTNER" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_GESCHAEFTSPARTNER" ADD CONSTRAINT "T_GESCHAEFTSPARTNER_PK" PRIMARY KEY ("PK_GESCHAEFTSPARTNER")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_ADRESSE_SCHNELL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ADRESSE_SCHNELL" MODIFY ("PK_ADRESSE_SCHNELL" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ADRESSE_SCHNELL" ADD CONSTRAINT "T_ADRESSE_NEU_PK" PRIMARY KEY ("PK_ADRESSE_SCHNELL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_KONTINENT_LAND
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_KONTINENT_LAND" MODIFY ("PK_REL_KONTINENT_LAND" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_KONTINENT_LAND" ADD CONSTRAINT "T_REL_KONTINENT_LAND_PK" PRIMARY KEY ("PK_REL_KONTINENT_LAND")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EBA_DEMO_DIALOG_EMP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_DIALOG_EMP" MODIFY ("EMPNO" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_DIALOG_EMP" ADD PRIMARY KEY ("EMPNO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_LAND
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_LAND" MODIFY ("PK_LAND" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_LAND" ADD CONSTRAINT "T_LAND_PK" PRIMARY KEY ("PK_LAND")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_LAND" ADD CONSTRAINT "CON_LAND" UNIQUE ("LAND")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 167 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_LEX_KTO
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_LEX_KTO" MODIFY ("FK_MAIN_KEY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_LEX_KTO" MODIFY ("ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_GE1
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_GE1" MODIFY ("PK_GESCHAEFTSPARTNER" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_STEUER_MONAT_BEL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_STEUER_MONAT_BEL" ADD CONSTRAINT "T_REL_STEUER_MONAT_BEL_PK" PRIMARY KEY ("PK_REL_BEL_STEUER_MONAT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_STEUER_MONAT_BEL" MODIFY ("PK_REL_BEL_STEUER_MONAT" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_ADDFRIEND_RELATIONS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ADDFRIEND_RELATIONS" MODIFY ("ADDFRIEND_RELATION_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ADDFRIEND_RELATIONS" ADD CONSTRAINT "T_ADDFRIEND_RELATIONS_PK" PRIMARY KEY ("ADDFRIEND_RELATION_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_PERSON
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_PERSON" MODIFY ("PK_PERSON" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_PERSON" ADD CONSTRAINT "T_PERSON_PK" PRIMARY KEY ("PK_PERSON")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_ARTIKELTYP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ARTIKELTYP" MODIFY ("PK_ARTIKELTYP" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ARTIKELTYP" MODIFY ("ARTIKELTYP" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ARTIKELTYP" ADD CONSTRAINT "T_ARTIKELTYP_PK" PRIMARY KEY ("PK_ARTIKELTYP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_KRANKENKASSE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_KRANKENKASSE" ADD CONSTRAINT "IMP_BA_KRANKENKASSE_PK" PRIMARY KEY ("PK_IMP_BA_KRANKENKASSE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_KRANKENKASSE" MODIFY ("PK_IMP_BA_KRANKENKASSE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_STEUER_LOHN_INP_BEL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_STEUER_LOHN_INP_BEL" MODIFY ("PK_STEUER_LOHN_INP_BEL" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_STEUER_LOHN_INP_BEL" ADD CONSTRAINT "TABLE1_PK" PRIMARY KEY ("PK_STEUER_LOHN_INP_BEL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_STEUER_MONAT_RECH
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_STEUER_MONAT_RECH" ADD CONSTRAINT "T_REL_STEUER_MONAT_RECH_PK" PRIMARY KEY ("PK_REL_STEUER_MONAT_RECH")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_STEUER_MONAT_RECH" MODIFY ("PK_REL_STEUER_MONAT_RECH" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EBA_DEMO_MD_STATUS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("CD" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("DISPLAY_ORDER" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("CREATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("CREATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("UPDATED" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" MODIFY ("UPDATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_STATUS" ADD CONSTRAINT "EBA_DEMO_MD_STATUS_PK" PRIMARY KEY ("CD")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_FRAGE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_FRAGE" ADD CONSTRAINT "T_FRAGE_PK" PRIMARY KEY ("PK_FRAGE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_FRAGE" MODIFY ("PK_FRAGE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_HEIZUNGSABLESUNG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_HEIZUNGSABLESUNG" MODIFY ("PK_HEIZUNGSABLESUNG" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_HEIZUNGSABLESUNG" ADD CONSTRAINT "T_HEIZUNGSABLESUNG_PK" PRIMARY KEY ("PK_HEIZUNGSABLESUNG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_LAGERORT_ARTIKEL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_LAGERORT_ARTIKEL" MODIFY ("PK_REL_LAGO_ART" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_LAGERORT_ARTIKEL" ADD CONSTRAINT "T_REL_LAGERORT_ARTIKEL_PK" PRIMARY KEY ("PK_REL_LAGO_ART")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_UNTERLAGEN
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_UNTERLAGEN" MODIFY ("PK_UNTERLAGEN" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_UNTERLAGEN" ADD CONSTRAINT "T_UNTERLAGEN_PK" PRIMARY KEY ("PK_UNTERLAGEN")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_BUENDELUNG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_BUENDELUNG" MODIFY ("PK_BUENDELUNG" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_BUENDELUNG" ADD CONSTRAINT "T_BUENDELUNG_PK" PRIMARY KEY ("PK_BUENDELUNG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_AUDI_FIN_VERTRAG_POS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_AUDI_FIN_VERTRAG_POS" MODIFY ("PK_AUDI_FIN_VERTRAG_POS" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_AUDI_FIN_VERTRAG_POS" ADD CONSTRAINT "T_AUDI_FIN_VERTRAG_POS_PK" PRIMARY KEY ("PK_AUDI_FIN_VERTRAG_POS")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_RV_AUSZUG_PAGE_DET
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_RV_AUSZUG_PAGE_DET" MODIFY ("PK_RV_AUSZUG_PAGE_DET" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_RV_AUSZUG_PAGE_DET" ADD CONSTRAINT "T_RV_AUSZUG_PAGE_DET_PK" PRIMARY KEY ("PK_RV_AUSZUG_PAGE_DET")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DEMO_PRODUCT_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DEMO_PRODUCT_INFO" ADD CONSTRAINT "DEMO_PRODUCT_INFO_UK" UNIQUE ("PRODUCT_NAME")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_PRODUCT_INFO" ADD CONSTRAINT "DEMO_PRODUCT_INFO_PK" PRIMARY KEY ("PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_PRODUCT_INFO" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table STD_OBERKATEGORIE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."STD_OBERKATEGORIE" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."STD_OBERKATEGORIE" ADD CONSTRAINT "STD_OBERKATEGORIE_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_EINSENDEAUFGABENSTATUS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_EINSENDEAUFGABENSTATUS" MODIFY ("PK_EINSENDEAUFG_STAT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_EINSENDEAUFGABENSTATUS" ADD CONSTRAINT "T_EINSENDEAUFGABENSTATUS_PK" PRIMARY KEY ("PK_EINSENDEAUFG_STAT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_PLZ_ORT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_PLZ_ORT" MODIFY ("PK_PLZ_ORT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_PLZ_ORT" ADD CONSTRAINT "T_PLZ_ORT_PK" PRIMARY KEY ("PK_PLZ_ORT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_PLZ_ORT" ADD CONSTRAINT "CON_PLZ_ORT" UNIQUE ("PLZ", "OT", "FK_ORT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_STEUERSATZ
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUERSATZ" MODIFY ("PK_STEUERSATZ" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_STEUERSATZ" ADD CONSTRAINT "T_STEUERSATZ_PK" PRIMARY KEY ("PK_STEUERSATZ")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_STEUERSATZ" ADD CONSTRAINT "T_STEUERSATZ_UK1" UNIQUE ("STEUERSATZ", "FK_LAND")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table DEMO_ORDER_ITEMS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" ADD CONSTRAINT "DEMO_ORDER_ITEMS_UK" UNIQUE ("ORDER_ID", "PRODUCT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" ADD CONSTRAINT "DEMO_ORDER_ITEMS_PK" PRIMARY KEY ("ORDER_ITEM_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" MODIFY ("QUANTITY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" MODIFY ("UNIT_PRICE" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" MODIFY ("PRODUCT_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" MODIFY ("ORDER_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" MODIFY ("ORDER_ITEM_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_STEUER_SATZ_LEX
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_SATZ_LEX" ADD CONSTRAINT "T_STEUER_SATZ_LEX_PK" PRIMARY KEY ("PK_STEUER_SATZ_LEX")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_STEUER_SATZ_LEX" MODIFY ("PK_STEUER_SATZ_LEX" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_TEL_O2
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_TEL_O2" ADD CONSTRAINT "IMP_TEL_O2_PK" PRIMARY KEY ("PK_IMP_TEL_O2")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_TEL_O2" MODIFY ("PK_IMP_TEL_O2" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_ADDFRIEND
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ADDFRIEND" MODIFY ("FRIEND_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ADDFRIEND" ADD CONSTRAINT "T_ADDFRIEND_PK" PRIMARY KEY ("FRIEND_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_BELEGART_GRP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_BELEGART_GRP" ADD CONSTRAINT "PK_T_BELEGART_GRP" PRIMARY KEY ("PK_BELEGART_GRP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_BELEGART_GRP" MODIFY ("PK_BELEGART_GRP" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table APEX$_WS_TAGS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" MODIFY ("WS_APP_ID" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" MODIFY ("CREATED_ON" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" MODIFY ("CREATED_BY" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" ADD CONSTRAINT "APEX$_WS_TAGS_CL_CK" CHECK (component_level in ('WEBSHEET','ROW','WORKSPACE','WEBPAGE')) ENABLE;
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" ADD CONSTRAINT "APEX$_WS_TAGS_PK" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_RECHNUNG_STUNDENZETTEL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_RECHNUNG_STUNDENZETTEL" MODIFY ("PK_REL_RE_STDZ" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_RECHNUNG_STUNDENZETTEL" ADD CONSTRAINT "T_REL_RECHNUNG_STUNDENZETTEL_PK" PRIMARY KEY ("PK_REL_RE_STDZ")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_STEUER_LOHN
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_LOHN" ADD CONSTRAINT "T_STEUER_LOHN_PK" PRIMARY KEY ("PK_STEUER_LOHN")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_STEUER_LOHN" MODIFY ("PK_STEUER_LOHN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_KONTENPLAN_KONTEN_GRP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_GRP" ADD CONSTRAINT "T_KONTENPLAN_KONTEN_GRP_PK" PRIMARY KEY ("PK_KONTENPLAN_KONTEN_GRP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_KONTENPLAN_KONTEN_GRP" MODIFY ("PK_KONTENPLAN_KONTEN_GRP" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_PROJEKT_ZAHLUNG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_PROJEKT_ZAHLUNG" ADD CONSTRAINT "PK_T_REL_PROJ_ZAHLUNG" PRIMARY KEY ("PK_REL_PROJ_ZAHLUNG")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_PROJEKT_ZAHLUNG" MODIFY ("PK_REL_PROJ_ZAHLUNG" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table DEMO_CUSTOMERS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" ADD CONSTRAINT "DEMO_CUSTOMERS_UK" UNIQUE ("CUST_FIRST_NAME", "CUST_LAST_NAME")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" ADD CONSTRAINT "DEMO_CUSTOMERS_PK" PRIMARY KEY ("CUSTOMER_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" ADD CONSTRAINT "DEMO_CUST_CREDIT_LIMIT_MAX" CHECK (credit_limit <= 5000) ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" MODIFY ("CUST_LAST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" MODIFY ("CUST_FIRST_NAME" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."DEMO_CUSTOMERS" MODIFY ("CUSTOMER_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_PROJEKT_ART
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_PROJEKT_ART" ADD CONSTRAINT "PK_T_PROJEKT_ART" PRIMARY KEY ("PK_PROJEKT_ART")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_PROJEKT_ART" MODIFY ("PK_PROJEKT_ART" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_ALLG_BEL1_SICH
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_ALLG_BEL1_SICH" MODIFY ("PK_IMP_BA_ALLG_BEL1" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."IMP_BA_ALLG_BEL1_SICH" ADD CONSTRAINT "IMP_BA_ALLG_BEL1_SICH_PK" PRIMARY KEY ("PK_IMP_BA_ALLG_BEL1")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_ABSCHLUSSTYP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ABSCHLUSSTYP" MODIFY ("PK_ABSCHLUSSTYP" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_ABSCHLUSSTYP" ADD CONSTRAINT "T_ABSCHLUSSTYP_PK" PRIMARY KEY ("PK_ABSCHLUSSTYP")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_LOCATION_TYPE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_LOCATION_TYPE" MODIFY ("PK_LOCATION_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_LOCATION_TYPE" ADD CONSTRAINT "T_LOCATION_TYPE_PK" PRIMARY KEY ("PK_LOCATION_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_LOCATION_TYPE" ADD CONSTRAINT "CON_LOC_TYPE" UNIQUE ("LOCATION_TYPE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table T_REL_BELEG_LOCATION
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_BELEG_LOCATION" MODIFY ("PK_REL_BEL_LOC" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_BELEG_LOCATION" ADD CONSTRAINT "T_REL_BELEG_LOCATION_PK" PRIMARY KEY ("PK_REL_BEL_LOC")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EMP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EMP" ADD PRIMARY KEY ("EMPNO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."EMP" MODIFY ("EMPNO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_KFZ_VERSICHERUNGEN
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_KFZ_VERSICHERUNGEN" ADD CONSTRAINT "IMP_BA_KFZ_VERSICHERUNGEN_PK" PRIMARY KEY ("PK_IMP_BA_KFZ_VERSICHERUNGEN")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_KFZ_VERSICHERUNGEN" MODIFY ("PK_IMP_BA_KFZ_VERSICHERUNGEN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_GESCHAEFTSP_KONT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_GESCHAEFTSP_KONT" MODIFY ("PK_REL_GP_KONT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_GESCHAEFTSP_KONT" ADD CONSTRAINT "T_REL_GESCHAEFTSP_KONT_PK" PRIMARY KEY ("PK_REL_GP_KONT")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table IMP_LOG_LOAD
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_LOG_LOAD" MODIFY ("PK_IMP_LOG_LOAD" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."IMP_LOG_LOAD" ADD CONSTRAINT "IMP_LOG_LOAD_PK" PRIMARY KEY ("PK_IMP_LOG_LOAD")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table INP_BELEGE_POS_ALL
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."INP_BELEGE_POS_ALL" ADD CONSTRAINT "INP_BELEGE_POS_ALL_PK" PRIMARY KEY ("PK_INP_BELEGE_POS_ALL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."INP_BELEGE_POS_ALL" MODIFY ("PK_INP_BELEGE_POS_ALL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IMP_BA_ELEKTRONIK
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."IMP_BA_ELEKTRONIK" ADD CONSTRAINT "IMP_BA_ELEKTRONIK_PK" PRIMARY KEY ("PK_IMP_BA_ELEKTRONIK")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."IMP_BA_ELEKTRONIK" MODIFY ("PK_IMP_BA_ELEKTRONIK" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table T_REL_KONT_BUCH_KONT_BUCH
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_KONT_BUCH_KONT_BUCH" ADD CONSTRAINT "T_REL_KONT_BUCH_KONT_BUCH_PK" PRIMARY KEY ("PK_REL_KONT_BUCH_KONT_BUCH")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_KONT_BUCH_KONT_BUCH" MODIFY ("PK_REL_KONT_BUCH_KONT_BUCH" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_KONT_BUCH_KONT_BUCH" ADD CONSTRAINT "T_REL_KONT_BUCH_KONT_BUCH_UK1" UNIQUE ("FK_KONTO_BUCH1", "FK_KONTO_BUCH2")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APEX$_WS_FILES
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_FILES" ADD CONSTRAINT "APEX$_WS_FILES_FK" FOREIGN KEY ("ROW_ID")
+	  REFERENCES "COMPANY"."APEX$_WS_ROWS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APEX$_WS_LINKS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_LINKS" ADD CONSTRAINT "APEX$_WS_LINKS_FK" FOREIGN KEY ("ROW_ID")
+	  REFERENCES "COMPANY"."APEX$_WS_ROWS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APEX$_WS_NOTES
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_NOTES" ADD CONSTRAINT "APEX$_WS_NOTES_FK" FOREIGN KEY ("ROW_ID")
+	  REFERENCES "COMPANY"."APEX$_WS_ROWS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table APEX$_WS_TAGS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."APEX$_WS_TAGS" ADD CONSTRAINT "APEX$_WS_TAGS_FK" FOREIGN KEY ("ROW_ID")
+	  REFERENCES "COMPANY"."APEX$_WS_ROWS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DEMO_ORDER_ITEMS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" ADD CONSTRAINT "DEMO_ORDER_ITEMS_FK" FOREIGN KEY ("ORDER_ID")
+	  REFERENCES "COMPANY"."DEMO_ORDERS" ("ORDER_ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "COMPANY"."DEMO_ORDER_ITEMS" ADD CONSTRAINT "DEMO_ORDER_ITEMS_PRODUCT_ID_FK" FOREIGN KEY ("PRODUCT_ID")
+	  REFERENCES "COMPANY"."DEMO_PRODUCT_INFO" ("PRODUCT_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DEMO_ORDERS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."DEMO_ORDERS" ADD CONSTRAINT "DEMO_ORDERS_CUSTOMER_ID_FK" FOREIGN KEY ("CUSTOMER_ID")
+	  REFERENCES "COMPANY"."DEMO_CUSTOMERS" ("CUSTOMER_ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_DIALOG_EMP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_DIALOG_EMP" ADD FOREIGN KEY ("MGR")
+	  REFERENCES "COMPANY"."EBA_DEMO_DIALOG_EMP" ("EMPNO") ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_DIALOG_EMP" ADD FOREIGN KEY ("DEPTNO")
+	  REFERENCES "COMPANY"."EBA_DEMO_DIALOG_DEPT" ("DEPTNO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_IG_EMP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_IG_EMP" ADD FOREIGN KEY ("MGR")
+	  REFERENCES "COMPANY"."EBA_DEMO_IG_EMP" ("EMPNO") ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_IG_EMP" ADD FOREIGN KEY ("DEPTNO")
+	  REFERENCES "COMPANY"."EBA_DEMO_IG_DEPT" ("DEPTNO") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_COMMENTS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_COMMENTS" ADD CONSTRAINT "EBA_DEMO_MD_COMMENT_MD_FK" FOREIGN KEY ("PROJECT_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_PROJECTS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_MILESTONES
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_MILESTONES" ADD CONSTRAINT "EBA_DEMO_MD_MSTONE_MD_FK" FOREIGN KEY ("PROJECT_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_PROJECTS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_PROJECTS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_PROJECTS" ADD CONSTRAINT "EBA_DEMO_MD_TEAM_MEMBER_FK" FOREIGN KEY ("PROJECT_LEAD")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_TEAM_MEMBERS" ("ID") ON DELETE SET NULL ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_PROJECTS" ADD CONSTRAINT "EBA_DEMO_MD_STATUS_FK" FOREIGN KEY ("STATUS_CD")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_STATUS" ("CD") ON DELETE SET NULL ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_TASK_LINKS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_LINKS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_LINK_PRJ_FK" FOREIGN KEY ("PROJECT_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_PROJECTS" ("ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_LINKS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_LINK_TSK_FK" FOREIGN KEY ("TASK_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_TASKS" ("ID") ON DELETE CASCADE ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_TASKS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASKS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_TEAM_MEM_FK" FOREIGN KEY ("ASSIGNEE")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_TEAM_MEMBERS" ("ID") ON DELETE SET NULL ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASKS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_PROJECT_FK" FOREIGN KEY ("PROJECT_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_PROJECTS" ("ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASKS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_MSTONE_FK" FOREIGN KEY ("MILESTONE_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_MILESTONES" ("ID") ON DELETE SET NULL ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EBA_DEMO_MD_TASK_TODOS
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_TODO_PRJ_FK" FOREIGN KEY ("PROJECT_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_PROJECTS" ("ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_TODO_TSK_FK" FOREIGN KEY ("TASK_ID")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_TASKS" ("ID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "COMPANY"."EBA_DEMO_MD_TASK_TODOS" ADD CONSTRAINT "EBA_DEMO_MD_TASK_TODO_TM_FK" FOREIGN KEY ("ASSIGNEE")
+	  REFERENCES "COMPANY"."EBA_DEMO_MD_TEAM_MEMBERS" ("ID") ON DELETE SET NULL ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EMP
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."EMP" ADD FOREIGN KEY ("MGR")
+	  REFERENCES "COMPANY"."EMP" ("EMPNO") ENABLE;
+  ALTER TABLE "COMPANY"."EMP" ADD FOREIGN KEY ("DEPTNO")
+	  REFERENCES "COMPANY"."DEPT" ("DEPTNO") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_ABL_ORDNER_PAGE
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_ABL_ORDNER_PAGE" ADD CONSTRAINT "T_ABL_ORDNER_PAGE_FK1" FOREIGN KEY ("FK_ABL_ORDNER")
+	  REFERENCES "COMPANY"."T_ABL_ORDNER" ("PK_ABL_ORDNER") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_DUPLIKAT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_DUPLIKAT" ADD CONSTRAINT "T_DUPLIKAT_FK1" FOREIGN KEY ("FK_DUPLIKAT_CHECK")
+	  REFERENCES "COMPANY"."T_DUPLIKAT_CHECK" ("PK_DUPLIKAT_CHECK") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_REL_VERPFL_BELEG_SRC
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_REL_VERPFL_BELEG_SRC" ADD CONSTRAINT "T_REL_VERPFL_BEELG_SRC_FK1" FOREIGN KEY ("FK_VERPFLEGUNGSMEHRAUFWD_DET")
+	  REFERENCES "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET" ("PK_VERPFLEGUNGSMEHRAUFWD_DET") ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_VERPFL_BELEG_SRC" ADD CONSTRAINT "T_REL_VERPFL_BEELG_SRC_FK2" FOREIGN KEY ("FK_INP_BELEGE_ALL")
+	  REFERENCES "COMPANY"."INP_BELEGE_ALL" ("PK_INP_BELEGE_ALL") ENABLE;
+  ALTER TABLE "COMPANY"."T_REL_VERPFL_BELEG_SRC" ADD CONSTRAINT "T_REL_VERPFL_BEELG_SRC_FK3" FOREIGN KEY ("FK_STUNDENZETTEL")
+	  REFERENCES "COMPANY"."T_STUNDENZETTEL" ("PK_STUNDENZETTEL") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_STEUER_MONAT
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_MONAT" ADD CONSTRAINT "T_STEUER_MONAT_FK1" FOREIGN KEY ("FK_STEUER_JAHR")
+	  REFERENCES "COMPANY"."T_STEUER_JAHR" ("PK_STEUER_JAHR") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_STEUER_VORANMLDG
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEUER_VORANMLDG" ADD CONSTRAINT "T_STEUER_VORANMLDG_FK1" FOREIGN KEY ("FK_STEUER_MONAT")
+	  REFERENCES "COMPANY"."T_STEUER_MONAT" ("PK_STEUER_MONAT") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_VERPFLEGUNGSMEHRAUFWAND
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_FK1" FOREIGN KEY ("FK_INP_BELEGE_ALL")
+	  REFERENCES "COMPANY"."INP_BELEGE_ALL" ("PK_INP_BELEGE_ALL") ENABLE;
+  ALTER TABLE "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_FK2" FOREIGN KEY ("FK_STEUER_MONAT")
+	  REFERENCES "COMPANY"."T_STEUER_MONAT" ("PK_STEUER_MONAT") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table T_VERPFLEGUNGSMEHRAUFWAND_DET
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK1" FOREIGN KEY ("FK_VERPFLEGUNGSMEHRAUFWAND")
+	  REFERENCES "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND" ("PK_VERPFLEGUNGSMEHRAUFWAND") ENABLE;
+  ALTER TABLE "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK2" FOREIGN KEY ("FK_ORT")
+	  REFERENCES "COMPANY"."T_ORT" ("PK_ORT") ENABLE;

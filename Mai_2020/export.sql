@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Donnerstag-Mai-28-2020   
+--  Datei erstellt -Freitag-Mai-29-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -1259,7 +1259,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence INP_BELEGE_ALL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."INP_BELEGE_ALL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 8041 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."INP_BELEGE_ALL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 8141 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence INP_BELEGE_ALL_SEQ1
 --------------------------------------------------------
@@ -1279,7 +1279,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KAS_KASSE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KAS_KASSE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9581 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KAS_KASSE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9601 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KAS_KASSE_SEQ1
 --------------------------------------------------------
@@ -1294,7 +1294,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KTO_GIROKONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16604 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16644 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_GIROKONTO_SEQ1
 --------------------------------------------------------
@@ -1309,7 +1309,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KTO_KONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10041 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_Kreditkarte_SEQ
 --------------------------------------------------------
@@ -1869,7 +1869,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_BANKKONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_BANKKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_BANKKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_BANKKONTO_SEQ1
 --------------------------------------------------------
@@ -1879,7 +1879,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_BANK_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_BANK_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_BANK_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_BARGELD_SEQ
 --------------------------------------------------------
@@ -2109,7 +2109,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_KONTO_AUSZUG_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 601 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 621 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KONTO_BUCH_KAT_SEQ
 --------------------------------------------------------
@@ -2194,7 +2194,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_NIEDERSCHLAGSMENGE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_NIEDERSCHLAGSMENGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 581 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_NIEDERSCHLAGSMENGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 601 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_NIEDERSCHLAGSMENGE_SEQ1
 --------------------------------------------------------
@@ -2424,7 +2424,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_KONTO_AUSZUG_GIR_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5641 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5681 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_LAGERORT_ARTIKEL_SEQ
 --------------------------------------------------------
@@ -2434,7 +2434,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_LEX_KTO_BEL_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_LEX_KTO_BEL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 19281 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_LEX_KTO_BEL_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 19381 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_LEX_KTO_BEL_SEQ1
 --------------------------------------------------------
@@ -30587,7 +30587,7 @@ select
     zus.buchungstext, --bezeichnung,
     zus."Buchungstag", --bel_datum,
     abs(zus."Betrag"), ---brutto_betrag,
-    zus.fk_main_key, --comm_sonstiges,
+    zus.fk_main_key || chr(10) || zus."Buchungstag", --comm_sonstiges,
     zus."Buchungstag", --bel_datum,
 
     zus."Betrag", ---brutto_betrag_incl_trinkg,
@@ -36590,7 +36590,6 @@ insert into KTO_GIROKONTO
        -- where to_date(Buchungstag,'DD.MM.YYYY') > to_date('14.08.2019','DD.MM.YYYY')
         order by  to_date(Buchungstag,'DD.MM.YYYY');
         commit;
-commit;
 
      
              update imp_ing_diba set buchung = to_date(buchung,'MM/DD/YYYY'), valuta = to_date(valuta,'MM/DD/YYYY');

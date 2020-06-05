@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Donnerstag-Juni-04-2020   
+--  Datei erstellt -Freitag-Juni-05-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -375,6 +375,7 @@ DROP SEQUENCE "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_SEQ1";
 DROP SEQUENCE "COMPANY"."T_VERTRAG_SEQ";
 DROP SEQUENCE "COMPANY"."T_VERWENDUNGSZWECK_SEQ";
 DROP SEQUENCE "COMPANY"."T_WAEHRUNG_SEQ";
+DROP SEQUENCE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_SEQ";
 DROP SEQUENCE "COMPANY"."T_ZAHLUNGSÜBERSICHTEN_SEQ";
 DROP TABLE "COMPANY"."APEX$_ACL" cascade constraints;
 DROP TABLE "COMPANY"."APEX_GEO" cascade constraints;
@@ -669,12 +670,16 @@ DROP TABLE "COMPANY"."T_WH_VERBRAUCHSMAT_TYP" cascade constraints;
 DROP TABLE "COMPANY"."T_WH_WAREN_BESTAND" cascade constraints;
 DROP TABLE "COMPANY"."T_WH_WAREN_BEWEGUNG" cascade constraints;
 DROP TABLE "COMPANY"."T_WH_WAREN_EINGANG" cascade constraints;
-DROP VIEW "COMPANY"."APEX_V_REL_LEX";
-DROP VIEW "COMPANY"."V_ADRESSE";
+DROP VIEW "COMPANY"."V_ABL_ORDNER_PAGE";
+DROP VIEW "COMPANY"."V_ADR_ADRESSE";
+DROP VIEW "COMPANY"."V_ADR_LOCATION";
+DROP VIEW "COMPANY"."V_ADR_ORT";
+DROP VIEW "COMPANY"."V_ADR_PLZ_BUNDESLAND";
 DROP VIEW "COMPANY"."V_ALL_KONT_BUCH";
-DROP VIEW "COMPANY"."V_BELEGDAT";
+DROP VIEW "COMPANY"."V_BEL_BELEG";
+DROP VIEW "COMPANY"."V_BEL_BELEG_DAT";
+DROP VIEW "COMPANY"."V_BEL_BELEG_DAT2";
 DROP VIEW "COMPANY"."V_BEL_RE";
-DROP VIEW "COMPANY"."V_BUCHUNG";
 DROP VIEW "COMPANY"."V_BUCHUNGSTATUS_OLD";
 DROP VIEW "COMPANY"."V_CALC_BEL_BETRAG";
 DROP VIEW "COMPANY"."V_CALC_BEL_POS_BETRAG";
@@ -682,32 +687,31 @@ DROP VIEW "COMPANY"."V_CHECK_DATE_FORMAT_LEX_BELEGDAT";
 DROP VIEW "COMPANY"."V_CHECK_GIR";
 DROP VIEW "COMPANY"."V_CHECK_KRED";
 DROP VIEW "COMPANY"."V_CNT_OK_LEX";
-DROP VIEW "COMPANY"."V_COMPARE_TABLES";
 DROP VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL";
 DROP VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL1";
-DROP VIEW "COMPANY"."V_DATUM_STEUER_OK";
-DROP VIEW "COMPANY"."V_GESCHAEFTSPARTNER";
+DROP VIEW "COMPANY"."V_COMP_TABLES";
 DROP VIEW "COMPANY"."V_GET_SPLIT_NR";
 DROP VIEW "COMPANY"."V_GROUPING_SETS";
 DROP VIEW "COMPANY"."V_IMP_BEL_ZUS";
+DROP VIEW "COMPANY"."V_IMP_KONTEN_CHEDK";
 DROP VIEW "COMPANY"."V_IMP_TEL_CONTROL";
 DROP VIEW "COMPANY"."V_INP_BELEGE_ALL";
 DROP VIEW "COMPANY"."V_INP_BELEGE_ALL1";
-DROP VIEW "COMPANY"."V_INVENTARE";
-DROP VIEW "COMPANY"."V_KONTEN_IMP_CHECK";
-DROP VIEW "COMPANY"."V_KONTEN_ZUS";
-DROP VIEW "COMPANY"."V_KONTOAUSZUG";
-DROP VIEW "COMPANY"."V_KONTOAUSZUG_BUCH";
-DROP VIEW "COMPANY"."V_KONTO_AUSZUG_OV";
+DROP VIEW "COMPANY"."V_INV_INVENTARE";
+DROP VIEW "COMPANY"."V_KON_GESCHAEFTSPARTNER";
 DROP VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL";
 DROP VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL_bel";
 DROP VIEW "COMPANY"."V_KONTR_DUPL_BUCHUNGSTEXT";
 DROP VIEW "COMPANY"."V_KONTR_DUPL_DATUM_BETRAG";
+DROP VIEW "COMPANY"."V_KONTR_KONTROLLE";
 DROP VIEW "COMPANY"."V_KONTR_OK_LEX";
-DROP VIEW "COMPANY"."V_KONTROLLE";
-DROP VIEW "COMPANY"."V_KTBL_DIFF_YEARS";
+DROP VIEW "COMPANY"."V_KTO_BUCHUNG";
+DROP VIEW "COMPANY"."V_KTO_KONTEN_ZUS";
+DROP VIEW "COMPANY"."V_KTO_KONTO_AUSZUG";
+DROP VIEW "COMPANY"."V_KTO_KONTO_AUSZUG_BUCH";
+DROP VIEW "COMPANY"."V_KTO_KONTO_AUSZUG_OV";
 DROP VIEW "COMPANY"."V_KTO_STAND_GIR";
-DROP VIEW "COMPANY"."V_LEBENSLAUF";
+DROP VIEW "COMPANY"."V_KTO_ZAHLUNGSWIEDERHOLUNG";
 DROP VIEW "COMPANY"."V_LEX_BUCH_CHECK";
 DROP VIEW "COMPANY"."V_LEX_BUCH_KTO";
 DROP VIEW "COMPANY"."V_LEX_BUCH_KTO_BEL_ALL";
@@ -716,26 +720,23 @@ DROP VIEW "COMPANY"."V_LEX_DUPL_JAHR_BETR";
 DROP VIEW "COMPANY"."V_LEX_FORMAT_BELEGDAT_1";
 DROP VIEW "COMPANY"."V_LEX_FORMAT_BELEGDAT_2";
 DROP VIEW "COMPANY"."V_LEX_HOTEL_SUB_BUCH";
-DROP VIEW "COMPANY"."V_LOCATION";
-DROP VIEW "COMPANY"."V_ORDNER_ABLAGE_PAGE";
-DROP VIEW "COMPANY"."V_ORT";
-DROP VIEW "COMPANY"."V_PLZ_BUNDESLAND";
-DROP VIEW "COMPANY"."V_PROJEKTE";
-DROP VIEW "COMPANY"."V_RATIO";
+DROP VIEW "COMPANY"."V_LEX_KTBL_DIFF_YEARS";
+DROP VIEW "COMPANY"."V_PROJ_LEBENSLAUF";
+DROP VIEW "COMPANY"."V_PROJ_PROJEKTE";
 DROP VIEW "COMPANY"."V_REL_LEX";
 DROP VIEW "COMPANY"."V_REL_LEX_KTO";
 DROP VIEW "COMPANY"."V_REL_LEX_KTO_BEL";
 DROP VIEW "COMPANY"."V_REL_LEX_REL_BEL";
 DROP VIEW "COMPANY"."V_REL_LEX_REL_KTO";
+DROP VIEW "COMPANY"."V_REL_LEX1";
 DROP VIEW "COMPANY"."V_RENR";
+DROP VIEW "COMPANY"."V_RE_RATIO";
 DROP VIEW "COMPANY"."V_ROLLUP";
+DROP VIEW "COMPANY"."V_STEUER_DATUM_OK";
 DROP VIEW "COMPANY"."V_STEUER_GES";
-DROP VIEW "COMPANY"."V_STEUERSATZ";
-DROP VIEW "COMPANY"."V_T_BELEG";
-DROP VIEW "COMPANY"."V_T_BELEG_DAT";
-DROP VIEW "COMPANY"."V_VORANMELD_ZUORD_KAS_SPLIT";
-DROP VIEW "COMPANY"."V_VPF_ROUTE";
-DROP VIEW "COMPANY"."V_ZAHLUNGSWIEDERHOLUNG";
+DROP VIEW "COMPANY"."V_STEUER_SATZ";
+DROP VIEW "COMPANY"."V_STEUER_VERPFL_ROUTE";
+DROP VIEW "COMPANY"."V_STEUER_VORANMELD_ZUORD_KAS_SPLIT";
 DROP PROCEDURE "COMPANY"."EBA_DEMO_DIALOG_DATA";
 DROP PROCEDURE "COMPANY"."EBA_DEMO_IG_DATA";
 DROP PROCEDURE "COMPANY"."GETCOMPINPBELEGEALL";
@@ -2833,6 +2834,11 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."T_WAEHRUNG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 141 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_WET_NIEDERSCHLAGSMENGE_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_ZAHLUNGSÜBERSICHTEN_SEQ
 --------------------------------------------------------
@@ -10812,15 +10818,15 @@ Liegenschaftsnutzer
 --------------------------------------------------------
 
   CREATE TABLE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" 
-   (	"PK_NIEDERSCHLAGSMENGE" NUMBER, 
+   (	"PK_WET_NIEDERSCHLAGSMENGE" NUMBER, 
 	"JAHR" NUMBER, 
 	"DATUM" DATE, 
-	"FK_DATUM" NUMBER, 
+	"FK_BAS_DATUM" NUMBER, 
 	"NIEDERSCHLAGSMENGE" NUMBER, 
 	"EINHEIT" VARCHAR2(20 BYTE) DEFAULT 'l', 
 	"COMM" VARCHAR2(4000 BYTE), 
 	"CREATED_AT" DATE DEFAULT sysdate, 
-	"FK_LOCATION" NUMBER, 
+	"FK_ADR_LOCATION" NUMBER, 
 	"FLG_AUFSTELLTAG" NUMBER, 
 	"FLG_ABBAUTAG" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
@@ -11005,287 +11011,80 @@ Liegenschaftsnutzer
  NOCOMPRESS LOGGING
   TABLESPACE "USERS" ;
 --------------------------------------------------------
---  DDL for View APEX_V_REL_LEX
+--  DDL for View V_ABL_ORDNER_PAGE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."APEX_V_REL_LEX" ("PK_REL_LEX_KTO_BEL") AS 
-  select 
-        pk_rel_lex_kto_bel
-        
-from t_rel_lex_kto_bel rel
-  left join (
-                select
-                        BELEGDAT,
-                        BELEG,
-                        BETRAGEUR,
-                        BUCHDAT,
-                        NR,
-                        HABENEUR,
-                        JOUR_DAT,
-                        RELATION,
-                        SOLLEUR,
-                        SOLL,
-                        UST,
-                        UST_KTO,
-                        UST_KTO_H,
-                        UST_KTO_S,
-                        PERIODE,
-                        BELEGNR,
-                        BUCHUNGSTEXT,
-                        BETRAG,
-                        WHRG,
-                        SOLLKTO,
-                        HABENKTO,
-                        KST,
-                        KTR,
-                        JAHR,
-                        JAHR_BELEG,
-                        Status
-                        
-                    
-
-                from   t_lex_long
-                ) lex on rel.fk_relation = lex.relation
-   left join v_konten_zus kto on kto.fk_main_key = rel.fk_main_key
-   left join v_imp_bel_zus bel on bel.fk_imp_ba_bel = rel.fk_imp_ba_bel
-   left join (
-                select
-                   ABL_ORD_JAHR,
-                ABL_ORD_J_PAGE_NUMBER,
-                ABL_ORD_ORDNER_NAME,
-                ABL_ORD_PAGE_NUMBER,
-                ABL_ORD_PK_ABL_ORDNER,
-                ABL_ORD_PK_ABL_ORDNER_PAGE,
-                ARB_BIS_DATUM,
-                
-                ARB_BIS_FK_ARBEITSTAG,
-                
-                ARB_BIS_JAHR,
-                ARB_BIS_MONAT,
-                
-                ARB_BIS_TAG,
-                ARB_DATUM,
-                
-                ARB_FK_ARBEITSTAG,
-                
-                ARB_JAHR,
-                ARB_MONAT,
-                
-                ARB_TAG,
-                ARB_VON_DATUM,
-                
-                ARB_VON_JAHR,
-                ARB_VON_MONAT,
-                
-                ARB_VON_TAG,
-                BANK,
-                BEL_DATUM,
-                BELEG,
-                BELEGNUMMER,
-                BELEG_UHRZEIT,
-                BEL_EX_NAME,
-                BEL_EX_VALUE,
-                BEZEICHNUNG,
-                BIS,
-                BIS_UHRZEIT,
-                BRUTTO_BETRAG,
-                BRUTTO_BETRAG_EUR,
-                BRUTTO_BETRAG_INCL_TRINKG,
-                BRUTTO_INCL_TRINKG_EUR,
-                CI_LAND,
-                CI_PK_LAND,
-                CNT_PUNKTE,
-                CNT_PUNKTE_GESCHAETZT,
-                
-                
-                FK_CITY,
-                FK_FRMDW,
-                FK_FRMDW_MWST_SATZ,
-                FK_IMP_BA_BEL_OLD,
-                FK_INVENTAR,
-                FK_KATEGORIE,
-                FK_LA_KONTO,
-                FK_LAND,
-                FK_LA_WDH,
-                FK_LEX_BUCHUNG,
-                FK_LOCATION,
-                FK_LOCATION_VERG,
-                FK_PROJEKT,
-                FK_REAL_BELEG_EXIST,
-                FK_STATUS,
-                FK_STEUERSATZ,
-                FK_UMRECHNUNGSKURS,
-                FK_VERWENDUNGSZWECK,
-                FK_VON_ARBEITSTAG,
-                FK_WAEHRUNG,
-                FK_ZAHLUNGSART,
-                FRMDW_BRUTTO_BETRAG,
-                FRMDW_BRUTTO_INCL_TRINKG,
-                FRMDW_MWST_BETRAG,
-                FRMDW_NETTO_BETRAG,
-                
-                
-                IBAN,
-                INP_BEL_ALL_JAHR,
-                
-                KTOKAT_KATEGORIE,
-                
-                KUNDENNUMMER,
-                LA_DATUM,
-                LAND,
-                LA_WDH_NAME,
-                LA_WDH_VALUE,
-                LITER,
-                MENGENEINHEIT,
-                MWST_BETRAG,
-                MWST_BETRAG_EUR,
-                NETTO_BETRAG,
-                NETTO_BETRAG_EUR,
-                ORT,
-                PERSÖNLICH_VOR_ORT,
-                PK_BANK,
-                PK_BANKKONTO,
-                PK_INP_BELEGE_ALL,
-                PK_KONTO_BUCH_KAT,
-                PK_LAND,
-                PK_ORT,
-                PK_VERWENDUNGSZWECK,
-                PK_WAEHRUNG,
-                PREIS_PRO_MENGE,
-                
-                PROJ_AUFT_FK_GESCHAEFTSPARTNERTYP,
-                PROJ_AUFT_GESCHAEFTSPARTNER,
-                PROJ_AUFT_GESCHAEFTSPARTNERTYP,
-                
-                PROJ_AUFT_PK_GESCHAEFTSPARTNER,
-                PROJ_AUFT_PK_REL_GP_KONT,
-                
-                PROJ_BIS,
-                
-                PROJ_FK_AUFTRAGGEBER,
-                PROJ_FK_PROJEKTPARTNER_1,
-                PROJ_FK_PROJEKTPARTNER_2,
-                PROJ_KM_GERECHNET,
-                
-                PROJ_PK_PROJEKT,
-                PROJ_PP1_BESCHREIBUNG,
-                PROJ_PP1_FK_GESCHAEFTSPARTNERTYP,
-                PROJ_PP1_GESCHAEFTSPARTNER,
-                PROJ_PP1_GESCHAEFTSPARTNERTYP,
-                
-                PROJ_PP1_PK_REL_GP_KONT,
-                
-                PROJ_PP2_FK_GESCHAEFTSPARTNERTYP,
-                PROJ_PP2_GESCHAEFTSPARTNER,
-                PROJ_PP2_GESCHAEFTSPARTNERTYP,
-                
-                PROJ_PP2_PK_GESCHAEFTSPARTNER,
-                PROJ_PP2_PK_REL_GP_KONT,
-                
-                PROJ_PROJEKT,
-                PROJ_PROJEKT_ABGESCHLOSSEN,
-                PROJ_PROJEKT_ART,
-                PROJ_PSP_ELEMENT,
-                PROJ_RECHNUNG_GESTELLT,
-                PROJ_VON,
-                PROJ_ZAHLUNG_ABGESCHLOSSEN,
-                PUNKTE_BIS,
-                PUNKTE_VON,
-                STA_NAME,
-                STA_VALUE,
-                STEUERNUMMER,
-                STEU_FRMD_LAND,
-                STEU_FRMD_PK_LAND,
-                STEU_FRMD_PK_STEUERSATZ,
-                STEU_FRMD_STEUERSATZ,
-                STEU_FRMD_ZUS_ST,
-                STEU_LAND,
-                STEU_PK_LAND,
-                STEU_PK_STEUERSATZ,
-                STEU_STEUERSATZ,
-                STEU_ZUS_ST,
-                TANKSTELLEN_NR,
-                VBEL_ART,
-                VBEL_BETRAG,
-                VBEL_BEZEICHNUNG,
-                
-                VBEL_DATUM,
-                VBEL_DATUM_VERGEHEN,
-                VBEL_FK_ARBEITSTAG,
-                
-                VBEL_FK_BUCHUNG,
-                VBEL_FK_IMP_BA_BEL,
-                VBEL_FK_INVENTAR,
-                VBEL_FK_KATEGORIE,
-                VBEL_FK_PROJEKT,
-                VBEL_INVENTAR,
-                VBEL_KATEGORIE,
-                VBEL_KENNZEICHEN,
-                VBEL_MWST_BETRAG,
-                VBEL_NETTO,
-                VBEL_PK_IMP_BA_ALLG_BEL,
-                VBEL_PROJEKT,
-                VBEL_STEUERSATZ,
-                VBEL_VERWENDUNGSZWECK,
-                VBEL_WÄHRUNG,
-                VBEL_WÄHRUNG_BETRAG,
-                VBEL_ZAHLUNGSART,
-                
-                VERWENDUNGSZWECK,
-                VLOC_ADR,
-                VLOC_BESCHREIBUNG,
-                
-                VLOC_FK_ADRESSE,
-                VLOC_FK_LOCATION_TYPE,
-                VLOC_HSNR,
-                VLOC_LAND,
-                VLOC_LOCATION,
-                VLOC_LOCATION_TYPE,
-                
-                VLOC_ORT,
-                VLOC_PK_LOCATION,
-                VLOC_PLZ,
-                VLOC_POSTFACH,
-                VLOC_STRASSE,
-                VLOC_VERG_ADR,
-                VLOC_VERG_BESCHREIBUNG,
-                
-                VLOC_VERG_FK_ADRESSE,
-                VLOC_VERG_FK_LOCATION_TYPE,
-                VLOC_VERG_HSNR,
-                VLOC_VERG_LAND,
-                VLOC_VERG_LOCATION,
-                VLOC_VERG_LOCATION_TYPE,
-                
-                VLOC_VERG_ORT,
-                VLOC_VERG_PK_LOCATION,
-                VLOC_VERG_PLZ,
-                VLOC_VERG_POSTFACH,
-                VLOC_VERG_STRASSE,
-                VON,
-                VON_UHRZEIT,
-                WAEHRUNG,
-                WAEHRUNG_LANG,
-                
-                ZAHL_ART_NAME,
-                ZAHL_ART_VAL,
-                ZAHLUNGSBELEG,
-                ZAPFSÄULE ,
-                fk_zahlstatus
-                
-            from v_inp_belege_all
-        ) vinp on vinp.pk_inp_belege_all = rel.fk_inp_belege_all
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ABL_ORDNER_PAGE" ("J_PAGE", "PK_ABL_ORDNER_PAGE", "PK_ABL_ORDNER", "PAGE_NUMBER", "JAHR", "ORDNER_NAME", "ORDNER_PAGE") AS 
+  select jahr || ' ' || page_number j_page, pk_abl_ordner_page, pk_abl_ordner, page_number, jahr, ordner_name, jahr || ' / ' || ordner_name || ' / Seite ' || page_number ordner_page
+from T_ABL_ORDNER abl_ord
+  left join T_ABL_ORDNER_PAGE abl_ord_p on abl_ord.pk_abl_ordner = abl_ord_p.fk_abl_ordner
 ;
 --------------------------------------------------------
---  DDL for View V_ADRESSE
+--  DDL for View V_ADR_ADRESSE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ADRESSE" ("PK_ADR_ADRESSE", "STRASSE", "HSNR", "PLZ", "ORT", "OT", "LAND", "BESCHREIBUNG", "ADR", "PK_ADR_ORT", "PK_ADR_LAND", "PK_ADR_PLZ_ORT") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ADR_ADRESSE" ("PK_ADR_ADRESSE", "STRASSE", "HSNR", "PLZ", "ORT", "OT", "LAND", "BESCHREIBUNG", "ADR", "PK_ADR_ORT", "PK_ADR_LAND", "PK_ADR_PLZ_ORT") AS 
   select pk_adr_adresse, strasse, hsnr, plz, ort,ot, land, beschreibung, strasse || ' ' || hsnr || ', ' || plz || ' ' || ort || ' (' || ot || ')' || ', ' || land adr, pk_adr_ort, pk_adr_land, pk_adr_plz_ort
 from  t_adr_adresse ad 
   left join t_adr_plz_ort plz on plz.pk_adr_plz_ort = ad.fk_adr_plz_ort
   left join t_adr_ort ort on plz.fk_adr_ort = ort.pk_adr_ort
   left join t_adr_land land on ort.fk_adr_land = land.pk_adr_land
+;
+--------------------------------------------------------
+--  DDL for View V_ADR_LOCATION
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ADR_LOCATION" ("PK_ADR_LOCATION", "LOCATION", "FK_BAS_LOCATION_TYPE", "FK_ADRESSE", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "LOCATION_TYPE", "STRASSE", "HSNR", "BESCHREIBUNG", "COMM", "POSTFACH", "PLZ", "ORT", "LAND", "ADR", "PK_ADR_LAND", "PK_ADR_ORT", "PK_ADR_PLZ_ORT", "PK_ADR_LOCATION_TYPE") AS 
+  select 
+    loc."PK_ADR_LOCATION",
+    loc."LOCATION",
+    loc."FK_BAS_LOCATION_TYPE",
+    loc."FK_ADR_ADRESSE",
+    loc."CREATED_BY",
+    loc."CREATED_AT",
+    loc."MODIFIED_BY",
+    loc."MODIFIED_AT",
+    loc_type.location_type,
+    adr.strasse,
+    adr.hsnr,
+    adr.beschreibung,
+    adr.comm,
+    adr.postfach,
+
+    plz_ort.plz,
+    ort.ort,
+    la.land,
+    adr.strasse || ' ' || adr.hsnr || ', ' || plz_ort.plz || ' ' || ort.ort || ', ' || la.land adr,
+    pk_adr_land,
+    pk_adr_ort,
+    pk_adr_plz_ort,
+    pk_bas_location_type
+from t_adr_location loc
+  left join t_bas_location_type  loc_type on loc.fk_bas_location_type = loc_type.pk_bas_location_type
+  left join t_adr_adresse adr on adr.pk_adr_adresse = loc.fk_adr_adresse
+  left join t_adr_plz_ort plz_ort on plz_ort.pk_adr_plz_ort = adr.fk_adr_plz_ort
+  left join t_adr_ort ort on ort.pk_adr_ort  = plz_ort.fk_adr_ort
+  left join t_adr_land la on la.pk_adr_land = ort.fk_adr_land
+;
+--------------------------------------------------------
+--  DDL for View V_ADR_ORT
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ADR_ORT" ("PK_ADR_ORT", "ORT", "PK_ADR_LAND", "LAND", "KOORDINATEN", "ORT_2") AS 
+  select pk_adr_ort, ort, pk_adr_land, land,koordinaten, ort_2
+from t_adr_ort ort
+ left join t_adr_land la on ort.fk_adr_land= la.pk_adr_land
+;
+--------------------------------------------------------
+--  DDL for View V_ADR_PLZ_BUNDESLAND
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ADR_PLZ_BUNDESLAND" ("PK_ADR_ORT", "ORT", "PK_ADR_LAND", "LAND") AS 
+  select ort."PK_ADR_ORT",ort."ORT",ort."PK_ADR_LAND",ort."LAND"
+from v_adr_ort ort  
+ left join t_adr_plz_ort_bundesland bl
+on upper(bl.ort) = upper(ort.ort)
+where bl.ort is null and pk_adr_land = 1
 ;
 --------------------------------------------------------
 --  DDL for View V_ALL_KONT_BUCH
@@ -11305,10 +11104,26 @@ select fk_main_key
 from t_KTO_PAYPAL
 ;
 --------------------------------------------------------
---  DDL for View V_BELEGDAT
+--  DDL for View V_BEL_BELEG
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_BELEGDAT" ("PK_BEL_BELEG", "BELEG", "BETRAG_BRUTTO", "DATUM", "VON", "BIS", "AZ_O_PAUSE", "AZ_M_PAUSE", "ANWESENHEITSZEIT", "PARKZEIT", "AZ_MANUELL_GEPFLEGT", "KOMMENTAR", "BETRAG_NETTO", "FK_IMP_BEL_NR", "FK_IMP_NO", "EXT_RENR", "EXT_AUFTRAGSNR", "EXT_LIEFERSCHEINNR", "EXT_LEISTUNGSDATUM", "EXT_RECHNUNGSDATUM", "EXT_AUFTRAGSDATUM", "FK_STD_OFFEN", "FK_STD_VORSTEUERRELEVANT", "FK_STD_VORSTEUERPFLEGE", "FK_STD_RECHNUNGSERSTELLUNG", "FK_STD_RECHNUNG_ERSTELLT", "FK_STD_BANKBELEG", "MWST", "FK_STD_LIEFERART", "FK_STD_EINKOMMENSTEUERRELEVANT", "FK_STD_UNTERNEHMENSSTEUERRELEVANT", "FK_WH_BESTELLNR", "FK_STD_BESTELLTYP", "FK_STD_ABRECHNUNGSZEITRAUM", "FK_STD_FREMDWAEHRUNG", "FRMDW_BETRAG_NETTO", "FRMDW_STSATZ", "FRMDW_MWST", "FRMDW_BETRAG_BRUTTO") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_BEL_BELEG" ("CHILD", "PARENT", "BELEGART") AS 
+  select 'B' || pk_bas_belegart as child,
+'A' || 0 parent,
+belegart
+
+from t_bas_belegart
+union
+select 'C' ||  pk_bel_beleg,
+'B' || fk_bas_belegart,
+pk_bel_beleg || ' ' || datum || ' ' || beleg
+from t_bel_beleg
+;
+--------------------------------------------------------
+--  DDL for View V_BEL_BELEG_DAT
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_BEL_BELEG_DAT" ("PK_BEL_BELEG", "BELEG", "BETRAG_BRUTTO", "DATUM", "VON", "BIS", "AZ_O_PAUSE", "AZ_M_PAUSE", "ANWESENHEITSZEIT", "PARKZEIT", "AZ_MANUELL_GEPFLEGT", "KOMMENTAR", "BETRAG_NETTO", "FK_IMP_BEL_NR", "FK_IMP_NO", "EXT_RENR", "EXT_AUFTRAGSNR", "EXT_LIEFERSCHEINNR", "EXT_LEISTUNGSDATUM", "EXT_RECHNUNGSDATUM", "EXT_AUFTRAGSDATUM", "FK_STD_OFFEN", "FK_STD_VORSTEUERRELEVANT", "FK_STD_VORSTEUERPFLEGE", "FK_STD_RECHNUNGSERSTELLUNG", "FK_STD_RECHNUNG_ERSTELLT", "FK_STD_BANKBELEG", "MWST", "FK_STD_LIEFERART", "FK_STD_EINKOMMENSTEUERRELEVANT", "FK_STD_UNTERNEHMENSSTEUERRELEVANT", "FK_WH_BESTELLNR", "FK_STD_BESTELLTYP", "FK_STD_ABRECHNUNGSZEITRAUM", "FK_STD_FREMDWAEHRUNG", "FRMDW_BETRAG_NETTO", "FRMDW_STSATZ", "FRMDW_MWST", "FRMDW_BETRAG_BRUTTO") AS 
   select PK_BEL_BELEG,
        BELEG || case when fk_std_feiertag = 1 then 'Feiertag' end || case when von is not null then ' von ' || to_char(von,'HH24:MI') || ' bis ' || to_char(bis,'HH24:MI') end || ' (' || pk_bel_beleg || ')' beleg,
        BETRAG_BRUTTO,
@@ -11352,6 +11167,100 @@ from t_KTO_PAYPAL
    left join t_bas_arbeitstage ta on tb.fk_bas_arbeitstag = ta.pk_bas_arbeitstage
 ;
 --------------------------------------------------------
+--  DDL for View V_BEL_BELEG_DAT2
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_BEL_BELEG_DAT2" ("CHILD", "PARENT", "TXT", "SORT") AS 
+  select 
+  'B' || nvl(jahr,0) as child,
+  'A' || 0 parent,
+  'Jahr: ' || nvl(jahr,0) txt,
+  'Jahr: ' || nvl(jahr,0) as sort
+from t_bas_arbeitstage
+group by nvl(jahr,0)
+--2. Ebene
+union
+select 
+  'C-1' ||  nvl(jahr,0),
+  'B' || nvl(jahr,0),
+  'Jahr' || nvl(jahr,0),
+  'A - Beleg ' || nvl(jahr,0) pk_beleg
+from t_bas_arbeitstage
+union
+select 
+  'C-2' || nvl(jahr,0)  as child,
+  'B'  || nvl(jahr,0)  parent,
+  'Monate'  || nvl(jahr,0)   txt,
+  'Jahr: '  || nvl(jahr,0)   as sort
+from t_bas_arbeitstage
+--3. Ebene
+union
+select 
+  'D' ||  tbel.pk_bel_beleg,
+  'C-1' || nvl(jahr,0),
+  tbel.pk_bel_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
+  'A - Beleg ' || tbel.datum || belegart || pk_bel_beleg
+from t_bel_beleg tbel
+  left join t_bas_arbeitstage tarb on  tbel.fk_bas_arbeitstag = tarb.pk_bas_arbeitstage
+  left join t_bas_belegart tbela on tbel.fk_bas_belegart = tbela.pk_bas_belegart
+union
+--monat
+--1. Ebene
+select 
+  'D' ||  nvl(jahr,0) || nvl(monat,0) as child,
+  'C-2' || nvl(jahr,0) parent,
+  'Monat: ' || monat,
+  'B - Monat ' ||  monat
+from t_bas_arbeitstage
+union
+--2. Ebene
+select 
+  'E-1' ||  nvl(jahr,0) || nvl(monat,0) as child,
+  'D' ||  nvl(jahr,0) || nvl(monat,0) parent,
+  'Monat ' ,
+  'C - Monat ' ||  monat
+from t_bas_arbeitstage
+union
+select 
+  'E-2' ||  nvl(jahr,0) || nvl(monat,0) || 0 as child,
+  'D' ||  nvl(jahr,0) || nvl(monat,0) parent,
+  'Arbeitstage ' ||  nvl(jahr,0) || nvl(monat,0) || 0 ,
+  'C - Monat ' ||  monat
+from t_bas_arbeitstage
+--2. Ebene
+
+union
+--3. Ebene
+select 
+  'F' ||  tbel.pk_bel_beleg,
+  'E-1' || nvl(jahr,0) || nvl(monat,0),
+  tbel.pk_bel_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
+  'A - Beleg ' || tbel.datum || belegart || pk_bel_beleg
+from t_bel_beleg tbel
+  left join t_bas_arbeitstage tarb on tbel.fk_bas_arbeitstag= tarb.pk_bas_arbeitstage
+  left join t_bas_belegart tbela on tbel.fk_bas_belegart = tbela.pk_bas_belegart
+union
+--arbeitstag
+--1. Ebene
+select 
+  'F' || nvl(jahr,0) || nvl(monat,0) || nvl(PK_bas_arbeitstage,0) as child,
+  'E-2' || nvl(jahr,0) || nvl(monat,0) || 0 parent,
+  case when FK_std_Wochenende = 1 then 'WE' end || case when FK_std_Arbeitstag = 1 then 'WT'  when FK_std_Arbeitstag = 0 and fk_std_wochenende = 0 then 'FT' end || ': ' || 'Tag: ' || Datum || ' ' 
+  || Feiertag  || nvl(jahr,0) || nvl(monat,0) || 0 || pk_bas_arbeitstage tg,
+  'Tag: ' || datum
+from t_bas_arbeitstage 
+--2. Ebene
+union
+select 
+  'G' ||  tbel.pk_bel_beleg,
+  'F' || nvl(jahr,0) || nvl(monat,0) || nvl(PK_bas_arbeitstage,0),
+  tbel.pk_bel_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
+  'A - Beleg ' || tbel.datum || belegart || pk_bel_beleg || pk_bas_arbeitstage
+from t_bel_beleg tbel
+  left join t_bas_arbeitstage tarb on tbel.fk_bas_arbeitstag = tarb.pk_bas_arbeitstage
+  left join t_bas_belegart tbela on tbel.fk_bas_belegart = tbela.pk_bas_belegart
+;
+--------------------------------------------------------
 --  DDL for View V_BEL_RE
 --------------------------------------------------------
 
@@ -11382,56 +11291,6 @@ from t_proj_stundenzettel tstdz
  left join t_rel_rechnung_stundenzettel tstdzb on tstdzb.fk_proj_stundenzettel = tstdz.pk_proj_stundenzettel
  left join t_re_rechnung tre on tstdzb.fk_re_rechnung = tre.pk_re_rechnung
  left join (select * from t_std where fk_std_group = 441) tret on tre.fk_std_rechnungstyp = tret.std_value
-;
---------------------------------------------------------
---  DDL for View V_BUCHUNG
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_BUCHUNG" ("PK_REL_KONT_BUCH_KONT_BUCH", "FK_KONTO_BUCH1", "FK_KTO_KONTO_BUCH2", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "BEMERKUNG", "FK_STD_BUCHUNGSVORGANG", "VON_FK_MAIN_KEY", "VON_ID", "VON_BUCHUNGSTAG", "VON_BETRAG", "VON_BUCHUNGSTEXT", "VON_FK_BAS_KATEGORIE", "VON_FK_BAS_VERWENDUNGSZWECK", "VON_FK_BAS_KONTOTYP", "VON_FK_BAS_BUCHUNGSTAG", "VON_FK_BAS_WERTSTELLUNG", "VON_KONTOTYP", "VON_KATEGORIE", "VON_VERWENDUNGSZWECK", "NACH_FK_MAIN_KEY", "NACH_ID", "NACH_BUCHUNGSTAG", "NACH_BETRAG", "NACH_BUCHUNGSTEXT", "NACH_FK_BAS_KATEGORIE", "NACH_FK_BAS_VERWENDUNGSZWECK", "NACH_FK_BAS_KONTOTYP", "NACH_FK_BUCHUNGSTAG", "NACH_FK_BAS_WERTSTELLUNG", "NACH_KONTOTYP", "NACH_KATEGORIE", "NACH_VERWENDUNGSZWECK") AS 
-  select buch."PK_REL_KONT_BUCH_KONT_BUCH",
-  buch."FK_KTO_KONTO_BUCH1"
-  ,buch."FK_KTO_KONTO_BUCH2"
-  ,buch."CREATED_BY",
-  buch."CREATED_AT",
-  buch."MODIFIED_BY",
-  buch."MODIFIED_AT",
-  buch."BEMERKUNG",
-  buch.fk_std_buchungsvorgang,
---von
-von.FK_MAIN_KEY von_fk_main_key, 
-von.ID von_id, 
-von."Buchungstag" von_Buchungstag, 
-von."Betrag" von_betrag,
-von.BUCHUNGSTEXT von_buchungstext, 
-von.FK_bas_Kategorie von_fk_kategorie, 
-von.FK_bas_Verwendungszweck von_fk_Verwendungszweck,
-von.FK_bas_Kontotyp von_fk_kontotyp,
-von.FK_bas_BUCHUNGSTAG von_fk_buchungstag,
-von.FK_bas_WERTSTELLUNG von_fk_wertstellung,
-von.Kontotyp von_kontotyp,
-von.Kategorie von_Kategorie,
-von.verwendungszweck von_verwendungszweck,
---nach
-nach.FK_MAIN_KEY nach_fk_main_key, 
-nach.ID nach_id, 
-nach."Buchungstag" nach_Buchungstag, 
-nach."Betrag" nach_betrag, 
-nach.BUCHUNGSTEXT nach_Buchungstext, 
-nach.FK_bas_Kategorie nach_fk_kategorie , 
-nach.FK_bas_Verwendungszweck nach_fk_verwendungszweck, 
-nach.fK_bas_Kontotyp nach_fk_kontotyp, 
-nach.FK_bas_BUCHUNGSTAG nach_fk_buchungstag, 
-nach.FK_bas_WERTSTELLUNG nach_fk_wertstellung,
-nach.Kontotyp nach_kontotyp,
-nach.Kategorie nach_kategorie,
-nach.verwendungszweck nach_verwendungszweck
-
-
-
-
-from t_rel_kont_buch_kont_buch buch
-  left join v_konten_zus von on von.fk_main_key = buch.fk_kto_konto_buch1
-  left join v_konten_zus nach on nach.fk_main_key = buch.fk_kto_konto_buch2
 ;
 --------------------------------------------------------
 --  DDL for View V_BUCHUNGSTATUS_OLD
@@ -11751,17 +11610,6 @@ from cnt
 where cnt_storno = cnt_ok
 ;
 --------------------------------------------------------
---  DDL for View V_COMPARE_TABLES
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMPARE_TABLES" ("COLUMN_NAME") AS 
-  with tab1 as (select * from user_tab_cols where table_name = 'IMP_KONTENBLATT_2018'),
-tab2 as (select * from user_tab_cols where table_name = 'IMP_KONTENBLATT_2020_2')
-select tab1.column_name
---tab1.column_name, tab2.column_name, tab1.data_type, tab2.data_type, tab1.data_length, tab2.data_length
-from tab1  full join tab2 on  tab1.column_name = tab2.column_name
-;
---------------------------------------------------------
 --  DDL for View V_COMP_INP_BELEGE_ALL
 --------------------------------------------------------
 
@@ -11988,7 +11836,9 @@ DUMMY	,	--	NUMBER
 STORNIERT	,	--	NUMBER
 FK_ADR_ADRESSE_SCHNELL		--	NUMBER
     from dat2
-    ),
+    )
+
+    ,
 
     
 vgl as (
@@ -12321,7 +12171,6 @@ from
 vgl
 union all
 select null sel, 
-
 case when max(PK_INP_BELEGE_ALL) =1 then 0 else 1 end + --NUMBER
 case when max(FK_LEX_BUCHUNG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_KATEGORIE) =1 then 0 else 1 end + --NUMBER
@@ -12423,9 +12272,7 @@ case when max(DUPL_BEMERKUNG) =1 then 0 else 1 end + --VARCHAR2
 case when max(FK_KON_GESCHAEFTSPARTNER) =1 then 0 else 1 end + --NUMBER
 case when max(DUMMY) =1 then 0 else 1 end + --NUMBER
 case when max(STORNIERT) =1 then 0 else 1 end + --NUMBER
-case when max(FK_ADR_ADRESSE_SCHNELL) =1 then 0 else 1 end  --NUMBER
-	
-
+case when max(FK_ADR_ADRESSE_SCHNELL) =1 then 0 else 1 end  --NUMBER 
 sum1, null nr_row, max(sel_pk_inp_belege_all) sel_pk_inp_belege_all, 'erg' erg,
 case when max(PK_INP_BELEGE_ALL) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_LEX_BUCHUNG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -12532,6 +12379,7 @@ case when max(FK_ADR_ADRESSE_SCHNELL) =1 then '<span style="background-color:red
 
 from vgl
 )
+
 select rownum rnr, all_."SEL",all_."SUM1",all_."NR_ROW",all_."SEL_PK_INP_BELEGE_ALL",
 all_."ERG",all_."PK_INP_BELEGE_ALL",all_."FK_LEX_BUCHUNG",all_."FK_BAS_KATEGORIE",all_."FK_BAS_ARBEITSTAG",
 all_."FK_KTO_BUCHUNG",all_."FK_STD_ZAHLUNGSART",all_."FK_BAS_VERWENDUNGSZWECK",all_."FK_INV_INVENTAR",all_."FK_PROJ_PROJEKT",all_."BELEGNUMMER",
@@ -12552,7 +12400,7 @@ from all_
 --  DDL for View V_COMP_INP_BELEGE_ALL1
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL1" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KATEGORIE", "FK_ARBEITSTAG", "FK_BUCHUNG", "FK_ZAHLUNGSART", "FK_VERWENDUNGSZWECK", "FK_INVENTAR", "FK_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_LAND", "FK_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_STEUERSATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_WAEHRUNG", "STEUERNUMMER", "FK_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRÜNDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSÄULE", "FK_LOCATION", "PERSÖNLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_VON_ARBEITSTAG", "FK_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_FRMDW", "FK_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INTERNET_APP", "FK_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_GESCHÄFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADRESSE_SCHNELL") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL1" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KATEGORIE", "FK_BAS_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUERSATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_WAEHRUNG", "STEUERNUMMER", "FK_BAS_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_ADR_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_VON_ARBEITSTAG", "FK_BAS_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_FRMDW", "FK_BAS_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STD_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_ADR_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INT_INTERNET_APP", "FK_CONTR_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_KON_GESCHAEFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADR_ADRESSE_SCHNELL") AS 
   with dat1 as (select 'old' sel, null sum1, 1 nr_row, inp.*
 from t_inp_belege_all inp
 --where pk_inp_belege_all = :p373_pk_inp_belege_all_1
@@ -12569,49 +12417,49 @@ select sel, sum1,nr_row,
 PK_INP_BELEGE_ALL	,	--	NUMBER
 FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KATEGORIE	,	--	NUMBER
-FK_ARBEITSTAG	,	--	NUMBER
-FK_BUCHUNG	,	--	NUMBER
-FK_ZAHLUNGSART	,	--	NUMBER
-FK_VERWENDUNGSZWECK	,	--	NUMBER
-FK_INVENTAR	,	--	NUMBER
-FK_PROJEKT	,	--	NUMBER
+FK_BAS_ARBEITSTAG	,	--	NUMBER
+FK_KTO_BUCHUNG	,	--	NUMBER
+FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_BAS_VERWENDUNGSZWECK	,	--	NUMBER
+FK_INV_INVENTAR	,	--	NUMBER
+FK_PROJ_PROJEKT	,	--	NUMBER
 BELEGNUMMER	,	--	VARCHAR2
 BEZEICHNUNG	,	--	VARCHAR2
-FK_LAND	,	--	NUMBER
-FK_CITY	,	--	NUMBER
+FK_ADR_LAND	,	--	NUMBER
+FK_ADR_CITY	,	--	NUMBER
 BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
 NETTO_BETRAG	,	--	NUMBER
-FK_STEUERSATZ	,	--	NUMBER
+FK_BAS_STEUERSATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
-FK_WAEHRUNG	,	--	NUMBER
+FK_BAS_WAEHRUNG	,	--	NUMBER
 STEUERNUMMER	,	--	VARCHAR2
-FK_UMRECHNUNGSKURS	,	--	NUMBER
+FK_BAS_UMRECHNUNGSKURS	,	--	NUMBER
 length(COMM_REST_BELEG) COMM_REST_BELEG	,	--	CLOB
 length(COMM_TEL_BELEG) COMM_TEL_BELEG	,	--	CLOB
 length(COMM_PRODUKTE) COMM_PRODUKTE	,	--	CLOB
-length(COMM_BEGRÜNDUNG) COMM_BEGRÜNDUNG	,	--	CLOB
+length(COMM_BEGRUENDUNG) COMM_BEGRÜNDUNG	,	--	CLOB
 length(COMM_SONSTIGES) COMM_SONSTIGES	,	--	CLOB
 length(BELEG) BELEG	,	--	BLOB
 length(ZAHLUNGSBELEG) ZAHLUNGSBELEG	,	--	BLOB
 LITER	,	--	NUMBER
-ZAPFSÄULE	,	--	NUMBER
-FK_LOCATION	,	--	NUMBER
-PERSÖNLICH_VOR_ORT	,	--	NUMBER
+ZAPFSAEULE	,	--	NUMBER
+FK_aDR_LOCATION	,	--	NUMBER
+PERSOENLICH_VOR_ORT	,	--	NUMBER
 BELEG_UHRZEIT	,	--	DATE
 VON_UHRZEIT	,	--	DATE
 BIS_UHRZEIT	,	--	DATE
-FK_VON_ARBEITSTAG	,	--	NUMBER
-FK_BIS_ARBEITSTAG	,	--	NUMBER
+FK_BAS_VON_ARBEITSTAG	,	--	NUMBER
+FK_BAS_BIS_ARBEITSTAG	,	--	NUMBER
 COMM_ADRESSE	,	--	VARCHAR2
 TANKSTELLEN_NR	,	--	VARCHAR2
 BRUTTO_BETRAG_INCL_TRINKG	,	--	NUMBER
 length(COMM_PARKTICKET) COMM_PARKTICKET	,	--	CLOB
 FRMDW_NETTO_BETRAG	,	--	NUMBER
-FK_FRMDW	,	--	NUMBER
-FK_FRMDW_MWST_SATZ	,	--	NUMBER
+FK_BAS_FRMDW	,	--	NUMBER
+FK_BAS_FRMDW_MWST_SATZ	,	--	NUMBER
 FRMDW_MWST_BETRAG	,	--	NUMBER
 FRMDW_BRUTTO_BETRAG	,	--	NUMBER
 FRMDW_BRUTTO_INCL_TRINKG	,	--	NUMBER
@@ -12624,16 +12472,16 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_ZAHLSTATUS	,	--	NUMBER
+FK_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
-FK_BELEG_ABLAGE	,	--	VARCHAR2
+FK_BEL_BELEG_ABLAGE	,	--	VARCHAR2
 FK_ABL_ORDNER_PAGE	,	--	NUMBER
 CNT_PUNKTE_GESCHAETZT	,	--	NUMBER
 PUNKTE_VON	,	--	DATE
 PUNKTE_BIS	,	--	DATE
-FK_LOCATION_VERG	,	--	NUMBER
+FK_ADR_LOCATION_VERG	,	--	NUMBER
 FK_IMP_BA_BEL_OLD	,	--	NUMBER
 GESCHW_IST	,	--	NUMBER
 GESCHW_SOLL	,	--	NUMBER
@@ -12660,31 +12508,31 @@ DATUM_BUSSGELD_OK	,	--	DATE
 DATUM_BELEG_POS_OK	,	--	DATE
 DATUM_BUCHUNG_OK	,	--	DATE
 DATUM_VERPFL_BEL_OK	,	--	DATE
-FK_INTERNET_APP	,	--	NUMBER
-FK_DUPL_STATUS	,	--	NUMBER
+FK_INT_INTERNET_APP	,	--	NUMBER
+FK_CONTR_DUPL_STATUS	,	--	NUMBER
 DATUM_DUPL_OK	,	--	DATE
 DUPL_BEMERKUNG	,	--	VARCHAR2
-FK_GESCHÄFTSPARTNER	,	--	NUMBER
+FK_KON_GESCHAEFTSPARTNER	,	--	NUMBER
 DUMMY	,	--	NUMBER
 STORNIERT	,	--	NUMBER
-FK_ADRESSE_SCHNELL		--	NUMBER
+FK_ADR_ADRESSE_SCHNELL		--	NUMBER
 
 from dat1
    union all
-    select  sel, sum1, nr_row, 
+select  sel, sum1, nr_row, 
 PK_INP_BELEGE_ALL	,	--	NUMBER
 FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KATEGORIE	,	--	NUMBER
-FK_ARBEITSTAG	,	--	NUMBER
-FK_BUCHUNG	,	--	NUMBER
-FK_ZAHLUNGSART	,	--	NUMBER
-FK_VERWENDUNGSZWECK	,	--	NUMBER
-FK_INVENTAR	,	--	NUMBER
-FK_PROJEKT	,	--	NUMBER
+FK_BAS_ARBEITSTAG	,	--	NUMBER
+FK_KTO_BUCHUNG	,	--	NUMBER
+FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_STD_VERWENDUNGSZWECK	,	--	NUMBER
+FK_INV_INVENTAR	,	--	NUMBER
+FK_PROJ_PROJEKT	,	--	NUMBER
 BELEGNUMMER	,	--	VARCHAR2
 BEZEICHNUNG	,	--	VARCHAR2
-FK_LAND	,	--	NUMBER
-FK_CITY	,	--	NUMBER
+FK_ADR_LAND	,	--	NUMBER
+FK_ADR_CITY	,	--	NUMBER
 BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
@@ -12692,32 +12540,32 @@ NETTO_BETRAG	,	--	NUMBER
 FK_STEUERSATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
-FK_WAEHRUNG	,	--	NUMBER
+FK_BAS_WAEHRUNG	,	--	NUMBER
 STEUERNUMMER	,	--	VARCHAR2
-FK_UMRECHNUNGSKURS	,	--	NUMBER
+FK_BAS_UMRECHNUNGSKURS	,	--	NUMBER
 length(COMM_REST_BELEG) COMM_REST_BELEG	,	--	CLOB
 length(COMM_TEL_BELEG) COMM_TEL_BELEG	,	--	CLOB
 length(COMM_PRODUKTE) COMM_PRODUKTE	,	--	CLOB
-length(COMM_BEGRÜNDUNG) COMM_BEGRÜNDUNG	,	--	CLOB
+length(COMM_BEGRUENDUNG) COMM_BEGRÜNDUNG	,	--	CLOB
 length(COMM_SONSTIGES) COMM_SONSTIGES	,	--	CLOB
 length(BELEG) BELEG	,	--	BLOB
 length(ZAHLUNGSBELEG) ZAHLUNGSBELEG	,	--	BLOB
 LITER	,	--	NUMBER
-ZAPFSÄULE	,	--	NUMBER
-FK_LOCATION	,	--	NUMBER
-PERSÖNLICH_VOR_ORT	,	--	NUMBER
+ZAPFSAEULE	,	--	NUMBER
+FK_ADR_LOCATION	,	--	NUMBER
+PERSOENLICH_VOR_ORT	,	--	NUMBER
 BELEG_UHRZEIT	,	--	DATE
 VON_UHRZEIT	,	--	DATE
 BIS_UHRZEIT	,	--	DATE
-FK_VON_ARBEITSTAG	,	--	NUMBER
-FK_BIS_ARBEITSTAG	,	--	NUMBER
+FK_BAS_VON_ARBEITSTAG	,	--	NUMBER
+FK_BAS_BIS_ARBEITSTAG	,	--	NUMBER
 COMM_ADRESSE	,	--	VARCHAR2
 TANKSTELLEN_NR	,	--	VARCHAR2
 BRUTTO_BETRAG_INCL_TRINKG	,	--	NUMBER
 length(COMM_PARKTICKET) COMM_PARKTICKET	,	--	CLOB
 FRMDW_NETTO_BETRAG	,	--	NUMBER
-FK_FRMDW	,	--	NUMBER
-FK_FRMDW_MWST_SATZ	,	--	NUMBER
+FK_BAS_FRMDW	,	--	NUMBER
+FK_BAS_FRMDW_MWST_SATZ	,	--	NUMBER
 FRMDW_MWST_BETRAG	,	--	NUMBER
 FRMDW_BRUTTO_BETRAG	,	--	NUMBER
 FRMDW_BRUTTO_INCL_TRINKG	,	--	NUMBER
@@ -12730,16 +12578,16 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_ZAHLSTATUS	,	--	NUMBER
+FK_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
-FK_BELEG_ABLAGE	,	--	VARCHAR2
+FK_BEL_BELEG_ABLAGE	,	--	VARCHAR2
 FK_ABL_ORDNER_PAGE	,	--	NUMBER
 CNT_PUNKTE_GESCHAETZT	,	--	NUMBER
 PUNKTE_VON	,	--	DATE
 PUNKTE_BIS	,	--	DATE
-FK_LOCATION_VERG	,	--	NUMBER
+FK_ADR_LOCATION_VERG	,	--	NUMBER
 FK_IMP_BA_BEL_OLD	,	--	NUMBER
 GESCHW_IST	,	--	NUMBER
 GESCHW_SOLL	,	--	NUMBER
@@ -12754,7 +12602,7 @@ FK_REAL_BELEG_EXIST	,	--	NUMBER
 FK_CALC_STATE	,	--	NUMBER
 FK_CALC_STATE_EUR	,	--	NUMBER
 FK_CALC_STATE_FRMDW	,	--	NUMBER
-FK_STATUS	,	--	NUMBER
+FK_STD_STATUS	,	--	NUMBER
 DATUM_VERGEHEN	,	--	DATE
 CREATE_AT	,	--	DATE
 CREATE_BY	,	--	VARCHAR2
@@ -12766,14 +12614,14 @@ DATUM_BUSSGELD_OK	,	--	DATE
 DATUM_BELEG_POS_OK	,	--	DATE
 DATUM_BUCHUNG_OK	,	--	DATE
 DATUM_VERPFL_BEL_OK	,	--	DATE
-FK_INTERNET_APP	,	--	NUMBER
-FK_DUPL_STATUS	,	--	NUMBER
+FK_INT_INTERNET_APP	,	--	NUMBER
+FK_CONTR_DUPL_STATUS	,	--	NUMBER
 DATUM_DUPL_OK	,	--	DATE
 DUPL_BEMERKUNG	,	--	VARCHAR2
-FK_GESCHÄFTSPARTNER	,	--	NUMBER
+FK_KON_GESCHAEFTSPARTNER	,	--	NUMBER
 DUMMY	,	--	NUMBER
 STORNIERT	,	--	NUMBER
-FK_ADRESSE_SCHNELL		--	NUMBER
+FK_ADR_ADRESSE_SCHNELL		--	NUMBER
     from dat2
     ),
 
@@ -12783,37 +12631,37 @@ select sel, sum1, nr_row, 'erg' erg, PK_INP_BELEGE_ALL sel_PK_INP_BELEGE_ALL,
 row_number() over (partition by PK_INP_BELEGE_ALL order by nr_row) PK_INP_BELEGE_ALL,
 row_number() over (partition by FK_LEX_BUCHUNG order by nr_row) FK_LEX_BUCHUNG,
 row_number() over (partition by FK_BAS_KATEGORIE order by nr_row) FK_BAS_KATEGORIE,
-row_number() over (partition by FK_ARBEITSTAG order by nr_row) FK_ARBEITSTAG,
-row_number() over (partition by FK_BUCHUNG order by nr_row) FK_BUCHUNG,
-row_number() over (partition by FK_ZAHLUNGSART order by nr_row) FK_ZAHLUNGSART,
-row_number() over (partition by FK_VERWENDUNGSZWECK order by nr_row) FK_VERWENDUNGSZWECK,
-row_number() over (partition by FK_INVENTAR order by nr_row) FK_INVENTAR,
-row_number() over (partition by FK_PROJEKT order by nr_row) FK_PROJEKT,
+row_number() over (partition by FK_BAS_ARBEITSTAG order by nr_row) FK_BAS_ARBEITSTAG,
+row_number() over (partition by FK_KTO_BUCHUNG order by nr_row) FK_KTO_BUCHUNG,
+row_number() over (partition by FK_STD_ZAHLUNGSART order by nr_row) FK_STD_ZAHLUNGSART,
+row_number() over (partition by FK_BAS_VERWENDUNGSZWECK order by nr_row) FK_BAS_VERWENDUNGSZWECK,
+row_number() over (partition by FK_INV_INVENTAR order by nr_row) FK_INV_INVENTAR,
+row_number() over (partition by FK_PROJ_PROJEKT order by nr_row) FK_PROJ_PROJEKT,
 row_number() over (partition by BELEGNUMMER order by nr_row) BELEGNUMMER,
 row_number() over (partition by BEZEICHNUNG order by nr_row) BEZEICHNUNG,
-row_number() over (partition by FK_LAND order by nr_row) FK_LAND,
-row_number() over (partition by FK_CITY order by nr_row) FK_CITY,
+row_number() over (partition by FK_ADR_LAND order by nr_row) FK_ADR_LAND,
+row_number() over (partition by FK_ADR_CITY order by nr_row) FK_ADR_CITY,
 row_number() over (partition by BEL_DATUM order by nr_row) BEL_DATUM,
 row_number() over (partition by VON order by nr_row) VON,
 row_number() over (partition by BIS order by nr_row) BIS,
 row_number() over (partition by NETTO_BETRAG order by nr_row) NETTO_BETRAG,
-row_number() over (partition by FK_STEUERSATZ order by nr_row) FK_STEUERSATZ,
+row_number() over (partition by FK_BAS_STEUERSATZ order by nr_row) FK_BAS_STEUERSATZ,
 row_number() over (partition by MWST_BETRAG order by nr_row) MWST_BETRAG,
 row_number() over (partition by BRUTTO_BETRAG order by nr_row) BRUTTO_BETRAG,
-row_number() over (partition by FK_WAEHRUNG order by nr_row) FK_WAEHRUNG,
+row_number() over (partition by FK_BAS_WAEHRUNG order by nr_row) FK_BAS_WAEHRUNG,
 row_number() over (partition by STEUERNUMMER order by nr_row) STEUERNUMMER,
-row_number() over (partition by FK_UMRECHNUNGSKURS order by nr_row) FK_UMRECHNUNGSKURS,
+row_number() over (partition by FK_BAS_UMRECHNUNGSKURS order by nr_row) FK_BAS_UMRECHNUNGSKURS,
 row_number() over (partition by COMM_REST_BELEG order by nr_row) COMM_REST_BELEG,
 row_number() over (partition by COMM_TEL_BELEG order by nr_row) COMM_TEL_BELEG,
 row_number() over (partition by COMM_PRODUKTE order by nr_row) COMM_PRODUKTE,
-row_number() over (partition by COMM_BEGRÜNDUNG order by nr_row) COMM_BEGRÜNDUNG,
+row_number() over (partition by COMM_BEGRUENDUNG order by nr_row) COMM_BEGRUENDUNG,
 row_number() over (partition by COMM_SONSTIGES order by nr_row) COMM_SONSTIGES,
 row_number() over (partition by BELEG order by nr_row) BELEG,
 row_number() over (partition by ZAHLUNGSBELEG order by nr_row) ZAHLUNGSBELEG,
 row_number() over (partition by LITER order by nr_row) LITER,
-row_number() over (partition by ZAPFSÄULE order by nr_row) ZAPFSÄULE,
-row_number() over (partition by FK_LOCATION order by nr_row) FK_LOCATION,
-row_number() over (partition by PERSÖNLICH_VOR_ORT order by nr_row) PERSÖNLICH_VOR_ORT,
+row_number() over (partition by ZAPFSAEULE order by nr_row) ZAPFSAEULE,
+row_number() over (partition by FK_ADR_LOCATION order by nr_row) FK_ADR_LOCATION,
+row_number() over (partition by PERSOENLICH_VOR_ORT order by nr_row) PERSOENLICH_VOR_ORT,
 row_number() over (partition by BELEG_UHRZEIT order by nr_row) BELEG_UHRZEIT,
 row_number() over (partition by VON_UHRZEIT order by nr_row) VON_UHRZEIT,
 row_number() over (partition by BIS_UHRZEIT order by nr_row) BIS_UHRZEIT,
@@ -13323,22 +13171,15 @@ select rownum rnr, all_."SEL",all_."SUM1",all_."NR_ROW",all_."SEL_PK_INP_BELEGE_
 from all_
 ;
 --------------------------------------------------------
---  DDL for View V_DATUM_STEUER_OK
+--  DDL for View V_COMP_TABLES
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_DATUM_STEUER_OK" ("KONTONUMMER", "CNT", "CNT_DATUM_STEUER_OK", "DIFF_DATUM_STEUER_OK", "JAHR") AS 
-  select kontonummer, count(*) cnt,  sum(case when datum_steuer_ok is not null then 1 else 0 end) cnt_datum_steuer_ok,count(*)- sum(case when datum_steuer_ok is not null then 1 else 0 end)  diff_datum_steuer_ok , jahr from t_lex_kontenblatt group by kontonummer, jahr
-;
---------------------------------------------------------
---  DDL for View V_GESCHAEFTSPARTNER
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_GESCHAEFTSPARTNER" ("PK_KON_GESCHAEFTSPARTNER", "GESCHAEFTSPARTNER", "FK_BAS_GESCHAEFTSPARTNERTYP", "PK_ADR_ADRESSE", "STRASSE", "HSNR", "PLZ", "ORT", "LAND", "BESCHREIBUNG", "PK_REL_GP_KONT", "GESCHAEFTSPARTNERTYP") AS 
-  select pk_kon_geschaeftspartner, geschaeftspartner, fk_bas_geschaeftspartnertyp, pk_adr_adresse, strasse, hsnr, plz, ort, land, beschreibung,PK_REL_GP_KONT, gept.geschaeftspartnertyp
-from t_kon_geschaeftspartner gep
-  left join T_REL_GESCHAEFTSP_KONT kon_adr on kon_adr.fk_kon_geschaeftspartner = gep.pk_kon_geschaeftspartner
-  left join v_adresse ad on ad.pk_adr_adresse = kon_adr.fk_adr_adresse
-  left join t_bas_geschaeftspartnertyp gept on gep.fk_bas_geschaeftspartnertyp = gept.pk_bas_geschaeftspartnertyp
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_TABLES" ("COLUMN_NAME") AS 
+  with tab1 as (select * from user_tab_cols where table_name = 'IMP_KONTENBLATT_2018'),
+tab2 as (select * from user_tab_cols where table_name = 'IMP_KONTENBLATT_2020_2')
+select tab1.column_name
+--tab1.column_name, tab2.column_name, tab1.data_type, tab2.data_type, tab1.data_length, tab2.data_length
+from tab1  full join tab2 on  tab1.column_name = tab2.column_name
 ;
 --------------------------------------------------------
 --  DDL for View V_GET_SPLIT_NR
@@ -13948,6 +13789,24 @@ order by 1
          left join t_bas_konto_buch_kat kat on kat.pk_bas_konto_buch_kat = bel.fk_bas_kategorie
 ;
 --------------------------------------------------------
+--  DDL for View V_IMP_KONTEN_CHEDK
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_IMP_KONTEN_CHEDK" ("SOLLKONTO") AS 
+  select sollkonto 
+from (
+select sollkonto
+from t_lex
+group by sollkonto
+union
+select habenkonto
+from t_lex
+group by habenkonto
+) t1
+ left join t_kontenplan_konten kto on kto.konten_nr_ext = t1.sollkonto
+ where kto.konten_nr_ext is null
+;
+--------------------------------------------------------
 --  DDL for View V_IMP_TEL_CONTROL
 --------------------------------------------------------
 
@@ -14460,10 +14319,10 @@ from inp_belege_all1 inpb
                 where fk_std_group = 101) sta1 on sta1.std_value = inpb.fk_status
 ;
 --------------------------------------------------------
---  DDL for View V_INVENTARE
+--  DDL for View V_INV_INVENTARE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INVENTARE" ("PK_INVENTAR", "INVENTAR", "ANSCHAFFUNGSDATUM", "ANSCHAFFUNGSJAHR", "ABSCHREIBUNGSDAUER", "RESTBUCHWERT_2018", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "PREIS_NETTO", "MWST", "FK_STEUERSATZ", "PREIS_BRUTTO", "COMM", "LIZENZNUMMER", "ANFORDERUNGSCODE", "FK_INVENTARTYP", "KFZ_KENNZEICHEN", "FAHRGESTELLNR", "BEMERKUNGEN", "BILD", "ABGANGSJAHR", "ABGANGSDATUM", "ABGANGSWERT", "FK_VERWENDUNGSZWECK", "GWG", "RESTBUCHWERT_2017", "ABGANGSGRUND", "MAC_ADRESSE", "SERIENNUMMER", "GERÄTENAME", "OK", "OK_BEMERKUNGEN", "RESTBUCHWERT_2019", "INV_BILD", "INVENTARTYP", "PK_IMP_BA_ELEKTRONIK", "BEZEICHNUNG", "GWG_YN") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INV_INVENTARE" ("PK_INVENTAR", "INVENTAR", "ANSCHAFFUNGSDATUM", "ANSCHAFFUNGSJAHR", "ABSCHREIBUNGSDAUER", "RESTBUCHWERT_2018", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "PREIS_NETTO", "MWST", "FK_STEUERSATZ", "PREIS_BRUTTO", "COMM", "LIZENZNUMMER", "ANFORDERUNGSCODE", "FK_INVENTARTYP", "KFZ_KENNZEICHEN", "FAHRGESTELLNR", "BEMERKUNGEN", "BILD", "ABGANGSJAHR", "ABGANGSDATUM", "ABGANGSWERT", "FK_VERWENDUNGSZWECK", "GWG", "RESTBUCHWERT_2017", "ABGANGSGRUND", "MAC_ADRESSE", "SERIENNUMMER", "GERÄTENAME", "OK", "OK_BEMERKUNGEN", "RESTBUCHWERT_2019", "INV_BILD", "INVENTARTYP", "PK_IMP_BA_ELEKTRONIK", "BEZEICHNUNG", "GWG_YN") AS 
   select inv."PK_INVENTAR",inv."INVENTAR",inv."ANSCHAFFUNGSDATUM",inv."ANSCHAFFUNGSJAHR",inv."ABSCHREIBUNGSDAUER",inv."RESTBUCHWERT_2018",inv."CREATED_BY",inv."CREATED_AT",inv."MODIFIED_BY",inv."MODIFIED_AT",inv."PREIS_NETTO",inv."MWST",inv."FK_STEUERSATZ",inv."PREIS_BRUTTO",inv."COMM",
   inv."LIZENZNUMMER",inv."ANFORDERUNGSCODE",inv."FK_INVENTARTYP",inv."KFZ_KENNZEICHEN",inv."FAHRGESTELLNR",inv."BEMERKUNGEN",inv."BILD",inv."ABGANGSJAHR",inv."ABGANGSDATUM",inv."ABGANGSWERT",inv."FK_VERWENDUNGSZWECK",inv."GWG",inv."RESTBUCHWERT_2017",inv."ABGANGSGRUND",
   inv."MAC_ADRESSE",inv."SERIENNUMMER",inv."GERÄTENAME",inv."RESTBUCHWERT_2019",inv."INV_BILD", invtyp.INVENTARTYP, pk_imp_ba_elektronik, 
@@ -14484,28 +14343,134 @@ from t_inventare inv
  left join (select * from t_std where fk_std_group = 61) gwg on gwg.std_value = inv.gwg
 ;
 --------------------------------------------------------
---  DDL for View V_KONTEN_IMP_CHECK
+--  DDL for View V_KON_GESCHAEFTSPARTNER
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTEN_IMP_CHECK" ("SOLLKONTO") AS 
-  select sollkonto 
-from (
-select sollkonto
-from t_lex
-group by sollkonto
-union
-select habenkonto
-from t_lex
-group by habenkonto
-) t1
- left join t_kontenplan_konten kto on kto.konten_nr_ext = t1.sollkonto
- where kto.konten_nr_ext is null
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KON_GESCHAEFTSPARTNER" ("PK_KON_GESCHAEFTSPARTNER", "GESCHAEFTSPARTNER", "FK_BAS_GESCHAEFTSPARTNERTYP", "PK_ADR_ADRESSE", "STRASSE", "HSNR", "PLZ", "ORT", "LAND", "BESCHREIBUNG", "PK_REL_GP_KONT", "GESCHAEFTSPARTNERTYP") AS 
+  select pk_kon_geschaeftspartner, geschaeftspartner, fk_bas_geschaeftspartnertyp, pk_adr_adresse, strasse, hsnr, plz, ort, land, beschreibung,PK_REL_GP_KONT, gept.geschaeftspartnertyp
+from t_kon_geschaeftspartner gep
+  left join T_REL_GESCHAEFTSP_KONT kon_adr on kon_adr.fk_kon_geschaeftspartner = gep.pk_kon_geschaeftspartner
+  left join v_adr_adresse ad on ad.pk_adr_adresse = kon_adr.fk_adr_adresse
+  left join t_bas_geschaeftspartnertyp gept on gep.fk_bas_geschaeftspartnertyp = gept.pk_bas_geschaeftspartnertyp
 ;
 --------------------------------------------------------
---  DDL for View V_KONTEN_ZUS
+--  DDL for View V_KONTR_CNT_LEX_ZAHL
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTEN_ZUS" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_BAS_KATEGORIE", "FK_BAS_VERWENDUNGSZWECK", "FK_BAS_KONTOTYP", "FK_BAS_BUCHUNGSTAG", "FK_BAS_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "KONTOTYP", "FK_KTO_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_KTO_BANKKONTO", "KTO_BEZEICHNUNG", "IBAN", "BANK", "DATUM_LEX_BUCHUNG_OK", "TBL") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL" ("FK_MAIN_KEY", "CNT") AS 
+  select fk_main_key, count(*) cnt
+from t_lex
+where storno = 0 and ok =1 and fk_main_key is not null
+group by fk_Main_key
+having count(*)>1
+;
+--------------------------------------------------------
+--  DDL for View V_KONTR_CNT_LEX_ZAHL_bel
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL_bel" ("FK_IMP_BA_BEL", "CNT") AS 
+  select fk_imp_ba_bel, count(*) cnt
+from t_lex
+where storno = 0 and ok =1 and fk_imp_ba_bel is not null
+group by fk_imp_ba_bel
+having count(*)>1
+;
+--------------------------------------------------------
+--  DDL for View V_KONTR_DUPL_BUCHUNGSTEXT
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_DUPL_BUCHUNGSTEXT" ("BUCHUNGSTEXT", "CNT", "LIS") AS 
+  select buchungstext, count(*) cnt, listagg(sollkonto, ',') within group (order by pk_lex) lis
+from t_lex 
+where ok = 1 and storno = 0
+group by buchungstext
+having count(*) >1
+;
+--------------------------------------------------------
+--  DDL for View V_KONTR_DUPL_DATUM_BETRAG
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_DUPL_DATUM_BETRAG" ("BELEGDATUM", "BUCHUNGSBETRAG", "CNT") AS 
+  select belegdatum, buchungsbetrag, count(*) cnt
+from t_lex 
+where ok = 1 and storno = 0
+group by belegdatum, buchungsbetrag
+having count(*) >1
+;
+--------------------------------------------------------
+--  DDL for View V_KONTR_KONTROLLE
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_KONTROLLE" ("PK_KONTROLLE", "JAHR", "KONTO", "FINALISIERUNGSDATUM", "RELATION", "BETRAG", "BUCHUNGSTEXT", "BUCHDAT", "STATUS", "KST", "KTR", "UST", "UST_KTO", "HABENKTO", "SOLLKTO") AS 
+  select kon."PK_KONTROLLE",kon."JAHR",kon."KONTO",kon."FINALISIERUNGSDATUM", relation, betrag, buchungstext, buchdat, status, kst, ktr, ust, ust_kto, habenkto, sollkto
+from t_kontrolle kon
+ left join t_lex_long on t_lex_long.sollkto = kon.konto
+;
+--------------------------------------------------------
+--  DDL for View V_KONTR_OK_LEX
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_OK_LEX" ("BUCHT_JAHR", "CNT_JAHR", "CNT_LEX") AS 
+  select bucht_jahr, count(*) cnt_jahr, sum(case when pk_lex is not null then 1 else 0 end) cnt_lex
+from v_konten_zus ktozus
+ left join (select * from t_lex where ok = 1 and storno = 0)  lex on ktozus.fk_main_key = lex.fk_main_key
+group by bucht_jahr
+;
+--------------------------------------------------------
+--  DDL for View V_KTO_BUCHUNG
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_BUCHUNG" ("PK_REL_KONT_BUCH_KONT_BUCH", "FK_KONTO_BUCH1", "FK_KTO_KONTO_BUCH2", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "BEMERKUNG", "FK_STD_BUCHUNGSVORGANG", "VON_FK_MAIN_KEY", "VON_ID", "VON_BUCHUNGSTAG", "VON_BETRAG", "VON_BUCHUNGSTEXT", "VON_FK_BAS_KATEGORIE", "VON_FK_BAS_VERWENDUNGSZWECK", "VON_FK_BAS_KONTOTYP", "VON_FK_BAS_BUCHUNGSTAG", "VON_FK_BAS_WERTSTELLUNG", "VON_KONTOTYP", "VON_KATEGORIE", "VON_VERWENDUNGSZWECK", "NACH_FK_MAIN_KEY", "NACH_ID", "NACH_BUCHUNGSTAG", "NACH_BETRAG", "NACH_BUCHUNGSTEXT", "NACH_FK_BAS_KATEGORIE", "NACH_FK_BAS_VERWENDUNGSZWECK", "NACH_FK_BAS_KONTOTYP", "NACH_FK_BUCHUNGSTAG", "NACH_FK_BAS_WERTSTELLUNG", "NACH_KONTOTYP", "NACH_KATEGORIE", "NACH_VERWENDUNGSZWECK") AS 
+  select buch."PK_REL_KONT_BUCH_KONT_BUCH",
+  buch."FK_KTO_KONTO_BUCH1"
+  ,buch."FK_KTO_KONTO_BUCH2"
+  ,buch."CREATED_BY",
+  buch."CREATED_AT",
+  buch."MODIFIED_BY",
+  buch."MODIFIED_AT",
+  buch."BEMERKUNG",
+  buch.fk_std_buchungsvorgang,
+--von
+von.FK_MAIN_KEY von_fk_main_key, 
+von.ID von_id, 
+von."Buchungstag" von_Buchungstag, 
+von."Betrag" von_betrag,
+von.BUCHUNGSTEXT von_buchungstext, 
+von.FK_bas_Kategorie von_fk_kategorie, 
+von.FK_bas_Verwendungszweck von_fk_Verwendungszweck,
+von.FK_bas_Kontotyp von_fk_kontotyp,
+von.FK_bas_BUCHUNGSTAG von_fk_buchungstag,
+von.FK_bas_WERTSTELLUNG von_fk_wertstellung,
+von.Kontotyp von_kontotyp,
+von.Kategorie von_Kategorie,
+von.verwendungszweck von_verwendungszweck,
+--nach
+nach.FK_MAIN_KEY nach_fk_main_key, 
+nach.ID nach_id, 
+nach."Buchungstag" nach_Buchungstag, 
+nach."Betrag" nach_betrag, 
+nach.BUCHUNGSTEXT nach_Buchungstext, 
+nach.FK_bas_Kategorie nach_fk_kategorie , 
+nach.FK_bas_Verwendungszweck nach_fk_verwendungszweck, 
+nach.fK_bas_Kontotyp nach_fk_kontotyp, 
+nach.FK_bas_BUCHUNGSTAG nach_fk_buchungstag, 
+nach.FK_bas_WERTSTELLUNG nach_fk_wertstellung,
+nach.Kontotyp nach_kontotyp,
+nach.Kategorie nach_kategorie,
+nach.verwendungszweck nach_verwendungszweck
+
+
+
+
+from t_rel_kont_buch_kont_buch buch
+  left join v_konten_zus von on von.fk_main_key = buch.fk_kto_konto_buch1
+  left join v_konten_zus nach on nach.fk_main_key = buch.fk_kto_konto_buch2
+;
+--------------------------------------------------------
+--  DDL for View V_KTO_KONTEN_ZUS
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_KONTEN_ZUS" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "WAEHRUNG", "FREMDWAEHRUNGSBETRAG", "FREMDWAEHRUNG", "BUCHUNGSTEXT", "FK_BAS_KATEGORIE", "FK_BAS_VERWENDUNGSZWECK", "FK_BAS_KONTOTYP", "FK_BAS_BUCHUNGSTAG", "FK_BAS_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "KONTOTYP", "FK_KTO_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_KTO_BANKKONTO", "KTO_BEZEICHNUNG", "IBAN", "BANK", "DATUM_LEX_BUCHUNG_OK", "TBL") AS 
   WITH 
   /*gir AS (
         SELECT
@@ -14701,10 +14666,10 @@ group by habenkonto
         left join t_kto_bank bk on bk.pk_kto_bank = kto.fk_kto_bank
 ;
 --------------------------------------------------------
---  DDL for View V_KONTOAUSZUG
+--  DDL for View V_KTO_KONTO_AUSZUG
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTOAUSZUG" ("PK_KONTO_AUSZUG", "FK_KTO_BANKKONTO", "FK_KTO_KONTOAUSZUG", "FK_BAS_JAHR", "FK_BAS_MONAT", "FK_BAS_ANFANGSDATUM", "FK_BAS_ENDDATUM", "FK_BAS_ABHOLDATUM", "FK_BEL_BELEG", "KOMMENTAR", "ANFANGSBETRAG", "ENDBETRAG", "ANFANGSDATUM", "ENDDATUM", "ABHOLDATUM", "PK_BANKKONTO", "FK_BANK", "IBAN", "BIC", "KONTONR", "BLZ", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "KREDITKARTENNR", "BEZ", "FK_KTO_KONTOTYP", "KREDITLINIE", "ERÖFFUNGSDATUM", "SCHLUSSDATUM", "ZUGANG", "PIN", "DIBA_KEY", "TELEBANKING_PIN", "BEMERKUNGEN", "KARTENSPERRUNG", "VALID", "VALID_FROM", "VALID_TO", "GLÄUBIGER_ID", "MANDATSREFERENZ_SEPA", "FK_LASTSCHRIFT_KTO_VON", "DIFF_SOLL", "SUM_BUCH", "DIFF_IST", "DATUM_OK", "FK_KTO_KONTO_AUSZUG_TYPE", "KONTO_AUSZUG_TYPE") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_KONTO_AUSZUG" ("PK_KONTO_AUSZUG", "FK_KTO_BANKKONTO", "FK_KTO_KONTOAUSZUG", "FK_BAS_JAHR", "FK_BAS_MONAT", "FK_BAS_ANFANGSDATUM", "FK_BAS_ENDDATUM", "FK_BAS_ABHOLDATUM", "FK_BEL_BELEG", "KOMMENTAR", "ANFANGSBETRAG", "ENDBETRAG", "ANFANGSDATUM", "ENDDATUM", "ABHOLDATUM", "PK_BANKKONTO", "FK_BANK", "IBAN", "BIC", "KONTONR", "BLZ", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "KREDITKARTENNR", "BEZ", "FK_KTO_KONTOTYP", "KREDITLINIE", "ERÖFFUNGSDATUM", "SCHLUSSDATUM", "ZUGANG", "PIN", "DIBA_KEY", "TELEBANKING_PIN", "BEMERKUNGEN", "KARTENSPERRUNG", "VALID", "VALID_FROM", "VALID_TO", "GLÄUBIGER_ID", "MANDATSREFERENZ_SEPA", "FK_LASTSCHRIFT_KTO_VON", "DIFF_SOLL", "SUM_BUCH", "DIFF_IST", "DATUM_OK", "FK_KTO_KONTO_AUSZUG_TYPE", "KONTO_AUSZUG_TYPE") AS 
   select 
     kto_aus."PK_KTO_KONTO_AUSZUG", 
     kto_aus."FK_KTO_BANKKONTO",
@@ -14742,20 +14707,20 @@ from T_kto_KONTO_AUSZUG kto_aus
 left join (select * from t_std where fk_std_group = 181) std on std.std_value = kto_aus.fk_std_konto_auszug_type
 ;
 --------------------------------------------------------
---  DDL for View V_KONTOAUSZUG_BUCH
+--  DDL for View V_KTO_KONTO_AUSZUG_BUCH
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTOAUSZUG_BUCH" ("PK_KONTO_AUSZUG", "FK_KONTO", "FK_KONTOAUSZUG", "FK_JAHR", "FK_MONAT", "ANFANGSDATUM", "ENDDATUM", "ABHOLDATUM", "FK_BELEG", "KOMMENTAR", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "ANFANGSBETRAG", "ENDBETRAG", "FK_ABHOLDATUM", "FK_ANFANGSDATUM", "FK_ENDDATUM", "FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_Kategorie", "FK_Verwendungszweck", "FK_Kontotyp", "FK_BUCHUNGSTAG", "FK_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "Kontotyp", "FK_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "WERT", "DIFF") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_KONTO_AUSZUG_BUCH" ("PK_KONTO_AUSZUG", "FK_KONTO", "FK_KONTOAUSZUG", "FK_JAHR", "FK_MONAT", "ANFANGSDATUM", "ENDDATUM", "ABHOLDATUM", "FK_BELEG", "KOMMENTAR", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "ANFANGSBETRAG", "ENDBETRAG", "FK_ABHOLDATUM", "FK_ANFANGSDATUM", "FK_ENDDATUM", "FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_Kategorie", "FK_Verwendungszweck", "FK_Kontotyp", "FK_BUCHUNGSTAG", "FK_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "Kontotyp", "FK_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "WERT", "DIFF") AS 
   select kto_aus."PK_KONTO_AUSZUG",kto_aus."FK_KONTO",kto_aus."FK_KONTOAUSZUG",kto_aus."FK_JAHR",kto_aus."FK_MONAT",kto_aus."ANFANGSDATUM",kto_aus."ENDDATUM",kto_aus."ABHOLDATUM",kto_aus."FK_BELEG",kto_aus."KOMMENTAR",kto_aus."CREATED_BY",kto_aus."CREATED_AT",kto_aus."MODIFIED_BY",kto_aus."MODIFIED_AT",kto_aus."ANFANGSBETRAG",kto_aus."ENDBETRAG",kto_aus."FK_ABHOLDATUM",kto_aus."FK_ANFANGSDATUM",kto_aus."FK_ENDDATUM", gir."FK_MAIN_KEY",gir."ID",gir."Buchungstag",gir."Betrag",gir."Währung",gir."Fremdwährungsbetrag",gir."Fremdwährung",gir."BUCHUNGSTEXT",gir."FK_Kategorie",gir."FK_Verwendungszweck",gir."FK_Kontotyp",gir."FK_BUCHUNGSTAG",gir."FK_WERTSTELLUNG",gir."VERWENDUNGSZWECK",gir."KATEGORIE",gir."BUCHT_TAG",gir."BUCHT_MONAT",gir."BUCHT_JAHR",gir."BUCHT_DATUM",gir."WERTT_TAG",gir."WERTT_MONAT",gir."WERTT_JAHR",gir."WERTT_DATUM",gir."Kontotyp",gir."FK_VORGANG",gir."WIEDERHOLUNG",gir."NAECHSTE_ZAHLUNG",gir."FK_BUCHUNG_STEUER", round(gir."Betrag",2) wert, endbetrag-anfangsbetrag diff
 from t_konto_auszug kto_aus
   join t_rel_konto_auszug_gir  kto_aus_gir on kto_aus.pk_konto_auszug = kto_aus_gir.fk_konto_auszug
   join v_kontEN_ZUS Gir on kto_aus_gir.fk_main_key =  gir.fk_main_key
 ;
 --------------------------------------------------------
---  DDL for View V_KONTO_AUSZUG_OV
+--  DDL for View V_KTO_KONTO_AUSZUG_OV
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTO_AUSZUG_OV" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_Kategorie", "FK_Verwendungszweck", "FK_Kontotyp", "FK_BUCHUNGSTAG", "FK_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "Kontotyp", "FK_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_KONTO", "KTO_BEZEICHNUNG", "IBAN", "BANK", "BUCH", "BUCH_STATUS", "BUCH_STORNO", "INP_BEL_STATUS", "BEL_STATUS", "PG", "KTOAUS", "FK_KONTO_AUSZUG", "REL_BETRAG", "SUM_BETRAG", "SUM_SOLLBETRAG", "SUM_HABENBETRAG", "SUM_DIFF", "DIFF", "FK_LEX_KONTO", "FK_LEX_KONTO_IN", "BAR_AUSZAHLUNG", "FK_MAIN_KEY_BANKKONTO", "KAS_FK_MAIN_KEY", "KAS_BETRAG", "UEBERWEISUNG", "KONTOTYP") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_KONTO_AUSZUG_OV" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_Kategorie", "FK_Verwendungszweck", "FK_Kontotyp", "FK_BUCHUNGSTAG", "FK_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "Kontotyp", "FK_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_KONTO", "KTO_BEZEICHNUNG", "IBAN", "BANK", "BUCH", "BUCH_STATUS", "BUCH_STORNO", "INP_BEL_STATUS", "BEL_STATUS", "PG", "KTOAUS", "FK_KONTO_AUSZUG", "REL_BETRAG", "SUM_BETRAG", "SUM_SOLLBETRAG", "SUM_HABENBETRAG", "SUM_DIFF", "DIFF", "FK_LEX_KONTO", "FK_LEX_KONTO_IN", "BAR_AUSZAHLUNG", "FK_MAIN_KEY_BANKKONTO", "KAS_FK_MAIN_KEY", "KAS_BETRAG", "UEBERWEISUNG", "KONTOTYP") AS 
   Select Zus.Fk_Main_Key,
       Id,
        
@@ -14866,82 +14831,6 @@ from t_konto_auszug kto_aus
       ) relkto on relkto.fk_konto_buch1 = zus.fk_main_key  or relkto.fk_konto_buch2 = zus.fk_main_key
 ;
 --------------------------------------------------------
---  DDL for View V_KONTR_CNT_LEX_ZAHL
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL" ("FK_MAIN_KEY", "CNT") AS 
-  select fk_main_key, count(*) cnt
-from t_lex
-where storno = 0 and ok =1 and fk_main_key is not null
-group by fk_Main_key
-having count(*)>1
-;
---------------------------------------------------------
---  DDL for View V_KONTR_CNT_LEX_ZAHL_bel
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL_bel" ("FK_IMP_BA_BEL", "CNT") AS 
-  select fk_imp_ba_bel, count(*) cnt
-from t_lex
-where storno = 0 and ok =1 and fk_imp_ba_bel is not null
-group by fk_imp_ba_bel
-having count(*)>1
-;
---------------------------------------------------------
---  DDL for View V_KONTR_DUPL_BUCHUNGSTEXT
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_DUPL_BUCHUNGSTEXT" ("BUCHUNGSTEXT", "CNT", "LIS") AS 
-  select buchungstext, count(*) cnt, listagg(sollkonto, ',') within group (order by pk_lex) lis
-from t_lex 
-where ok = 1 and storno = 0
-group by buchungstext
-having count(*) >1
-;
---------------------------------------------------------
---  DDL for View V_KONTR_DUPL_DATUM_BETRAG
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_DUPL_DATUM_BETRAG" ("BELEGDATUM", "BUCHUNGSBETRAG", "CNT") AS 
-  select belegdatum, buchungsbetrag, count(*) cnt
-from t_lex 
-where ok = 1 and storno = 0
-group by belegdatum, buchungsbetrag
-having count(*) >1
-;
---------------------------------------------------------
---  DDL for View V_KONTR_OK_LEX
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTR_OK_LEX" ("BUCHT_JAHR", "CNT_JAHR", "CNT_LEX") AS 
-  select bucht_jahr, count(*) cnt_jahr, sum(case when pk_lex is not null then 1 else 0 end) cnt_lex
-from v_konten_zus ktozus
- left join (select * from t_lex where ok = 1 and storno = 0)  lex on ktozus.fk_main_key = lex.fk_main_key
-group by bucht_jahr
-;
---------------------------------------------------------
---  DDL for View V_KONTROLLE
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KONTROLLE" ("PK_KONTROLLE", "JAHR", "KONTO", "FINALISIERUNGSDATUM", "RELATION", "BETRAG", "BUCHUNGSTEXT", "BUCHDAT", "STATUS", "KST", "KTR", "UST", "UST_KTO", "HABENKTO", "SOLLKTO") AS 
-  select kon."PK_KONTROLLE",kon."JAHR",kon."KONTO",kon."FINALISIERUNGSDATUM", relation, betrag, buchungstext, buchdat, status, kst, ktr, ust, ust_kto, habenkto, sollkto
-from t_kontrolle kon
- left join t_lex_long on t_lex_long.sollkto = kon.konto
-;
---------------------------------------------------------
---  DDL for View V_KTBL_DIFF_YEARS
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTBL_DIFF_YEARS" ("FK_BELEGDATUM", "JAHR", "KTO_JAHR", "ID", "MONAT", "TAG", "BELEGDATUM") AS 
-  select fk_belegdatum, arb.jahr, kto.jahr kto_jahr, kto.id, monat, tag, belegdatum
-
-from imp_kontenblatt_2018 kto
- left join t_arbeitstage arb  on kto.fk_belegdatum = arb.pk_arbeitstage
-where 
---kontonummer = 2103 and
-  kto.jahr <> arb.jahr
-;
---------------------------------------------------------
 --  DDL for View V_KTO_STAND_GIR
 --------------------------------------------------------
 
@@ -14950,11 +14839,17 @@ where
 from "KTO_GIROKONTO"
 ;
 --------------------------------------------------------
---  DDL for View V_LEBENSLAUF
+--  DDL for View V_KTO_ZAHLUNGSWIEDERHOLUNG
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEBENSLAUF" () AS 
-  select to_char(von, 'MM / YYYY') || ' - ' ||  to_char(bis, 'MM / YYYY'), projekt, descr from t_projekt where lebenslauf_rel = 1 order by von desc
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_KTO_ZAHLUNGSWIEDERHOLUNG" ("KAT", "BEZEICHNUNG", "BETRAG_GESAMT", "DATUM", "KENNZEICHEN", "WIEDERHOLUNG") AS 
+  select 'KFZ Versicherung/Steuern' kat, bezeichnung, betrag_gesamt,datum, Kennzeichen,wiederholung 
+        from T_car_auto_versicherung
+        where wiederholung is not null and wiederholung <> 'einmalig'
+        union
+        select 'Krankenversicherung' , buchungstext, betrag, datum, null, wiederholung
+        from t_bei_kk_krankenkasse
+        where Buchungstext = 'Beitrag'
 ;
 --------------------------------------------------------
 --  DDL for View V_LEX_BUCH_CHECK
@@ -15192,75 +15087,30 @@ from (select * from imp_kontenblatt_2018 where kontonummer = 6680 and jahr = 201
 order by relation
 ;
 --------------------------------------------------------
---  DDL for View V_LOCATION
+--  DDL for View V_LEX_KTBL_DIFF_YEARS
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LOCATION" ("PK_ADR_LOCATION", "LOCATION", "FK_BAS_LOCATION_TYPE", "FK_ADRESSE", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "LOCATION_TYPE", "STRASSE", "HSNR", "BESCHREIBUNG", "COMM", "POSTFACH", "PLZ", "ORT", "LAND", "ADR", "PK_ADR_LAND", "PK_ADR_ORT", "PK_ADR_PLZ_ORT", "PK_ADR_LOCATION_TYPE") AS 
-  select 
-    loc."PK_ADR_LOCATION",
-    loc."LOCATION",
-    loc."FK_BAS_LOCATION_TYPE",
-    loc."FK_ADR_ADRESSE",
-    loc."CREATED_BY",
-    loc."CREATED_AT",
-    loc."MODIFIED_BY",
-    loc."MODIFIED_AT",
-    loc_type.location_type,
-    adr.strasse,
-    adr.hsnr,
-    adr.beschreibung,
-    adr.comm,
-    adr.postfach,
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEX_KTBL_DIFF_YEARS" ("FK_BELEGDATUM", "JAHR", "KTO_JAHR", "ID", "MONAT", "TAG", "BELEGDATUM") AS 
+  select fk_belegdatum, arb.jahr, kto.jahr kto_jahr, kto.id, monat, tag, belegdatum
 
-    plz_ort.plz,
-    ort.ort,
-    la.land,
-    adr.strasse || ' ' || adr.hsnr || ', ' || plz_ort.plz || ' ' || ort.ort || ', ' || la.land adr,
-    pk_adr_land,
-    pk_adr_ort,
-    pk_adr_plz_ort,
-    pk_bas_location_type
-from t_adr_location loc
-  left join t_bas_location_type  loc_type on loc.fk_bas_location_type = loc_type.pk_bas_location_type
-  left join t_adr_adresse adr on adr.pk_adr_adresse = loc.fk_adr_adresse
-  left join t_adr_plz_ort plz_ort on plz_ort.pk_adr_plz_ort = adr.fk_adr_plz_ort
-  left join t_adr_ort ort on ort.pk_adr_ort  = plz_ort.fk_adr_ort
-  left join t_adr_land la on la.pk_adr_land = ort.fk_adr_land
+from imp_kontenblatt_2018 kto
+ left join t_arbeitstage arb  on kto.fk_belegdatum = arb.pk_arbeitstage
+where 
+--kontonummer = 2103 and
+  kto.jahr <> arb.jahr
 ;
 --------------------------------------------------------
---  DDL for View V_ORDNER_ABLAGE_PAGE
+--  DDL for View V_PROJ_LEBENSLAUF
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ORDNER_ABLAGE_PAGE" ("J_PAGE", "PK_ABL_ORDNER_PAGE", "PK_ABL_ORDNER", "PAGE_NUMBER", "JAHR", "ORDNER_NAME", "ORDNER_PAGE") AS 
-  select jahr || ' ' || page_number j_page, pk_abl_ordner_page, pk_abl_ordner, page_number, jahr, ordner_name, jahr || ' / ' || ordner_name || ' / Seite ' || page_number ordner_page
-from T_ABL_ORDNER abl_ord
-  left join T_ABL_ORDNER_PAGE abl_ord_p on abl_ord.pk_abl_ordner = abl_ord_p.fk_abl_ordner
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_PROJ_LEBENSLAUF" () AS 
+  select to_char(von, 'MM / YYYY') || ' - ' ||  to_char(bis, 'MM / YYYY'), projekt, descr from t_projekt where lebenslauf_rel = 1 order by von desc
 ;
 --------------------------------------------------------
---  DDL for View V_ORT
+--  DDL for View V_PROJ_PROJEKTE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ORT" ("PK_ORT", "ORT", "PK_LAND", "LAND", "KOORDINATEN", "ORT_2") AS 
-  select pk_ort, ort, pk_land, land,koordinaten, ort_2
-from t_ort ort
- left join t_land la on ort.fk_land= la.pk_land
-;
---------------------------------------------------------
---  DDL for View V_PLZ_BUNDESLAND
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_PLZ_BUNDESLAND" ("PK_ORT", "ORT", "PK_LAND", "LAND") AS 
-  select ort."PK_ORT",ort."ORT",ort."PK_LAND",ort."LAND"
-from v_ort ort  
- left join t_plz_ort_bundesland bl
-on upper(bl.ort) = upper(ort.ort)
-where bl.ort is null and pk_land = 1
-;
---------------------------------------------------------
---  DDL for View V_PROJEKTE
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_PROJEKTE" ("PK_PROJ_PROJEKT", "FK_KON_AUFTRAGGEBER", "FK_KON_PROJEKTPARTNER_1", "FK_KON_PROJEKTPARTNER_2", "PROJEKT", "VON", "BIS", "AKTUELLER_STUNDENSATZ", "PSP_ELEMENT", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "RECHNUNG_GESTELLT", "ZAHLUNG_ABGESCHLOSSEN", "BELEGE_ZUGEORDNET", "KM_GERECHNET", "PROJEKT_ABGESCHLOSSEN", "PROJEKT_ART", "AUFT_PK_GESCHAEFTSPARTNER", "AUFT_GESCHAEFTSPARTNER", "AUFT_FK_BAS_GESCHAEFTSPARTNERTYP", "AUFT_PK_ADR_ADRESSE", "AUFT_STRASSE", "AUFT_HSNR", "AUFT_PLZ", "AUFT_ORT", "AUFT_LAND", "AUFT_BESCHREIBUNG", "AUFT_PK_REL_GP_KONT", "AUFT_GESCHAEFTSPARTNERTYP", "PP1_PK_BAS_GESCHAEFTSPARTNER", "PP1_GESCHAEFTSPARTNER", "PP1_FK_BAS_GESCHAEFTSPARTNERTYP", "PP1_PK_ADRESSE", "PP1_STRASSE", "PP1_HSNR", "PP1_PLZ", "PP1_ORT", "PP1_LAND", "PP1_BESCHREIBUNG", "PP1_PK_REL_GP_KONT", "PP1_GESCHAEFTSPARTNERTYP", "PP2_PK_KON_GESCHAEFTSPARTNER", "PP2_GESCHAEFTSPARTNER", "PP2_FK_BAS_GESCHAEFTSPARTNERTYP", "PP2_PK_ADR_ADRESSE", "PP2_STRASSE", "PP2_HSNR", "PP2_PLZ", "PP2_ORT", "PP2_LAND", "PP2_BESCHREIBUNG", "PP2_PK_REL_GP_KONT", "PP2_GESCHAEFTSPARTNERTYP") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_PROJ_PROJEKTE" ("PK_PROJ_PROJEKT", "FK_KON_AUFTRAGGEBER", "FK_KON_PROJEKTPARTNER_1", "FK_KON_PROJEKTPARTNER_2", "PROJEKT", "VON", "BIS", "AKTUELLER_STUNDENSATZ", "PSP_ELEMENT", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "RECHNUNG_GESTELLT", "ZAHLUNG_ABGESCHLOSSEN", "BELEGE_ZUGEORDNET", "KM_GERECHNET", "PROJEKT_ABGESCHLOSSEN", "PROJEKT_ART", "AUFT_PK_GESCHAEFTSPARTNER", "AUFT_GESCHAEFTSPARTNER", "AUFT_FK_BAS_GESCHAEFTSPARTNERTYP", "AUFT_PK_ADR_ADRESSE", "AUFT_STRASSE", "AUFT_HSNR", "AUFT_PLZ", "AUFT_ORT", "AUFT_LAND", "AUFT_BESCHREIBUNG", "AUFT_PK_REL_GP_KONT", "AUFT_GESCHAEFTSPARTNERTYP", "PP1_PK_BAS_GESCHAEFTSPARTNER", "PP1_GESCHAEFTSPARTNER", "PP1_FK_BAS_GESCHAEFTSPARTNERTYP", "PP1_PK_ADRESSE", "PP1_STRASSE", "PP1_HSNR", "PP1_PLZ", "PP1_ORT", "PP1_LAND", "PP1_BESCHREIBUNG", "PP1_PK_REL_GP_KONT", "PP1_GESCHAEFTSPARTNERTYP", "PP2_PK_KON_GESCHAEFTSPARTNER", "PP2_GESCHAEFTSPARTNER", "PP2_FK_BAS_GESCHAEFTSPARTNERTYP", "PP2_PK_ADR_ADRESSE", "PP2_STRASSE", "PP2_HSNR", "PP2_PLZ", "PP2_ORT", "PP2_LAND", "PP2_BESCHREIBUNG", "PP2_PK_REL_GP_KONT", "PP2_GESCHAEFTSPARTNERTYP") AS 
   select 
     pr."PK_PROJ_PROJEKT", 
     pr."FK_KON_AUFTRAGGEBER",
@@ -15324,23 +15174,6 @@ from T_proj_PROJEKT pr
  left join v_geschaeftspartner auft on auft.pk_kon_geschaeftspartner = pr.fk_kon_auftraggeber
  left join v_geschaeftspartner pp1 on pp1.pk_kon_geschaeftspartner = pr.fk_kon_projektpartner_1
  left join v_geschaeftspartner pp2 on pp2.pk_kon_geschaeftspartner = pr.fk_kon_projektpartner_2
-;
---------------------------------------------------------
---  DDL for View V_RATIO
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_RATIO" ("RECHNUNGSDATUM", "FK_PROJEKT", "RECHNUNGSBETRAG_NETTO", "ANTEIL_UMSATZ", "SUM_UMSATZ", "SUM_WERT", "SUM_WERT2", "SUM_WERT1") AS 
-  select 
-rechnungsdatum, 
- fk_projekt, 
-rechnungsbetrag_netto,
- RATIO_TO_REPORT(rechnungsbetrag_netto) over (partition by fk_projekt) * 100 as ANTEIL_UMSATZ
-,  SUM(rechnungsbetrag_netto) over (partition by fk_projekt order by fk_projekt rows between unbounded preceding and current row) as SUM_UMSATZ
-, sum(rechnungsbetrag_netto) over(order by fk_projekt) sum_wert
-, sum(rechnungsbetrag_netto) over(order by rownum) sum_wert2
-, sum(rechnungsbetrag_netto) over(order by rownum, fk_projekt) sum_wert1
-from t_rechnung
-order by rechnungsdatum, fk_projekt
 ;
 --------------------------------------------------------
 --  DDL for View V_REL_LEX
@@ -15874,19 +15707,20 @@ from t_rel_lex_kto_bel rel
 --  DDL for View V_REL_LEX_KTO
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_REL_LEX_KTO" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "Währung", "Fremdwährungsbetrag", "Fremdwährung", "BUCHUNGSTEXT", "FK_Kategorie", "FK_Verwendungszweck", "FK_Kontotyp", "FK_BUCHUNGSTAG", "FK_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "Kontotyp", "FK_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_MAIN_KEY_SUB", "BUCHUNGSTAG_SUB", "BUCHUNGSTEXT_SUB", "KONTOTYP_SUB", "WERT_SUB", "WERT_MAIN") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_REL_LEX_KTO" ("FK_MAIN_KEY", "ID", "Buchungstag", "Betrag", "WAEHRUNG", "FREMDWAEHRUNGSBETRAG", "FREMDWAEHRUNG", "BUCHUNGSTEXT", "FK_BAS_KATEGORIE", "FK_BAS_VERWENDUNGSZWECK", "FK_BAS_KONTOTYP", "FK_BAS_BUCHUNGSTAG", "FK_BAS_WERTSTELLUNG", "VERWENDUNGSZWECK", "KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "KONTOTYP", "FK_KTO_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_MAIN_KEY_SUB", "BUCHUNGSTAG_SUB", "BUCHUNGSTEXT_SUB", "KONTOTYP_SUB", "WERT_SUB", "WERT_MAIN") AS 
   select 
 kto_zus_Main."FK_MAIN_KEY",
 kto_zus_Main."ID",
 kto_zus_Main."Buchungstag",
-kto_zus_Main."Betrag",kto_zus_Main."Währung",
-kto_zus_Main."Fremdwährungsbetrag",kto_zus_Main."Fremdwährung",
+kto_zus_Main."Betrag",kto_zus_Main.Waehrung,
+kto_zus_Main.Fremdwaehrungsbetrag,
+kto_zus_Main.Fremdwaehrung,
 kto_zus_Main."BUCHUNGSTEXT",
-kto_zus_Main."FK_Kategorie",
-kto_zus_Main."FK_Verwendungszweck",
-kto_zus_Main."FK_Kontotyp",
-kto_zus_Main."FK_BUCHUNGSTAG",
-kto_zus_Main."FK_WERTSTELLUNG",
+kto_zus_Main.FK_BAS_Kategorie,
+kto_zus_Main.FK_bas_Verwendungszweck,
+kto_zus_Main.FK_bas_Kontotyp,
+kto_zus_Main.FK_bas_BUCHUNGSTAG,
+kto_zus_Main.FK_bas_WERTSTELLUNG,
 kto_zus_Main."VERWENDUNGSZWECK",
 kto_zus_Main."KATEGORIE",
 kto_zus_Main."BUCHT_TAG",
@@ -15896,16 +15730,17 @@ kto_zus_Main."BUCHT_DATUM",
 kto_zus_Main."WERTT_TAG",
 kto_zus_Main."WERTT_MONAT",
 kto_zus_Main."WERTT_JAHR",
-kto_zus_Main."WERTT_DATUM",kto_zus_Main."Kontotyp",kto_zus_Main."FK_VORGANG",kto_zus_Main."WIEDERHOLUNG",
+kto_zus_Main."WERTT_DATUM",
+kto_zus_Main.Kontotyp,kto_zus_Main."FK_KTO_VORGANG",kto_zus_Main."WIEDERHOLUNG",
 kto_zus_Main."NAECHSTE_ZAHLUNG",kto_zus_Main."FK_BUCHUNG_STEUER", 
  kto_zus_sub.fk_main_key fk_main_key_sub, kto_zus_sub."Buchungstag" Buchungstag_sub,
- kto_zus_sub.Buchungstext buchungstext_sub, kto_zus_sub."Kontotyp" kontotyp_sub,
+ kto_zus_sub.Buchungstext buchungstext_sub, kto_zus_sub.Kontotyp kontotyp_sub,
 round(kto_zus_sub."Betrag",2) wert_sub,
 round(kto_zus_main."Betrag",2) wert_main
 
  from v_konten_zus kto_zus_main
- left join t_rel_kont_BUCH_KONT_BUCH REL_KTO on rel_kto.fk_konto_buch1 = kto_zus_main.fk_main_key
- left join v_konten_zus kto_zus_sub on rel_kto.fk_konto_buch2 = kto_zus_sub.fk_main_key
+ left join t_rel_kont_BUCH_KONT_BUCH REL_KTO on rel_kto.fk_kto_konto_buch1 = kto_zus_main.fk_main_key
+ left join v_konten_zus kto_zus_sub on rel_kto.fk_kto_konto_buch2 = kto_zus_sub.fk_main_key
 ;
 --------------------------------------------------------
 --  DDL for View V_REL_LEX_KTO_BEL
@@ -15941,6 +15776,278 @@ from t_rel_lex_kto_bel kto_bel
         left join v_konten_zus  kto_zus on kto_zus.fk_main_key = kto_bel.fk_main_key
 ;
 --------------------------------------------------------
+--  DDL for View V_REL_LEX1
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_REL_LEX1" ("PK_REL_LEX_KTO_BEL") AS 
+  select 
+        pk_rel_lex_kto_bel
+        
+from t_rel_lex_kto_bel rel
+  left join (
+                select
+                        BELEGDAT,
+                        BELEG,
+                        BETRAGEUR,
+                        BUCHDAT,
+                        NR,
+                        HABENEUR,
+                        JOUR_DAT,
+                        RELATION,
+                        SOLLEUR,
+                        SOLL,
+                        UST,
+                        UST_KTO,
+                        UST_KTO_H,
+                        UST_KTO_S,
+                        PERIODE,
+                        BELEGNR,
+                        BUCHUNGSTEXT,
+                        BETRAG,
+                        WHRG,
+                        SOLLKTO,
+                        HABENKTO,
+                        KST,
+                        KTR,
+                        JAHR,
+                        JAHR_BELEG,
+                        Status
+                        
+                    
+
+                from   t_lex_long
+                ) lex on rel.fk_relation = lex.relation
+   left join v_konten_zus kto on kto.fk_main_key = rel.fk_main_key
+   left join v_imp_bel_zus bel on bel.fk_imp_ba_bel = rel.fk_imp_ba_bel
+   left join (
+                select
+                   ABL_ORD_JAHR,
+                ABL_ORD_J_PAGE_NUMBER,
+                ABL_ORD_ORDNER_NAME,
+                ABL_ORD_PAGE_NUMBER,
+                ABL_ORD_PK_ABL_ORDNER,
+                ABL_ORD_PK_ABL_ORDNER_PAGE,
+                ARB_BIS_DATUM,
+                
+                ARB_BIS_FK_ARBEITSTAG,
+                
+                ARB_BIS_JAHR,
+                ARB_BIS_MONAT,
+                
+                ARB_BIS_TAG,
+                ARB_DATUM,
+                
+                ARB_FK_ARBEITSTAG,
+                
+                ARB_JAHR,
+                ARB_MONAT,
+                
+                ARB_TAG,
+                ARB_VON_DATUM,
+                
+                ARB_VON_JAHR,
+                ARB_VON_MONAT,
+                
+                ARB_VON_TAG,
+                BANK,
+                BEL_DATUM,
+                BELEG,
+                BELEGNUMMER,
+                BELEG_UHRZEIT,
+                BEL_EX_NAME,
+                BEL_EX_VALUE,
+                BEZEICHNUNG,
+                BIS,
+                BIS_UHRZEIT,
+                BRUTTO_BETRAG,
+                BRUTTO_BETRAG_EUR,
+                BRUTTO_BETRAG_INCL_TRINKG,
+                BRUTTO_INCL_TRINKG_EUR,
+                CI_LAND,
+                CI_PK_LAND,
+                CNT_PUNKTE,
+                CNT_PUNKTE_GESCHAETZT,
+                
+                
+                FK_CITY,
+                FK_FRMDW,
+                FK_FRMDW_MWST_SATZ,
+                FK_IMP_BA_BEL_OLD,
+                FK_INVENTAR,
+                FK_KATEGORIE,
+                FK_LA_KONTO,
+                FK_LAND,
+                FK_LA_WDH,
+                FK_LEX_BUCHUNG,
+                FK_LOCATION,
+                FK_LOCATION_VERG,
+                FK_PROJEKT,
+                FK_REAL_BELEG_EXIST,
+                FK_STATUS,
+                FK_STEUERSATZ,
+                FK_UMRECHNUNGSKURS,
+                FK_VERWENDUNGSZWECK,
+                FK_VON_ARBEITSTAG,
+                FK_WAEHRUNG,
+                FK_ZAHLUNGSART,
+                FRMDW_BRUTTO_BETRAG,
+                FRMDW_BRUTTO_INCL_TRINKG,
+                FRMDW_MWST_BETRAG,
+                FRMDW_NETTO_BETRAG,
+                
+                
+                IBAN,
+                INP_BEL_ALL_JAHR,
+                
+                KTOKAT_KATEGORIE,
+                
+                KUNDENNUMMER,
+                LA_DATUM,
+                LAND,
+                LA_WDH_NAME,
+                LA_WDH_VALUE,
+                LITER,
+                MENGENEINHEIT,
+                MWST_BETRAG,
+                MWST_BETRAG_EUR,
+                NETTO_BETRAG,
+                NETTO_BETRAG_EUR,
+                ORT,
+                PERSÖNLICH_VOR_ORT,
+                PK_BANK,
+                PK_BANKKONTO,
+                PK_INP_BELEGE_ALL,
+                PK_KONTO_BUCH_KAT,
+                PK_LAND,
+                PK_ORT,
+                PK_VERWENDUNGSZWECK,
+                PK_WAEHRUNG,
+                PREIS_PRO_MENGE,
+                
+                PROJ_AUFT_FK_GESCHAEFTSPARTNERTYP,
+                PROJ_AUFT_GESCHAEFTSPARTNER,
+                PROJ_AUFT_GESCHAEFTSPARTNERTYP,
+                
+                PROJ_AUFT_PK_GESCHAEFTSPARTNER,
+                PROJ_AUFT_PK_REL_GP_KONT,
+                
+                PROJ_BIS,
+                
+                PROJ_FK_AUFTRAGGEBER,
+                PROJ_FK_PROJEKTPARTNER_1,
+                PROJ_FK_PROJEKTPARTNER_2,
+                PROJ_KM_GERECHNET,
+                
+                PROJ_PK_PROJEKT,
+                PROJ_PP1_BESCHREIBUNG,
+                PROJ_PP1_FK_GESCHAEFTSPARTNERTYP,
+                PROJ_PP1_GESCHAEFTSPARTNER,
+                PROJ_PP1_GESCHAEFTSPARTNERTYP,
+                
+                PROJ_PP1_PK_REL_GP_KONT,
+                
+                PROJ_PP2_FK_GESCHAEFTSPARTNERTYP,
+                PROJ_PP2_GESCHAEFTSPARTNER,
+                PROJ_PP2_GESCHAEFTSPARTNERTYP,
+                
+                PROJ_PP2_PK_GESCHAEFTSPARTNER,
+                PROJ_PP2_PK_REL_GP_KONT,
+                
+                PROJ_PROJEKT,
+                PROJ_PROJEKT_ABGESCHLOSSEN,
+                PROJ_PROJEKT_ART,
+                PROJ_PSP_ELEMENT,
+                PROJ_RECHNUNG_GESTELLT,
+                PROJ_VON,
+                PROJ_ZAHLUNG_ABGESCHLOSSEN,
+                PUNKTE_BIS,
+                PUNKTE_VON,
+                STA_NAME,
+                STA_VALUE,
+                STEUERNUMMER,
+                STEU_FRMD_LAND,
+                STEU_FRMD_PK_LAND,
+                STEU_FRMD_PK_STEUERSATZ,
+                STEU_FRMD_STEUERSATZ,
+                STEU_FRMD_ZUS_ST,
+                STEU_LAND,
+                STEU_PK_LAND,
+                STEU_PK_STEUERSATZ,
+                STEU_STEUERSATZ,
+                STEU_ZUS_ST,
+                TANKSTELLEN_NR,
+                VBEL_ART,
+                VBEL_BETRAG,
+                VBEL_BEZEICHNUNG,
+                
+                VBEL_DATUM,
+                VBEL_DATUM_VERGEHEN,
+                VBEL_FK_ARBEITSTAG,
+                
+                VBEL_FK_BUCHUNG,
+                VBEL_FK_IMP_BA_BEL,
+                VBEL_FK_INVENTAR,
+                VBEL_FK_KATEGORIE,
+                VBEL_FK_PROJEKT,
+                VBEL_INVENTAR,
+                VBEL_KATEGORIE,
+                VBEL_KENNZEICHEN,
+                VBEL_MWST_BETRAG,
+                VBEL_NETTO,
+                VBEL_PK_IMP_BA_ALLG_BEL,
+                VBEL_PROJEKT,
+                VBEL_STEUERSATZ,
+                VBEL_VERWENDUNGSZWECK,
+                VBEL_WÄHRUNG,
+                VBEL_WÄHRUNG_BETRAG,
+                VBEL_ZAHLUNGSART,
+                
+                VERWENDUNGSZWECK,
+                VLOC_ADR,
+                VLOC_BESCHREIBUNG,
+                
+                VLOC_FK_ADRESSE,
+                VLOC_FK_LOCATION_TYPE,
+                VLOC_HSNR,
+                VLOC_LAND,
+                VLOC_LOCATION,
+                VLOC_LOCATION_TYPE,
+                
+                VLOC_ORT,
+                VLOC_PK_LOCATION,
+                VLOC_PLZ,
+                VLOC_POSTFACH,
+                VLOC_STRASSE,
+                VLOC_VERG_ADR,
+                VLOC_VERG_BESCHREIBUNG,
+                
+                VLOC_VERG_FK_ADRESSE,
+                VLOC_VERG_FK_LOCATION_TYPE,
+                VLOC_VERG_HSNR,
+                VLOC_VERG_LAND,
+                VLOC_VERG_LOCATION,
+                VLOC_VERG_LOCATION_TYPE,
+                
+                VLOC_VERG_ORT,
+                VLOC_VERG_PK_LOCATION,
+                VLOC_VERG_PLZ,
+                VLOC_VERG_POSTFACH,
+                VLOC_VERG_STRASSE,
+                VON,
+                VON_UHRZEIT,
+                WAEHRUNG,
+                WAEHRUNG_LANG,
+                
+                ZAHL_ART_NAME,
+                ZAHL_ART_VAL,
+                ZAHLUNGSBELEG,
+                ZAPFSÄULE ,
+                fk_zahlstatus
+                
+            from v_inp_belege_all
+        ) vinp on vinp.pk_inp_belege_all = rel.fk_inp_belege_all
+;
+--------------------------------------------------------
 --  DDL for View V_RENR
 --------------------------------------------------------
 
@@ -15949,13 +16056,30 @@ from t_rel_lex_kto_bel kto_bel
 from (
 select tp,  ja, max(nr) letzte_nr, max(nr) +1 neue_nr
 from (select *
-from (with stri as (select pk_rechnung, level lev, regexp_substr(rechnungsnummer,'[^-]+', 1, level) str from t_rechnung 
+from (with stri as (select pk_re_rechnung, level lev, regexp_substr(rechnungsnummer,'[^-]+', 1, level) str from t_re_rechnung 
     connect by  regexp_substr(rechnungsnummer, '[^-]+', 1, level) is not null)
-select lev, str, pk_rechnung
+select lev, str, pk_re_rechnung
 from stri
-group by lev, str, pk_rechnung)
+group by lev, str, pk_re_rechnung)
 pivot (max(str) for (lev) in (1 as tp,2 as nr,3 as mon,4 as ja,5)))
 group by tp, ja)
+;
+--------------------------------------------------------
+--  DDL for View V_RE_RATIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_RE_RATIO" ("RECHNUNGSDATUM", "FK_PROJ_PROJEKT", "RECHNUNGSBETRAG_NETTO", "ANTEIL_UMSATZ", "SUM_UMSATZ", "SUM_WERT", "SUM_WERT2", "SUM_WERT1") AS 
+  select 
+rechnungsdatum, 
+ fk_proj_projekt, 
+rechnungsbetrag_netto,
+ RATIO_TO_REPORT(rechnungsbetrag_netto) over (partition by fk_proj_projekt) * 100 as ANTEIL_UMSATZ
+,  SUM(rechnungsbetrag_netto) over (partition by fk_proj_projekt order by fk_proj_projekt rows between unbounded preceding and current row) as SUM_UMSATZ
+, sum(rechnungsbetrag_netto) over(order by fk_proj_projekt) sum_wert
+, sum(rechnungsbetrag_netto) over(order by rownum) sum_wert2
+, sum(rechnungsbetrag_netto) over(order by rownum, fk_proj_projekt) sum_wert1
+from t_re_rechnung
+order by rechnungsdatum, fk_proj_projekt
 ;
 --------------------------------------------------------
 --  DDL for View V_ROLLUP
@@ -15964,9 +16088,16 @@ group by tp, ja)
   CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ROLLUP" ("RECHNUNGSDATUM", "SUM_RECH", "AVG_RECH", "MIN_RECH", "MAX_RECH") AS 
   select 
 rechnungsdatum, sum(rechnungsbetrag_netto) sum_rech, avg(rechnungsbetrag_netto) avg_rech, min(rechnungsbetrag_netto) min_rech, max(rechnungsbetrag_netto) max_rech
-from t_rechnung
+from t_re_rechnung
 group by rollup (rechnungsdatum)
 order by 1
+;
+--------------------------------------------------------
+--  DDL for View V_STEUER_DATUM_OK
+--------------------------------------------------------
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_DATUM_OK" ("KONTONUMMER", "CNT", "CNT_DATUM_STEUER_OK", "DIFF_DATUM_STEUER_OK", "JAHR") AS 
+  select kontonummer, count(*) cnt,  sum(case when datum_steuer_ok is not null then 1 else 0 end) cnt_datum_steuer_ok,count(*)- sum(case when datum_steuer_ok is not null then 1 else 0 end)  diff_datum_steuer_ok , jahr from t_lex_kontenblatt group by kontonummer, jahr
 ;
 --------------------------------------------------------
 --  DDL for View V_STEUER_GES
@@ -15984,8 +16115,8 @@ ein as (
             sum(rechnungsbetrag_brutto) Betrag, 
             to_char(zahlungseingang,'YYYY') jahr, 
             to_char(to_number(to_char(zahlungseingang,'MM'))) monat 
-        from t_rechnung 
-        where fk_rechnungstyp = 2 
+        from t_re_rechnung 
+        where fk_std_rechnungstyp = 2 
         group by  
             to_char(zahlungseingang,'YYYY') , 
             to_char( to_number(to_char(zahlungseingang,'MM')))
@@ -15998,8 +16129,8 @@ ein_mwst as (
                     sum(mwst) betrag, 
                     to_char(zahlungseingang,'YYYY') jahr, 
                    to_char( to_number(to_char(zahlungseingang,'MM'))) monat
-                from t_rechnung 
-                where fk_rechnungstyp = 2 
+                from t_re_rechnung 
+                where fk_std_rechnungstyp = 2 
                 group by   
                   to_char(zahlungseingang,'YYYY') , 
                   to_char( to_number(to_char(zahlungseingang,'MM')))
@@ -16012,26 +16143,26 @@ ausg_mwst_bel as (
                   sum(mwst) betrag ,
                   to_char(jahr) jahr, 
                   to_char(monat) monat
-                from t_beleg
-                 left join t_arbeitstage on t_beleg.fk_arbeitstag = t_arbeitstage.pk_arbeitstage
-                where  fk_einkommensteuerrelevant= 1 or fk_unternehmenssteuerrelevant = 1 or fk_vorsteuerrelevant =1
-                 group by fk_belegart, jahr, monat
+                from t_bel_beleg
+                 left join t_bas_arbeitstage on t_bel_beleg.fk_bas_arbeitstag = t_bas_arbeitstage.pk_bas_arbeitstage
+                where  fk_std_einkommensteuerrelevant= 1 or fk_std_unternehmenssteuerrelevant = 1 or fk_std_vorsteuerrelevant =1
+                 group by fk_bas_belegart, jahr, monat
 
 ),
 ausg_mwst_zahl as (
                     select 
                       320 srt,
                      'AUSGABEN_MWST_ZAHL' pos, 
-                     t_konto_buch_kat."Kategorie"  kategorie,
+                     t_bas_konto_buch_kat.Kategorie kategorie,
                      sum("Betrag") betrag, 
                      to_char(jahr) jahr, 
                      to_char(monat) monat
                     from v_konten_zus
-                     left join t_arbeitstage on v_konten_zus.fk_buchungstag = t_arbeitstage.pk_arbeitstage
-                     left join t_konto_buch_kat on t_konto_buch_kat.pk_konto_buch_kat = v_konten_zus."FK_Kategorie"
-                    where  v_konten_zus."FK_Kategorie" = 46                    
+                     left join t_bas_arbeitstage on v_konten_zus.fk_bas_buchungstag = t_bas_arbeitstage.pk_bas_arbeitstage
+                     left join t_bas_konto_buch_kat on t_bas_konto_buch_kat.pk_bas_konto_buch_kat = v_konten_zus.FK_bas_Kategorie
+                    where  v_konten_zus.FK_bas_Kategorie = 46                    
                     group by 
-                     t_konto_buch_kat."Kategorie"  , 
+                     t_bas_konto_buch_kat.Kategorie  , 
                      jahr, 
                      monat
 
@@ -16040,17 +16171,17 @@ ausg_mwst_gut as (
                     select 
                       330 srt,
                       'AUSGABEN_MWST_GUT' pos, 
-                      t_konto_buch_kat."Kategorie"  kategorie,
+                      t_bas_konto_buch_kat.Kategorie  kategorie,
                       sum("Betrag") betrag, 
                       to_char(jahr) jahr, 
                       to_char(monat) monat
                     from v_konten_zus
-                     left join t_arbeitstage on v_konten_zus.fk_buchungstag = t_arbeitstage.pk_arbeitstage
-                     left join t_konto_buch_kat on t_konto_buch_kat.pk_konto_buch_kat = v_konten_zus."FK_Kategorie"
-                    where  v_konten_zus."FK_Kategorie" = 47 
+                     left join t_bas_arbeitstage on v_konten_zus.fk_bas_buchungstag = t_bas_arbeitstage.pk_bas_arbeitstage
+                     left join t_bas_konto_buch_kat on t_bas_konto_buch_kat.pk_bas_konto_buch_kat = v_konten_zus.FK_bas_Kategorie
+                    where  v_konten_zus.FK_bas_Kategorie= 47 
                     
                      group by 
-                      t_konto_buch_kat."Kategorie",
+                      t_bas_konto_buch_kat.Kategorie                      ,
                       jahr,
                       monat
 
@@ -16060,16 +16191,16 @@ ausg as (
             select 
              400 srt,
              'AUSGABEN' pos, 
-             t_belegart.belegart kategorie, 
+             t_bas_belegart.belegart kategorie, 
              sum(betrag_brutto) betrag , 
              to_char(jahr) jahr, 
              to_char(monat) monat
-            from t_beleg
-             left join t_arbeitstage on t_beleg.fk_arbeitstag = t_arbeitstage.pk_arbeitstage           
-             left join t_belegart on t_beleg.fk_belegart = t_belegart.pk_belegart
+            from t_bel_beleg
+             left join t_bas_arbeitstage on t_bel_beleg.fk_bas_arbeitstag = t_bas_arbeitstage.pk_bas_arbeitstage           
+             left join t_bas_belegart on t_bel_beleg.fk_bas_belegart = t_bas_belegart.pk_bas_belegart
             where 
-              (fk_einkommensteuerrelevant= 1 or fk_unternehmenssteuerrelevant = 1 or fk_vorsteuerrelevant =1)
-              and (fk_belegart not in (112,
+              (fk_std_einkommensteuerrelevant= 1 or fk_std_unternehmenssteuerrelevant = 1 or fk_std_vorsteuerrelevant =1)
+              and (fk_bas_belegart not in (112,
                 61,
                 161)
                 )
@@ -16339,142 +16470,19 @@ KATEGORIE,
 JAHR
 ;
 --------------------------------------------------------
---  DDL for View V_STEUERSATZ
+--  DDL for View V_STEUER_SATZ
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUERSATZ" ("STEUERSATZ", "LAND", "PK_LAND", "PK_STEUERSATZ", "ZUS_ST") AS 
-  select STEUERSATZ, land, pk_land, pk_steuersatz,  STEUERSATZ || ' (' || land || ')' zus_st
-  from t_steuersatz st
-    left join t_land la on st.fk_land = la.pk_land
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_SATZ" ("STEUERSATZ", "LAND", "PK_ADR_LAND", "PK_BAS_STEUERSATZ", "ZUS_ST") AS 
+  select STEUERSATZ, land, pk_adr_land, pk_bas_steuersatz,  STEUERSATZ || ' (' || land || ')' zus_st
+  from t_bas_steuersatz st
+    left join t_adr_land la on st.fk_adr_land = la.pk_adr_land
 ;
 --------------------------------------------------------
---  DDL for View V_T_BELEG
+--  DDL for View V_STEUER_VERPFL_ROUTE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_T_BELEG" ("CHILD", "PARENT", "BELEGART") AS 
-  select 'B' || pk_belegart as child,
-'A' || 0 parent,
-belegart
-
-from t_belegart
-union
-select 'C' ||  pk_beleg,
-'B' || fk_belegart,
-pk_beleg || ' ' || datum || ' ' || beleg
-from t_beleg
-;
---------------------------------------------------------
---  DDL for View V_T_BELEG_DAT
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_T_BELEG_DAT" ("CHILD", "PARENT", "TXT", "SORT") AS 
-  select 
-  'B' || nvl(jahr,0) as child,
-  'A' || 0 parent,
-  'Jahr: ' || nvl(jahr,0) txt,
-  'Jahr: ' || nvl(jahr,0) as sort
-from t_arbeitstage
-group by nvl(jahr,0)
---2. Ebene
-union
-select 
-  'C-1' ||  nvl(jahr,0),
-  'B' || nvl(jahr,0),
-  'Jahr' || nvl(jahr,0),
-  'A - Beleg ' || nvl(jahr,0) pk_beleg
-from t_arbeitstage
-union
-select 
-  'C-2' || nvl(jahr,0)  as child,
-  'B'  || nvl(jahr,0)  parent,
-  'Monate'  || nvl(jahr,0)   txt,
-  'Jahr: '  || nvl(jahr,0)   as sort
-from t_arbeitstage
---3. Ebene
-union
-select 
-  'D' ||  tbel.pk_beleg,
-  'C-1' || nvl(jahr,0),
-  tbel.pk_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
-  'A - Beleg ' || tbel.datum || belegart || pk_beleg
-from t_beleg tbel
-  left join t_arbeitstage tarb on tbel.pk_beleg = tarb.pk_arbeitstage
-  left join t_belegart tbela on tbel.fk_belegart = tbela.pk_belegart
-union
---monat
---1. Ebene
-select 
-  'D' ||  nvl(jahr,0) || nvl(monat,0) as child,
-  'C-2' || nvl(jahr,0) parent,
-  'Monat: ' || monat,
-  'B - Monat ' ||  monat
-from t_arbeitstage
-union
---2. Ebene
-select 
-  'E-1' ||  nvl(jahr,0) || nvl(monat,0) as child,
-  'D' ||  nvl(jahr,0) || nvl(monat,0) parent,
-  'Monat ' ,
-  'C - Monat ' ||  monat
-from t_arbeitstage
-union
-select 
-  'E-2' ||  nvl(jahr,0) || nvl(monat,0) || 0 as child,
-  'D' ||  nvl(jahr,0) || nvl(monat,0) parent,
-  'Arbeitstage ' ||  nvl(jahr,0) || nvl(monat,0) || 0 ,
-  'C - Monat ' ||  monat
-from t_arbeitstage
---2. Ebene
-
-union
---3. Ebene
-select 
-  'F' ||  tbel.pk_beleg,
-  'E-1' || nvl(jahr,0) || nvl(monat,0),
-  tbel.pk_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
-  'A - Beleg ' || tbel.datum || belegart || pk_beleg
-from t_beleg tbel
-  left join t_arbeitstage tarb on tbel.pk_beleg = tarb.pk_arbeitstage
-  left join t_belegart tbela on tbel.fk_belegart = tbela.pk_belegart
-union
---arbeitstag
---1. Ebene
-select 
-  'F' || nvl(jahr,0) || nvl(monat,0) || nvl(PK_arbeitstage,0) as child,
-  'E-2' || nvl(jahr,0) || nvl(monat,0) || 0 parent,
-  case when FK_Wochenende = 1 then 'WE' end || case when FK_Arbeitstag = 1 then 'WT'  when FK_Arbeitstag = 0 and fk_wochenende = 0 then 'FT' end || ': ' || 'Tag: ' || Datum || ' ' 
-  || Feiertag  || nvl(jahr,0) || nvl(monat,0) || 0 || pk_arbeitstage tg,
-  'Tag: ' || datum
-from t_arbeitstage 
---2. Ebene
-union
-select 
-  'G' ||  tbel.pk_beleg,
-  'F' || nvl(jahr,0) || nvl(monat,0) || nvl(PK_arbeitstage,0),
-  tbel.pk_beleg || ' ' || tbel.datum || ' ' || tbel.beleg,
-  'A - Beleg ' || tbel.datum || belegart || pk_beleg || pk_arbeitstage
-from t_beleg tbel
-  left join t_arbeitstage tarb on tbel.fk_arbeitstag = tarb.pk_arbeitstage
-  left join t_belegart tbela on tbel.fk_belegart = tbela.pk_belegart
-;
---------------------------------------------------------
---  DDL for View V_VORANMELD_ZUORD_KAS_SPLIT
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_VORANMELD_ZUORD_KAS_SPLIT" ("PK_KTO_KAS_KASSE", "FK_KONTOTYP", "FK_EIN_AUS", "DATUM", "BETRAG", "BUCHUNGSTEXT", "COMM", "JAHR", "CREATION_DATE", "FK_MAIN_KEY", "FK_KTO_BANKKONTO", "FREMDWAEHRUNGSBETRAG", "FK_FREMDWAEHRUNG", "FK_BAS_ARBEITSTAG", "FK_BAS_KATEGORIE", "FK_VERWENDUNGSZWECK", "FK_INVENTAR", "FK_LOCATION", "FK_MAIN_KEY_BANKKONTO", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEUER_MONAT", "FK_STEUER_VORANMELDG", "DATUM_STEUERB_ÜBERG", "DATUM_FINANZAMT_UEBERG") AS 
-  select "PK_KTO_KAS_KASSE","FK_BAS_KONTOTYP","FK_EIN_AUS",
-  "DATUM","BETRAG","BUCHUNGSTEXT","COMM","JAHR","CREATION_DATE",
-  "FK_MAIN_KEY","FK_KTO_BANKKONTO","FREMDWAEHRUNGSBETRAG","FK_BAS_FREMDWAEHRUNG","FK_BAS_ARBEITSTAG",
-  "FK_BAS_KATEGORIE","FK_BAS_VERWENDUNGSZWECK","FK_INV_INVENTAR","FK_ADR_LOCATION","FK_MAIN_KEY_BANKKONTO","DATUM_DUPL_OK","DUPL_BEMERKUNG",
-  "FK_CONTR_DUPL_STATUS","FK_STEUER_MONAT","FK_STEUER_VORANMELDG","DATUM_STEUERB_UEBERG","DATUM_FINANZAMT_UEBERG"
-  from t_kto_kas_kasse
-  where creation_date <= '07.02.2020' and  jahr = 2020 and substr(datum, 4,2) = '01'
-;
---------------------------------------------------------
---  DDL for View V_VPF_ROUTE
---------------------------------------------------------
-
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_VPF_ROUTE" ("D", "RNR") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_VERPFL_ROUTE" ("D", "RNR") AS 
   select '1' || ',' || 3 || ',' || koordinaten || ',' ||  chr(39) ||  row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_verpfl_beleg_ort) || ' - ' ||  ort || '-' || vdet.datum_verpfl_mehraufwd || chr(39) || ',' || 'Company' || ',' || 'Firma' || ',0,' d,row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_verpfl_beleg_ort) rnr
 from t_steuer_verpfl_mehraufwd_det vdet
  left join t_steuer_verpfl_mehraufwd v on vdet.fk_steuer_verpfl_mehraufwd = v.pk_steuer_verpfl_mehraufwd
@@ -16484,17 +16492,17 @@ where v.fk_bas_monat = 1 and fk_bas_jahr = 2020
  order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_verpfl_beleg_ort
 ;
 --------------------------------------------------------
---  DDL for View V_ZAHLUNGSWIEDERHOLUNG
+--  DDL for View V_STEUER_VORANMELD_ZUORD_KAS_SPLIT
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_ZAHLUNGSWIEDERHOLUNG" ("KAT", "BEZEICHNUNG", "BETRAG_GESAMT", "DATUM", "KENNZEICHEN", "WIEDERHOLUNG") AS 
-  select 'KFZ Versicherung/Steuern' kat, bezeichnung, betrag_gesamt,datum, Kennzeichen,wiederholung 
-        from T_car_auto_versicherung
-        where wiederholung is not null and wiederholung <> 'einmalig'
-        union
-        select 'Krankenversicherung' , buchungstext, betrag, datum, null, wiederholung
-        from t_bei_kk_krankenkasse
-        where Buchungstext = 'Beitrag'
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_VORANMELD_ZUORD_KAS_SPLIT" ("PK_KTO_KAS_KASSE", "FK_KONTOTYP", "FK_EIN_AUS", "DATUM", "BETRAG", "BUCHUNGSTEXT", "COMM", "JAHR", "CREATION_DATE", "FK_MAIN_KEY", "FK_KTO_BANKKONTO", "FREMDWAEHRUNGSBETRAG", "FK_FREMDWAEHRUNG", "FK_BAS_ARBEITSTAG", "FK_BAS_KATEGORIE", "FK_VERWENDUNGSZWECK", "FK_INVENTAR", "FK_LOCATION", "FK_MAIN_KEY_BANKKONTO", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEUER_MONAT", "FK_STEUER_VORANMELDG", "DATUM_STEUERB_ÜBERG", "DATUM_FINANZAMT_UEBERG") AS 
+  select "PK_KTO_KAS_KASSE","FK_BAS_KONTOTYP","FK_EIN_AUS",
+  "DATUM","BETRAG","BUCHUNGSTEXT","COMM","JAHR","CREATION_DATE",
+  "FK_MAIN_KEY","FK_KTO_BANKKONTO","FREMDWAEHRUNGSBETRAG","FK_BAS_FREMDWAEHRUNG","FK_BAS_ARBEITSTAG",
+  "FK_BAS_KATEGORIE","FK_BAS_VERWENDUNGSZWECK","FK_INV_INVENTAR","FK_ADR_LOCATION","FK_MAIN_KEY_BANKKONTO","DATUM_DUPL_OK","DUPL_BEMERKUNG",
+  "FK_CONTR_DUPL_STATUS","FK_STEUER_MONAT","FK_STEUER_VORANMELDG","DATUM_STEUERB_UEBERG","DATUM_FINANZAMT_UEBERG"
+  from t_kto_kas_kasse
+  where creation_date <= '07.02.2020' and  jahr = 2020 and substr(datum, 4,2) = '01'
 ;
 --------------------------------------------------------
 --  DDL for Index EBA_DEMO_IG_TEXT_FTX
@@ -18821,7 +18829,7 @@ where v.fk_bas_monat = 1 and fk_bas_jahr = 2020
 --  DDL for Index T_NIEDERSCHLAGSMENGE_PK
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "COMPANY"."T_NIEDERSCHLAGSMENGE_PK" ON "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" ("PK_NIEDERSCHLAGSMENGE") 
+  CREATE UNIQUE INDEX "COMPANY"."T_NIEDERSCHLAGSMENGE_PK" ON "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" ("PK_WET_NIEDERSCHLAGSMENGE") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -24433,9 +24441,7 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
-    IF INSERTING AND :NEW.PK_NIEDERSCHLAGSMENGE IS NULL THEN
-      SELECT T_NIEDERSCHLAGSMENGE_SEQ.NEXTVAL INTO :NEW.PK_NIEDERSCHLAGSMENGE FROM SYS.DUAL;
-    END IF;
+    NULL;
   END COLUMN_SEQUENCES;
 END;
 /
@@ -27119,6 +27125,23 @@ BEGIN
 END;
 /
 ALTER TRIGGER "COMPANY"."T_WAEHRUNG_TRG1" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_WET_NIEDERSCHLAGSMENGE_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_TRG" 
+BEFORE INSERT ON T_WET_NIEDERSCHLAGSMENGE 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.PK_WET_NIEDERSCHLAGSMENGE IS NULL THEN
+      SELECT T_WET_NIEDERSCHLAGSMENGE_SEQ.NEXTVAL INTO :NEW.PK_WET_NIEDERSCHLAGSMENGE FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_TRG" ENABLE;
 --------------------------------------------------------
 --  DDL for Procedure EBA_DEMO_DIALOG_DATA
 --------------------------------------------------------
@@ -46328,8 +46351,8 @@ END;
 --  Constraints for Table T_WET_NIEDERSCHLAGSMENGE
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" MODIFY ("PK_NIEDERSCHLAGSMENGE" NOT NULL ENABLE);
-  ALTER TABLE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" ADD CONSTRAINT "T_NIEDERSCHLAGSMENGE_PK" PRIMARY KEY ("PK_NIEDERSCHLAGSMENGE")
+  ALTER TABLE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" MODIFY ("PK_WET_NIEDERSCHLAGSMENGE" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_WET_NIEDERSCHLAGSMENGE" ADD CONSTRAINT "T_NIEDERSCHLAGSMENGE_PK" PRIMARY KEY ("PK_WET_NIEDERSCHLAGSMENGE")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1

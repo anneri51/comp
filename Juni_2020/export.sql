@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Montag-Juni-08-2020   
+--  Datei erstellt -Dienstag-Juni-09-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -718,8 +718,8 @@ DROP TABLE "COMPANY"."T_STEU_STEUER_MONAT_TODO" cascade constraints;
 DROP TABLE "COMPANY"."T_STEU_STEUER_SATZ_LEX" cascade constraints;
 DROP TABLE "COMPANY"."T_STEU_STEUER_STEUERNUMMER" cascade constraints;
 DROP TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD" cascade constraints;
+DROP TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" cascade constraints;
 DROP TABLE "COMPANY"."T_STEU_STEUER_VORANMLDG" cascade constraints;
-DROP TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" cascade constraints;
 DROP TABLE "COMPANY"."T_TEL_RECHNUNG_DET" cascade constraints;
 DROP TABLE "COMPANY"."T_TEL_TELEFONKARTEN" cascade constraints;
 DROP TABLE "COMPANY"."T_TEX_TEXTILREINIGUNG" cascade constraints;
@@ -772,7 +772,7 @@ DROP VIEW "COMPANY"."V_IMP_BEL_ZUS";
 DROP VIEW "COMPANY"."V_IMP_KONTEN_CHEDK";
 DROP VIEW "COMPANY"."V_IMP_TEL_CONTROL";
 DROP VIEW "COMPANY"."V_INP_BELEGE_ALL";
-DROP VIEW "COMPANY"."V_INP_BELEGE_ALL1";
+DROP VIEW "COMPANY"."V_INP_BELEGE_ALL_IMP";
 DROP VIEW "COMPANY"."V_INV_INVENTARE";
 DROP VIEW "COMPANY"."V_KON_GESCHAEFTSPARTNER";
 DROP VIEW "COMPANY"."V_KONTR_CNT_LEX_ZAHL";
@@ -808,11 +808,11 @@ DROP VIEW "COMPANY"."V_REL_LEX1";
 DROP VIEW "COMPANY"."V_RENR";
 DROP VIEW "COMPANY"."V_RE_RATIO";
 DROP VIEW "COMPANY"."V_ROLLUP";
-DROP VIEW "COMPANY"."V_STEUER_DATUM_OK";
-DROP VIEW "COMPANY"."V_STEUER_GES";
-DROP VIEW "COMPANY"."V_STEUER_SATZ";
-DROP VIEW "COMPANY"."V_STEUER_VERPFL_ROUTE";
-DROP VIEW "COMPANY"."V_STEUER_VORANMELD_ZUORD_KAS_SPLIT";
+DROP VIEW "COMPANY"."V_STEU_STEUER_DATUM_OK";
+DROP VIEW "COMPANY"."V_STEU_STEUER_GES";
+DROP VIEW "COMPANY"."V_STEU_STEUER_SATZ";
+DROP VIEW "COMPANY"."V_STEU_STEUER_VERPFL_ROUTE";
+DROP VIEW "COMPANY"."V_STEU_STEUER_VORANMELD_ZUORD_KAS_SPLIT";
 DROP PROCEDURE "COMPANY"."EBA_DEMO_DIALOG_DATA";
 DROP PROCEDURE "COMPANY"."EBA_DEMO_IG_DATA";
 DROP PROCEDURE "COMPANY"."GETCOMPINPBELEGEALL";
@@ -6976,12 +6976,12 @@ Liegenschaftsnutzer
 --------------------------------------------------------
 
   CREATE TABLE "COMPANY"."T_IMP_INP_BELEGE_ALL" 
-   (	"PK_INP_BELEGE_ALL" NUMBER, 
+   (	"PK_IMP_INP_BELEGE_ALL" NUMBER, 
 	"FK_LEX_BUCHUNG" NUMBER, 
 	"FK_BAS_KAT_KATEGORIE" NUMBER, 
 	"FK_BAS_KAL_ARBEITSTAG" NUMBER, 
 	"FK_KTO_BUCHUNG" NUMBER, 
-	"FK_STD_ZAHLUNGSART" NUMBER, 
+	"FK_BAS_STD_ZAHLUNGSART" NUMBER, 
 	"FK_BAS_VERW_VERWENDUNGSZWECK" NUMBER, 
 	"FK_INV_INVENTAR" NUMBER, 
 	"FK_PROJ_PROJEKT" NUMBER, 
@@ -6993,7 +6993,7 @@ Liegenschaftsnutzer
 	"VON" DATE, 
 	"BIS" DATE, 
 	"NETTO_BETRAG" NUMBER, 
-	"FK_BAS_STEUER_SATZ" NUMBER, 
+	"FK_BAS_STEU_STEUER_SATZ" NUMBER, 
 	"MWST_BETRAG" NUMBER, 
 	"BRUTTO_BETRAG" NUMBER, 
 	"FK_BAS_MON_WAEHRUNG" NUMBER, 
@@ -7034,7 +7034,7 @@ Liegenschaftsnutzer
 	"LA_DATUM" DATE, 
 	"FK_LA_KONTO" NUMBER, 
 	"FK_LA_WDH" NUMBER, 
-	"FK_STD_ZAHLSTATUS" NUMBER, 
+	"FK_BAS_STD_ZAHLSTATUS" NUMBER, 
 	"COMM_VERGEHEN" CLOB, 
 	"VERG_BEHOERDE" VARCHAR2(4000 BYTE), 
 	"CNT_PUNKTE" NUMBER, 
@@ -7058,7 +7058,7 @@ Liegenschaftsnutzer
 	"FK_CALC_STATE" NUMBER, 
 	"FK_CALC_STATE_EUR" NUMBER, 
 	"FK_CALC_STATE_FRMDW" NUMBER, 
-	"FK_STD_STATUS" NUMBER, 
+	"FK_BAS_STD_STATUS" NUMBER, 
 	"DATUM_VERGEHEN" DATE, 
 	"CREATE_AT" DATE, 
 	"CREATE_BY" VARCHAR2(20 BYTE), 
@@ -8169,7 +8169,7 @@ Liegenschaftsnutzer
 	"FK_BAS_KAT_KATEGORIE" NUMBER, 
 	"FK_BAS_KAL_ARBEITSTAG" NUMBER, 
 	"FK_KTO_BUCHUNG" NUMBER, 
-	"FK_STD_ZAHLUNGSART" NUMBER, 
+	"FK_BAS_STD_ZAHLUNGSART" NUMBER, 
 	"FK_BAS_VERW_VERWENDUNGSZWECK" NUMBER, 
 	"FK_INV_INVENTAR" NUMBER, 
 	"FK_PROJ_PROJEKT" NUMBER, 
@@ -8181,7 +8181,7 @@ Liegenschaftsnutzer
 	"VON" DATE, 
 	"BIS" DATE, 
 	"NETTO_BETRAG" NUMBER, 
-	"FK_BAS_STEUER_SATZ" NUMBER, 
+	"FK_BAS_STEU_STEUER_SATZ" NUMBER, 
 	"MWST_BETRAG" NUMBER, 
 	"BRUTTO_BETRAG" NUMBER, 
 	"FK_BAS_MON_WAEHRUNG" NUMBER, 
@@ -8190,7 +8190,7 @@ Liegenschaftsnutzer
 	"COMM_REST_BELEG" CLOB, 
 	"COMM_TEL_BELEG" CLOB, 
 	"COMM_PRODUKTE" CLOB, 
-	"COMM_BEGRÜNDUNG" CLOB, 
+	"COMM_BEGRUENDUNG" CLOB, 
 	"COMM_SONSTIGES" CLOB, 
 	"BELEG" BLOB, 
 	"ZAHLUNGSBELEG" BLOB, 
@@ -8233,7 +8233,7 @@ Liegenschaftsnutzer
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
- LOB ("COMM_BEGRÜNDUNG") STORE AS BASICFILE (
+ LOB ("COMM_BEGRUENDUNG") STORE AS BASICFILE (
   TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192 RETENTION 
   NOCACHE LOGGING 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -9359,8 +9359,8 @@ Liegenschaftsnutzer
 	"DATUM_DUPL_OK" DATE, 
 	"DUPL_BEMERKUNG" VARCHAR2(4000 BYTE), 
 	"FK_CONTR_DUPL_STATUS" NUMBER, 
-	"FK_STEUER_MONAT" NUMBER, 
-	"FK_STEUER_VORANMELDG" NUMBER, 
+	"FK_STEU_STEUER_MONAT" NUMBER, 
+	"FK_STEU_STEUER_VORANMELDG" NUMBER, 
 	"DATUM_STEUERB_ÜBERG" DATE, 
 	"DATUM_FINANZAMT_ÜBERG" DATE, 
 	"LOAD_DATE" DATE
@@ -11828,13 +11828,44 @@ Liegenschaftsnutzer
 
   CREATE TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD" 
    (	"PK_STEU_STEUER_VERPFL_MEHRAUFWD" NUMBER, 
-	"FK_BAS_KAL_MONAT" NUMBER, 
-	"FK_BAS_KAL_JAHR" NUMBER, 
+	"MONAT" NUMBER, 
+	"JAHR" NUMBER, 
 	"FK_BAS_STD_STATUS" NUMBER, 
 	"COMM" VARCHAR2(4000 BYTE), 
 	"FK_INP_BELEGE_ALL" NUMBER, 
 	"CREATION_DATE" DATE, 
 	"FK_STEU_STEUER_MONAT" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table T_STEU_STEUER_VERPFL_MEHRAUFWD_DET
+--------------------------------------------------------
+
+  CREATE TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" 
+   (	"PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET" NUMBER, 
+	"FK_STEU_STEUER_VERPFL_MEHRAUFWD" NUMBER, 
+	"DATUM_VERPFL_MEHRAUFWD" DATE, 
+	"FK_BAS_KAL_DATUM_VERPFL_MEHRAUFWD" NUMBER, 
+	"DESCR" VARCHAR2(4000 BYTE), 
+	"COMM" VARCHAR2(4000 BYTE), 
+	"FK_ADR_ORT" NUMBER, 
+	"FK_STD_VERPFL_FRUEHSTUECK" NUMBER, 
+	"FK_STD_VERPFL_VERPFLEGUNGSPAUSCHALE_VOLL" NUMBER, 
+	"FK_STD_VERPFL_VERPFLEGUNGSPAUSCHALE_TEIL" NUMBER, 
+	"FK_STD_VERPFL_VERPFLEGUNSPAUSCHALE_KUERZ" NUMBER, 
+	"FK_STD_VERPFL_UEBERNACHTUNGSPAUSCHALE" NUMBER, 
+	"FK_STD_VERPFL_STATUS_VP_VOLL" NUMBER, 
+	"FK_STD_VERPFL_STATUS_VP_TEIL" NUMBER, 
+	"FK_STD_VERPFL_STATUS_VP_KUERZ" NUMBER, 
+	"FK_STD_VERPFL_STATUS_UEP" NUMBER, 
+	"FK_BAS_STD_STATUS" NUMBER, 
+	"CREATION_DATE" DATE, 
+	"MODIFY_DATE" DATE
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -11884,37 +11915,6 @@ Liegenschaftsnutzer
   STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) ;
---------------------------------------------------------
---  DDL for Table T_STEU_VERPFL_MEHRAUFWD_DET
---------------------------------------------------------
-
-  CREATE TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" 
-   (	"PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET" NUMBER, 
-	"FK_STEU_STEUER_VERPFL_MEHRAUFWD" NUMBER, 
-	"DATUM_VERPFL_MEHRAUFWD" DATE, 
-	"FK_BAS_KAL_DATUM_VERPFL_MEHRAUFWD" NUMBER, 
-	"DESCR" VARCHAR2(4000 BYTE), 
-	"COMM" VARCHAR2(4000 BYTE), 
-	"FK_ADR_ORT" NUMBER, 
-	"FK_STD_VERPFL_FRUEHSTUECK" NUMBER, 
-	"FK_STD_VERPFL_VERPFLEGUNGSPAUSCHALE_VOLL" NUMBER, 
-	"FK_STD_VERPFL_VERPFLEGUNGSPAUSCHALE_TEIL" NUMBER, 
-	"FK_STD_VERPFL_VERPFLEGUNSPAUSCHALE_KUERZ" NUMBER, 
-	"FK_STD_VERPFL_UEBERNACHTUNGSPAUSCHALE" NUMBER, 
-	"FK_STD_VERPFL_STATUS_VP_VOLL" NUMBER, 
-	"FK_STD_VERPFL_STATUS_VP_TEIL" NUMBER, 
-	"FK_STD_VERPFL_STATUS_VP_KUERZ" NUMBER, 
-	"FK_STD_VERPFL_STATUS_UEP" NUMBER, 
-	"FK_BAS_STD_STATUS" NUMBER, 
-	"CREATION_DATE" DATE, 
-	"MODIFY_DATE" DATE
-   ) SEGMENT CREATION IMMEDIATE 
-  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
- NOCOMPRESS LOGGING
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" ;
 --------------------------------------------------------
 --  DDL for Table T_TEL_RECHNUNG_DET
 --------------------------------------------------------
@@ -12890,7 +12890,7 @@ case when (netto_betrag + mwst_betrag) is not null then 2 else 0 end b2,
 case when (netto_betrag * steuersatz / 100 + netto_betrag) is not null then 1 else 0 end b3
 
 from t_inp_belege_pos_all inp1
-     left join t_bas_steuer_satz st on st.pk_bas_steuer_satz = inp1.fk_bas_steuer_satz
+     left join t_bas_steu_steuer_satz st on st.pk_bas_steu_steuer_satz = inp1.fk_bas_steu_steuer_satz
      left join t_bas_mon_waehrung wa on wa.pk_bas_mon_waehrung = inp1.fk_bas_mon_waehrung
      left join t_adr_land la on la.pk_adr_land = inp1.fk_adr_land
      )
@@ -12983,7 +12983,7 @@ end brutto_new
 
 
 from t_inp_belege_pos_all inp1
-     left join t_bas_steuer_satz st on st.pk_bas_steuer_satz = inp1.fk_bas_steuer_satz
+     left join t_bas_steu_steuer_satz st on st.pk_bas_steu_steuer_satz = inp1.fk_bas_steu_steuer_satz
      left join t_bas_mon_waehrung wa on wa.pk_bas_mon_waehrung = inp1.fk_bas_mon_waehrung
      left join t_adr_land la on la.pk_adr_land = inp1.fk_adr_land
      left join abf_net ab on ab.pk_inp_belege_pos_all = inp1.pk_inp_belege_pos_all
@@ -13034,7 +13034,7 @@ where cnt_storno = cnt_ok
 --  DDL for View V_COMP_INP_BELEGE_ALL
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_ROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STD_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_STD_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INT_INTERNET_APP", "FK_CONTR_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_KON_GESCHAEFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADR_ADRESSE_SCHNELL") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_BAS_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_ROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEU_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_BAS_STD_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_BAS_STD_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INT_INTERNET_APP", "FK_CONTR_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_KON_GESCHAEFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADR_ADRESSE_SCHNELL") AS 
   with dat1 as (select 'old' sel, null sum1, 1 nr_row, inp.*
 from t_inp_belege_all inp
 --where pk_inp_belege_all = :p373_pk_inp_belege_all_1
@@ -13053,7 +13053,7 @@ FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 FK_KTO_BUCHUNG	,	--	NUMBER
-FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 FK_INV_INVENTAR	,	--	NUMBER
 FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13065,7 +13065,7 @@ BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
 NETTO_BETRAG	,	--	NUMBER
-FK_BAS_STEUER_SATZ	,	--	NUMBER
+FK_BAS_STEU_STEUER_SATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
 FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13106,7 +13106,7 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_STD_ZAHLSTATUS	,	--	NUMBER
+FK_BAS_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
@@ -13130,7 +13130,7 @@ FK_REAL_BELEG_EXIST	,	--	NUMBER
 FK_CALC_STATE	,	--	NUMBER
 FK_CALC_STATE_EUR	,	--	NUMBER
 FK_CALC_STATE_FRMDW	,	--	NUMBER
-FK_STD_STATUS	,	--	NUMBER
+FK_BAS_STD_STATUS	,	--	NUMBER
 DATUM_VERGEHEN	,	--	DATE
 CREATE_AT	,	--	DATE
 CREATE_BY	,	--	VARCHAR2
@@ -13159,7 +13159,7 @@ FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 FK_KTO_BUCHUNG	,	--	NUMBER
-FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_bAS_STD_ZAHLUNGSART	,	--	NUMBER
 FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 FK_INV_INVENTAR	,	--	NUMBER
 FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13171,7 +13171,7 @@ BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
 NETTO_BETRAG	,	--	NUMBER
-FK_BAS_STEUER_SATZ	,	--	NUMBER
+FK_BAS_STEU_STEUER_SATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
 FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13212,7 +13212,7 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_STD_ZAHLSTATUS	,	--	NUMBER
+FK_BAS_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
@@ -13236,7 +13236,7 @@ FK_REAL_BELEG_EXIST	,	--	NUMBER
 FK_CALC_STATE	,	--	NUMBER
 FK_CALC_STATE_EUR	,	--	NUMBER
 FK_CALC_STATE_FRMDW	,	--	NUMBER
-FK_STD_STATUS	,	--	NUMBER
+FK_BAS_STD_STATUS	,	--	NUMBER
 DATUM_VERGEHEN	,	--	DATE
 CREATE_AT	,	--	DATE
 CREATE_BY	,	--	VARCHAR2
@@ -13269,7 +13269,7 @@ row_number() over (partition by FK_LEX_BUCHUNG order by nr_row) FK_LEX_BUCHUNG,
 row_number() over (partition by FK_BAS_KAT_KATEGORIE order by nr_row) FK_BAS_KAT_KATEGORIE,
 row_number() over (partition by FK_BAS_KAL_ARBEITSTAG order by nr_row) FK_BAS_KAL_ARBEITSTAG,
 row_number() over (partition by FK_KTO_BUCHUNG order by nr_row) FK_KTO_BUCHUNG,
-row_number() over (partition by FK_STD_ZAHLUNGSART order by nr_row) FK_STD_ZAHLUNGSART,
+row_number() over (partition by FK_BAS_STD_ZAHLUNGSART order by nr_row) FK_BAS_STD_ZAHLUNGSART,
 row_number() over (partition by FK_BAS_VERW_VERWENDUNGSZWECK order by nr_row) FK_BAS_VERW_VERWENDUNGSZWECK,
 row_number() over (partition by FK_INV_INVENTAR order by nr_row) FK_INV_INVENTAR,
 row_number() over (partition by FK_PROJ_PROJEKT order by nr_row) FK_PROJ_PROJEKT,
@@ -13281,7 +13281,7 @@ row_number() over (partition by BEL_DATUM order by nr_row) BEL_DATUM,
 row_number() over (partition by VON order by nr_row) VON,
 row_number() over (partition by BIS order by nr_row) BIS,
 row_number() over (partition by NETTO_BETRAG order by nr_row) NETTO_BETRAG,
-row_number() over (partition by FK_BAS_STEUER_SATZ order by nr_row) FK_BAS_STEUER_SATZ,
+row_number() over (partition by FK_BAS_STEU_STEUER_SATZ order by nr_row) FK_BAS_STEU_STEUER_SATZ,
 row_number() over (partition by MWST_BETRAG order by nr_row) MWST_BETRAG,
 row_number() over (partition by BRUTTO_BETRAG order by nr_row) BRUTTO_BETRAG,
 row_number() over (partition by FK_BAS_MON_WAEHRUNG order by nr_row) FK_BAS_MON_WAEHRUNG,
@@ -13322,7 +13322,7 @@ row_number() over (partition by MENGENEINHEIT order by nr_row) MENGENEINHEIT,
 row_number() over (partition by LA_DATUM order by nr_row) LA_DATUM,
 row_number() over (partition by FK_LA_KONTO order by nr_row) FK_LA_KONTO,
 row_number() over (partition by FK_LA_WDH order by nr_row) FK_LA_WDH,
-row_number() over (partition by FK_STD_ZAHLSTATUS order by nr_row) FK_STD_ZAHLSTATUS,
+row_number() over (partition by FK_BAS_STD_ZAHLSTATUS order by nr_row) FK_BAS_STD_ZAHLSTATUS,
 row_number() over (partition by COMM_VERGEHEN order by nr_row) COMM_VERGEHEN,
 row_number() over (partition by VERG_BEHOERDE order by nr_row) VERG_BEHOERDE,
 row_number() over (partition by CNT_PUNKTE order by nr_row) CNT_PUNKTE,
@@ -13346,7 +13346,7 @@ row_number() over (partition by FK_REAL_BELEG_EXIST order by nr_row) FK_REAL_BEL
 row_number() over (partition by FK_CALC_STATE order by nr_row) FK_CALC_STATE,
 row_number() over (partition by FK_CALC_STATE_EUR order by nr_row) FK_CALC_STATE_EUR,
 row_number() over (partition by FK_CALC_STATE_FRMDW order by nr_row) FK_CALC_STATE_FRMDW,
-row_number() over (partition by FK_STD_STATUS order by nr_row) FK_STD_STATUS,
+row_number() over (partition by FK_BAS_STD_STATUS order by nr_row) FK_BAS_STD_STATUS,
 row_number() over (partition by DATUM_VERGEHEN order by nr_row) DATUM_VERGEHEN,
 row_number() over (partition by CREATE_AT order by nr_row) CREATE_AT,
 row_number() over (partition by CREATE_BY order by nr_row) CREATE_BY,
@@ -13384,7 +13384,7 @@ to_char(FK_LEX_BUCHUNG) FK_LEX_BUCHUNG ,		--	NUMBER
 to_char(FK_BAS_KAT_KATEGORIE) FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 to_char(FK_BAS_KAL_ARBEITSTAG) FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 to_char(FK_KTO_BUCHUNG) FK_KTO_BUCHUNG	,	--	NUMBER
-to_char(FK_STD_ZAHLUNGSART) FK_STD_ZAHLUNGSART	,	--	NUMBER
+to_char(FK_BAS_STD_ZAHLUNGSART) FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 to_char(FK_BAS_VERW_VERWENDUNGSZWECK	) FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 to_char(FK_INV_INVENTAR	) FK_INV_INVENTAR	,	--	NUMBER
 to_char(FK_PROJ_PROJEKT) FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13396,7 +13396,7 @@ to_char(BEL_DATUM) BEL_DATUM	,	--	DATE
 to_char(VON) VON	,	--	DATE
 to_char(BIS) BIS	,	--	DATE
 to_char(NETTO_BETRAG) NETTO_BETRAG	,	--	NUMBER
-to_char(FK_BAS_STEUER_SATZ) FK_BAS_STEUER_SATZ		,	--	NUMBER
+to_char(FK_BAS_STEU_STEUER_SATZ) FK_BAS_STEU_STEUER_SATZ		,	--	NUMBER
 to_char(MWST_BETRAG) MWST_BETRAG		,	--	NUMBER
 to_char(BRUTTO_BETRAG) BRUTTO_BETRAG	,	--	NUMBER
 to_char(FK_BAS_MON_WAEHRUNG) FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13437,7 +13437,7 @@ to_char(MENGENEINHEIT) MENGENEINHEIT, --NUMBER
 to_char(LA_DATUM) LA_DATUM, --DATE
 to_char(FK_LA_KONTO) FK_LA_KONTO, --NUMBER
 to_char(FK_LA_WDH) FK_LA_WDH, --NUMBER
-to_char(FK_STD_ZAHLSTATUS) FK_STD_ZAHLSTATUS, --NUMBER
+to_char(FK_BAS_STD_ZAHLSTATUS) FK_BAS_STD_ZAHLSTATUS, --NUMBER
 to_char(COMM_VERGEHEN) COMM_VERGEHEN, --CLOB
 to_char(VERG_BEHOERDE) VERG_BEHOERDE, --VARCHAR2
 to_char(CNT_PUNKTE) CNT_PUNKTE, --NUMBER
@@ -13461,7 +13461,7 @@ to_char(FK_REAL_BELEG_EXIST) FK_REAL_BELEG_EXIST, --NUMBER
 to_char(FK_CALC_STATE) FK_CALC_STATE, --NUMBER
 to_char(FK_CALC_STATE_EUR) FK_CALC_STATE_EUR, --NUMBER
 to_char(FK_CALC_STATE_FRMDW) FK_CALC_STATE_FRMDW, --NUMBER
-to_char(FK_STD_STATUS) FK_STD_STATUS, --NUMBER
+to_char(FK_BAS_STD_STATUS) FK_BAS_STD_STATUS, --NUMBER
 to_char(DATUM_VERGEHEN) DATUM_VERGEHEN, --DATE
 to_char(CREATE_AT) CREATE_AT, --DATE
 to_char(CREATE_BY) CREATE_BY, --VARCHAR2
@@ -13490,7 +13490,7 @@ to_char(FK_LEX_BUCHUNG) FK_LEX_BUCHUNG ,		--	NUMBER
 to_char(FK_BAS_KAT_KATEGORIE) FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 to_char(FK_BAS_KAL_ARBEITSTAG) FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 to_char(FK_KTO_BUCHUNG) FK_KTO_BUCHUNG	,	--	NUMBER
-to_char(FK_STD_ZAHLUNGSART) FK_STD_ZAHLUNGSART	,	--	NUMBER
+to_char(FK_BAS_STD_ZAHLUNGSART) FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 to_char(FK_BAS_VERW_VERWENDUNGSZWECK	) FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 to_char(FK_INV_INVENTAR	) FK_INV_INVENTAR	,	--	NUMBER
 to_char(FK_PROJ_PROJEKT) FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13502,7 +13502,7 @@ to_char(BEL_DATUM) BEL_DATUM	,	--	DATE
 to_char(VON) VON	,	--	DATE
 to_char(BIS) BIS	,	--	DATE
 to_char(NETTO_BETRAG) NETTO_BETRAG	,	--	NUMBER
-to_char(FK_BAS_STEUER_SATZ) FK_BAS_STEUER_SATZ		,	--	NUMBER
+to_char(FK_BAS_sTEU_STEUER_SATZ) FK_BAS_STEU_STEUER_SATZ		,	--	NUMBER
 to_char(MWST_BETRAG) MWST_BETRAG		,	--	NUMBER
 to_char(BRUTTO_BETRAG) BRUTTO_BETRAG	,	--	NUMBER
 to_char(FK_BAS_MON_WAEHRUNG) FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13543,7 +13543,7 @@ to_char(MENGENEINHEIT) MENGENEINHEIT, --NUMBER
 to_char(LA_DATUM) LA_DATUM, --DATE
 to_char(FK_LA_KONTO) FK_LA_KONTO, --NUMBER
 to_char(FK_LA_WDH) FK_LA_WDH, --NUMBER
-to_char(FK_STD_ZAHLSTATUS) FK_STD_ZAHLSTATUS, --NUMBER
+to_char(FK_BAS_STD_ZAHLSTATUS) FK_BAS_STD_ZAHLSTATUS, --NUMBER
 to_char(COMM_VERGEHEN) COMM_VERGEHEN, --CLOB
 to_char(VERG_BEHOERDE) VERG_BEHOERDE, --VARCHAR2
 to_char(CNT_PUNKTE) CNT_PUNKTE, --NUMBER
@@ -13567,7 +13567,7 @@ to_char(FK_REAL_BELEG_EXIST) FK_REAL_BELEG_EXIST, --NUMBER
 to_char(FK_CALC_STATE) FK_CALC_STATE, --NUMBER
 to_char(FK_CALC_STATE_EUR) FK_CALC_STATE_EUR, --NUMBER
 to_char(FK_CALC_STATE_FRMDW) FK_CALC_STATE_FRMDW, --NUMBER
-to_char(FK_STD_STATUS) FK_STD_STATUS, --NUMBER
+to_char(FK_BAS_STD_STATUS) FK_BAS_STD_STATUS, --NUMBER
 to_char(DATUM_VERGEHEN) DATUM_VERGEHEN, --DATE
 to_char(CREATE_AT) CREATE_AT, --DATE
 to_char(CREATE_BY) CREATE_BY, --VARCHAR2
@@ -13597,7 +13597,7 @@ case when max(FK_LEX_BUCHUNG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_KAT_KATEGORIE) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_KAL_ARBEITSTAG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_KTO_BUCHUNG) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_ZAHLUNGSART) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_ZAHLUNGSART) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_VERW_VERWENDUNGSZWECK) =1 then 0 else 1 end + --NUMBER
 case when max(FK_INV_INVENTAR) =1 then 0 else 1 end + --NUMBER
 case when max(FK_PROJ_PROJEKT) =1 then 0 else 1 end + --NUMBER
@@ -13609,7 +13609,7 @@ case when max(BEL_DATUM) =1 then 0 else 1 end + --DATE
 case when max(VON) =1 then 0 else 1 end + --DATE
 case when max(BIS) =1 then 0 else 1 end + --DATE
 case when max(NETTO_BETRAG) =1 then 0 else 1 end + --NUMBER
-case when max(FK_BAS_STEUER_SATZ) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STEU_STEUER_SATZ) =1 then 0 else 1 end + --NUMBER
 case when max(MWST_BETRAG) =1 then 0 else 1 end + --NUMBER
 case when max(BRUTTO_BETRAG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_MON_WAEHRUNG) =1 then 0 else 1 end + --NUMBER
@@ -13650,7 +13650,7 @@ case when max(MENGENEINHEIT) =1 then 0 else 1 end + --NUMBER
 case when max(LA_DATUM) =1 then 0 else 1 end + --DATE
 case when max(FK_LA_KONTO) =1 then 0 else 1 end + --NUMBER
 case when max(FK_LA_WDH) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_ZAHLSTATUS) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_ZAHLSTATUS) =1 then 0 else 1 end + --NUMBER
 case when max(COMM_VERGEHEN) =1 then 0 else 1 end + --CLOB
 case when max(VERG_BEHOERDE) =1 then 0 else 1 end + --VARCHAR2
 case when max(CNT_PUNKTE) =1 then 0 else 1 end + --NUMBER
@@ -13674,7 +13674,7 @@ case when max(FK_REAL_BELEG_EXIST) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE_EUR) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE_FRMDW) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_STATUS) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_STATUS) =1 then 0 else 1 end + --NUMBER
 case when max(DATUM_VERGEHEN) =1 then 0 else 1 end + --DATE
 case when max(CREATE_AT) =1 then 0 else 1 end + --DATE
 case when max(CREATE_BY) =1 then 0 else 1 end + --VARCHAR2
@@ -13700,7 +13700,7 @@ case when max(FK_LEX_BUCHUNG) =1 then '<span style="background-color:red"> 1</sp
 case when max(FK_BAS_KAT_KATEGORIE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_KAL_ARBEITSTAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_KTO_BUCHUNG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_ZAHLUNGSART) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_ZAHLUNGSART) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_VERW_VERWENDUNGSZWECK) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_INV_INVENTAR) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_PROJ_PROJEKT) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -13712,7 +13712,7 @@ case when max(BEL_DATUM) =1 then '<span style="background-color:red"> 1</span>' 
 case when max(VON) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(BIS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(NETTO_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_BAS_STEUER_SATZ) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STEU_STEUER_SATZ) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(MWST_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(BRUTTO_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_MON_WAEHRUNG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -13753,7 +13753,7 @@ case when max(MENGENEINHEIT) =1 then '<span style="background-color:red"> 1</spa
 case when max(LA_DATUM) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(FK_LA_KONTO) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_LA_WDH) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_ZAHLSTATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_ZAHLSTATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(COMM_VERGEHEN) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --CLOB
 case when max(VERG_BEHOERDE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --VARCHAR2
 case when max(CNT_PUNKTE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -13777,7 +13777,7 @@ case when max(FK_REAL_BELEG_EXIST) =1 then '<span style="background-color:red"> 
 case when max(FK_CALC_STATE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_CALC_STATE_EUR) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_CALC_STATE_FRMDW) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_STATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_STATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(DATUM_VERGEHEN) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(CREATE_AT) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(CREATE_BY) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --VARCHAR2
@@ -13803,17 +13803,17 @@ from vgl
 
 select rownum rnr, all_."SEL",all_."SUM1",all_."NR_ROW",all_."SEL_PK_INP_BELEGE_ALL",
 all_."ERG",all_."PK_INP_BELEGE_ALL",all_."FK_LEX_BUCHUNG",all_."FK_BAS_KAT_KATEGORIE",all_."FK_BAS_KAL_ARBEITSTAG",
-all_."FK_KTO_BUCHUNG",all_."FK_STD_ZAHLUNGSART",all_."FK_BAS_VERW_VERWENDUNGSZWECK",all_."FK_INV_INVENTAR",all_."FK_PROJ_PROJEKT",all_."BELEGNUMMER",
-all_."BEZEICHNUNG",all_."FK_ADR_LAND",all_."FK_ADR_CITY",all_."BEL_DATUM",all_."VON",all_."BIS",all_."NETTO_BETRAG",all_."FK_BAS_STEUER_SATZ",
+all_."FK_KTO_BUCHUNG",all_."FK_BAS_STD_ZAHLUNGSART",all_."FK_BAS_VERW_VERWENDUNGSZWECK",all_."FK_INV_INVENTAR",all_."FK_PROJ_PROJEKT",all_."BELEGNUMMER",
+all_."BEZEICHNUNG",all_."FK_ADR_LAND",all_."FK_ADR_CITY",all_."BEL_DATUM",all_."VON",all_."BIS",all_."NETTO_BETRAG",all_."FK_BAS_STEU_STEUER_SATZ",
 all_."MWST_BETRAG",all_."BRUTTO_BETRAG",all_."FK_BAS_MON_WAEHRUNG",all_."STEUERNUMMER",all_."FK_BAS_MON_UMRECHNUNGSKURS",all_."COMM_REST_BELEG",all_."COMM_TEL_BELEG",
 all_."COMM_PRODUKTE",all_."COMM_BEGRUENDUNG",all_."COMM_SONSTIGES",all_."BELEG",all_."ZAHLUNGSBELEG",all_."LITER",all_."ZAPFSAEULE",all_."FK_LOC_LOCATION",
 all_."PERSOENLICH_VOR_ORT",all_."BELEG_UHRZEIT",all_."VON_UHRZEIT",all_."BIS_UHRZEIT",all_."FK_BAS_KAL_VON_ARBEITSTAG",all_."FK_BAS_KAL_BIS_ARBEITSTAG",all_."COMM_ADRESSE",
 all_."TANKSTELLEN_NR",all_."BRUTTO_BETRAG_INCL_TRINKG",all_."COMM_PARKTICKET",all_."FRMDW_NETTO_BETRAG",all_."FK_BAS_MON_FRMDW",all_."FK_BAS_MON_FRMDW_MWST_SATZ",all_."FRMDW_MWST_BETRAG",
 all_."FRMDW_BRUTTO_BETRAG",all_."FRMDW_BRUTTO_INCL_TRINKG",all_."MWST_BETRAG_EUR",all_."BRUTTO_BETRAG_EUR",all_."BRUTTO_INCL_TRINKG_EUR",all_."NETTO_BETRAG_EUR",all_."PREIS_PRO_MENGE",
-all_."MENGENEINHEIT",all_."LA_DATUM",all_."FK_LA_KONTO",all_."FK_LA_WDH",all_."FK_STD_ZAHLSTATUS",all_."COMM_VERGEHEN",all_."VERG_BEHOERDE",all_."CNT_PUNKTE",all_."FK_BEL_BELEG_ABLAGE",all_."FK_ABL_ORDNER_PAGE",all_."CNT_PUNKTE_GESCHAETZT",
+all_."MENGENEINHEIT",all_."LA_DATUM",all_."FK_LA_KONTO",all_."FK_LA_WDH",all_."FK_BAS_STD_ZAHLSTATUS",all_."COMM_VERGEHEN",all_."VERG_BEHOERDE",all_."CNT_PUNKTE",all_."FK_BEL_BELEG_ABLAGE",all_."FK_ABL_ORDNER_PAGE",all_."CNT_PUNKTE_GESCHAETZT",
 all_."PUNKTE_VON",all_."PUNKTE_BIS",all_."FK_LOC_LOCATION_VERG",all_."FK_IMP_BA_BEL_OLD",all_."GESCHW_IST",all_."GESCHW_SOLL",all_."GESCHW_UEBER_GRZ",all_."GESCHW_UEBER_GRZ_ABZGL_MESSTOL",all_."CODE_BUSSGELD",all_."DESCR_BUSSGELD",
 all_."GEZAHLT_AM",all_."WEBSEITE",all_."KUNDENNUMMER",all_."FK_REAL_BELEG_EXIST",all_."FK_CALC_STATE",all_."FK_CALC_STATE_EUR",all_."FK_CALC_STATE_FRMDW",
-all_."FK_STD_STATUS",all_."DATUM_VERGEHEN",all_."CREATE_AT",all_."CREATE_BY",all_."MODIFY_AT",all_."MODIFY_BY",all_."DATUM_ORT_OK",all_."DATUM_ADDRESSE_OK",all_."DATUM_BUSSGELD_OK",
+all_."FK_BAS_STD_STATUS",all_."DATUM_VERGEHEN",all_."CREATE_AT",all_."CREATE_BY",all_."MODIFY_AT",all_."MODIFY_BY",all_."DATUM_ORT_OK",all_."DATUM_ADDRESSE_OK",all_."DATUM_BUSSGELD_OK",
 all_."DATUM_BELEG_POS_OK",all_."DATUM_BUCHUNG_OK",all_."DATUM_VERPFL_BEL_OK",all_."FK_INT_INTERNET_APP",all_."FK_CONTR_DUPL_STATUS",all_."DATUM_DUPL_OK",all_."DUPL_BEMERKUNG",all_."FK_KON_GESCHAEFTSPARTNER",all_."DUMMY",all_."STORNIERT",all_."FK_ADR_ADRESSE_SCHNELL"
 from all_
 ;
@@ -13821,7 +13821,7 @@ from all_
 --  DDL for View V_COMP_INP_BELEGE_ALL1
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL1" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STD_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_STD_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INT_INTERNET_APP", "FK_CONTR_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_KON_GESCHAEFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADR_ADRESSE_SCHNELL") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_COMP_INP_BELEGE_ALL1" ("RNR", "SEL", "SUM1", "NR_ROW", "SEL_PK_INP_BELEGE_ALL", "ERG", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_BAS_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEU_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_BAS_STD_ZAHLSTATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "FK_CALC_STATE", "FK_CALC_STATE_EUR", "FK_CALC_STATE_FRMDW", "FK_BAS_STD_STATUS", "DATUM_VERGEHEN", "CREATE_AT", "CREATE_BY", "MODIFY_AT", "MODIFY_BY", "DATUM_ORT_OK", "DATUM_ADDRESSE_OK", "DATUM_BUSSGELD_OK", "DATUM_BELEG_POS_OK", "DATUM_BUCHUNG_OK", "DATUM_VERPFL_BEL_OK", "FK_INT_INTERNET_APP", "FK_CONTR_DUPL_STATUS", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_KON_GESCHAEFTSPARTNER", "DUMMY", "STORNIERT", "FK_ADR_ADRESSE_SCHNELL") AS 
   with dat1 as (select 'old' sel, null sum1, 1 nr_row, inp.*
 from t_inp_belege_all inp
 --where pk_inp_belege_all = :p373_pk_inp_belege_all_1
@@ -13840,7 +13840,7 @@ FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 FK_KTO_BUCHUNG	,	--	NUMBER
-FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 FK_INV_INVENTAR	,	--	NUMBER
 FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13852,7 +13852,7 @@ BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
 NETTO_BETRAG	,	--	NUMBER
-FK_BAS_STEUER_SATZ	,	--	NUMBER
+FK_BAS_STEU_STEUER_SATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
 FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13893,7 +13893,7 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_STD_ZAHLSTATUS	,	--	NUMBER
+FK_BAS_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
@@ -13917,7 +13917,7 @@ FK_REAL_BELEG_EXIST	,	--	NUMBER
 FK_CALC_STATE	,	--	NUMBER
 FK_CALC_STATE_EUR	,	--	NUMBER
 FK_CALC_STATE_FRMDW	,	--	NUMBER
-FK_STD_STATUS	,	--	NUMBER
+FK_BAS_STD_STATUS	,	--	NUMBER
 DATUM_VERGEHEN	,	--	DATE
 CREATE_AT	,	--	DATE
 CREATE_BY	,	--	VARCHAR2
@@ -13946,7 +13946,7 @@ FK_LEX_BUCHUNG	,	--	NUMBER
 FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 FK_KTO_BUCHUNG	,	--	NUMBER
-FK_STD_ZAHLUNGSART	,	--	NUMBER
+FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 FK_INV_INVENTAR	,	--	NUMBER
 FK_PROJ_PROJEKT	,	--	NUMBER
@@ -13958,7 +13958,7 @@ BEL_DATUM	,	--	DATE
 VON	,	--	DATE
 BIS	,	--	DATE
 NETTO_BETRAG	,	--	NUMBER
-FK_BAS_STEUER_SATZ	,	--	NUMBER
+FK_BAS_STEU_STEUER_SATZ	,	--	NUMBER
 MWST_BETRAG	,	--	NUMBER
 BRUTTO_BETRAG	,	--	NUMBER
 FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -13999,7 +13999,7 @@ MENGENEINHEIT	,	--	NUMBER
 LA_DATUM	,	--	DATE
 FK_LA_KONTO	,	--	NUMBER
 FK_LA_WDH	,	--	NUMBER
-FK_STD_ZAHLSTATUS	,	--	NUMBER
+FK_BAS_STD_ZAHLSTATUS	,	--	NUMBER
 length(COMM_VERGEHEN) COMM_VERGEHEN	,	--	CLOB
 VERG_BEHOERDE	,	--	VARCHAR2
 CNT_PUNKTE	,	--	NUMBER
@@ -14023,7 +14023,7 @@ FK_REAL_BELEG_EXIST	,	--	NUMBER
 FK_CALC_STATE	,	--	NUMBER
 FK_CALC_STATE_EUR	,	--	NUMBER
 FK_CALC_STATE_FRMDW	,	--	NUMBER
-FK_STD_STATUS	,	--	NUMBER
+FK_BAS_STD_STATUS	,	--	NUMBER
 DATUM_VERGEHEN	,	--	DATE
 CREATE_AT	,	--	DATE
 CREATE_BY	,	--	VARCHAR2
@@ -14054,7 +14054,7 @@ row_number() over (partition by FK_LEX_BUCHUNG order by nr_row) FK_LEX_BUCHUNG,
 row_number() over (partition by FK_BAS_KAT_KATEGORIE order by nr_row) FK_BAS_KAT_KATEGORIE,
 row_number() over (partition by FK_BAS_KAL_ARBEITSTAG order by nr_row) FK_BAS_KAL_ARBEITSTAG,
 row_number() over (partition by FK_KTO_BUCHUNG order by nr_row) FK_KTO_BUCHUNG,
-row_number() over (partition by FK_STD_ZAHLUNGSART order by nr_row) FK_STD_ZAHLUNGSART,
+row_number() over (partition by FK_BAS_STD_ZAHLUNGSART order by nr_row) FK_BAS_STD_ZAHLUNGSART,
 row_number() over (partition by FK_BAS_VERW_VERWENDUNGSZWECK order by nr_row) FK_BAS_VERW_VERWENDUNGSZWECK,
 row_number() over (partition by FK_INV_INVENTAR order by nr_row) FK_INV_INVENTAR,
 row_number() over (partition by FK_PROJ_PROJEKT order by nr_row) FK_PROJ_PROJEKT,
@@ -14066,7 +14066,7 @@ row_number() over (partition by BEL_DATUM order by nr_row) BEL_DATUM,
 row_number() over (partition by VON order by nr_row) VON,
 row_number() over (partition by BIS order by nr_row) BIS,
 row_number() over (partition by NETTO_BETRAG order by nr_row) NETTO_BETRAG,
-row_number() over (partition by FK_BAS_STEUER_SATZ order by nr_row) FK_BAS_STEUER_SATZ,
+row_number() over (partition by FK_BAS_STEU_STEUER_SATZ order by nr_row) FK_BAS_STEU_STEUER_SATZ,
 row_number() over (partition by MWST_BETRAG order by nr_row) MWST_BETRAG,
 row_number() over (partition by BRUTTO_BETRAG order by nr_row) BRUTTO_BETRAG,
 row_number() over (partition by FK_BAS_MON_WAEHRUNG order by nr_row) FK_BAS_MON_WAEHRUNG,
@@ -14107,7 +14107,7 @@ row_number() over (partition by MENGENEINHEIT order by nr_row) MENGENEINHEIT,
 row_number() over (partition by LA_DATUM order by nr_row) LA_DATUM,
 row_number() over (partition by FK_LA_KONTO order by nr_row) FK_LA_KONTO,
 row_number() over (partition by FK_LA_WDH order by nr_row) FK_LA_WDH,
-row_number() over (partition by FK_STD_ZAHLSTATUS order by nr_row) FK_STD_ZAHLSTATUS,
+row_number() over (partition by FK_BAS_STD_ZAHLSTATUS order by nr_row) FK_BAS_STD_ZAHLSTATUS,
 row_number() over (partition by COMM_VERGEHEN order by nr_row) COMM_VERGEHEN,
 row_number() over (partition by VERG_BEHOERDE order by nr_row) VERG_BEHOERDE,
 row_number() over (partition by CNT_PUNKTE order by nr_row) CNT_PUNKTE,
@@ -14131,7 +14131,7 @@ row_number() over (partition by FK_REAL_BELEG_EXIST order by nr_row) FK_REAL_BEL
 row_number() over (partition by FK_CALC_STATE order by nr_row) FK_CALC_STATE,
 row_number() over (partition by FK_CALC_STATE_EUR order by nr_row) FK_CALC_STATE_EUR,
 row_number() over (partition by FK_CALC_STATE_FRMDW order by nr_row) FK_CALC_STATE_FRMDW,
-row_number() over (partition by FK_STD_STATUS order by nr_row) FK_STD_STATUS,
+row_number() over (partition by FK_BAS_STD_STATUS order by nr_row) FK_BAS_STD_STATUS,
 row_number() over (partition by DATUM_VERGEHEN order by nr_row) DATUM_VERGEHEN,
 row_number() over (partition by CREATE_AT order by nr_row) CREATE_AT,
 row_number() over (partition by CREATE_BY order by nr_row) CREATE_BY,
@@ -14169,7 +14169,7 @@ to_char(FK_LEX_BUCHUNG) FK_LEX_BUCHUNG ,		--	NUMBER
 to_char(FK_BAS_KAT_KATEGORIE) FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 to_char(FK_BAS_KAL_ARBEITSTAG) FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 to_char(FK_KTO_BUCHUNG) FK_KTO_BUCHUNG	,	--	NUMBER
-to_char(FK_STD_ZAHLUNGSART) FK_STD_ZAHLUNGSART	,	--	NUMBER
+to_char(FK_BAS_STD_ZAHLUNGSART) FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 to_char(FK_BAS_VERW_VERWENDUNGSZWECK	) FK_BAS_VERW_VERWENDUNGSZWECK	,	--	NUMBER
 to_char(FK_INV_INVENTAR	) FK_INV_INVENTAR	,	--	NUMBER
 to_char(FK_PROJ_PROJEKT) FK_PROJ_PROJEKT	,	--	NUMBER
@@ -14181,7 +14181,7 @@ to_char(BEL_DATUM) BEL_DATUM	,	--	DATE
 to_char(VON) VON	,	--	DATE
 to_char(BIS) BIS	,	--	DATE
 to_char(NETTO_BETRAG) NETTO_BETRAG	,	--	NUMBER
-to_char(FK_BAS_STEUER_SATZ) FK_BAS_STEUER_SATZ		,	--	NUMBER
+to_char(FK_BAS_STEU_STEUER_SATZ) FK_BAS_STEU_STEUER_SATZ		,	--	NUMBER
 to_char(MWST_BETRAG) MWST_BETRAG		,	--	NUMBER
 to_char(BRUTTO_BETRAG) BRUTTO_BETRAG	,	--	NUMBER
 to_char(FK_BAS_MON_WAEHRUNG) FK_BAS_MON_WAEHRUNG	,	--	NUMBER
@@ -14222,7 +14222,7 @@ to_char(MENGENEINHEIT) MENGENEINHEIT, --NUMBER
 to_char(LA_DATUM) LA_DATUM, --DATE
 to_char(FK_LA_KONTO) FK_LA_KONTO, --NUMBER
 to_char(FK_LA_WDH) FK_LA_WDH, --NUMBER
-to_char(FK_STD_ZAHLSTATUS) FK_STD_ZAHLSTATUS, --NUMBER
+to_char(FK_BAS_STD_ZAHLSTATUS) FK_BAS_STD_ZAHLSTATUS, --NUMBER
 to_char(COMM_VERGEHEN) COMM_VERGEHEN, --CLOB
 to_char(VERG_BEHOERDE) VERG_BEHOERDE, --VARCHAR2
 to_char(CNT_PUNKTE) CNT_PUNKTE, --NUMBER
@@ -14246,7 +14246,7 @@ to_char(FK_REAL_BELEG_EXIST) FK_REAL_BELEG_EXIST, --NUMBER
 to_char(FK_CALC_STATE) FK_CALC_STATE, --NUMBER
 to_char(FK_CALC_STATE_EUR) FK_CALC_STATE_EUR, --NUMBER
 to_char(FK_CALC_STATE_FRMDW) FK_CALC_STATE_FRMDW, --NUMBER
-to_char(FK_STD_STATUS) FK_STD_STATUS, --NUMBER
+to_char(FK_BAS_STD_STATUS) FK_BAS_STD_STATUS, --NUMBER
 to_char(DATUM_VERGEHEN) DATUM_VERGEHEN, --DATE
 to_char(CREATE_AT) CREATE_AT, --DATE
 to_char(CREATE_BY) CREATE_BY, --VARCHAR2
@@ -14275,7 +14275,7 @@ to_char(FK_LEX_BUCHUNG) FK_LEX_BUCHUNG ,		--	NUMBER
 to_char(FK_BAS_KAT_KATEGORIE) FK_BAS_KAT_KATEGORIE	,	--	NUMBER
 to_char(FK_BAS_KAL_ARBEITSTAG) FK_BAS_KAL_ARBEITSTAG	,	--	NUMBER
 to_char(FK_KTO_BUCHUNG) FK_BUCHUNG	,	--	NUMBER
-to_char(FK_STD_ZAHLUNGSART) FK_ZAHLUNGSART	,	--	NUMBER
+to_char(FK_BAS_STD_ZAHLUNGSART) FK_BAS_STD_ZAHLUNGSART	,	--	NUMBER
 to_char(FK_BAS_VERW_VERWENDUNGSZWECK	) FK_VERWENDUNGSZWECK	,	--	NUMBER
 to_char(FK_INV_INVENTAR	) FK_INVENTAR	,	--	NUMBER
 to_char(FK_PROJ_PROJEKT) FK_PROJEKT	,	--	NUMBER
@@ -14287,7 +14287,7 @@ to_char(BEL_DATUM) BEL_DATUM	,	--	DATE
 to_char(VON) VON	,	--	DATE
 to_char(BIS) BIS	,	--	DATE
 to_char(NETTO_BETRAG) NETTO_BETRAG	,	--	NUMBER
-to_char(FK_BAS_STEUER_SATZ) FK_STEUERSATZ		,	--	NUMBER
+to_char(FK_BAS_STEU_STEUER_SATZ) FK_BAS_STEU_STEUER_SATZ		,	--	NUMBER
 to_char(MWST_BETRAG) MWST_BETRAG		,	--	NUMBER
 to_char(BRUTTO_BETRAG) BRUTTO_BETRAG	,	--	NUMBER
 to_char(FK_BAS_MON_WAEHRUNG) fK_WAEHRUNG	,	--	NUMBER
@@ -14328,7 +14328,7 @@ to_char(MENGENEINHEIT) MENGENEINHEIT, --NUMBER
 to_char(LA_DATUM) LA_DATUM, --DATE
 to_char(FK_LA_KONTO) FK_LA_KONTO, --NUMBER
 to_char(FK_LA_WDH) FK_LA_WDH, --NUMBER
-to_char(FK_STD_ZAHLSTATUS) FK_STD_ZAHLSTATUS, --NUMBER
+to_char(FK_BAS_STD_ZAHLSTATUS) FK_STD_ZAHLSTATUS, --NUMBER
 to_char(COMM_VERGEHEN) COMM_VERGEHEN, --CLOB
 to_char(VERG_BEHOERDE) VERG_BEHOERDE, --VARCHAR2
 to_char(CNT_PUNKTE) CNT_PUNKTE, --NUMBER
@@ -14352,7 +14352,7 @@ to_char(FK_REAL_BELEG_EXIST) FK_REAL_BELEG_EXIST, --NUMBER
 to_char(FK_CALC_STATE) FK_CALC_STATE, --NUMBER
 to_char(FK_CALC_STATE_EUR) FK_CALC_STATE_EUR, --NUMBER
 to_char(FK_CALC_STATE_FRMDW) FK_CALC_STATE_FRMDW, --NUMBER
-to_char(FK_STD_STATUS) FK_STD_STATUS, --NUMBER
+to_char(FK_BAS_STD_STATUS) FK_BAS_STD_STATUS, --NUMBER
 to_char(DATUM_VERGEHEN) DATUM_VERGEHEN, --DATE
 to_char(CREATE_AT) CREATE_AT, --DATE
 to_char(CREATE_BY) CREATE_BY, --VARCHAR2
@@ -14383,7 +14383,7 @@ case when max(FK_LEX_BUCHUNG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_KAT_KATEGORIE) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_KAL_ARBEITSTAG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_KTO_BUCHUNG) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_ZAHLUNGSART) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_ZAHLUNGSART) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_VERW_VERWENDUNGSZWECK) =1 then 0 else 1 end + --NUMBER
 case when max(FK_INV_INVENTAR) =1 then 0 else 1 end + --NUMBER
 case when max(FK_PROJ_PROJEKT) =1 then 0 else 1 end + --NUMBER
@@ -14395,7 +14395,7 @@ case when max(BEL_DATUM) =1 then 0 else 1 end + --DATE
 case when max(VON) =1 then 0 else 1 end + --DATE
 case when max(BIS) =1 then 0 else 1 end + --DATE
 case when max(NETTO_BETRAG) =1 then 0 else 1 end + --NUMBER
-case when max(FK_BAS_STEUER_SATZ) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STEU_STEUER_SATZ) =1 then 0 else 1 end + --NUMBER
 case when max(MWST_BETRAG) =1 then 0 else 1 end + --NUMBER
 case when max(BRUTTO_BETRAG) =1 then 0 else 1 end + --NUMBER
 case when max(FK_BAS_MON_WAEHRUNG) =1 then 0 else 1 end + --NUMBER
@@ -14436,7 +14436,7 @@ case when max(MENGENEINHEIT) =1 then 0 else 1 end + --NUMBER
 case when max(LA_DATUM) =1 then 0 else 1 end + --DATE
 case when max(FK_LA_KONTO) =1 then 0 else 1 end + --NUMBER
 case when max(FK_LA_WDH) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_ZAHLSTATUS) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_ZAHLSTATUS) =1 then 0 else 1 end + --NUMBER
 case when max(COMM_VERGEHEN) =1 then 0 else 1 end + --CLOB
 case when max(VERG_BEHOERDE) =1 then 0 else 1 end + --VARCHAR2
 case when max(CNT_PUNKTE) =1 then 0 else 1 end + --NUMBER
@@ -14460,7 +14460,7 @@ case when max(FK_REAL_BELEG_EXIST) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE_EUR) =1 then 0 else 1 end + --NUMBER
 case when max(FK_CALC_STATE_FRMDW) =1 then 0 else 1 end + --NUMBER
-case when max(FK_STD_STATUS) =1 then 0 else 1 end + --NUMBER
+case when max(FK_BAS_STD_STATUS) =1 then 0 else 1 end + --NUMBER
 case when max(DATUM_VERGEHEN) =1 then 0 else 1 end + --DATE
 case when max(CREATE_AT) =1 then 0 else 1 end + --DATE
 case when max(CREATE_BY) =1 then 0 else 1 end + --VARCHAR2
@@ -14488,7 +14488,7 @@ case when max(FK_LEX_BUCHUNG) =1 then '<span style="background-color:red"> 1</sp
 case when max(FK_BAS_KAT_KATEGORIE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_KAL_ARBEITSTAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_KTO_BUCHUNG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_ZAHLUNGSART) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_ZAHLUNGSART) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_VERW_VERWENDUNGSZWECK) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_INV_INVENTAR) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_PROJ_PROJEKT) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -14500,7 +14500,7 @@ case when max(BEL_DATUM) =1 then '<span style="background-color:red"> 1</span>' 
 case when max(VON) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(BIS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(NETTO_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_BAS_STEUER_SATZ) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STEU_STEUER_SATZ) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(MWST_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(BRUTTO_BETRAG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_BAS_MON_WAEHRUNG) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -14541,7 +14541,7 @@ case when max(MENGENEINHEIT) =1 then '<span style="background-color:red"> 1</spa
 case when max(LA_DATUM) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(FK_LA_KONTO) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_LA_WDH) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_ZAHLSTATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_ZAHLSTATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(COMM_VERGEHEN) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --CLOB
 case when max(VERG_BEHOERDE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --VARCHAR2
 case when max(CNT_PUNKTE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
@@ -14565,7 +14565,7 @@ case when max(FK_REAL_BELEG_EXIST) =1 then '<span style="background-color:red"> 
 case when max(FK_CALC_STATE) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_CALC_STATE_EUR) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(FK_CALC_STATE_FRMDW) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
-case when max(FK_STD_STATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
+case when max(FK_BAS_STD_STATUS) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --NUMBER
 case when max(DATUM_VERGEHEN) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(CREATE_AT) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --DATE
 case when max(CREATE_BY) =1 then '<span style="background-color:red"> 1</span>' else '<span style="background-color:lightgreen"> 0</span>' end, --VARCHAR2
@@ -14590,15 +14590,15 @@ from vgl
 )
 select rownum rnr, all_."SEL",all_."SUM1",all_."NR_ROW",all_."SEL_PK_INP_BELEGE_ALL",all_."ERG",all_."PK_INP_BELEGE_ALL",
 all_."FK_LEX_BUCHUNG",all_."FK_BAS_KAT_KATEGORIE",all_."FK_BAS_KAL_ARBEITSTAG",
-all_."FK_KTO_BUCHUNG",all_."FK_STD_ZAHLUNGSART",all_."FK_BAS_VERW_VERWENDUNGSZWECK",all_."FK_INV_INVENTAR",all_."FK_PROJ_PROJEKT",all_."BELEGNUMMER",all_."BEZEICHNUNG",all_."FK_ADR_LAND",
-all_."FK_ADR_CITY",all_."BEL_DATUM",all_."VON",all_."BIS",all_."NETTO_BETRAG",all_."FK_BAS_STEUER_SATZ",all_."MWST_BETRAG",all_."BRUTTO_BETRAG",all_."FK_BAS_MON_WAEHRUNG",
+all_."FK_KTO_BUCHUNG",all_."FK_BAS_STD_ZAHLUNGSART",all_."FK_BAS_VERW_VERWENDUNGSZWECK",all_."FK_INV_INVENTAR",all_."FK_PROJ_PROJEKT",all_."BELEGNUMMER",all_."BEZEICHNUNG",all_."FK_ADR_LAND",
+all_."FK_ADR_CITY",all_."BEL_DATUM",all_."VON",all_."BIS",all_."NETTO_BETRAG",all_."FK_BAS_STEU_STEUER_SATZ",all_."MWST_BETRAG",all_."BRUTTO_BETRAG",all_."FK_BAS_MON_WAEHRUNG",
 all_."STEUERNUMMER",all_."FK_BAS_MON_UMRECHNUNGSKURS",all_."COMM_REST_BELEG",all_."COMM_TEL_BELEG",all_."COMM_PRODUKTE",all_."COMM_BEGRUENDUNG",all_."COMM_SONSTIGES",all_."BELEG",all_."ZAHLUNGSBELEG",
 all_."LITER",all_."ZAPFSAEULE",all_."FK_LOC_LOCATION",all_."PERSOENLICH_VOR_ORT",all_."BELEG_UHRZEIT",all_."VON_UHRZEIT",all_."BIS_UHRZEIT",all_."FK_BAS_KAL_VON_ARBEITSTAG",all_."FK_BAS_KAL_BIS_ARBEITSTAG",all_."COMM_ADRESSE",
 all_."TANKSTELLEN_NR",all_."BRUTTO_BETRAG_INCL_TRINKG",all_."COMM_PARKTICKET",all_."FRMDW_NETTO_BETRAG",all_."FK_BAS_MON_FRMDW",all_."FK_BAS_MON_FRMDW_MWST_SATZ",all_."FRMDW_MWST_BETRAG",all_."FRMDW_BRUTTO_BETRAG",all_."FRMDW_BRUTTO_INCL_TRINKG",
-all_."MWST_BETRAG_EUR",all_."BRUTTO_BETRAG_EUR",all_."BRUTTO_INCL_TRINKG_EUR",all_."NETTO_BETRAG_EUR",all_."PREIS_PRO_MENGE",all_."MENGENEINHEIT",all_."LA_DATUM",all_."FK_LA_KONTO",all_."FK_LA_WDH",all_."FK_STD_ZAHLSTATUS",all_."COMM_VERGEHEN",
+all_."MWST_BETRAG_EUR",all_."BRUTTO_BETRAG_EUR",all_."BRUTTO_INCL_TRINKG_EUR",all_."NETTO_BETRAG_EUR",all_."PREIS_PRO_MENGE",all_."MENGENEINHEIT",all_."LA_DATUM",all_."FK_LA_KONTO",all_."FK_LA_WDH",all_."FK_BAS_STD_ZAHLSTATUS",all_."COMM_VERGEHEN",
 all_."VERG_BEHOERDE",all_."CNT_PUNKTE",all_."FK_BEL_BELEG_ABLAGE",all_."FK_ABL_ORDNER_PAGE",all_."CNT_PUNKTE_GESCHAETZT",all_."PUNKTE_VON",all_."PUNKTE_BIS",all_."FK_LOC_LOCATION_VERG",all_."FK_IMP_BA_BEL_OLD",
 all_."GESCHW_IST",all_."GESCHW_SOLL",all_."GESCHW_UEBER_GRZ",all_."GESCHW_UEBER_GRZ_ABZGL_MESSTOL",all_."CODE_BUSSGELD",all_."DESCR_BUSSGELD",all_."GEZAHLT_AM",all_."WEBSEITE",all_."KUNDENNUMMER",all_."FK_REAL_BELEG_EXIST",all_."FK_CALC_STATE",all_."FK_CALC_STATE_EUR",
-all_."FK_CALC_STATE_FRMDW",all_."FK_STD_STATUS",all_."DATUM_VERGEHEN",all_."CREATE_AT",all_."CREATE_BY",all_."MODIFY_AT",all_."MODIFY_BY",all_."DATUM_ORT_OK",all_."DATUM_ADDRESSE_OK",all_."DATUM_BUSSGELD_OK",all_."DATUM_BELEG_POS_OK",all_."DATUM_BUCHUNG_OK",
+all_."FK_CALC_STATE_FRMDW",all_."FK_BAS_STD_STATUS",all_."DATUM_VERGEHEN",all_."CREATE_AT",all_."CREATE_BY",all_."MODIFY_AT",all_."MODIFY_BY",all_."DATUM_ORT_OK",all_."DATUM_ADDRESSE_OK",all_."DATUM_BUSSGELD_OK",all_."DATUM_BELEG_POS_OK",all_."DATUM_BUCHUNG_OK",
 all_."DATUM_VERPFL_BEL_OK",all_."FK_INT_INTERNET_APP",all_."FK_CONTR_DUPL_STATUS",all_."DATUM_DUPL_OK",all_."DUPL_BEMERKUNG",all_."FK_KON_GESCHAEFTSPARTNER",all_."DUMMY",all_."STORNIERT",all_."FK_ADR_ADRESSE_SCHNELL"
 from all_
 ;
@@ -15277,20 +15277,20 @@ on a.rechnungsnummer = b.rechnungsnummer
 --  DDL for View V_INP_BELEGE_ALL
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INP_BELEGE_ALL" ("PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STD_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_ADR_ADRESSE", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERW_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_BAS_KAT_KONTO_BUCH", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_STD_WOCHENENDE", "ARB_FK_STD_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_KAL_ARBEITSTAG", "ARB_VON_FK_STD_WOCHENENDE", "ARB_VON_FK_STD_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_PK_BAS_KAL_ARBEITSTAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_FK_STD_WOCHENENDE", "ARB_BIS_FK_STD_FEIERTAG", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_ADR_LAND", "LAND", "PK_ADR_ORT", "ORT", "CI_PK_ADR_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEUER_SATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEUER_SATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_MON_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KAT_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_LOC_LOCATION", "VLOC_LOCATION", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR", "FK_STD_ZAHLSTATUS", "BELEG_STATUS") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INP_BELEGE_ALL" ("PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_BAS_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEU_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_LOC_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_BAS_STD_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_ADR_ADRESSE", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERW_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_BAS_KAT_KONTO_BUCH", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_STD_KAL_WOCHENENDE", "ARB_FK_STD_KAL_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_KAL_ARBEITSTAG", "ARB_VON_FK_STD_KAL_WOCHENENDE", "ARB_VON_FK_STD_KAL_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_PK_BAS_KAL_ARBEITSTAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_FK_STD_KAL_WOCHENENDE", "ARB_BIS_FK_STD_KAL_FEIERTAG", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_ADR_LAND", "LAND", "PK_ADR_ORT", "ORT", "CI_PK_ADR_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEU_STEUER_SATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEU_STEUER_SATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_MON_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KAT_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_LOC_LOCATION", "VLOC_LOCATION", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR", "FK_BAS_STD_ZAHLSTATUS", "BELEG_STATUS") AS 
   select 
     inpb."PK_INP_BELEGE_ALL",inpb."FK_LEX_BUCHUNG",
-    inpb."FK_BAS_KAT_KATEGORIE",inpb."FK_BAS_KAL_ARBEITSTAG",inpb."FK_KTO_BUCHUNG",inpb."FK_STD_ZAHLUNGSART",
+    inpb."FK_BAS_KAT_KATEGORIE",inpb."FK_BAS_KAL_ARBEITSTAG",inpb."FK_KTO_BUCHUNG",inpb."FK_BAS_STD_ZAHLUNGSART",
     inpb."FK_BAS_VERW_VERWENDUNGSZWECK",inpb."FK_INV_INVENTAR",inpb."FK_PROJ_PROJEKT",inpb."BELEGNUMMER",
     inpb."BEZEICHNUNG",inpb."FK_ADR_LAND",inpb."FK_ADR_CITY",inpb."BEL_DATUM",inpb."VON",
-    inpb."BIS",inpb."NETTO_BETRAG",inpb."FK_BAS_STEUER_SATZ",inpb."MWST_BETRAG",inpb."BRUTTO_BETRAG",
+    inpb."BIS",inpb."NETTO_BETRAG",inpb."FK_BAS_STEU_STEUER_SATZ",inpb."MWST_BETRAG",inpb."BRUTTO_BETRAG",
     inpb."FK_BAS_MON_WAEHRUNG",inpb."STEUERNUMMER",inpb."FK_BAS_MON_UMRECHNUNGSKURS",inpb."COMM_REST_BELEG",inpb."COMM_TEL_BELEG",
     inpb."COMM_PRODUKTE",inpb."COMM_BEGRUENDUNG",inpb."COMM_SONSTIGES",inpb."BELEG",inpb."ZAHLUNGSBELEG",inpb."LITER",
     inpb."ZAPFSAEULE",inpb."FK_LOC_LOCATION",inpb."PERSOENLICH_VOR_ORT",inpb."BELEG_UHRZEIT",inpb."VON_UHRZEIT",inpb."BIS_UHRZEIT",
     inpb."FK_BAS_KAL_VON_ARBEITSTAG",inpb."FK_BAS_KAL_BIS_ARBEITSTAG",inpb."COMM_ADRESSE",inpb."TANKSTELLEN_NR",inpb."BRUTTO_BETRAG_INCL_TRINKG",inpb."COMM_PARKTICKET",
     inpb."FRMDW_NETTO_BETRAG",inpb."FK_BAS_MON_FRMDW",inpb."FK_BAS_MON_FRMDW_MWST_SATZ",inpb."FRMDW_MWST_BETRAG",inpb."FRMDW_BRUTTO_BETRAG",inpb."FRMDW_BRUTTO_INCL_TRINKG",
     inpb."MWST_BETRAG_EUR",inpb."BRUTTO_BETRAG_EUR",inpb."BRUTTO_INCL_TRINKG_EUR",inpb."NETTO_BETRAG_EUR",inpb."PREIS_PRO_MENGE",inpb."MENGENEINHEIT",inpb."LA_DATUM",
-    inpb."FK_LA_KONTO",inpb."FK_LA_WDH",inpb."FK_STD_STATUS",inpb."COMM_VERGEHEN",inpb."VERG_BEHOERDE",inpb."CNT_PUNKTE",inpb."FK_BEL_BELEG_ABLAGE",inpb."FK_ABL_ORDNER_PAGE",
+    inpb."FK_LA_KONTO",inpb."FK_LA_WDH",inpb."FK_BAS_STD_STATUS",inpb."COMM_VERGEHEN",inpb."VERG_BEHOERDE",inpb."CNT_PUNKTE",inpb."FK_BEL_BELEG_ABLAGE",inpb."FK_ABL_ORDNER_PAGE",
     inpb."CNT_PUNKTE_GESCHAETZT",inpb."PUNKTE_VON",inpb."PUNKTE_BIS",inpb."FK_LOC_LOCATION_VERG",inpb."FK_IMP_BA_BEL_OLD",inpb."GESCHW_IST",inpb."GESCHW_SOLL",
     inpb."GESCHW_UEBER_GRZ",inpb."GESCHW_UEBER_GRZ_ABZGL_MESSTOL",inpb."CODE_BUSSGELD",inpb."DESCR_BUSSGELD",inpb."GEZAHLT_AM",
     inpb."WEBSEITE",inpb."KUNDENNUMMER",inpb."FK_REAL_BELEG_EXIST",
@@ -15366,27 +15366,27 @@ on a.rechnungsnummer = b.rechnungsnummer
     ktokat.valid ktokat_valid,
     arb.PK_BAS_kal_ARBEITSTAGE arb_PK_BAS_kal_ARBEITSTAGE,
     arb.DATUM arb_DATUM,
-    arb.FK_STD_ARBEITSTAG arb_FK_STD_ARBEITSTAG,
-    arb.FK_STD_WOCHENENDE arb_FK_STD_WOCHENENDE,
-    arb.FK_STD_FEIERTAG arb_FK_STD_FEIERTAG,
+    arb.FK_STD_KAL_ARBEITSTAG arb_FK_STD_KAL_ARBEITSTAG,
+    arb.FK_STD_KAL_WOCHENENDE arb_FK_STD_KAL_WOCHENENDE,
+    arb.FK_STD_KAL_FEIERTAG arb_FK_STD_KAL_FEIERTAG,
     arb.FEIERTAG arb_FEIERTAG,
     arb.TAG arb_TAG,
     arb.MONAT arb_MONAT,
     arb.JAHR arb_JAHR,
     arb_von.PK_BAS_kal_ARBEITSTAGE arb_von_PK_BAS_kal_ARBEITSTAGE,
     arb_von.DATUM arb_von_DATUM,
-    arb_von.FK_STD_ARBEITSTAG arb_von_FK_STD_ARBEITSTAG,
-    arb_von.FK_STD_WOCHENENDE arb_von_FK_STD_WOCHENENDE,
-    arb_von.FK_STD_FEIERTAG arb_von_FK_STD_FEIERTAG,
+    arb_von.FK_STD_KAL_ARBEITSTAG arb_von_FK_STD_KAL_ARBEITSTAG,
+    arb_von.FK_STD_KAL_WOCHENENDE arb_von_FK_STD_KAL_WOCHENENDE,
+    arb_von.FK_STD_KAL_FEIERTAG arb_von_FK_STD_KAL_FEIERTAG,
     arb_von.FEIERTAG arb_von_FEIERTAG,
     arb_von.TAG arb_von_TAG,
     arb_von.MONAT arb_von_MONAT,
     arb_von.JAHR arb_von_JAHR,
     arb_bis.PK_BAS_kal_ARBEITSTAGE arb_bis_PK_BAS_kal_ARBEITSTAGE,
     arb_bis.DATUM arb_bis_DATUM,
-    arb_bis.FK_STD_ARBEITSTAG arb_bis_FK_STD_ARBEITSTAG,
-    arb_bis.FK_STD_WOCHENENDE arb_bis_FK_STD_WOCHENENDE,
-    arb_bis.FK_STD_FEIERTAG arb_bis_FK_STD_FEIERTAG,
+    arb_bis.FK_STD_KAL_ARBEITSTAG arb_bis_FK_STD_KAL_ARBEITSTAG,
+    arb_bis.FK_STD_KAL_WOCHENENDE arb_bis_FK_STD_KAL_WOCHENENDE,
+    arb_bis.FK_STD_KAL_FEIERTAG arb_bis_FK_STD_KAL_FEIERTAG,
     arb_bis.FEIERTAG arb_bis_FEIERTAG,
     arb_bis.TAG arb_bis_TAG,
     arb_bis.MONAT arb_bis_MONAT,
@@ -15400,12 +15400,12 @@ on a.rechnungsnummer = b.rechnungsnummer
     steu.STEUERSATZ steu_STEUERSATZ,
     steu.LAND steu_LAND,
     steu.PK_adr_LAND steu_PK_adr_LAND,
-    steu.PK_BAS_STEUER_SATZ steu_PK_BAS_STEUER_SATZ,
+    steu.PK_BAS_steu_STEUER_SATZ steu_PK_BAS_steu_STEUER_SATZ,
     steu.ZUS_ST steu_ZUS_ST,
     steu_frmd.STEUERSATZ steu_frmd_STEUERSATZ,
     steu_frmd.LAND steu_frmd_LAND,
     steu_frmd.PK_adr_LAND steu_frmd_PK_adr_LAND,
-    steu_frmd.PK_BAS_STEUER_SATZ steu_frmd_PK_BAS_STEUER_SATZ,
+    steu_frmd.PK_BAS_steu_STEUER_SATZ steu_frmd_PK_BAS_steu_STEUER_SATZ,
     steu_frmd.ZUS_ST steu_frmd_ZUS_ST,
     wae.pk_bas_mon_waehrung,
     wae.waehrung,
@@ -15482,7 +15482,7 @@ on a.rechnungsnummer = b.rechnungsnummer
     vloc_verg.LAND vloc_verg_LAND,
     vloc_verg.ADR vloc_verg_ADR,
     substr(inpb.bel_datum,7,4) inp_bel_all_jahr,
-    inpb.fk_std_zahlstatus,
+    inpb.fk_bas_std_zahlstatus,
     sta1.std_name  beleg_status
     
 
@@ -15495,11 +15495,11 @@ from t_inp_belege_all inpb
   left join t_bas_kal_arbeitstage arb_bis on arb_bis.pk_bas_kal_arbeitstage = inpb.FK_BAS_kal_BIS_ARBEITSTAG
   left join ( select std_name, std_value
               from t_std
-              where fk_std_group = 22) zahl_art on zahl_art.std_value = inpb.FK_STD_ZAHLUNGSART
+              where fk_std_group = 22) zahl_art on zahl_art.std_value = inpb.FK_BAS_STD_ZAHLUNGSART
   left join t_adr_land la on la.pk_adr_land = inpb.FK_ADR_LAND
   left join (select * from  t_adr_ort ci join t_adr_land la on ci.FK_ADR_LAND = la.pk_adr_land) ci on ci.pk_adr_ort = inpb.FK_ADR_CITY
-  left join v_steuer_satz steu on steu.PK_BAS_STEUER_SATZ = inpb.FK_BAS_STEUER_SATZ
-  left join v_steuer_satz steu_frmd on steu_frmd.PK_BAS_STEUER_SATZ = inpb.fk_bas_mon_frmdw_mwst_satz
+  left join v_steu_steuer_satz steu on steu.PK_BAS_STEU_STEUER_SATZ = inpb.FK_BAS_STEU_STEUER_SATZ
+  left join v_steu_steuer_satz steu_frmd on steu_frmd.PK_BAS_STEU_STEUER_SATZ = inpb.fk_bas_mon_frmdw_mwst_satz
   left join t_bas_mon_waehrung wae on wae.pk_bas_mon_waehrung = FK_BAS_mon_WAEHRUNG
   left join (select jahr || ' ' || page_number j_page_number, pk_abl_ordner_page, page_number, jahr, ordner_name, pk_abl_ordner
             from T_ABL_ORDNER abl_ord
@@ -15511,7 +15511,7 @@ from t_inp_belege_all inpb
                 where fk_std_group = 27) bel_ex on bel_ex.std_value = inpb.fk_real_beleg_exist
   left join (select std_name, std_value
                 from t_std
-                where fk_std_group = 26) sta on sta.std_value = inpb.fk_std_zahlstatus
+                where fk_std_group = 26) sta on sta.std_value = inpb.fk_bas_std_zahlstatus
   left join v_loc_location vloc on vloc.pk_loc_location = inpb.fk_loc_location
   left join v_loc_location vloc_verg on vloc_verg.pk_loc_location = inpb.FK_loc_LOCATION_VERG
   --lastschriftkonto
@@ -15522,22 +15522,22 @@ from t_inp_belege_all inpb
                 where fk_std_group = 23) la_wdh on la_wdh.std_value = inpb.fk_la_wdh
   left join (select std_name, std_value
                 from t_std
-                where fk_std_group = 101) sta1 on sta1.std_value = inpb.FK_STD_STATUS
+                where fk_std_group = 101) sta1 on sta1.std_value = inpb.FK_BAS_STD_STATUS
 ;
 --------------------------------------------------------
---  DDL for View V_INP_BELEGE_ALL1
+--  DDL for View V_INP_BELEGE_ALL_IMP
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INP_BELEGE_ALL1" ("PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_ADR_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_STD_VON_ARBEITSTAG", "FK_BAS_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_FRMDW", "FK_BAS_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STD_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_ADR_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_pk_adr_adresse", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERW_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_BAS_KAT_KONTO_BUCH_KAT", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_STD_WOCHENENDE", "ARB_FK_STD_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_STD_ARBEITSTAG", "ARB_VON_FK_STD_WOCHENENDE", "ARB_VON_FK_STD_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_FK_STD_FEIERTAG", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_FK_STD_WOCHENENDE", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_ADR_LAND", "LAND", "PK_ADR_ORT", "ORT", "CI_PK_ADR_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEUER_SATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEUER_SATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_MON_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_ADR_LOCATION", "VLOC_LOCATION", "VLOC_fk_bas_location_type", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR", "FK_STD_ZAHLSTATUS", "BELEG_STATUS") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INP_BELEGE_ALL_IMP" ("PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_BAS_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_MON_WAEHRUNG", "STEUERNUMMER", "FK_BAS_MON_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_ADR_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_FRMDW", "FK_BAS_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_BAS_STD_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_ADR_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_pk_adr_adresse", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERW_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_BAS_KAT_KONTO_BUCH_KAT", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_STD_KAL_WOCHENENDE", "ARB_FK_STD_KAL_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_STD_ARBEITSTAG", "ARB_VON_FK_STD_WOCHENENDE", "ARB_VON_FK_STD_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_FK_STD_KAL_FEIERTAG", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_FK_STD_KAL_WOCHENENDE", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_ADR_LAND", "LAND", "PK_ADR_ORT", "ORT", "CI_PK_ADR_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEU_STEUER_SATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEU_STEUER_SATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_MON_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_ADR_LOCATION", "VLOC_LOCATION", "VLOC_FK_BAS_LOCATION_TYPE", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR", "FK_BAS_STD_ZAHLSTATUS", "BELEG_STATUS") AS 
   select 
-    inpb."PK_INP_BELEGE_ALL",inpb."FK_LEX_BUCHUNG",inpb."FK_BAS_KAT_KATEGORIE",inpb."FK_BAS_KAL_ARBEITSTAG",inpb."FK_KTO_BUCHUNG",inpb."FK_STD_ZAHLUNGSART",
+    inpb."PK_IMP_INP_BELEGE_ALL",inpb."FK_LEX_BUCHUNG",inpb."FK_BAS_KAT_KATEGORIE",inpb."FK_BAS_KAL_ARBEITSTAG",inpb."FK_KTO_BUCHUNG",inpb."FK_BAS_STD_ZAHLUNGSART",
     inpb."FK_BAS_VERW_VERWENDUNGSZWECK",inpb."FK_INV_INVENTAR",inpb."FK_PROJ_PROJEKT",inpb."BELEGNUMMER",inpb."BEZEICHNUNG",inpb."FK_ADR_LAND",inpb."FK_ADR_CITY",
-    inpb."BEL_DATUM",inpb."VON",inpb."BIS",inpb."NETTO_BETRAG",inpb."FK_BAS_STEUER_SATZ",inpb."MWST_BETRAG",inpb."BRUTTO_BETRAG",inpb."FK_BAS_MON_WAEHRUNG",inpb."STEUERNUMMER",
+    inpb."BEL_DATUM",inpb."VON",inpb."BIS",inpb."NETTO_BETRAG",inpb."FK_BAS_STEU_STEUER_SATZ",inpb."MWST_BETRAG",inpb."BRUTTO_BETRAG",inpb."FK_BAS_MON_WAEHRUNG",inpb."STEUERNUMMER",
     inpb."FK_BAS_MON_UMRECHNUNGSKURS",inpb."COMM_REST_BELEG",inpb."COMM_TEL_BELEG",inpb."COMM_PRODUKTE",inpb."COMM_BEGRUENDUNG",inpb."COMM_SONSTIGES",inpb."BELEG",inpb."ZAHLUNGSBELEG",
     inpb."LITER",inpb."ZAPFSAEULE",inpb."FK_LOC_LOCATION",inpb."PERSOENLICH_VOR_ORT",inpb."BELEG_UHRZEIT",inpb."VON_UHRZEIT",inpb."BIS_UHRZEIT",inpb."FK_BAS_KAL_VON_ARBEITSTAG",
     inpb."FK_BAS_KAL_BIS_ARBEITSTAG",inpb."COMM_ADRESSE",inpb."TANKSTELLEN_NR",inpb."BRUTTO_BETRAG_INCL_TRINKG",inpb."COMM_PARKTICKET",inpb."FRMDW_NETTO_BETRAG",inpb."FK_BAS_MON_FRMDW",
     inpb."FK_BAS_MON_FRMDW_MWST_SATZ",inpb."FRMDW_MWST_BETRAG",inpb."FRMDW_BRUTTO_BETRAG",inpb."FRMDW_BRUTTO_INCL_TRINKG",inpb."MWST_BETRAG_EUR",inpb."BRUTTO_BETRAG_EUR",inpb."BRUTTO_INCL_TRINKG_EUR",
-    inpb."NETTO_BETRAG_EUR",inpb."PREIS_PRO_MENGE",inpb."MENGENEINHEIT",inpb."LA_DATUM",inpb."FK_LA_KONTO",inpb."FK_LA_WDH",inpb."FK_STD_STATUS",inpb."COMM_VERGEHEN",inpb."VERG_BEHOERDE",inpb."CNT_PUNKTE",inpb."FK_BEL_BELEG_ABLAGE",
+    inpb."NETTO_BETRAG_EUR",inpb."PREIS_PRO_MENGE",inpb."MENGENEINHEIT",inpb."LA_DATUM",inpb."FK_LA_KONTO",inpb."FK_LA_WDH",inpb."FK_BAS_STD_STATUS",inpb."COMM_VERGEHEN",inpb."VERG_BEHOERDE",inpb."CNT_PUNKTE",inpb."FK_BEL_BELEG_ABLAGE",
     inpb."FK_ABL_ORDNER_PAGE",inpb."CNT_PUNKTE_GESCHAETZT",inpb."PUNKTE_VON",inpb."PUNKTE_BIS",inpb."FK_LOC_LOCATION_VERG",inpb."FK_IMP_BA_BEL_OLD",inpb."GESCHW_IST",inpb."GESCHW_SOLL",inpb."GESCHW_UEBER_GRZ",inpb."GESCHW_UEBER_GRZ_ABZGL_MESSTOL",
     inpb."CODE_BUSSGELD",inpb."DESCR_BUSSGELD",inpb."GEZAHLT_AM",inpb."WEBSEITE",inpb."KUNDENNUMMER",inpb."FK_REAL_BELEG_EXIST",
     zahl_art.std_value zahl_art_val,
@@ -15612,26 +15612,26 @@ from t_inp_belege_all inpb
     ktokat.valid ktokat_valid,
     arb.PK_BAS_kal_ARBEITSTAGE ARB_PK_BAS_kal_ARBEITSTAGE,
     arb.DATUM arb_DATUM,
-    arb.FK_STD_ARBEITSTAG arb_FK_STD_ARBEITSTAG,
-    arb.FK_STD_WOCHENENDE ARB_FK_STD_WOCHENENDE,
-    arb.FK_STD_FEIERTAG ARB_FK_STD_FEIERTAG,
+    arb.FK_STD_KAL_ARBEITSTAG arb_FK_STD_KAL_ARBEITSTAG,
+    arb.FK_STD_KAL_WOCHENENDE ARB_FK_STD_KAL_WOCHENENDE,
+    arb.FK_STD_KAl_FEIERTAG ARB_FK_STD_KAL_FEIERTAG,
     arb.FEIERTAG arb_FEIERTAG,
     arb.TAG arb_TAG,
     arb.MONAT arb_MONAT,
     arb.JAHR arb_JAHR,
     arb_von.PK_BAS_kal_ARBEITSTAGE ARB_VON_PK_BAS_kal_ARBEITSTAGE,
     arb_von.DATUM arb_von_DATUM,
-    arb_von.FK_STD_ARBEITSTAG arb_von_FK_STD_ARBEITSTAG,
-    arb_von.FK_STD_WOCHENENDE ARB_VON_FK_STD_WOCHENENDE,
-    arb_von.FK_STD_FEIERTAG ARB_VON_FK_STD_FEIERTAG,
+    arb_von.FK_STD_KAL_ARBEITSTAG arb_von_FK_STD_KAL_ARBEITSTAG,
+    arb_von.FK_STD_KAL_WOCHENENDE ARB_VON_FK_STD_KAL_WOCHENENDE,
+    arb_von.FK_STD_KAL_FEIERTAG ARB_VON_FK_STD_KAL_FEIERTAG,
     arb_von.FEIERTAG arb_von_FEIERTAG,
     arb_von.TAG arb_von_TAG,
     arb_von.MONAT arb_von_MONAT,
     arb_von.JAHR arb_von_JAHR,
     arb_bis.PK_BAS_kal_ARBEITSTAGE ARB_BIS_PK_BAS_kal_ARBEITSTAGE,
     arb_bis.DATUM arb_bis_DATUM,
-    arb_bis.FK_STD_ARBEITSTAG arb_bis_FK_STD_ARBEITSTAG,
-    arb_bis.FK_STD_WOCHENENDE arb_bis_FK_STD_WOCHENENDE,
+    arb_bis.FK_STD_KAL_ARBEITSTAG arb_bis_FK_STD_KAL_ARBEITSTAG,
+    arb_bis.FK_STD_KAL_WOCHENENDE arb_bis_FK_STD_KAL_WOCHENENDE,
 
     arb_bis.FEIERTAG arb_bis_FEIERTAG,
     arb_bis.TAG arb_bis_TAG,
@@ -15646,12 +15646,12 @@ from t_inp_belege_all inpb
     steu.STEUERSATZ steu_STEUERSATZ,
     steu.LAND steu_LAND,
     steu.PK_ADR_LAND steu_PK_ADR_LAND,
-    steu.pk_bas_steuer_satz steu_pk_bas_steuer_satz,
+    steu.pk_bas_steu_steuer_satz steu_pk_bas_steu_steuer_satz,
     steu.ZUS_ST steu_ZUS_ST,
     steu_frmd.STEUERSATZ steu_frmd_STEUERSATZ,
     steu_frmd.LAND steu_frmd_LAND,
     steu_frmd.PK_ADR_LAND steu_frmd_PK_ADR_LAND,
-    steu_frmd.pk_bas_steuer_satz STEU_FRMD_PK_BAS_STEUER_SATZ,
+    steu_frmd.pk_bas_steu_steuer_satz STEU_FRMD_PK_BAS_steu_STEUER_SATZ,
     steu_frmd.ZUS_ST steu_frmd_ZUS_ST,
     wae.PK_BAS_mon_WAEHRUNG,
     wae.waehrung,
@@ -15727,7 +15727,7 @@ from t_inp_belege_all inpb
     vloc_verg.LAND vloc_verg_LAND,
     vloc_verg.ADR vloc_verg_ADR,
     substr(inpb.bel_datum,7,4) inp_bel_all_jahr,
-    inpb.FK_STD_ZAHLSTATUS,
+    inpb.FK_bas_STD_ZAHLSTATUS,
     sta1.std_name  beleg_status
     
 
@@ -15740,11 +15740,11 @@ from t_imp_inp_belege_all inpb
   left join t_bas_kal_arbeitstage arb_bis on arb_bis.PK_BAS_kal_ARBEITSTAGE = inpb.FK_BAS_kal_BIS_ARBEITSTAG
   left join ( select std_name, std_value
               from t_std
-              where fk_std_group = 22) zahl_art on zahl_art.std_value = inpb.FK_STD_ZAHLUNGSART
+              where fk_std_group = 22) zahl_art on zahl_art.std_value = inpb.FK_bas_STD_ZAHLUNGSART
   left join t_adr_land la on la.PK_ADR_LAND = inpb.FK_ADR_LAND
   left join (select * from  t_adr_ort ci join t_adr_land la on ci.FK_ADR_LAND = la.PK_ADR_LAND) ci on ci.PK_ADR_ORT = inpb.FK_ADR_CITY
-  left join v_steuer_satz steu on steu.pk_bas_steuer_satz = inpb.FK_BAS_STEUER_SATZ
-  left join v_steuer_satz steu_frmd on steu_frmd.pk_bas_steuer_satz = inpb.FK_BAS_mon_FRMDW_mwst_satz
+  left join v_steu_steuer_satz steu on steu.pk_bas_steu_steuer_satz = inpb.FK_BAS_steu_STEUER_SATZ
+  left join v_steu_steuer_satz steu_frmd on steu_frmd.pk_bas_steu_steuer_satz = inpb.FK_BAS_mon_FRMDW_mwst_satz
   left join t_bas_mon_waehrung wae on wae.PK_BAS_mon_WAEHRUNG = FK_BAS_mon_WAEHRUNG
   left join (select jahr || ' ' || page_number j_page_number, pk_abl_ordner_page, page_number, jahr, ordner_name, pk_abl_ordner
             from T_ABL_ORDNER abl_ord
@@ -15756,7 +15756,7 @@ from t_imp_inp_belege_all inpb
                 where fk_std_group = 27) bel_ex on bel_ex.std_value = inpb.fk_real_beleg_exist
   left join (select std_name, std_value
                 from t_std
-                where fk_std_group = 26) sta on sta.std_value = inpb.FK_STD_ZAHLSTATUS
+                where fk_std_group = 26) sta on sta.std_value = inpb.FK_bas_STD_ZAHLSTATUS
   left join v_loc_location vloc on vloc.pk_loc_location = inpb.FK_loc_LOCATION
   left join v_loc_location vloc_verg on vloc_verg.pk_loc_location = inpb.FK_loc_LOCATION_verg 
   --lastschriftkonto
@@ -15767,7 +15767,7 @@ from t_imp_inp_belege_all inpb
                 where fk_std_group = 23) la_wdh on la_wdh.std_value = inpb.fk_la_wdh
   left join (select std_name, std_value
                 from t_std
-                where fk_std_group = 101) sta1 on sta1.std_value = inpb.FK_STD_STATUS
+                where fk_std_group = 101) sta1 on sta1.std_value = inpb.FK_bas_STD_STATUS
 ;
 --------------------------------------------------------
 --  DDL for View V_INV_INVENTARE
@@ -16253,7 +16253,7 @@ from t_kto_konto_auszug kto_aus
                                        Left Join T_Rel_Lex_Kto_Bel relBel On Instr(Kto.Jahr || '/' || Kto.Buchungsnummer|| '/0', relBel.Fk_lex_Relation)>0
                                        Left Join T_Lex_Long Ll On relBel.Fk_lex_Relation = Ll.Relation
                                        left join t_inp_belege_all bel on bel.pk_inp_belege_all = relbel.fk_inp_belege_all
-                                       Left Join (Select * From T_Std Where Fk_Std_Group = 101) Std_Status On Std_Status.Std_Value = Bel.Fk_std_Status
+                                       Left Join (Select * From T_Std Where Fk_Std_Group = 101) Std_Status On Std_Status.Std_Value = Bel.Fk_bas_std_Status
                                        Left Join (Select * From T_Std Where Fk_Std_Group = 27) Std_Bel On Std_Bel.Std_Value = Bel.Fk_Real_Beleg_Exist
                                        Left Join V_abl_Ordner_Page Pg On Pg.Pk_Abl_Ordner_Page = Bel.Fk_Abl_Ordner_Page
                                      Where relbel.Fk_Main_Key Is Not Null
@@ -16359,7 +16359,7 @@ and "Betrag" !=     0
 --  DDL for View V_LEX_BUCH_KTO_BEL_ALL
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEX_BUCH_KTO_BEL_ALL" ("PK_REL_LEX_KTO_BEL", "FK_LEX_OLD", "FK_RELATION", "FK_IMP_BA_BEL", "FK_INP_BELEGE_ALL", "CREATED_AT", "MODIFIED_AT", "KTO_ZUS_FK_MAIN_KEY", "KTO_ZUS_ID", "KTO_ZUS_BUCHUNGSTAG", "KTO_ZUS_BETRAG", "KTO_ZUS_WAEHRUNG", "KTO_ZUS_FREMDWAEHRUNGSBETRAG", "KTO_ZUS_FREMDWAEHRUNG", "KTO_ZUS_BUCHUNGSTEXT", "KTO_ZUS_FK_BAS_KATEGORIE", "KTO_ZUS_FK_BAS_VERWENDUNGSZWECK", "KTO_ZUS_FK_BAS_KONTOTYP", "KTO_ZUS_FK_BAS_BUCHUNGSTAG", "KTO_ZUS_FK_BAS_WERTSTELLUNG", "KTO_ZUS_VERWENDUNGSZWECK", "KTO_ZUS_KATEGORIE", "KTO_ZUS_BUCHT_TAG", "KTO_ZUS_BUCHT_MONAT", "KTO_ZUS_BUCHT_JAHR", "KTO_ZUS_BUCHT_DATUM", "KTO_ZUS_WERTT_TAG", "KTO_ZUS_WERTT_MONAT", "KTO_ZUS_WERTT_JAHR", "KTO_ZUS_WERTT_DATUM", "KTO_ZUS_KONTOTYP", "KTO_ZUS_FK_KTO_VORGANG", "KTO_ZUS_WIEDERHOLUNG", "KTO_ZUS_NAECHSTE_ZAHLUNG", "KTO_ZUS_FK_BUCHUNG_STEUER", "OK", "OK_DATUM", "ART", "STD_NAME", "KTO_BEL_COMM_1", "FK_REL_LEX_KTO_BEL", "VBEL_BEZEICHNUNG_1", "LEXL_BUCHTXT", "LEXL_BETRAG", "SOLLKTO", "HABENKTO", "OLD_BEL_BETRAG", "LEXL_JAHR", "JAHR_BELEG", "LEXL_BEMERKUNGEN", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KATEGORIE", "FK_BAS_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_STD_ZAHLUNGSART", "FK_BAS_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEUERSATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_WAEHRUNG", "STEUERNUMMER", "FK_BAS_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_ADR_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_VON_ARBEITSTAG", "FK_BAS_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_FRMDW", "FK_BAS_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_BAS_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_ADR_ADRESSE", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_KAT_KONTO_BUCH", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_STD_WOCHENENDE", "ARB_FK_STD_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_ARBEITSTAG", "ARB_VON_FK_STD_WOCHENENDE", "ARB_VON_FK_STD_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_PK_BAS_ARBEITSTAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_ARBEITSTAG", "ARB_BIS_FK_STD_WOCHENENDE", "ARB_BIS_FK_STD_FEIERTAG", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_LAND", "LAND", "PK_ORT", "ORT", "CI_PK_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEUERSATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEUERSATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_ADR_LOCATION", "VLOC_LOCATION", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEX_BUCH_KTO_BEL_ALL" ("PK_REL_LEX_KTO_BEL", "FK_LEX_OLD", "FK_RELATION", "FK_IMP_BA_BEL", "FK_INP_BELEGE_ALL", "CREATED_AT", "MODIFIED_AT", "KTO_ZUS_FK_MAIN_KEY", "KTO_ZUS_ID", "KTO_ZUS_BUCHUNGSTAG", "KTO_ZUS_BETRAG", "KTO_ZUS_WAEHRUNG", "KTO_ZUS_FREMDWAEHRUNGSBETRAG", "KTO_ZUS_FREMDWAEHRUNG", "KTO_ZUS_BUCHUNGSTEXT", "KTO_ZUS_FK_BAS_KATEGORIE", "KTO_ZUS_FK_BAS_VERWENDUNGSZWECK", "KTO_ZUS_FK_BAS_KONTOTYP", "KTO_ZUS_FK_BAS_BUCHUNGSTAG", "KTO_ZUS_FK_BAS_WERTSTELLUNG", "KTO_ZUS_VERWENDUNGSZWECK", "KTO_ZUS_KATEGORIE", "KTO_ZUS_BUCHT_TAG", "KTO_ZUS_BUCHT_MONAT", "KTO_ZUS_BUCHT_JAHR", "KTO_ZUS_BUCHT_DATUM", "KTO_ZUS_WERTT_TAG", "KTO_ZUS_WERTT_MONAT", "KTO_ZUS_WERTT_JAHR", "KTO_ZUS_WERTT_DATUM", "KTO_ZUS_KONTOTYP", "KTO_ZUS_FK_KTO_VORGANG", "KTO_ZUS_WIEDERHOLUNG", "KTO_ZUS_NAECHSTE_ZAHLUNG", "KTO_ZUS_FK_BUCHUNG_STEUER", "OK", "OK_DATUM", "ART", "STD_NAME", "KTO_BEL_COMM_1", "FK_REL_LEX_KTO_BEL", "VBEL_BEZEICHNUNG_1", "LEXL_BUCHTXT", "LEXL_BETRAG", "SOLLKTO", "HABENKTO", "OLD_BEL_BETRAG", "LEXL_JAHR", "JAHR_BELEG", "LEXL_BEMERKUNGEN", "PK_INP_BELEGE_ALL", "FK_LEX_BUCHUNG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_KAL_ARBEITSTAG", "FK_KTO_BUCHUNG", "FK_BAS_STD_ZAHLUNGSART", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_PROJ_PROJEKT", "BELEGNUMMER", "BEZEICHNUNG", "FK_ADR_LAND", "FK_ADR_CITY", "BEL_DATUM", "VON", "BIS", "NETTO_BETRAG", "FK_BAS_STEU_STEUER_SATZ", "MWST_BETRAG", "BRUTTO_BETRAG", "FK_BAS_WAEHRUNG", "STEUERNUMMER", "FK_BAS_UMRECHNUNGSKURS", "COMM_REST_BELEG", "COMM_TEL_BELEG", "COMM_PRODUKTE", "COMM_BEGRUENDUNG", "COMM_SONSTIGES", "BELEG", "ZAHLUNGSBELEG", "LITER", "ZAPFSAEULE", "FK_ADR_LOCATION", "PERSOENLICH_VOR_ORT", "BELEG_UHRZEIT", "VON_UHRZEIT", "BIS_UHRZEIT", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_KAL_BIS_ARBEITSTAG", "COMM_ADRESSE", "TANKSTELLEN_NR", "BRUTTO_BETRAG_INCL_TRINKG", "COMM_PARKTICKET", "FRMDW_NETTO_BETRAG", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FRMDW_MWST_BETRAG", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "MWST_BETRAG_EUR", "BRUTTO_BETRAG_EUR", "BRUTTO_INCL_TRINKG_EUR", "NETTO_BETRAG_EUR", "PREIS_PRO_MENGE", "MENGENEINHEIT", "LA_DATUM", "FK_LA_KONTO", "FK_LA_WDH", "FK_STATUS", "COMM_VERGEHEN", "VERG_BEHOERDE", "CNT_PUNKTE", "FK_BEL_BELEG_ABLAGE", "FK_ABL_ORDNER_PAGE", "CNT_PUNKTE_GESCHAETZT", "PUNKTE_VON", "PUNKTE_BIS", "FK_BAS_LOC_LOCATION_VERG", "FK_IMP_BA_BEL_OLD", "GESCHW_IST", "GESCHW_SOLL", "GESCHW_UEBER_GRZ", "GESCHW_UEBER_GRZ_ABZGL_MESSTOL", "CODE_BUSSGELD", "DESCR_BUSSGELD", "GEZAHLT_AM", "WEBSEITE", "KUNDENNUMMER", "FK_REAL_BELEG_EXIST", "ZAHL_ART_VAL", "ZAHL_ART_NAME", "LA_WDH_VALUE", "LA_WDH_NAME", "STA_VALUE", "STA_NAME", "BEL_EX_VALUE", "BEL_EX_NAME", "PROJ_PK_PROJ_PROJEKT", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_PROJEKT", "PROJ_VON", "PROJ_BIS", "PROJ_AKTUELLER_STUNDENSATZ", "PROJ_PSP_ELEMENT", "PROJ_CREATED_BY", "PROJ_CREATED_AT", "PROJ_MODIFIED_BY", "PROJ_MODIFIED_AT", "PROJ_RECHNUNG_GESTELLT", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PROJ_BELEGE_ZUGEORDNET", "PROJ_KM_GERECHNET", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_ADR_ADRESSE", "PROJ_AUFT_STRASSE", "PROJ_AUFT_HSNR", "PROJ_AUFT_PLZ", "PROJ_AUFT_ORT", "PROJ_AUFT_LAND", "PROJ_AUFT_BESCHREIBUNG", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_ADR_ADRESSE", "PROJ_PP1_STRASSE", "PROJ_PP1_HSNR", "PROJ_PP1_PLZ", "PROJ_PP1_ORT", "PROJ_PP1_LAND", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_ADR_ADRESSE", "PROJ_PP2_STRASSE", "PROJ_PP2_HSNR", "PROJ_PP2_PLZ", "PROJ_PP2_ORT", "PROJ_PP2_LAND", "PROJ_PP2_BESCHREIBUNG", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PK_BAS_VERWENDUNGSZWECK", "VERWENDUNGSZWECK", "PK_KAT_KONTO_BUCH", "KTOKAT_KATEGORIE", "KTOKAT_NEU_ALT", "KTOKAT_FK_BAS_KAT_OBERKATEGORIE", "KTOKAT_VALID", "ARB_PK_BAS_KAL_ARBEITSTAGE", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_FK_BAS_STD_WOCHENENDE", "ARB_FK_BAS_STD_FEIERTAG", "ARB_FEIERTAG", "ARB_TAG", "ARB_MONAT", "ARB_JAHR", "ARB_VON_PK_BAS_KAL_ARBEITSTAGE", "ARB_VON_DATUM", "ARB_VON_FK_BAS_KAL_ARBEITSTAG", "ARB_VON_FK_STD_KAL_WOCHENENDE", "ARB_VON_FK_STD_KAL_FEIERTAG", "ARB_VON_FEIERTAG", "ARB_VON_TAG", "ARB_VON_MONAT", "ARB_VON_JAHR", "ARB_BIS_PK_BAS_ARBEITSTAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_FK_STD_KAL_WOCHENENDE", "ARB_BIS_KAL_FK_STD_FEIERTAG", "ARB_BIS_FEIERTAG", "ARB_BIS_TAG", "ARB_BIS_MONAT", "ARB_BIS_JAHR", "PK_LAND", "LAND", "PK_ORT", "ORT", "CI_PK_LAND", "CI_LAND", "STEU_STEUERSATZ", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEU_STEUERSATZ", "STEU_ZUS_ST", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEU_STEUERSATZ", "STEU_FRMD_ZUS_ST", "PK_BAS_MON_WAEHRUNG", "WAEHRUNG", "WAEHRUNG_LANG", "COMM", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_JAHR", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PK_ABL_ORDNER", "VBEL_ART", "VBEL_FK_IMP_BA_BEL", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_BEZEICHNUNG", "VBEL_KENNZEICHEN", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_BETRAG", "VBEL_WAEHRUNG", "VBEL_STEUERSATZ", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_ZAHLUNGSART", "VBEL_BILD", "VBEL_BILD1", "VBEL_VERWENDUNGSZWECK", "VBEL_FK_INV_INVENTAR", "VBEL_FK_PROJ_PROJEKT", "VBEL_WAEHRUNG_BETRAG", "VBEL_FK_BAS_KAT_KATEGORIE", "VBEL_KATEGORIE", "VBEL_PROJEKT", "VBEL_INVENTAR", "VBEL_FK_BEL_BELEG_ABLAGE", "IBAN", "PK_KTO_BANKKONTO", "BANK", "PK_KTO_BANK", "VLOC_PK_ADR_LOCATION", "VLOC_LOCATION", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_FK_ADR_ADRESSE", "VLOC_CREATED_BY", "VLOC_CREATED_AT", "VLOC_MODIFIED_BY", "VLOC_MODIFIED_AT", "VLOC_LOCATION_TYPE", "VLOC_STRASSE", "VLOC_HSNR", "VLOC_BESCHREIBUNG", "VLOC_COMM", "VLOC_POSTFACH", "VLOC_PLZ", "VLOC_ORT", "VLOC_LAND", "VLOC_ADR", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_LOCATION", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_CREATED_BY", "VLOC_VERG_CREATED_AT", "VLOC_VERG_MODIFIED_BY", "VLOC_VERG_MODIFIED_AT", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_STRASSE", "VLOC_VERG_HSNR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_COMM", "VLOC_VERG_POSTFACH", "VLOC_VERG_PLZ", "VLOC_VERG_ORT", "VLOC_VERG_LAND", "VLOC_VERG_ADR", "INP_BEL_ALL_JAHR") AS 
   select 
 kto_bel."PK_REL_LEX_KTO_BEL", 
 kto_bel."FK_LEX_OLD",
@@ -16413,13 +16413,13 @@ vbel.betrag old_bel_betrag,
 lexl.JAHR lexl_jahr,
 lexl.JAHR_BELEG ,
 lexl.BEMERKUNGEN lexl_bemerkungen,
-vinp."PK_INP_BELEGE_ALL",vinp."FK_LEX_BUCHUNG",vinp."FK_BAS_KAT_KATEGORIE",vinp."FK_BAS_KAL_ARBEITSTAG",vinp."FK_KTO_BUCHUNG",vinp."FK_STD_ZAHLUNGSART",vinp."FK_BAS_VERW_VERWENDUNGSZWECK",
+vinp."PK_INP_BELEGE_ALL",vinp."FK_LEX_BUCHUNG",vinp."FK_BAS_KAT_KATEGORIE",vinp."FK_BAS_KAL_ARBEITSTAG",vinp."FK_KTO_BUCHUNG",vinp."FK_BAS_STD_ZAHLUNGSART",vinp."FK_BAS_VERW_VERWENDUNGSZWECK",
 vinp."FK_INV_INVENTAR",vinp."FK_PROJ_PROJEKT",vinp."BELEGNUMMER",vinp."BEZEICHNUNG",vinp."FK_ADR_LAND",vinp."FK_ADR_CITY",vinp."BEL_DATUM",vinp."VON",vinp."BIS",vinp."NETTO_BETRAG",
-vinp."FK_BAS_STEUER_SATZ",vinp."MWST_BETRAG",vinp."BRUTTO_BETRAG",vinp."FK_BAS_MON_WAEHRUNG",vinp."STEUERNUMMER",vinp."FK_BAS_MON_UMRECHNUNGSKURS",vinp."COMM_REST_BELEG",vinp."COMM_TEL_BELEG",
+vinp."FK_BAS_STEU_STEUER_SATZ",vinp."MWST_BETRAG",vinp."BRUTTO_BETRAG",vinp."FK_BAS_MON_WAEHRUNG",vinp."STEUERNUMMER",vinp."FK_BAS_MON_UMRECHNUNGSKURS",vinp."COMM_REST_BELEG",vinp."COMM_TEL_BELEG",
 vinp."COMM_PRODUKTE",vinp."COMM_BEGRUENDUNG",vinp."COMM_SONSTIGES",vinp."BELEG",vinp."ZAHLUNGSBELEG",vinp."LITER",vinp."ZAPFSAEULE",vinp."FK_LOC_LOCATION",vinp."PERSOENLICH_VOR_ORT",
 vinp."BELEG_UHRZEIT",vinp."VON_UHRZEIT",vinp."BIS_UHRZEIT",vinp."FK_BAS_KAL_VON_ARBEITSTAG",vinp."FK_BAS_KAL_BIS_ARBEITSTAG",vinp."COMM_ADRESSE",vinp."TANKSTELLEN_NR",vinp."BRUTTO_BETRAG_INCL_TRINKG",
 vinp."COMM_PARKTICKET",vinp."FRMDW_NETTO_BETRAG",vinp."FK_BAS_MON_FRMDW",vinp."FK_BAS_MON_FRMDW_MWST_SATZ",vinp."FRMDW_MWST_BETRAG",vinp."FRMDW_BRUTTO_BETRAG",vinp."FRMDW_BRUTTO_INCL_TRINKG",vinp."MWST_BETRAG_EUR",
-vinp."BRUTTO_BETRAG_EUR",vinp."BRUTTO_INCL_TRINKG_EUR",vinp."NETTO_BETRAG_EUR",vinp."PREIS_PRO_MENGE",vinp."MENGENEINHEIT",vinp."LA_DATUM",vinp."FK_LA_KONTO",vinp."FK_LA_WDH",vinp."FK_STD_STATUS",
+vinp."BRUTTO_BETRAG_EUR",vinp."BRUTTO_INCL_TRINKG_EUR",vinp."NETTO_BETRAG_EUR",vinp."PREIS_PRO_MENGE",vinp."MENGENEINHEIT",vinp."LA_DATUM",vinp."FK_LA_KONTO",vinp."FK_LA_WDH",vinp."FK_BAS_STD_STATUS",
 vinp."COMM_VERGEHEN",vinp."VERG_BEHOERDE",vinp."CNT_PUNKTE",vinp."FK_BEL_BELEG_ABLAGE",vinp."FK_ABL_ORDNER_PAGE",vinp."CNT_PUNKTE_GESCHAETZT",vinp."PUNKTE_VON",vinp."PUNKTE_BIS",vinp."FK_LOC_LOCATION_VERG",
 vinp."FK_IMP_BA_BEL_OLD",vinp."GESCHW_IST",vinp."GESCHW_SOLL",vinp."GESCHW_UEBER_GRZ",vinp."GESCHW_UEBER_GRZ_ABZGL_MESSTOL",vinp."CODE_BUSSGELD",vinp."DESCR_BUSSGELD",vinp."GEZAHLT_AM",vinp."WEBSEITE",
 vinp."KUNDENNUMMER",vinp."FK_REAL_BELEG_EXIST",vinp."ZAHL_ART_VAL",vinp."ZAHL_ART_NAME",vinp."LA_WDH_VALUE",vinp."LA_WDH_NAME",vinp."STA_VALUE",vinp."STA_NAME",vinp."BEL_EX_VALUE",vinp."BEL_EX_NAME",
@@ -16431,10 +16431,10 @@ vinp."PROJ_PP1_PK_KON_GESCHAEFTSPARTNER",vinp."PROJ_PP1_GESCHAEFTSPARTNER",vinp.
 vinp."PROJ_PP1_BESCHREIBUNG",vinp."PROJ_PP1_PK_REL_GP_KONT",vinp."PROJ_PP1_GESCHAEFTSPARTNERTYP",vinp."PROJ_PP2_PK_KON_GESCHAEFTSPARTNER",vinp."PROJ_PP2_GESCHAEFTSPARTNER",vinp."PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP",vinp."PROJ_PP2_PK_ADR_ADRESSE",
 vinp."PROJ_PP2_STRASSE",vinp."PROJ_PP2_HSNR",vinp."PROJ_PP2_PLZ",vinp."PROJ_PP2_ORT",vinp."PROJ_PP2_LAND",vinp."PROJ_PP2_BESCHREIBUNG",vinp."PROJ_PP2_PK_REL_GP_KONT",vinp."PROJ_PP2_GESCHAEFTSPARTNERTYP",vinp."PK_BAS_VERW_VERWENDUNGSZWECK",
 vinp."VERWENDUNGSZWECK",vinp."PK_BAS_KAT_KONTO_BUCH",vinp."KTOKAT_KATEGORIE",vinp."KTOKAT_NEU_ALT",vinp."KTOKAT_FK_BAS_KAT_OBERKATEGORIE",vinp."KTOKAT_VALID",vinp."ARB_PK_BAS_KAL_ARBEITSTAGE",vinp."ARB_DATUM",vinp."ARB_FK_BAS_KAL_ARBEITSTAG",
-vinp."ARB_FK_STD_WOCHENENDE",vinp."ARB_FK_STD_FEIERTAG",vinp."ARB_FEIERTAG",vinp."ARB_TAG",vinp."ARB_MONAT",vinp."ARB_JAHR",vinp."ARB_VON_PK_BAS_KAL_ARBEITSTAGE",vinp."ARB_VON_DATUM",vinp."ARB_VON_FK_BAS_KAL_ARBEITSTAG",vinp."ARB_VON_FK_STD_WOCHENENDE",
-vinp."ARB_VON_FK_STD_FEIERTAG",vinp."ARB_VON_FEIERTAG",vinp."ARB_VON_TAG",vinp."ARB_VON_MONAT",vinp."ARB_VON_JAHR",vinp."ARB_BIS_PK_BAS_KAL_ARBEITSTAGE",vinp."ARB_BIS_DATUM",vinp."ARB_BIS_FK_BAS_KAL_ARBEITSTAG",vinp."ARB_BIS_FK_STD_WOCHENENDE",
-vinp."ARB_BIS_FK_STD_FEIERTAG",vinp."ARB_BIS_FEIERTAG",vinp."ARB_BIS_TAG",vinp."ARB_BIS_MONAT",vinp."ARB_BIS_JAHR",vinp."PK_ADR_LAND",vinp."LAND",vinp."PK_ADR_ORT",vinp."ORT",vinp."CI_PK_ADR_LAND",vinp."CI_LAND",vinp."STEU_STEUERSATZ",
-vinp."STEU_LAND",vinp."STEU_PK_ADR_LAND",vinp."STEU_PK_BAS_STEUER_SATZ",vinp."STEU_ZUS_ST",vinp."STEU_FRMD_STEUERSATZ",vinp."STEU_FRMD_LAND",vinp."STEU_FRMD_PK_ADR_LAND",vinp."STEU_FRMD_PK_BAS_STEUER_SATZ",vinp."STEU_FRMD_ZUS_ST",vinp."PK_BAS_MON_WAEHRUNG",
+vinp."ARB_FK_STD_KAL_WOCHENENDE",vinp."ARB_FK_STD_KAL_FEIERTAG",vinp."ARB_FEIERTAG",vinp."ARB_TAG",vinp."ARB_MONAT",vinp."ARB_JAHR",vinp."ARB_VON_PK_BAS_KAL_ARBEITSTAGE",vinp."ARB_VON_DATUM",vinp."ARB_VON_FK_BAS_KAL_ARBEITSTAG",vinp."ARB_VON_FK_STD_KAL_WOCHENENDE",
+vinp."ARB_VON_FK_STD_KAL_FEIERTAG",vinp."ARB_VON_FEIERTAG",vinp."ARB_VON_TAG",vinp."ARB_VON_MONAT",vinp."ARB_VON_JAHR",vinp."ARB_BIS_PK_BAS_KAL_ARBEITSTAGE",vinp."ARB_BIS_DATUM",vinp."ARB_BIS_FK_BAS_KAL_ARBEITSTAG",vinp."ARB_BIS_FK_STD_KAL_WOCHENENDE",
+vinp."ARB_BIS_FK_STD_KAL_FEIERTAG",vinp."ARB_BIS_FEIERTAG",vinp."ARB_BIS_TAG",vinp."ARB_BIS_MONAT",vinp."ARB_BIS_JAHR",vinp."PK_ADR_LAND",vinp."LAND",vinp."PK_ADR_ORT",vinp."ORT",vinp."CI_PK_ADR_LAND",vinp."CI_LAND",vinp."STEU_STEUERSATZ",
+vinp."STEU_LAND",vinp."STEU_PK_ADR_LAND",vinp."STEU_PK_BAS_STEU_STEUER_SATZ",vinp."STEU_ZUS_ST",vinp."STEU_FRMD_STEUERSATZ",vinp."STEU_FRMD_LAND",vinp."STEU_FRMD_PK_ADR_LAND",vinp."STEU_FRMD_PK_BAS_STEU_STEUER_SATZ",vinp."STEU_FRMD_ZUS_ST",vinp."PK_BAS_MON_WAEHRUNG",
 vinp."WAEHRUNG",vinp."WAEHRUNG_LANG",vinp."COMM",vinp."ABL_ORD_J_PAGE_NUMBER",vinp."ABL_ORD_PK_ABL_ORDNER_PAGE",vinp."ABL_ORD_PAGE_NUMBER",vinp."ABL_ORD_JAHR",vinp."ABL_ORD_ORDNER_NAME",vinp."ABL_ORD_PK_ABL_ORDNER",
 vinp."VBEL_ART",vinp."VBEL_FK_IMP_BA_BEL",vinp."VBEL_PK_IMP_BA_ALLG_BEL",vinp."VBEL_BEZEICHNUNG",vinp."VBEL_KENNZEICHEN",vinp."VBEL_DATUM",vinp."VBEL_DATUM_VERGEHEN",vinp."VBEL_FK_BAS_KAL_ARBEITSTAG",vinp."VBEL_FK_KTO_BUCHUNG",
 vinp."VBEL_BETRAG",vinp."VBEL_WAEHRUNG",vinp."VBEL_STEUERSATZ",vinp."VBEL_MWST_BETRAG",vinp."VBEL_NETTO",vinp."VBEL_ZAHLUNGSART",vinp."VBEL_BILD",vinp."VBEL_BILD1",vinp."VBEL_VERWENDUNGSZWECK",vinp."VBEL_FK_INV_INVENTAR",
@@ -16554,13 +16554,13 @@ from "T_REL_LEX_KTO_BEL"  kto_bel
 --  DDL for View V_LEX_HOTEL_SUB_BUCH
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEX_HOTEL_SUB_BUCH" ("BUCHUNGSNUMMER", "KONTONUMMER", "KONTOBEZEICHNUNG", "BELEGDATUM", "BELEGNUMMER", "BUCHUNGSTEXT", "GEGENKONTO", "SOLLBETRAG_EUR", "HABENBETRAG_EUR", "USTKONTO", "UST", "DATUM_OK", "OK", "SOLLBETRAG_EUR1", "ID", "BUCHUNGSSTATUS", "JAHR", "KST", "KTR", "FK_BEL_BELEGDATUM", "FK_PROJ_PROJEKT", "FK_KON_GESCHAEFTSPARTNER", "FK_INV_INVENTAR", "FK_LOC_LOCATION", "FK_BAS_KAT_KATEGORIE", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_LEX_RELATION", "FK_LEX_RELATION_SUB", "DATUM_STEUER_OK", "SPLIT_NR", "FLG_SPLIT_BUCH", "SPLIT_NR_MAN", "DATUM_SPLIT_OK", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEUER_MONAT", "FK_STEUER_VORANMELDG", "DATUM_STEUERB_ÜBERG", "DATUM_FINANZAMT_ÜBERG", "LEX_BUCHUNGSTEXT", "SOLLKTO", "LEX_JAHR", "FK_INP_BELEGE_ALL", "BELPOS_FK_BAS_KAT_KATEGORIE", "PK_INP_BELEGE_POS_ALL", "PK_INP_BELEGE_ALL", "BRUTTO_BETRAG") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_LEX_HOTEL_SUB_BUCH" ("BUCHUNGSNUMMER", "KONTONUMMER", "KONTOBEZEICHNUNG", "BELEGDATUM", "BELEGNUMMER", "BUCHUNGSTEXT", "GEGENKONTO", "SOLLBETRAG_EUR", "HABENBETRAG_EUR", "USTKONTO", "UST", "DATUM_OK", "OK", "SOLLBETRAG_EUR1", "ID", "BUCHUNGSSTATUS", "JAHR", "KST", "KTR", "FK_BEL_LEX_BELEGDATUM", "FK_PROJ_PROJEKT", "FK_KON_GESCHAEFTSPARTNER", "FK_INV_INVENTAR", "FK_LOC_LOCATION", "FK_BAS_KAT_KATEGORIE", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_LEX_RELATION", "FK_LEX_RELATION_SUB", "DATUM_STEUER_OK", "SPLIT_NR", "FLG_SPLIT_BUCH", "SPLIT_NR_MAN", "DATUM_SPLIT_OK", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEU_STEUER_MONAT", "FK_STEU_STEUER_VORANMELDG", "DATUM_STEUERB_ÜBERG", "DATUM_FINANZAMT_ÜBERG", "LEX_BUCHUNGSTEXT", "SOLLKTO", "LEX_JAHR", "FK_INP_BELEGE_ALL", "BELPOS_FK_BAS_KAT_KATEGORIE", "PK_INP_BELEGE_POS_ALL", "PK_INP_BELEGE_ALL", "BRUTTO_BETRAG") AS 
   select 
         kto."BUCHUNGSNUMMER",kto."KONTONUMMER",kto."KONTOBEZEICHNUNG",kto."BELEGDATUM",kto."BELEGNUMMER",kto."BUCHUNGSTEXT",
         kto."GEGENKONTO",kto."SOLLBETRAG_EUR",kto."HABENBETRAG_EUR",kto."USTKONTO",kto."UST",kto."DATUM_OK",kto."OK",kto."SOLLBETRAG_EUR1",
         kto."ID",kto."BUCHUNGSSTATUS",kto."JAHR",kto."KST",kto."KTR",kto."FK_BAS_KAL_BELEGDATUM",kto."FK_PROJ_PROJEKT",kto."FK_KON_GESCHAEFTSPARTNER",kto."FK_INV_INVENTAR",
         kto."FK_LOC_LOCATION",kto."FK_BAS_KAT_KATEGORIE",kto."FK_BAS_VERW_VERWENDUNGSZWECK",kto."FK_LEX_RELATION",kto."FK_LEX_RELATION_SUB",kto."DATUM_STEUER_OK",kto."SPLIT_NR",
-        kto."FLG_SPLIT_BUCH",kto."SPLIT_NR_MAN",kto."DATUM_SPLIT_OK",kto."DATUM_DUPL_OK",kto."DUPL_BEMERKUNG",kto."FK_CONTR_DUPL_STATUS",kto."FK_STEUER_MONAT",kto."FK_STEUER_VORANMELDG",kto."DATUM_STEUERB_ÜBERG",kto."DATUM_FINANZAMT_ÜBERG",
+        kto."FLG_SPLIT_BUCH",kto."SPLIT_NR_MAN",kto."DATUM_SPLIT_OK",kto."DATUM_DUPL_OK",kto."DUPL_BEMERKUNG",kto."FK_CONTR_DUPL_STATUS",kto."FK_STEU_STEUER_MONAT",kto."FK_STEU_STEUER_VORANMELDG",kto."DATUM_STEUERB_ÜBERG",kto."DATUM_FINANZAMT_ÜBERG",
         ll.buchungstext lex_buchungstext,
         ll.sollkto, 
         ll.jahr lex_jahr, 
@@ -16657,7 +16657,7 @@ from t_loc_location loc
     pr.BELEGE_ZUGEORDNET,
     pr.KM_GERECHNET,
     pr.PROJEKT_ABGESCHLOSSEN,
-    prart.projekt_art,
+    prart.std_name projekt_art,
  auft.PK_KON_GESCHAEFTSPARTNER auft_PK_GESCHAEFTSPARTNER,
 auft.GESCHAEFTSPARTNER auft_GESCHAEFTSPARTNER,
 auft.FK_bas_kon_GESCHAEFTSPARTNERTYP auft_FK_BAS_kon_GESCHAEFTSPARTNERTYP,
@@ -16697,7 +16697,7 @@ pp2.PK_REL_GP_KONT pp2_PK_REL_GP_KONT,
 pp2.GESCHAEFTSPARTNERTYP pp2_GESCHAEFTSPARTNERTYP
 
 from T_proj_PROJEKT pr
- left join t_bas_proj_projekt_art prart on pr.fk_bas_proj_projekt_art = prart.pk_bas_proj_projekt_art
+ left join (select * from t_std where fk_std_group = 523)  prart on pr.fk_std_proj_projekt_art = prart.std_value
  left join v_kon_geschaeftspartner auft on auft.pk_kon_geschaeftspartner = pr.fk_kon_auftraggeber
  left join v_kon_geschaeftspartner pp1 on pp1.pk_kon_geschaeftspartner = pr.fk_kon_projektpartner_1
  left join v_kon_geschaeftspartner pp2 on pp2.pk_kon_geschaeftspartner = pr.fk_kon_projektpartner_2
@@ -16706,7 +16706,7 @@ from T_proj_PROJEKT pr
 --  DDL for View V_REL_LEX
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_REL_LEX" ("PK_REL_LEX_KTO_BEL", "BELEGDAT", "LEX_BELEG", "BETRAGEUR", "BUCHDAT", "NR", "HABENEUR", "JOUR_DAT", "RELATION", "SOLLEUR", "SOLL", "UST", "UST_KTO", "UST_KTO_H", "UST_KTO_S", "PERIODE", "BELEGNR", "BUCHUNGSTEXT", "BETRAG", "WHRG", "SOLLKTO", "HABENKTO", "KST", "KTR", "JAHR", "ABL_ORD_JAHR", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_JAHR", "ARB_BIS_MONAT", "ARB_BIS_TAG", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_JAHR", "ARB_MONAT", "ARB_TAG", "ARB_VON_DATUM", "ARB_VON_JAHR", "ARB_VON_MONAT", "ARB_VON_TAG", "BANK", "BEL_DATUM", "BELEG", "BELEGNUMMER", "BELEG_UHRZEIT", "BEL_EX_NAME", "BEL_EX_VALUE", "BEZEICHNUNG", "BIS", "BIS_UHRZEIT", "BRUTTO_BETRAG", "BRUTTO_BETRAG_EUR", "BRUTTO_BETRAG_INCL_TRINKG", "BRUTTO_INCL_TRINKG_EUR", "CI_LAND", "CI_PK_ADR_LAND", "CNT_PUNKTE", "CNT_PUNKTE_GESCHAETZT", "FK_ADR_CITY", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FK_IMP_BA_BEL_OLD", "FK_INV_INVENTAR", "FK_BAS_KAT_KATEGORIE", "FK_LA_KONTO", "FK_ADR_LAND", "FK_LA_WDH", "FK_LEX_BUCHUNG", "FK_LOC_LOCATION", "FK_LOC_LOCATION_VERG", "FK_PROJ_PROJEKT", "FK_REAL_BELEG_EXIST", "FK_STD_STATUS", "FK_BAS_STEUER_SATZ", "FK_BAS_MON_UMRECHNUNGSKURS", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_MON_WAEHRUNG", "FK_STD_ZAHLUNGSART", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "FRMDW_MWST_BETRAG", "FRMDW_NETTO_BETRAG", "IBAN", "INP_BEL_ALL_JAHR", "KTOKAT_KATEGORIE", "KUNDENNUMMER", "LA_DATUM", "LAND", "LA_WDH_NAME", "LA_WDH_VALUE", "LITER", "MENGENEINHEIT", "MWST_BETRAG", "MWST_BETRAG_EUR", "NETTO_BETRAG", "NETTO_BETRAG_EUR", "ORT", "PERSOENLICH_VOR_ORT", "PK_KTO_BANK", "PK_KTO_BANKKONTO", "PK_INP_BELEGE_ALL", "PK_BAS_KAT_KONTO_BUCH", "PK_ADR_LAND", "PK_ADR_ORT", "PK_BAS_VERW_VERWENDUNGSZWECK", "PK_BAS_MON_WAEHRUNG", "PREIS_PRO_MENGE", "PROJ_AUFT_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_BIS", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_KM_GERECHNET", "PROJ_PK_PROJ_PROJEKT", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PROJEKT", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_PSP_ELEMENT", "PROJ_RECHNUNG_GESTELLT", "PROJ_VON", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PUNKTE_BIS", "PUNKTE_VON", "STA_NAME", "STA_VALUE", "STEUERNUMMER", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEUER_SATZ", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_ZUS_ST", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEUERSATZ", "STEU_STEUERSATZ", "STEU_ZUS_ST", "TANKSTELLEN_NR", "VBEL_ART", "VBEL_BETRAG", "VBEL_BEZEICHNUNG", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_FK_IMP_BA_BEL", "VBEL_FK_INV_INVENTAR", "VBEL_FK_BAS_KAT_KATEGORIE", "VBEL_FK_PROJ_PROJEKT", "VBEL_INVENTAR", "VBEL_KATEGORIE", "VBEL_KENNZEICHEN", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_PROJEKT", "VBEL_STEUERSATZ", "VBEL_VERWENDUNGSZWECK", "VBEL_WAEHRUNG", "VBEL_WAEHRUNG_BETRAG", "VBEL_ZAHLUNGSART", "VERWENDUNGSZWECK", "VLOC_ADR", "VLOC_BESCHREIBUNG", "VLOC_FK_ADR_ADRESSE", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_HSNR", "VLOC_LAND", "VLOC_LOCATION", "VLOC_LOCATION_TYPE", "VLOC_ORT", "VLOC_PK_LOC_LOCATION", "VLOC_PLZ", "VLOC_POSTFACH", "VLOC_STRASSE", "VLOC_VERG_ADR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_HSNR", "VLOC_VERG_LAND", "VLOC_VERG_LOCATION", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_ORT", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_PLZ", "VLOC_VERG_POSTFACH", "VLOC_VERG_STRASSE", "VON", "VON_UHRZEIT", "WAEHRUNG_LANG", "ZAHL_ART_NAME", "ZAHL_ART_VAL", "ZAHLUNGSBELEG", "ZAPFSAEULE", "FK_MAIN_KEY", "KTO_ID", "Buchungstag", "KTO_BETRAG", "WAEHRUNG", "FREMDWAEHRUNGSBETRAG", "FREMDWAEHRUNG", "KTO_BUCHUNGSTEXT", "FK_BAS_KTO_KONTOTYP", "FK_BAS_KAL_BUCHUNGSTAG", "FK_BAS_KAL_WERTSTELLUNG", "KTO_VERWENDUNGSZWECK", "KTO_KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "KONTOTYP", "FK_KTO_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_IMP_BA_BEL", "FK_REL_LEX_KTO_BEL", "STATUS", "FK_STD_ZAHLSTATUS", "FK_INP_BELEGE_POS_ALL") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_REL_LEX" ("PK_REL_LEX_KTO_BEL", "BELEGDAT", "LEX_BELEG", "BETRAGEUR", "BUCHDAT", "NR", "HABENEUR", "JOUR_DAT", "RELATION", "SOLLEUR", "SOLL", "UST", "UST_KTO", "UST_KTO_H", "UST_KTO_S", "PERIODE", "BELEGNR", "BUCHUNGSTEXT", "BETRAG", "WHRG", "SOLLKTO", "HABENKTO", "KST", "KTR", "JAHR", "ABL_ORD_JAHR", "ABL_ORD_J_PAGE_NUMBER", "ABL_ORD_ORDNER_NAME", "ABL_ORD_PAGE_NUMBER", "ABL_ORD_PK_ABL_ORDNER", "ABL_ORD_PK_ABL_ORDNER_PAGE", "ARB_BIS_DATUM", "ARB_BIS_FK_BAS_KAL_ARBEITSTAG", "ARB_BIS_JAHR", "ARB_BIS_MONAT", "ARB_BIS_TAG", "ARB_DATUM", "ARB_FK_BAS_KAL_ARBEITSTAG", "ARB_JAHR", "ARB_MONAT", "ARB_TAG", "ARB_VON_DATUM", "ARB_VON_JAHR", "ARB_VON_MONAT", "ARB_VON_TAG", "BANK", "BEL_DATUM", "BELEG", "BELEGNUMMER", "BELEG_UHRZEIT", "BEL_EX_NAME", "BEL_EX_VALUE", "BEZEICHNUNG", "BIS", "BIS_UHRZEIT", "BRUTTO_BETRAG", "BRUTTO_BETRAG_EUR", "BRUTTO_BETRAG_INCL_TRINKG", "BRUTTO_INCL_TRINKG_EUR", "CI_LAND", "CI_PK_ADR_LAND", "CNT_PUNKTE", "CNT_PUNKTE_GESCHAETZT", "FK_ADR_CITY", "FK_BAS_MON_FRMDW", "FK_BAS_MON_FRMDW_MWST_SATZ", "FK_IMP_BA_BEL_OLD", "FK_INV_INVENTAR", "FK_BAS_KAT_KATEGORIE", "FK_LA_KONTO", "FK_ADR_LAND", "FK_LA_WDH", "FK_LEX_BUCHUNG", "FK_LOC_LOCATION", "FK_LOC_LOCATION_VERG", "FK_PROJ_PROJEKT", "FK_REAL_BELEG_EXIST", "FK_STD_STATUS", "FK_BAS_STEU_STEUER_SATZ", "FK_BAS_MON_UMRECHNUNGSKURS", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_BAS_KAL_VON_ARBEITSTAG", "FK_BAS_MON_WAEHRUNG", "FK_STD_ZAHLUNGSART", "FRMDW_BRUTTO_BETRAG", "FRMDW_BRUTTO_INCL_TRINKG", "FRMDW_MWST_BETRAG", "FRMDW_NETTO_BETRAG", "IBAN", "INP_BEL_ALL_JAHR", "KTOKAT_KATEGORIE", "KUNDENNUMMER", "LA_DATUM", "LAND", "LA_WDH_NAME", "LA_WDH_VALUE", "LITER", "MENGENEINHEIT", "MWST_BETRAG", "MWST_BETRAG_EUR", "NETTO_BETRAG", "NETTO_BETRAG_EUR", "ORT", "PERSOENLICH_VOR_ORT", "PK_KTO_BANK", "PK_KTO_BANKKONTO", "PK_INP_BELEGE_ALL", "PK_BAS_KAT_KONTO_BUCH", "PK_ADR_LAND", "PK_ADR_ORT", "PK_BAS_VERW_VERWENDUNGSZWECK", "PK_BAS_MON_WAEHRUNG", "PREIS_PRO_MENGE", "PROJ_AUFT_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_GESCHAEFTSPARTNER", "PROJ_AUFT_GESCHAEFTSPARTNERTYP", "PROJ_AUFT_PK_KON_GESCHAEFTSPARTNER", "PROJ_AUFT_PK_REL_GP_KONT", "PROJ_BIS", "PROJ_FK_KON_AUFTRAGGEBER", "PROJ_FK_KON_PROJEKTPARTNER_1", "PROJ_FK_KON_PROJEKTPARTNER_2", "PROJ_KM_GERECHNET", "PROJ_PK_PROJ_PROJEKT", "PROJ_PP1_BESCHREIBUNG", "PROJ_PP1_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP1_GESCHAEFTSPARTNER", "PROJ_PP1_GESCHAEFTSPARTNERTYP", "PROJ_PP1_PK_REL_GP_KONT", "PROJ_PP2_FK_BAS_KON_GESCHAEFTSPARTNERTYP", "PROJ_PP2_GESCHAEFTSPARTNER", "PROJ_PP2_GESCHAEFTSPARTNERTYP", "PROJ_PP2_PK_KON_GESCHAEFTSPARTNER", "PROJ_PP2_PK_REL_GP_KONT", "PROJ_PROJEKT", "PROJ_PROJEKT_ABGESCHLOSSEN", "PROJ_PROJEKT_ART", "PROJ_PSP_ELEMENT", "PROJ_RECHNUNG_GESTELLT", "PROJ_VON", "PROJ_ZAHLUNG_ABGESCHLOSSEN", "PUNKTE_BIS", "PUNKTE_VON", "STA_NAME", "STA_VALUE", "STEUERNUMMER", "STEU_FRMD_LAND", "STEU_FRMD_PK_ADR_LAND", "STEU_FRMD_PK_BAS_STEUER_SATZ", "STEU_FRMD_STEUERSATZ", "STEU_FRMD_ZUS_ST", "STEU_LAND", "STEU_PK_ADR_LAND", "STEU_PK_BAS_STEUERSATZ", "STEU_STEUERSATZ", "STEU_ZUS_ST", "TANKSTELLEN_NR", "VBEL_ART", "VBEL_BETRAG", "VBEL_BEZEICHNUNG", "VBEL_DATUM", "VBEL_DATUM_VERGEHEN", "VBEL_FK_BAS_KAL_ARBEITSTAG", "VBEL_FK_KTO_BUCHUNG", "VBEL_FK_IMP_BA_BEL", "VBEL_FK_INV_INVENTAR", "VBEL_FK_BAS_KAT_KATEGORIE", "VBEL_FK_PROJ_PROJEKT", "VBEL_INVENTAR", "VBEL_KATEGORIE", "VBEL_KENNZEICHEN", "VBEL_MWST_BETRAG", "VBEL_NETTO", "VBEL_PK_IMP_BA_ALLG_BEL", "VBEL_PROJEKT", "VBEL_STEUERSATZ", "VBEL_VERWENDUNGSZWECK", "VBEL_WAEHRUNG", "VBEL_WAEHRUNG_BETRAG", "VBEL_ZAHLUNGSART", "VERWENDUNGSZWECK", "VLOC_ADR", "VLOC_BESCHREIBUNG", "VLOC_FK_ADR_ADRESSE", "VLOC_FK_BAS_LOC_LOCATION_TYPE", "VLOC_HSNR", "VLOC_LAND", "VLOC_LOCATION", "VLOC_LOCATION_TYPE", "VLOC_ORT", "VLOC_PK_LOC_LOCATION", "VLOC_PLZ", "VLOC_POSTFACH", "VLOC_STRASSE", "VLOC_VERG_ADR", "VLOC_VERG_BESCHREIBUNG", "VLOC_VERG_FK_ADR_ADRESSE", "VLOC_VERG_FK_BAS_LOC_LOCATION_TYPE", "VLOC_VERG_HSNR", "VLOC_VERG_LAND", "VLOC_VERG_LOCATION", "VLOC_VERG_LOCATION_TYPE", "VLOC_VERG_ORT", "VLOC_VERG_PK_LOC_LOCATION", "VLOC_VERG_PLZ", "VLOC_VERG_POSTFACH", "VLOC_VERG_STRASSE", "VON", "VON_UHRZEIT", "WAEHRUNG_LANG", "ZAHL_ART_NAME", "ZAHL_ART_VAL", "ZAHLUNGSBELEG", "ZAPFSAEULE", "FK_MAIN_KEY", "KTO_ID", "Buchungstag", "KTO_BETRAG", "WAEHRUNG", "FREMDWAEHRUNGSBETRAG", "FREMDWAEHRUNG", "KTO_BUCHUNGSTEXT", "FK_BAS_KTO_KONTOTYP", "FK_BAS_KAL_BUCHUNGSTAG", "FK_BAS_KAL_WERTSTELLUNG", "KTO_VERWENDUNGSZWECK", "KTO_KATEGORIE", "BUCHT_TAG", "BUCHT_MONAT", "BUCHT_JAHR", "BUCHT_DATUM", "WERTT_TAG", "WERTT_MONAT", "WERTT_JAHR", "WERTT_DATUM", "KONTOTYP", "FK_KTO_VORGANG", "WIEDERHOLUNG", "NAECHSTE_ZAHLUNG", "FK_BUCHUNG_STEUER", "FK_IMP_BA_BEL", "FK_REL_LEX_KTO_BEL", "STATUS", "FK_BAS_STD_ZAHLSTATUS", "FK_INP_BELEGE_POS_ALL") AS 
   select 
         pk_rel_lex_kto_bel,
         BELEGDAT,
@@ -16795,13 +16795,13 @@ from T_proj_PROJEKT pr
         FK_loc_LOCATION_VERG,
         vinp.FK_proj_PROJEKT,
         vinp.FK_REAL_BELEG_EXIST,
-        FK_std_STATUS,
-        FK_bas_STEUER_SATZ,
+        FK_bas_std_STATUS,
+        FK_bas_steu_STEUER_SATZ,
         FK_bas_mon_UMRECHNUNGSKURS,
         vinp.FK_bas_verw_VERWENDUNGSZWECK,
         FK_bas_kal_VON_ARBEITSTAG,
         FK_bas_mon_WAEHRUNG,
-        FK_std_ZAHLUNGSART,
+        FK_bas_std_ZAHLUNGSART,
         FRMDW_BRUTTO_BETRAG,
         FRMDW_BRUTTO_INCL_TRINKG,
         FRMDW_MWST_BETRAG,
@@ -16879,12 +16879,12 @@ from T_proj_PROJEKT pr
         STEUERNUMMER,
         STEU_FRMD_LAND,
         STEU_FRMD_PK_adr_LAND,
-        STEU_FRMD_PK_bas_STEUER_SATZ,
+        STEU_FRMD_PK_bas_steu_STEUER_SATZ,
         STEU_FRMD_STEUERSATZ,
         STEU_FRMD_ZUS_ST,
         STEU_LAND,
         STEU_PK_adr_LAND,
-        STEU_PK_bas_STEUER_SATZ,
+        STEU_PK_bas_steu_STEUER_SATZ,
         STEU_STEUERSATZ,
         STEU_ZUS_ST,
         TANKSTELLEN_NR,
@@ -16970,7 +16970,7 @@ from T_proj_PROJEKT pr
         rel.fk_imp_ba_bel,
         rel.fk_rel_lex_kto_bel,
         lex.status,
-        vinp.fk_std_zahlstatus,
+        vinp.fk_bas_std_zahlstatus,
         rel.fk_inp_belege_pos_all
 from t_rel_lex_kto_bel rel
   left join (
@@ -17072,13 +17072,13 @@ from t_rel_lex_kto_bel rel
                 FK_loc_LOCATION_VERG,
                 FK_proj_PROJEKT,
                 FK_REAL_BELEG_EXIST,
-                FK_std_STATUS,
-                FK_bas_STEUER_SATZ,
+                FK_bas_std_STATUS,
+                FK_bas_steu_STEUER_SATZ,
                 FK_bas_mon_UMRECHNUNGSKURS,
                 FK_bas_verw_VERWENDUNGSZWECK,
                 FK_bas_kal_VON_ARBEITSTAG,
                 FK_bas_mon_WAEHRUNG,
-                FK_std_ZAHLUNGSART,
+                FK_bas_std_ZAHLUNGSART,
                 FRMDW_BRUTTO_BETRAG,
                 FRMDW_BRUTTO_INCL_TRINKG,
                 FRMDW_MWST_BETRAG,
@@ -17156,12 +17156,12 @@ from t_rel_lex_kto_bel rel
                 STEUERNUMMER,
                 STEU_FRMD_LAND,
                 STEU_FRMD_PK_adr_LAND,
-                STEU_FRMD_PK_bas_STEUER_SATZ,
+                STEU_FRMD_PK_bas_steu_STEUER_SATZ,
                 STEU_FRMD_STEUERSATZ,
                 STEU_FRMD_ZUS_ST,
                 STEU_LAND,
                 STEU_PK_adr_LAND,
-                STEU_PK_bas_STEUER_SATZ,
+                STEU_PK_bas_steu_STEUER_SATZ,
                 STEU_STEUERSATZ,
                 STEU_ZUS_ST,
                 TANKSTELLEN_NR,
@@ -17231,7 +17231,7 @@ from t_rel_lex_kto_bel rel
                 ZAHL_ART_VAL,
                 ZAHLUNGSBELEG,
                 ZAPFSAEULE ,
-                fk_std_zahlstatus
+                fk_bas_std_zahlstatus
                 
             from v_inp_belege_all
         ) vinp on vinp.pk_inp_belege_all = rel.fk_inp_belege_all
@@ -17420,13 +17420,13 @@ from t_rel_lex_kto_bel rel
                 FK_LOC_LOCATION_VERG,
                 FK_PROJ_PROJEKT,
                 FK_REAL_BELEG_EXIST,
-                FK_STD_STATUS,
-                FK_BAS_STEUER_SATZ,
+                FK_bas_STD_STATUS,
+                FK_BAS_steu_STEUER_SATZ,
                 FK_BAS_MON_UMRECHNUNGSKURS,
                 FK_BAS_verw_VERWENDUNGSZWECK,
                 FK_BAS_kal_VON_ARBEITSTAG,
                 FK_BAS_mon_WAEHRUNG,
-                FK_STD_ZAHLUNGSART,
+                FK_bas_STD_ZAHLUNGSART,
                 FRMDW_BRUTTO_BETRAG,
                 FRMDW_BRUTTO_INCL_TRINKG,
                 FRMDW_MWST_BETRAG,
@@ -17504,12 +17504,12 @@ from t_rel_lex_kto_bel rel
                 STEUERNUMMER,
                 STEU_FRMD_LAND,
                 STEU_FRMD_PK_ADR_LAND,
-                STEU_FRMD_PK_BAS_STEUER_SATZ,
+                STEU_FRMD_PK_BAS_STEU_STEUER_SATZ,
                 STEU_FRMD_STEUERSATZ,
                 STEU_FRMD_ZUS_ST,
                 STEU_LAND,
                 STEU_PK_ADR_LAND,
-                STEU_PK_BAS_STEUER_SATZ,
+                STEU_PK_BAS_steu_STEUER_SATZ,
                 STEU_STEUERSATZ,
                 STEU_ZUS_ST,
                 TANKSTELLEN_NR,
@@ -17579,7 +17579,7 @@ from t_rel_lex_kto_bel rel
                 ZAHL_ART_VAL,
                 ZAHLUNGSBELEG,
                 ZAPFSAEULE ,
-                fk_std_zahlstatus
+                fk_bas_std_zahlstatus
                 
             from v_inp_belege_all
         ) vinp on vinp.pk_inp_belege_all = rel.fk_inp_belege_all
@@ -17630,17 +17630,17 @@ group by rollup (rechnungsdatum)
 order by 1
 ;
 --------------------------------------------------------
---  DDL for View V_STEUER_DATUM_OK
+--  DDL for View V_STEU_STEUER_DATUM_OK
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_DATUM_OK" ("KONTONUMMER", "CNT", "CNT_DATUM_STEUER_OK", "DIFF_DATUM_STEUER_OK", "JAHR") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEU_STEUER_DATUM_OK" ("KONTONUMMER", "CNT", "CNT_DATUM_STEUER_OK", "DIFF_DATUM_STEUER_OK", "JAHR") AS 
   select kontonummer, count(*) cnt,  sum(case when datum_steuer_ok is not null then 1 else 0 end) cnt_datum_steuer_ok,count(*)- sum(case when datum_steuer_ok is not null then 1 else 0 end)  diff_datum_steuer_ok , jahr from t_lex_kontenblatt group by kontonummer, jahr
 ;
 --------------------------------------------------------
---  DDL for View V_STEUER_GES
+--  DDL for View V_STEU_STEUER_GES
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_GES" ("SRT", "POS", "KATEGORIE", "BETRAG", "JAHR", "MONAT") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEU_STEUER_GES" ("SRT", "POS", "KATEGORIE", "BETRAG", "JAHR", "MONAT") AS 
   With zeitr as (select * from dual),
 
 ein as (
@@ -17653,7 +17653,7 @@ ein as (
             to_char(zahlungseingang,'YYYY') jahr, 
             to_char(to_number(to_char(zahlungseingang,'MM'))) monat 
         from t_re_rechnung 
-        where fk_std_rechnungstyp = 2 
+        where fk_std_re_rechnungstyp = 2 
         group by  
             to_char(zahlungseingang,'YYYY') , 
             to_char( to_number(to_char(zahlungseingang,'MM')))
@@ -17667,7 +17667,7 @@ ein_mwst as (
                     to_char(zahlungseingang,'YYYY') jahr, 
                    to_char( to_number(to_char(zahlungseingang,'MM'))) monat
                 from t_re_rechnung 
-                where fk_std_rechnungstyp = 2 
+                where fk_std_re_rechnungstyp = 2 
                 group by   
                   to_char(zahlungseingang,'YYYY') , 
                   to_char( to_number(to_char(zahlungseingang,'MM')))
@@ -17682,7 +17682,7 @@ ausg_mwst_bel as (
                   to_char(monat) monat
                 from t_bel_beleg
                  left join t_bas_kal_arbeitstage on t_bel_beleg.fk_bas_kal_arbeitstag = t_bas_kal_arbeitstage.pk_bas_kal_arbeitstage
-                where  fk_std_einkommensteuerrelevant= 1 or fk_std_unternehmenssteuerrelevant = 1 or fk_std_vorsteuerrelevant =1
+                where  fk_std_steu_einkommensteuerrelevant= 1 or fk_std_steu_unternehmenssteuerrelevant = 1 or fk_std_steu_vorsteuerrelevant =1
                  group by fk_bas_bel_belegart, jahr, monat
 
 ),
@@ -17736,7 +17736,7 @@ ausg as (
              left join t_bas_kal_arbeitstage on t_bel_beleg.fk_bas_kal_arbeitstag = t_bas_kal_arbeitstage.pk_bas_kal_arbeitstage           
              left join t_bas_bel_belegart on t_bel_beleg.fk_bas_bel_belegart = t_bas_bel_belegart.pk_bas_bel_belegart
             where 
-              (fk_std_einkommensteuerrelevant= 1 or fk_std_unternehmenssteuerrelevant = 1 or fk_std_vorsteuerrelevant =1)
+              (fk_std_steu_einkommensteuerrelevant= 1 or fk_std_steu_unternehmenssteuerrelevant = 1 or fk_std_steu_vorsteuerrelevant =1)
               and (fk_bas_bel_belegart not in (112,
                 61,
                 161)
@@ -17756,7 +17756,7 @@ vorst_anm as (
     to_char(MELDEMONAT,'YYYY') jahr, 
     to_char(to_number(to_char(MELDEMONAT,'MM'))) monat 
    
-   from T_STEUER_VORANMLDG
+   from T_steu_STEUER_VORANMLDG
    group by 
     to_char(MELDEMONAT,'YYYY') ,
     to_char(to_number(to_char(MELDEMONAT,'MM'))) 
@@ -17771,7 +17771,7 @@ vorst_anm_stpf_ums as (
     to_char(MELDEMONAT,'YYYY') jahr, 
     to_char(to_number(to_char(MELDEMONAT,'MM'))) monat 
    
-   from T_STEUER_VORANMLDG
+   from T_steu_STEUER_VORANMLDG
    group by 
     to_char(MELDEMONAT,'YYYY') ,
     to_char(to_number(to_char(MELDEMONAT,'MM'))) 
@@ -17786,7 +17786,7 @@ vorst_anm_abz_betr as (
     to_char(MELDEMONAT,'YYYY') jahr, 
     to_char(to_number(to_char(MELDEMONAT,'MM'))) monat 
    
-   from T_STEUER_VORANMLDG
+   from T_steu_STEUER_VORANMLDG
    group by 
     to_char(MELDEMONAT,'YYYY') ,
     to_char(to_number(to_char(MELDEMONAT,'MM'))) 
@@ -18007,32 +18007,33 @@ KATEGORIE,
 JAHR
 ;
 --------------------------------------------------------
---  DDL for View V_STEUER_SATZ
+--  DDL for View V_STEU_STEUER_SATZ
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_SATZ" ("STEUERSATZ", "LAND", "PK_ADR_LAND", "PK_BAS_STEUER_SATZ", "ZUS_ST") AS 
-  select STEUERSATZ, land, pk_adr_land, pk_bas_steuer_satz,  STEUERSATZ || ' (' || land || ')' zus_st
-  from t_bas_steuer_satz st
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEU_STEUER_SATZ" ("STEUERSATZ", "LAND", "PK_ADR_LAND", "PK_BAS_STEU_STEUER_SATZ", "ZUS_ST") AS 
+  select STEUERSATZ, land, pk_adr_land, pk_bas_steu_steuer_satz,  STEUERSATZ || ' (' || land || ')' zus_st
+  from t_bas_steu_steuer_satz st
     left join t_adr_land la on st.fk_adr_land = la.pk_adr_land
 ;
 --------------------------------------------------------
---  DDL for View V_STEUER_VERPFL_ROUTE
+--  DDL for View V_STEU_STEUER_VERPFL_ROUTE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_VERPFL_ROUTE" ("D", "RNR") AS 
-  select '1' || ',' || 3 || ',' || koordinaten || ',' ||  chr(39) ||  row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steuer_verpfl_beleg_ort) || ' - ' ||  ort || '-' || vdet.datum_verpfl_mehraufwd || chr(39) || ',' || 'Company' || ',' || 'Firma' || ',0,' d,row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steuer_verpfl_beleg_ort) rnr
-from t_steuer_verpfl_mehraufwd_det vdet
- left join t_steuer_verpfl_mehraufwd v on vdet.fk_steuer_verpfl_mehraufwd = v.pk_steuer_verpfl_mehraufwd
- left join t_rel_steuer_verpfl_beleg_ort vort on vort.fk_steuer_verpfl_mehraufwd_det = vdet.pk_steuer_verpfl_mehraufwd_det
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEU_STEUER_VERPFL_ROUTE" ("D", "RNR") AS 
+  select '1' || ',' || 3 || ',' || koordinaten || ',' ||  chr(39) ||  row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steu_steuer_verpfl_beleg_ort) || ' - ' || 
+  ort || '-' || vdet.datum_verpfl_mehraufwd || chr(39) || ',' || 'Company' || ',' || 'Firma' || ',0,' d,row_number() over (order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steu_steuer_verpfl_beleg_ort) rnr
+from t_steu_steuer_verpfl_mehraufwd_det vdet
+ left join t_steu_steuer_verpfl_mehraufwd v on vdet.fk_steu_steuer_verpfl_mehraufwd = v.pk_steu_steuer_verpfl_mehraufwd
+ left join t_rel_steu_steuer_verpfl_beleg_ort vort on vort.fk_steu_steuer_verpfl_mehraufwd_det = vdet.pk_steu_steuer_verpfl_mehraufwd_det
  left join t_adr_ort ort on ort.pk_adr_ort = vort.fk_adr_ort
-where v.fk_bas_monat = 1 and fk_bas_jahr = 2020
- order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steuer_verpfl_beleg_ort
+where v.monat = 1 and jahr = 2020
+ order by vdet.datum_verpfl_mehraufwd, vort.pk_rel_steu_steuer_verpfl_beleg_ort
 ;
 --------------------------------------------------------
---  DDL for View V_STEUER_VORANMELD_ZUORD_KAS_SPLIT
+--  DDL for View V_STEU_STEUER_VORANMELD_ZUORD_KAS_SPLIT
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEUER_VORANMELD_ZUORD_KAS_SPLIT" ("PK_KTO_KAS_KTO_KASSE", "FK_KTO_KONTOTYP", "FK_EIN_AUS", "DATUM", "BETRAG", "BUCHUNGSTEXT", "COMM", "JAHR", "CREATION_DATE", "FK_MAIN_KEY", "FK_KTO_BANKKONTO", "FREMDWAEHRUNGSBETRAG", "FK_BAS_MON_FREMDWAEHRUNG", "FK_BAS_KAL_ARBEITSTAG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_LOC_LOCATION", "FK_MAIN_KEY_BANKKONTO", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEUER_MONAT", "FK_STEUER_VORANMELDG", "DATUM_STEUERB_UEBERG", "DATUM_FINANZAMT_UEBERG") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_STEU_STEUER_VORANMELD_ZUORD_KAS_SPLIT" ("PK_KTO_KAS_KTO_KASSE", "FK_KTO_KONTOTYP", "FK_EIN_AUS", "DATUM", "BETRAG", "BUCHUNGSTEXT", "COMM", "JAHR", "CREATION_DATE", "FK_MAIN_KEY", "FK_KTO_BANKKONTO", "FREMDWAEHRUNGSBETRAG", "FK_BAS_MON_FREMDWAEHRUNG", "FK_BAS_KAL_ARBEITSTAG", "FK_BAS_KAT_KATEGORIE", "FK_BAS_VERW_VERWENDUNGSZWECK", "FK_INV_INVENTAR", "FK_LOC_LOCATION", "FK_MAIN_KEY_BANKKONTO", "DATUM_DUPL_OK", "DUPL_BEMERKUNG", "FK_CONTR_DUPL_STATUS", "FK_STEUER_MONAT", "FK_STEUER_VORANMELDG", "DATUM_STEUERB_UEBERG", "DATUM_FINANZAMT_UEBERG") AS 
   select "PK_KTO_KAS_KASSE","FK_BAS_KTO_KONTOTYP","FK_EIN_AUS",
   "DATUM","BETRAG","BUCHUNGSTEXT","COMM","JAHR","CREATION_DATE",
   "FK_MAIN_KEY","FK_KTO_BANKKONTO","FREMDWAEHRUNGSBETRAG","FK_BAS_MON_FREMDWAEHRUNG","FK_BAS_KAL_ARBEITSTAG",
@@ -19894,7 +19895,7 @@ where v.fk_bas_monat = 1 and fk_bas_jahr = 2020
 --  DDL for Index T_VERPFLEGUNGSMEHRAUFWAND_DET_PK
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET_PK" ON "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET") 
+  CREATE UNIQUE INDEX "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET_PK" ON "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -28045,7 +28046,7 @@ ALTER TRIGGER "COMPANY"."T_STEUERSATZ_TRG1" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_STEUER_VERPFL_MEHRAUFWD_DET_TRG" 
-BEFORE INSERT ON "T_STEU_VERPFL_MEHRAUFWD_DET" 
+BEFORE INSERT ON "T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -28296,7 +28297,7 @@ ALTER TRIGGER "COMPANY"."T_USER_TRG" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET_TRG" 
-BEFORE INSERT ON "T_STEU_VERPFL_MEHRAUFWD_DET" 
+BEFORE INSERT ON "T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -28311,7 +28312,7 @@ ALTER TRIGGER "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET_TRG" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_VERPFLEGUNGSMEHRAUFWAND_DET_TRG1" 
-BEFORE INSERT ON "T_STEU_VERPFL_MEHRAUFWD_DET" 
+BEFORE INSERT ON "T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -47861,11 +47862,11 @@ END;
   TABLESPACE "USERS"  ENABLE;
   ALTER TABLE "COMPANY"."T_REL_RE_RECHNUNG_ZAHLUNG" MODIFY ("PK_REL_RE_RECHNUNG_ZAHLUNG" NOT NULL ENABLE);
 --------------------------------------------------------
---  Constraints for Table T_STEU_VERPFL_MEHRAUFWD_DET
+--  Constraints for Table T_STEU_STEUER_VERPFL_MEHRAUFWD_DET
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" MODIFY ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET" NOT NULL ENABLE);
-  ALTER TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_PK" PRIMARY KEY ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET")
+  ALTER TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" MODIFY ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_PK" PRIMARY KEY ("PK_STEU_STEUER_VERPFL_MEHRAUFWD_DET")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -48577,7 +48578,7 @@ END;
 --  Constraints for Table T_IMP_INP_BELEGE_ALL
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."T_IMP_INP_BELEGE_ALL" MODIFY ("PK_INP_BELEGE_ALL" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_IMP_INP_BELEGE_ALL" MODIFY ("PK_IMP_INP_BELEGE_ALL" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table T_REL_BEL_BELEGART_GRP
 --------------------------------------------------------
@@ -50201,16 +50202,16 @@ END;
   ALTER TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_FK2" FOREIGN KEY ("FK_STEU_STEUER_MONAT")
 	  REFERENCES "COMPANY"."T_STEU_STEUER_MONAT" ("PK_STEU_STEUER_MONAT") ENABLE;
 --------------------------------------------------------
+--  Ref Constraints for Table T_STEU_STEUER_VERPFL_MEHRAUFWD_DET
+--------------------------------------------------------
+
+  ALTER TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK1" FOREIGN KEY ("FK_STEU_STEUER_VERPFL_MEHRAUFWD")
+	  REFERENCES "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD" ("PK_STEU_STEUER_VERPFL_MEHRAUFWD") ENABLE;
+  ALTER TABLE "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK2" FOREIGN KEY ("FK_ADR_ORT")
+	  REFERENCES "COMPANY"."T_ADR_ORT" ("PK_ADR_ORT") ENABLE;
+--------------------------------------------------------
 --  Ref Constraints for Table T_STEU_STEUER_VORANMLDG
 --------------------------------------------------------
 
   ALTER TABLE "COMPANY"."T_STEU_STEUER_VORANMLDG" ADD CONSTRAINT "T_STEUER_VORANMLDG_FK1" FOREIGN KEY ("FK_STEU_STEUER_MONAT")
 	  REFERENCES "COMPANY"."T_STEU_STEUER_MONAT" ("PK_STEU_STEUER_MONAT") ENABLE;
---------------------------------------------------------
---  Ref Constraints for Table T_STEU_VERPFL_MEHRAUFWD_DET
---------------------------------------------------------
-
-  ALTER TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK1" FOREIGN KEY ("FK_STEU_STEUER_VERPFL_MEHRAUFWD")
-	  REFERENCES "COMPANY"."T_STEU_STEUER_VERPFL_MEHRAUFWD" ("PK_STEU_STEUER_VERPFL_MEHRAUFWD") ENABLE;
-  ALTER TABLE "COMPANY"."T_STEU_VERPFL_MEHRAUFWD_DET" ADD CONSTRAINT "T_VERPFLEGUNGSMEHRAUFWAND_DET_FK2" FOREIGN KEY ("FK_ADR_ORT")
-	  REFERENCES "COMPANY"."T_ADR_ORT" ("PK_ADR_ORT") ENABLE;

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<config key="column-filter">
+<entry key="filter-type" type="xstring" value="STANDARD"/>
+<config key="included_names">
+<entry key="array-size" type="xint" value="42"/>
+<entry key="0" type="xstring" value="Belegdat."/>
+<entry key="1" type="xstring" value="Periode"/>
+<entry key="2" type="xstring" value="Belegnr."/>
+<entry key="3" type="xstring" value="Buchungstext"/>
+<entry key="4" type="xstring" value="Betrag"/>
+<entry key="5" type="xstring" value="Whrg"/>
+<entry key="6" type="xstring" value="Sollkto"/>
+<entry key="7" type="xstring" value="Habenkto"/>
+<entry key="8" type="xstring" value="Abschluss"/>
+<entry key="9" type="xstring" value="Beleg"/>
+<entry key="10" type="xstring" value="Benutzer"/>
+<entry key="11" type="xstring" value="BetragDM"/>
+<entry key="12" type="xstring" value="BetragEUR"/>
+<entry key="13" type="xstring" value="Buchdat."/>
+<entry key="14" type="xstring" value="Nr."/>
+<entry key="15" type="xstring" value="HabenDM"/>
+<entry key="16" type="xstring" value="HabenEUR"/>
+<entry key="17" type="xstring" value="Haben"/>
+<entry key="18" type="xstring" value="Jour. Dat."/>
+<entry key="19" type="xstring" value="KSt."/>
+<entry key="20" type="xstring" value="KTr."/>
+<entry key="21" type="xstring" value="Notiz"/>
+<entry key="22" type="xstring" value="Relation"/>
+<entry key="23" type="xstring" value="SollDM"/>
+<entry key="24" type="xstring" value="SollEUR"/>
+<entry key="25" type="xstring" value="Soll"/>
+<entry key="26" type="xstring" value="Sperre"/>
+<entry key="27" type="xstring" value="Stapel"/>
+<entry key="28" type="xstring" value="Status"/>
+<entry key="29" type="xstring" value="Status Dat"/>
+<entry key="30" type="xstring" value="USt-S DM"/>
+<entry key="31" type="xstring" value="USt-S EUR"/>
+<entry key="32" type="xstring" value="USt Soll"/>
+<entry key="33" type="xstring" value="USt-DM"/>
+<entry key="34" type="xstring" value="USt-EUR"/>
+<entry key="35" type="xstring" value="USt"/>
+<entry key="36" type="xstring" value="USt Kto"/>
+<entry key="37" type="xstring" value="USt Kto-H"/>
+<entry key="38" type="xstring" value="USt Kto-S"/>
+<entry key="39" type="xstring" value="USt %"/>
+<entry key="40" type="xstring" value="USt Text"/>
+<entry key="41" type="xstring" value="Zusatzang."/>
+</config>
+<config key="excluded_names">
+<entry key="array-size" type="xint" value="1"/>
+<entry key="0" type="xstring" value="RELATION"/>
+</config>
+<entry key="enforce_option" type="xstring" value="EnforceExclusion"/>
+<config key="name_pattern">
+<entry key="pattern" type="xstring" value=""/>
+<entry key="type" type="xstring" value="Wildcard"/>
+<entry key="caseSensitive" type="xboolean" value="true"/>
+</config>
+<config key="datatype">
+<config key="typelist">
+<entry key="org.knime.core.data.StringValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.time.localdatetime.LocalDateTimeValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.IntValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.DoubleValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.BooleanValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.LongValue" type="xboolean" value="false"/>
+<entry key="org.knime.core.data.date.DateAndTimeValue" type="xboolean" value="false"/>
+</config>
+</config>
+</config>
+</config>
+<config key="nodeAnnotation">
+<entry key="text" type="xstring" value="rel"/>
+<entry key="bgcolor" type="xint" value="16777215"/>
+<entry key="x-coordinate" type="xint" value="487"/>
+<entry key="y-coordinate" type="xint" value="339"/>
+<entry key="width" type="xint" value="106"/>
+<entry key="height" type="xint" value="15"/>
+<entry key="alignment" type="xstring" value="CENTER"/>
+<entry key="borderSize" type="xint" value="0"/>
+<entry key="borderColor" type="xint" value="16777215"/>
+<entry key="defFontSize" type="xint" value="9"/>
+<entry key="annotation-version" type="xint" value="20151123"/>
+<config key="styles"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.base.node.preproc.filter.column.DataColumnSpecFilterNodeFactory"/>
+<entry key="node-name" type="xstring" value="Column Filter"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Base Nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.base"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="3.7.2.v201904170949"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Core"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="3.7.2.v201904171038"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Column Filter"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 10, Cols: 45"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="88c3260b-f2aa-4503-9d42-67b91dd26597"/>
+</config>
+</config>

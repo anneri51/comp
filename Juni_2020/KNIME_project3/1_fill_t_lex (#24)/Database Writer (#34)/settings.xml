@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="driver" type="xstring" value="oracle.jdbc.driver.OracleDriver"/>
+<entry key="database" type="xstring" value="jdbc:oracle:thin:@localhost:1521/xepdb1"/>
+<entry key="user" type="xstring" value="[Workflows edited with 3.4.1, will not work in older versions]"/>
+<entry key="userName" type="xstring" value="company"/>
+<entry key="passwordEncrypted" type="xpassword" value="014D76E6AA46072D679D830469E58CEF73"/>
+<entry key="password" type="xstring" isnull="true" value=""/>
+<entry key="timezone" type="xstring" value="current"/>
+<entry key="validateConnection" type="xboolean" value="false"/>
+<entry key="retrieveMetadataInConfigure" type="xboolean" value="false"/>
+<entry key="allowSpacesInColumnNames" type="xboolean" value="true"/>
+<entry key="rowIdsStartWithZero" type="xboolean" value="false"/>
+<entry key="databaseIdentifier" type="xstring" isnull="true" value=""/>
+<entry key="kerberos" type="xboolean" value="false"/>
+<entry key="knimeVersion" type="xstring" value="3.7.2"/>
+<entry key="table" type="xstring" value="t_lex_long_imp"/>
+<entry key="append_data" type="xboolean" value="true"/>
+<entry key="insert_null_for_missing_cols" type="xboolean" value="true"/>
+<entry key="fail_on_error" type="xboolean" value="true"/>
+<config key="sql_types">
+<entry key="Belegdat" type="xstring" value="varchar(255)"/>
+<entry key="Abschluss" type="xstring" value="varchar(255)"/>
+<entry key="Beleg" type="xstring" value="varchar(255)"/>
+<entry key="Benutzer" type="xstring" value="varchar(255)"/>
+<entry key="BetragDM" type="xstring" value="numeric(30,10)"/>
+<entry key="BetragEUR" type="xstring" value="integer"/>
+<entry key="Buchdat" type="xstring" value="varchar(255)"/>
+<entry key="Nr" type="xstring" value="integer"/>
+<entry key="HabenDM" type="xstring" value="numeric(30,10)"/>
+<entry key="HabenEUR" type="xstring" value="integer"/>
+<entry key="Haben" type="xstring" value="integer"/>
+<entry key="Jour_Dat" type="xstring" value="varchar(255)"/>
+<entry key="Relation" type="xstring" value="varchar(255)"/>
+<entry key="SollDM" type="xstring" value="numeric(30,10)"/>
+<entry key="SollEUR" type="xstring" value="numeric(30,10)"/>
+<entry key="Soll" type="xstring" value="numeric(30,10)"/>
+<entry key="Sperre" type="xstring" value="varchar(255)"/>
+<entry key="Stapel" type="xstring" value="varchar(255)"/>
+<entry key="Status" type="xstring" value="varchar(255)"/>
+<entry key="Status_Dat" type="xstring" value="varchar(255)"/>
+<entry key="USt_H_DM" type="xstring" value="varchar(255)"/>
+<entry key="USt_H_EUR" type="xstring" value="varchar(255)"/>
+<entry key="USt_Haben" type="xstring" value="varchar(255)"/>
+<entry key="USt_S_DM" type="xstring" value="numeric(30,10)"/>
+<entry key="USt_S_EUR" type="xstring" value="numeric(30,10)"/>
+<entry key="USt_Soll" type="xstring" value="numeric(30,10)"/>
+<entry key="USt_DM" type="xstring" value="numeric(30,10)"/>
+<entry key="USt_EUR" type="xstring" value="numeric(30,10)"/>
+<entry key="USt" type="xstring" value="numeric(30,10)"/>
+<entry key="USt_Kto" type="xstring" value="integer"/>
+<entry key="USt_Kto_H" type="xstring" value="varchar(255)"/>
+<entry key="USt_Kto_S" type="xstring" value="integer"/>
+<entry key="USt_PROZ" type="xstring" value="integer"/>
+<entry key="USt_Text" type="xstring" value="varchar(255)"/>
+<entry key="Periode" type="xstring" value="integer"/>
+<entry key="Belegnr" type="xstring" value="integer"/>
+<entry key="Buchungstext" type="xstring" value="varchar(255)"/>
+<entry key="Betrag" type="xstring" value="integer"/>
+<entry key="Whrg" type="xstring" value="varchar(255)"/>
+<entry key="Sollkto" type="xstring" value="integer"/>
+<entry key="Habenkto" type="xstring" value="integer"/>
+<entry key="Notiz" type="xstring" value="varchar(255)"/>
+<entry key="KSt" type="xstring" value="varchar(255)"/>
+<entry key="KTr" type="xstring" value="varchar(255)"/>
+<entry key="Zusatzang" type="xstring" value="varchar(255)"/>
+<entry key="jahr" type="xstring" value="varchar(255)"/>
+<entry key="jahr_beleg" type="xstring" value="varchar(255)"/>
+<entry key="INS_UPD_MODE" type="xstring" value="varchar(255)"/>
+</config>
+<entry key="batch_size" type="xint" value="1"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.base.node.io.database.DBWriterNodeFactory"/>
+<entry key="node-name" type="xstring" value="Database Writer"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Base Nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.base"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="3.7.2.v201904170949"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Core"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="3.7.2.v201904171038"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Database Writer"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports"/>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="c9ec71f7-9dea-4aa9-b1f9-d63bb81eb359"/>
+</config>
+</config>

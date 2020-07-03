@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Mittwoch-Juli-01-2020   
+--  Datei erstellt -Freitag-Juli-03-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -240,6 +240,7 @@ DROP SEQUENCE "COMPANY"."T_INVENTARTYP_SEQ";
 DROP SEQUENCE "COMPANY"."T_INVENTARTYP_SEQ1";
 DROP SEQUENCE "COMPANY"."T_INV_INVENTARE_SEQ";
 DROP SEQUENCE "COMPANY"."T_KON_GESCHAEFTSPARTNER_SEQ";
+DROP SEQUENCE "COMPANY"."T_KON_PERSON_SEQ";
 DROP SEQUENCE "COMPANY"."T_KONTAKT_SEQ";
 DROP SEQUENCE "COMPANY"."T_KONTAKTTYP_SEQ";
 DROP SEQUENCE "COMPANY"."T_KONTENPLAN_KONTEN_GRP_SEQ";
@@ -267,6 +268,7 @@ DROP SEQUENCE "COMPANY"."T_LAND_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEHRGANG_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_BANK_KONTO_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_IMP_SEQ";
+DROP SEQUENCE "COMPANY"."T_LEX_KONTENBLATT_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_LONG_COMM_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_SEQ";
 DROP SEQUENCE "COMPANY"."T_LOCATION_SEQ";
@@ -1340,12 +1342,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence IMP_LEX_SUSA_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."IMP_LEX_SUSA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 4261 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."IMP_LEX_SUSA_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 4321 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence IMP_LOG_LOAD_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."IMP_LOG_LOAD_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 301 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."IMP_LOG_LOAD_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 321 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence IMP_RE_LEXWARE_SEQ
 --------------------------------------------------------
@@ -2125,7 +2127,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_DB_OBJ_OBJECT_LIST_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_DB_OBJ_OBJECT_LIST_SEQ"  MINVALUE 1000 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1480 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_DB_OBJ_OBJECT_LIST_SEQ"  MINVALUE 1000 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1520 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_DB_RENAME_SEQ
 --------------------------------------------------------
@@ -2200,12 +2202,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_IMP_TEL_MOBILCOM_RECH_DET_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_DET_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_DET_SEQ"  MINVALUE 500 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 600 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_IMP_TEL_MOBILCOM_RECH_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_SEQ"  MINVALUE 35 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 55 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_IMP_TEL_VODAFONE_SEQ
 --------------------------------------------------------
@@ -2235,7 +2237,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_INT_INTERNETPORTAL_APP_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_INT_INTERNETPORTAL_APP_SEQ"  MINVALUE 202 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 222 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_INT_INTERNETPORTAL_APP_SEQ"  MINVALUE 202 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 262 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_INVENTARE_SEQ
 --------------------------------------------------------
@@ -2266,6 +2268,11 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."T_KON_GESCHAEFTSPARTNER_SEQ"  MINVALUE 902 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 922 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_KON_PERSON_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_KON_PERSON_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KONTAKT_SEQ
 --------------------------------------------------------
@@ -2375,7 +2382,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_KTO_KONTO_AUSZUG_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_KTO_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_KTO_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KZ_KENNZAHLEN_SEQ
 --------------------------------------------------------
@@ -2401,6 +2408,11 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."T_LEX_IMP_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 191 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_LEX_KONTENBLATT_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_LEX_KONTENBLATT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 841 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_LEX_LONG_COMM_SEQ
 --------------------------------------------------------
@@ -2575,12 +2587,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 181 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_GESCHAEFTSP_KONT_SEQ
 --------------------------------------------------------
@@ -3045,7 +3057,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_WET_NIEDERSCHLAGSMENGE_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 101 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_WET_NIEDERSCHLAGSMENGE_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 141 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_WET_NIEDERSCHLAGSMENGE_SEQ1
 --------------------------------------------------------
@@ -6258,7 +6270,10 @@ Liegenschaftsnutzer
 	"PAGE_ID" NUMBER, 
 	"APPLICATION_ID" NUMBER, 
 	"WORKSPACE_ID" NUMBER, 
-	"FK_STD_APEX_OBJ_STATUS" NUMBER
+	"FK_STD_APEX_OBJ_STATUS" NUMBER, 
+	"PAGE_NAME" VARCHAR2(4000 CHAR), 
+	"PAGE_GROUP" VARCHAR2(4000 CHAR), 
+	"PAGE_MODE" VARCHAR2(4000 CHAR)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -7975,7 +7990,8 @@ Liegenschaftsnutzer
 	"PK_IMP_TEL_MOBILCOM_RECH" NUMBER, 
 	"BRUTTO_BETRAG" NUMBER, 
 	"FK_KTO_BUCHUNG" NUMBER, 
-	"MWST" NUMBER
+	"MWST" NUMBER, 
+	"VERTRAGSNUMMER" VARCHAR2(4000 CHAR)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -7990,7 +8006,7 @@ Liegenschaftsnutzer
   CREATE TABLE "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_DET" 
    (	"ZAEHLER" NUMBER(4,0), 
 	"RECHNUNGSNUMMER" VARCHAR2(26 BYTE), 
-	"RECHNUNGSDATUM" NUMBER(10,0), 
+	"RECHNUNGSDATUM" VARCHAR2(20 BYTE), 
 	"ABRECHNUNGSMONAT" VARCHAR2(26 BYTE), 
 	"KUNDENNUMMER" NUMBER(10,0), 
 	"RUFNUMMER" VARCHAR2(26 BYTE), 
@@ -8668,7 +8684,8 @@ Liegenschaftsnutzer
 	"CREATED_AT" TIMESTAMP (6), 
 	"MODIFIED_BY" VARCHAR2(255 BYTE), 
 	"MODIFIED_AT" TIMESTAMP (6), 
-	"BIRTH_DAY" DATE
+	"BIRTH_DAY" DATE, 
+	"STERBEDATUM" DATE
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -8743,7 +8760,9 @@ Liegenschaftsnutzer
 	"VALID_TO" TIMESTAMP (6), 
 	"GLAEUBIGER_ID" VARCHAR2(4000 BYTE), 
 	"MANDATSREFERENZ_SEPA" VARCHAR2(4000 BYTE), 
-	"FK_LASTSCHRIFT_KTO_VON" NUMBER
+	"FK_LASTSCHRIFT_KTO_VON" NUMBER, 
+	"FK_KON_OWNER1" NUMBER, 
+	"FK_KON_OWNER2" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -9837,15 +9856,15 @@ Liegenschaftsnutzer
 	"DATUM_OK" DATE, 
 	"OK" NUMBER, 
 	"JAHR" NUMBER, 
-	"FK_STEUER_MONAT" NUMBER, 
-	"FK_STEUER_VORANMELDG" NUMBER, 
+	"FK_STEU_STEUER_MONAT" NUMBER, 
+	"FK_STEU_STEUER_VORANMELDG" NUMBER, 
 	"DATUM_STEUERB_ÜBERG" DATE, 
 	"DATUM_FINANZAMT_ÜBERG" DATE, 
-	"FK_ABSCHLUSS_VORANMELDG" NUMBER, 
-	"FK_JAHRES_ABSCHLUSSS" NUMBER, 
-	"FK_BUCH_CNT" NUMBER, 
-	"CNT_KASSE_MONAT" NUMBER, 
-	"CNT_KASSE_JAHR" NUMBER, 
+	"FK_LEX_ABSCHLUSS_VORANMELDG" NUMBER, 
+	"FK_STEU_JAHRES_ABSCHLUSSS" NUMBER, 
+	"FK_LEX_BUCH_CNT" NUMBER, 
+	"KAS_KASSE_MONAT_CNT" NUMBER, 
+	"KAS_KASSE_JAHR_CNT" NUMBER, 
 	"FK_IMP_LOG_LOAD" NUMBER, 
 	"CALC_DIFF_BETRAG" NUMBER, 
 	"BUCH_BETRAG_VORPERIODE" NUMBER, 
@@ -16189,20 +16208,20 @@ from t_imp_inp_belege_all inpb
 --  DDL for View V_INV_INVENTARE
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INV_INVENTARE" ("PK_INV_INVENTAR", "INVENTAR", "ANSCHAFFUNGSDATUM", "ANSCHAFFUNGSJAHR", "ABSCHREIBUNGSDAUER", "RESTBUCHWERT_2018", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "PREIS_NETTO", "MWST", "FK_BAS_STEU_STEUER_SATZ", "PREIS_BRUTTO", "COMM", "LIZENZNUMMER", "ANFORDERUNGSCODE", "FK_BAS_INV_INVENTARTYP", "KFZ_KENNZEICHEN", "FAHRGESTELLNR", "BEMERKUNGEN", "BILD", "ABGANGSJAHR", "ABGANGSDATUM", "ABGANGSWERT", "FK_BAS_VERWENDUNGSZWECK", "GWG", "RESTBUCHWERT_2017", "ABGANGSGRUND", "MAC_ADRESSE", "SERIENNUMMER", "GERAETENAME", "OK", "OK_BEMERKUNGEN", "RESTBUCHWERT_2019", "INV_BILD", "INVENTARTYP", "PK_INV_ELEKTRONIK", "BEZEICHNUNG", "GWG_YN") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "COMPANY"."V_INV_INVENTARE" ("PK_INV_INVENTAR", "INVENTAR", "ANSCHAFFUNGSDATUM", "ANSCHAFFUNGSJAHR", "ABSCHREIBUNGSDAUER", "RESTBUCHWERT_2018", "CREATED_BY", "CREATED_AT", "MODIFIED_BY", "MODIFIED_AT", "PREIS_NETTO", "MWST", "FK_BAS_STEU_STEUER_SATZ", "PREIS_BRUTTO", "COMM", "LIZENZNUMMER", "ANFORDERUNGSCODE", "FK_BAS_INV_INVENTARTYP", "KFZ_KENNZEICHEN", "FAHRGESTELLNR", "BEMERKUNGEN", "BILD", "ABGANGSJAHR", "ABGANGSDATUM", "ABGANGSWERT", "FK_BAS_VERWENDUNGSZWECK", "GWG", "RESTBUCHWERT_2017", "ABGANGSGRUND", "MAC_ADRESSE", "SERIENNUMMER", "GERAETENAME", "OK", "OK_BEMERKUNGEN", "RESTBUCHWERT_2019", "INV_BILD", "INVENTARTYP", "PK_INV_SUB_ELEKTRONIK", "BEZEICHNUNG", "GWG_YN") AS 
   select inv."PK_INV_INVENTAR",inv."INVENTAR",inv."ANSCHAFFUNGSDATUM",inv."ANSCHAFFUNGSJAHR",inv."ABSCHREIBUNGSDAUER",inv."RESTBUCHWERT_2018",inv."CREATED_BY",inv."CREATED_AT",inv."MODIFIED_BY",inv."MODIFIED_AT",inv."PREIS_NETTO",inv."MWST",inv."FK_BAS_STEU_STEUER_SATZ",inv."PREIS_BRUTTO",inv."COMM",
   inv."LIZENZNUMMER",inv."ANFORDERUNGSCODE",inv."FK_BAS_INV_INVENTARTYP",inv."KFZ_KENNZEICHEN",inv."FAHRGESTELLNR",inv."BEMERKUNGEN",inv."BILD",inv."ABGANGSJAHR",inv."ABGANGSDATUM",inv."ABGANGSWERT",
   verw.std_name "FK_BAS_VERW_VERWENDUNGSZWECK",inv."GWG",inv."RESTBUCHWERT_2017",inv."ABGANGSGRUND",
-  inv."MAC_ADRESSE",inv."SERIENNUMMER",inv."GERAETENAME",inv."RESTBUCHWERT_2019",inv."INV_BILD", invtyp.INVENTARTYP, pk_inv_elektronik, 
+  inv."MAC_ADRESSE",inv."SERIENNUMMER",inv."GERAETENAME",inv."RESTBUCHWERT_2019",inv."INV_BILD", invtyp.INVENTARTYP, pk_inv_sub_elektronik, 
   ok,
   ok_bemerkungen, restbuchwert_2019
   bezeichnung, gwg.std_name gwg_yn
 from t_inv_inventare inv
   left join t_bas_inv_inventartyp invtyp on inv.fk_bas_inv_inventartyp = invtyp.pk_bas_inv_inventartyp
   left join (
-      select pk_inv_inventar, pk_inv_elektronik , bezeichnung
+      select pk_inv_inventar, pk_inv_sub_elektronik , bezeichnung
       from t_inv_inventare inv
-       join t_inv_elektronik el on inv.pk_inv_inventar = el.fk_inv_inventar
+       join t_inv_sub_elektronik el on inv.pk_inv_inventar = el.fk_inv_inventar
      where instr(inventar, 'GWG')>0
    
  
@@ -23548,9 +23567,7 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
-    IF INSERTING AND :NEW.ID IS NULL THEN
-      SELECT IMP_LEX_SUSA_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
-    END IF;
+    NULL;
   END COLUMN_SEQUENCES;
 END;
 /
@@ -25872,6 +25889,23 @@ END;
 /
 ALTER TRIGGER "COMPANY"."T_KON_GESCHAEFTSPARTNER_TRG" ENABLE;
 --------------------------------------------------------
+--  DDL for Trigger T_KON_PERSON_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_KON_PERSON_TRG" 
+BEFORE INSERT ON T_KON_PERSON 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.PK_KON_PERSON IS NULL THEN
+      SELECT T_KON_PERSON_SEQ.NEXTVAL INTO :NEW.PK_KON_PERSON FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_KON_PERSON_TRG" ENABLE;
+--------------------------------------------------------
 --  DDL for Trigger T_KONTAKT_TRG
 --------------------------------------------------------
 
@@ -26369,6 +26403,23 @@ END;
 /
 ALTER TRIGGER "COMPANY"."T_KTO_KONTO_AUSZUG_TRG1" ENABLE;
 --------------------------------------------------------
+--  DDL for Trigger T_KTO_KONTO_AUSZUG_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_KTO_KONTO_AUSZUG_TRG2" 
+BEFORE INSERT ON T_KTO_KONTO_AUSZUG 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.PK_KTO_KONTO_AUSZUG IS NULL THEN
+      SELECT T_KTO_KONTO_AUSZUG_SEQ.NEXTVAL INTO :NEW.PK_KTO_KONTO_AUSZUG FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_KTO_KONTO_AUSZUG_TRG2" ENABLE;
+--------------------------------------------------------
 --  DDL for Trigger T_KZ_KENNZAHLEN_TRG
 --------------------------------------------------------
 
@@ -26432,6 +26483,40 @@ BEGIN
 END;
 /
 ALTER TRIGGER "COMPANY"."T_LEX_BANK_KONTO_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_LEX_KONTENBLATT_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG" 
+BEFORE INSERT ON T_LEX_KONTENBLATT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.BUCHUNGSNUMMER IS NULL THEN
+      SELECT T_LEX_KONTENBLATT_SEQ.NEXTVAL INTO :NEW.BUCHUNGSNUMMER FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_LEX_KONTENBLATT_TRG1
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG1" 
+BEFORE INSERT ON T_LEX_KONTENBLATT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT T_LEX_KONTENBLATT_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG1" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger T_LEX_LONG_COMM_TRG
 --------------------------------------------------------
@@ -41810,15 +41895,15 @@ END PKG_KONTROLLE;
 
 procedure p_upd_kontenblatt as 
 begin
-    merge into imp_kontenblatt_2018 t1
+    merge into t_lex_kontenblatt t1
       using (
-            select distinct pk_arbeitstage, 
+            select distinct pk_bas_kal_arbeitstage, 
             belegnummer,
             buchungsnummer, 
             bel.jahr
     
-            from (select * from imp_kontenblatt_2018 where belegdatum is not null and fk_belegdatum is null) bel,
-              t_arbeitstage arb
+            from (select * from t_lex_kontenblatt where belegdatum is not null and fk_bas_kal_belegdatum is null) bel,
+              t_bas_kal_arbeitstage arb
             where  to_date(substr(bel.belegdatum,1,10), 'DD.MM.YY')= arb.datum 
              ) t2 on (
              t1.belegnummer = t2.belegnummer and
@@ -41829,22 +41914,22 @@ begin
 
             )
             when matched then
-            update set t1.fk_belegdatum= t2.pk_arbeitstage;
+            update set t1.fk_bas_kal_belegdatum= t2.pk_bas_kal_arbeitstage;
             commit;
     
     
     
-    update  imp_kontenblatt_2018 set Kontonummer = '0' || kontonummer where length(kontonummer) = 4;
+    update  t_lex_kontenblatt set Kontonummer = '0' || kontonummer where length(kontonummer) = 4;
     commit;
     
-    update  imp_kontenblatt_2018 set Kontonummer = '00' || kontonummer where length(kontonummer) = 3;
+    update t_lex_kontenblatt set Kontonummer = '00' || kontonummer where length(kontonummer) = 3;
     commit;
     
     
-    update  imp_kontenblatt_2018 set gegenkonto = '0' || gegenkonto where length(gegenkonto) = 4;
+    update  t_lex_kontenblatt set gegenkonto = '0' || gegenkonto where length(gegenkonto) = 4;
     commit;
     
-    update  imp_kontenblatt_2018 set gegenkonto = '00' || gegenkonto where length(gegenkonto) = 3;
+    update  t_lex_kontenblatt set gegenkonto = '00' || gegenkonto where length(gegenkonto) = 3;
     commit;
 
 
@@ -41861,14 +41946,14 @@ begin
 
         
         --newest version
-        delete from imp_kontenblatt_2018 where id in (select id_new
+        delete from t_lex_kontenblatt where id in (select id_new
         --'old', a.id, a.id_new, kto_old.ok, kto_old.*
         --,kto_new.*
         from (
                     select   kto_old.kontonummer, kto_old.gegenkonto, kto_old.buchungstext, kto_old.belegdatum,  kto_old.buchungsnummer, kto_old.belegnummer, kto_old.sollbetrag_eur, kto_old.habenbetrag_eur, kto_old.kst, kto_old.ktr , count(*) cnt
                     , max(kto_kst_ktr_new.id) id_new, min(kto_old.id) id 
-                    from (select * from imp_kontenblatt_2018 )  kto_old
-                     left join (select * from imp_kontenblatt_2018 ) kto_kst_ktr_new on kto_old.id = kto_kst_ktr_new.id
+                    from (select * from t_lex_kontenblatt )  kto_old
+                     left join (select * from t_lex_kontenblatt ) kto_kst_ktr_new on kto_old.id = kto_kst_ktr_new.id
                    -- where kto_old.belegnummer = 1347
                     group by kto_old.kontonummer, kto_old.gegenkonto, kto_old.buchungstext, kto_old.belegdatum,  kto_old.buchungsnummer, kto_old.belegnummer, kto_old.sollbetrag_eur, kto_old.habenbetrag_eur, kto_old.kst, kto_old.ktr
         
@@ -41972,15 +42057,15 @@ begin
 
     
     
-    merge into imp_kontenblatt_2018 t1
+    merge into  t_lex_kontenblatt t1
       using (
-            select distinct pk_arbeitstage, 
+            select distinct pk_bas_kal_arbeitstage, 
             belegnummer,
             buchungsnummer, 
             bel.jahr
     
-            from (select * from imp_kontenblatt_2018 where belegdatum is not null and fk_belegdatum is null) bel,
-              t_arbeitstage arb
+            from (select * from t_lex_kontenblatt  where belegdatum is not null and fk_bas_kal_belegdatum is null) bel,
+              t_bas_kal_arbeitstage arb
             where  to_date(substr(bel.belegdatum,1,10), 'DD.MM.YYYY')= arb.datum 
              ) t2 on (
              t1.belegnummer = t2.belegnummer and
@@ -41990,21 +42075,21 @@ begin
     
             )
             when matched then
-            update set t1.fk_belegdatum= t2.pk_arbeitstage;
+            update set t1.fk_bas_kal_belegdatum= t2.pk_bas_kal_arbeitstage;
             commit;
     
     
-    update  imp_kontenblatt_2018 set Kontonummer = '0' || kontonummer where length(kontonummer) = 4;
+    update  t_lex_kontenblatt set Kontonummer = '0' || kontonummer where length(kontonummer) = 4;
     commit;
     
-    update  imp_kontenblatt_2018 set Kontonummer = '00' || kontonummer where length(kontonummer) = 3;
+    update  t_lex_kontenblatt set Kontonummer = '00' || kontonummer where length(kontonummer) = 3;
     commit;
     
     
-    update  imp_kontenblatt_2018 set gegenkonto = '0' || gegenkonto where length(gegenkonto) = 4;
+    update  t_lex_kontenblatt set gegenkonto = '0' || gegenkonto where length(gegenkonto) = 4;
     commit;
     
-    update  imp_kontenblatt_2018 set gegenkonto = '00' || gegenkonto where length(gegenkonto) = 3;
+    update  t_lex_kontenblatt set gegenkonto = '00' || gegenkonto where length(gegenkonto) = 3;
     commit;
     
     
@@ -42015,9 +42100,9 @@ end p_upd_kontenblatt_1 ;
 procedure p_set_buchungsstatus as 
 begin
 
-update imp_kontenblatt_2018 set buchungsstatus = 2  where buchungsnummer in (
+update t_lex_kontenblatt set buchungsstatus = 2  where buchungsnummer in (
                                                                                 select buchungsnummer
-                                                                                from imp_kontenblatt_2018
+                                                                                from t_lex_kontenblatt
                                                                                 where buchungsstatus = 2 
                                                                                 )
 and buchungsstatus is null;
@@ -42029,7 +42114,7 @@ end p_set_buchungsstatus;
 procedure p_upd_buch_status_ok as
 begin
     
-    update imp_kontenblatt_2018 set buchungsstatus = 2, ok =2, datum_ok= sysdate where jahr|| '/'|| buchungsnummer || '/0' in (select relation from t_lex_long where status is not null);
+    update t_lex_kontenblatt set buchungsstatus = 2, ok =2, datum_ok= sysdate where jahr|| '/'|| buchungsnummer || '/0' in (select relation from t_lex_long where status is not null);
     commit;
 end p_upd_buch_status_ok  ;
 
@@ -42037,7 +42122,7 @@ procedure p_add_kontenblatt_ohne_ssis (p_jahr number) as
 
 begin
 
-    execute immediate 'insert into imp_kontenblatt_2018 (
+    execute immediate 'insert into t_lex_kontenblatt (
     BUCHUNGSNUMMER,
     KONTONUMMER,
     KONTOBEZEICHNUNG,
@@ -42088,7 +42173,7 @@ procedure p_add_kontenblatt_mit_ssis (p_jahr number) as
 
 begin
 
-    execute immediate 'insert into imp_kontenblatt_2018 (
+    execute immediate 'insert into t_lex_kontenblatt (
     BUCHUNGSNUMMER,
     KONTONUMMER,
     KONTOBEZEICHNUNG,
@@ -42165,6 +42250,26 @@ begin
 */
 
 --=== 1 - basic
+    merge into  t_lex_kontenblatt t1
+      using (
+            select distinct pk_bas_kal_arbeitstage, 
+            belegnummer,
+            buchungsnummer, 
+            bel.jahr
+    
+            from (select * from t_lex_kontenblatt  where belegdatum is not null and fk_bas_kal_belegdatum is null) bel,
+              t_bas_kal_arbeitstage arb
+            where  to_date(substr(bel.belegdatum,1,10), 'DD.MM.YYYY')= arb.datum 
+             ) t2 on (
+             t1.belegnummer = t2.belegnummer and
+             t1.buchungsnummer = t2.buchungsnummer and
+             t1.jahr = t2.jahr
+    
+    
+            )
+            when matched then
+            update set t1.fk_bas_kal_belegdatum= t2.pk_bas_kal_arbeitstage;
+            commit;
 merge into imp_kontenblatt_2018 t1
   using (
         select distinct pk_arbeitstage, 
@@ -42250,7 +42355,7 @@ procedure p_add_sachkonto_2018 as
  begin
 
     
-    insert into imp_kontenblatt_2018 (
+    insert into t_lex_kontenblatt (
     BUCHUNGSNUMMER,
     KONTONUMMER,
     KONTOBEZEICHNUNG,
@@ -42293,8 +42398,7 @@ end p_add_sachkonto_2018;
 procedure p_add_sachkonto_2020 as
 begin
 
-    
-    insert into imp_kontenblatt_2018 (
+ insert into t_lex_kontenblatt (
     BUCHUNGSNUMMER,
     KONTONUMMER,
     KONTOBEZEICHNUNG,
@@ -42328,7 +42432,10 @@ begin
     2020,
     kst,
     ktr
-    from imp_kontenblatt_2020_2;
+    from t_imp_lex_kontenblatt_2020
+    where substr(belegdatum, 4,2) = '03';
+    
+    commit;
     
     p_upd_kontenblatt ;
 end p_add_sachkonto_2020;
@@ -42368,9 +42475,9 @@ end p_susa_upd_susa;
 procedure p_set_relation_initial as
 
 begin
- update imp_kontenblatt_2018 set fk_relation = jahr || '/' || buchungsnummer ||'/0' where fk_relation is null;
+ update t_lex_kontenblatt set fk_relation = jahr || '/' || buchungsnummer ||'/0' where fk_relation is null;
  commit;
-  update imp_kontenblatt_2018 set fk_relation_sub = jahr || '/' || buchungsnummer ||'/0' where fk_relation_sub is null;
+  update t_lex_kontenblatt set fk_relation_sub = jahr || '/' || buchungsnummer ||'/0' where fk_relation_sub is null;
  commit;
  
 
@@ -42379,7 +42486,7 @@ end p_set_relation_initial ;
 procedure p_set_storno_from_lex as 
 begin
  
-    update imp_kontenblatt_2018 set buchungsstatus = 2  where fk_relation in (select relation from t_lex_long where status is not null) and (buchungsstatus <>2 or buchungsstatus is null);
+    update t_lex_kontenblatt set buchungsstatus = 2  where fk_relation in (select relation from t_lex_long where status is not null) and (buchungsstatus <>2 or buchungsstatus is null);
     commit;
 
 
@@ -42389,7 +42496,7 @@ end p_set_storno_from_lex;
 procedure p_bereinige_gegenkonto as
 begin
 
-    update imp_kontenblatt_2018 set gegenkonto = null where regexp_instr(gegenkonto,'[a-zA-Z]')>0 ;
+    update t_lex_kontenblatt set gegenkonto = null where regexp_instr(gegenkonto,'[a-zA-Z]')>0 ;
     commit;
 end p_bereinige_gegenkonto;
 
@@ -44877,13 +44984,40 @@ end p_calc_nächste_zahlung ;
 procedure p_add_objects as 
 
 begin
-insert into t_db_object_list (object_type, object_name)
+insert into t_db_obj_object_list (object_type, object_name)
 select object_type, object_name from all_objects where object_type in ('TABLE','PROCEDURE','PACKAGE', 'PACKAGE_BODY', 'VIEW','FUNCTION') and owner = 'COMPANY';
+commit;
 
+insert into t_db_obj_object_list (object_type, object_name, create_at)
+select obj.object_type, obj.object_name, sysdate 
+from all_objects obj
+ left join t_db_obj_object_list ol on obj.object_type = ol.object_type and obj.object_name = ol.object_name
+where obj.object_type in ('TABLE','PROCEDURE','PACKAGE', 'PACKAGE_BODY', 'VIEW','FUNCTION') and obj.owner = 'COMPANY'
+and ol.object_name is null;
 commit;
-insert into t_db_obj_object_list (application_id, page_id, create_at)
-select application_id, page_id, sysdate from apex_application_pages where application_id in (100,101);
-commit;
+
+insert into t_db_obj_object_list (object_type , application_id, page_id, create_at, page_name, page_group, page_mode)
+select 'APEX_APPLICATION_PAGE' ,ap.application_id, ap.page_id, sysdate , ap.page_name, ap.page_group, ap.page_mode
+from apex_application_pages ap
+ left join t_db_obj_object_list obj on ap.application_id = obj.application_id and ap.page_name = obj.page_name and ap.page_id = obj.page_id
+ 
+where ap.application_id in (100,101)
+and obj.page_name is null;
+
+merge into t_db_obj_object_list t1
+ using (
+select 'APEX_APPLICATION_PAGE' ,ap.application_id, ap.page_id, sysdate , ap.page_name, ap.page_group, ap.page_mode
+from apex_application_pages ap
+ left join t_db_obj_object_list obj on ap.application_id = obj.application_id and ap.page_name = obj.page_name and ap.page_id = obj.page_id
+ 
+where ap.application_id in (100,101)
+and obj.page_name is null
+) t2 on (t1.application_id = t2.application_id and t1.page_id = t2.page_id)
+when matched then 
+update set t1.page_name = t2.page_name,
+ t1.page_mode = t2.page_mode,
+ t1.page_group  = t2.page_group;
+ commit;
 end p_add_objects;
 
 END PKG_SERVICES_NEU;

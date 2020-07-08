@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  Datei erstellt -Freitag-Juli-03-2020   
+--  Datei erstellt -Mittwoch-Juli-08-2020   
 --------------------------------------------------------
 DROP DATABASE LINK "COMPANY"."XE21";
 DROP TYPE "COMPANY"."T_TF_ROW";
@@ -52,8 +52,6 @@ DROP SEQUENCE "COMPANY"."IMP_BA_TELEFONKARTEN_SEQ";
 DROP SEQUENCE "COMPANY"."IMP_BA_TELEFONKARTEN_SEQ1";
 DROP SEQUENCE "COMPANY"."IMP_BA_TEXTILREINIGUNG_SEQ";
 DROP SEQUENCE "COMPANY"."IMP_HOTEL_BOOKING_SEQ";
-DROP SEQUENCE "COMPANY"."IMP_KONTENBLATT_2018_SEQ";
-DROP SEQUENCE "COMPANY"."IMP_KONTENBLATT_2018_SEQ1";
 DROP SEQUENCE "COMPANY"."IMP_LEX_SUSA_SEQ";
 DROP SEQUENCE "COMPANY"."IMP_LOG_LOAD_SEQ";
 DROP SEQUENCE "COMPANY"."IMP_RE_LEXWARE_SEQ";
@@ -269,6 +267,7 @@ DROP SEQUENCE "COMPANY"."T_LEHRGANG_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_BANK_KONTO_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_IMP_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_KONTENBLATT_SEQ";
+DROP SEQUENCE "COMPANY"."T_LEX_KONTENBLATT_SEQ2";
 DROP SEQUENCE "COMPANY"."T_LEX_LONG_COMM_SEQ";
 DROP SEQUENCE "COMPANY"."T_LEX_SEQ";
 DROP SEQUENCE "COMPANY"."T_LOCATION_SEQ";
@@ -328,6 +327,7 @@ DROP SEQUENCE "COMPANY"."T_REL_KONTINENT_LAND_SEQ2";
 DROP SEQUENCE "COMPANY"."T_REL_KONTO_AUSZUG_BILD_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ1";
+DROP SEQUENCE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_LAGERORT_ARTIKEL_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_LEX_KTO_BEL_SEQ";
 DROP SEQUENCE "COMPANY"."T_REL_LEX_KTO_BEL_SEQ1";
@@ -416,7 +416,6 @@ DROP TABLE "COMPANY"."APEX$_WS_WEBPG_SECTIONS" cascade constraints;
 DROP TABLE "COMPANY"."BASIS_WN_PR" cascade constraints;
 DROP TABLE "COMPANY"."BASIS_WN_PR1" cascade constraints;
 DROP TABLE "COMPANY"."BEST_POS" cascade constraints;
-DROP TABLE "COMPANY"."D" cascade constraints;
 DROP TABLE "COMPANY"."DEMO_CONSTRAINT_LOOKUP" cascade constraints;
 DROP TABLE "COMPANY"."DEMO_CUSTOMERS" cascade constraints;
 DROP TABLE "COMPANY"."DEMO_ORDER_ITEMS" cascade constraints;
@@ -750,6 +749,7 @@ DROP TABLE "COMPANY"."T_TEL_TELEFONKARTEN" cascade constraints;
 DROP TABLE "COMPANY"."T_TEX_TEXTILREINIGUNG" cascade constraints;
 DROP TABLE "COMPANY"."T_TXT_REPLACE" cascade constraints;
 DROP TABLE "COMPANY"."T_TXT_REPLACE_CONTEXT" cascade constraints;
+DROP TABLE "COMPANY"."T_TXT_REPLACE_LOG" cascade constraints;
 DROP TABLE "COMPANY"."T_USM_USER" cascade constraints;
 DROP TABLE "COMPANY"."T_VERK_BAHN" cascade constraints;
 DROP TABLE "COMPANY"."T_VERS_INSURANCE_YEARLY" cascade constraints;
@@ -1329,16 +1329,6 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 
    CREATE SEQUENCE  "COMPANY"."IMP_HOTEL_BOOKING_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
---  DDL for Sequence IMP_KONTENBLATT_2018_SEQ
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."IMP_KONTENBLATT_2018_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 225629 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
---  DDL for Sequence IMP_KONTENBLATT_2018_SEQ1
---------------------------------------------------------
-
-   CREATE SEQUENCE  "COMPANY"."IMP_KONTENBLATT_2018_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1921 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
---------------------------------------------------------
 --  DDL for Sequence IMP_LEX_SUSA_SEQ
 --------------------------------------------------------
 
@@ -1437,7 +1427,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence KTO_KONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10201 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."KTO_KONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 10261 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence KTO_Kreditkarte_SEQ
 --------------------------------------------------------
@@ -2127,7 +2117,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_DB_OBJ_OBJECT_LIST_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_DB_OBJ_OBJECT_LIST_SEQ"  MINVALUE 1000 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1520 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_DB_OBJ_OBJECT_LIST_SEQ"  MINVALUE 1000 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16500 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_DB_RENAME_SEQ
 --------------------------------------------------------
@@ -2197,17 +2187,17 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_IMP_KTO_GIR_KTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_IMP_KTO_GIR_KTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_IMP_KTO_GIR_KTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_IMP_TEL_MOBILCOM_RECH_DET_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_DET_SEQ"  MINVALUE 500 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 600 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_DET_SEQ"  MINVALUE 500 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 660 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_IMP_TEL_MOBILCOM_RECH_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_SEQ"  MINVALUE 35 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 55 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_IMP_TEL_MOBILCOM_RECH_SEQ"  MINVALUE 35 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 75 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_IMP_TEL_VODAFONE_SEQ
 --------------------------------------------------------
@@ -2372,7 +2362,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_KTO_GIROKONTO_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9100 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_KTO_GIROKONTO_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 9160 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KTO_KAS_KASSE_SEQ
 --------------------------------------------------------
@@ -2382,7 +2372,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_KTO_KONTO_AUSZUG_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_KTO_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_KTO_KONTO_AUSZUG_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_KZ_KENNZAHLEN_SEQ
 --------------------------------------------------------
@@ -2412,7 +2402,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_LEX_KONTENBLATT_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_LEX_KONTENBLATT_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 841 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_LEX_KONTENBLATT_SEQ"  MINVALUE 16178 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 16198 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_LEX_KONTENBLATT_SEQ2
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_LEX_KONTENBLATT_SEQ2"  MINVALUE 2226666 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 2230146 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_LEX_LONG_COMM_SEQ
 --------------------------------------------------------
@@ -2587,12 +2582,12 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_OBJECT_HIST_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 181 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_DB_OBJ_OBJECT_LIST_PART_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 221 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_GESCHAEFTSP_KONT_SEQ
 --------------------------------------------------------
@@ -2702,12 +2697,17 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_REL_KONTO_AUSZUG_GIR_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5841 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 5981 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_KONTO_AUSZUG_GIR_SEQ1
 --------------------------------------------------------
 
    CREATE SEQUENCE  "COMPANY"."T_REL_KONTO_AUSZUG_GIR_SEQ1"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+--------------------------------------------------------
+--  DDL for Sequence T_REL_KTO_KONTO_AUSZUG_GIR_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_REL_LAGERORT_ARTIKEL_SEQ
 --------------------------------------------------------
@@ -2867,7 +2867,7 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
 --  DDL for Sequence T_STD_SEQ
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "COMPANY"."T_STD_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1321 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+   CREATE SEQUENCE  "COMPANY"."T_STD_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1341 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
 --------------------------------------------------------
 --  DDL for Sequence T_STD_SEQ1
 --------------------------------------------------------
@@ -3720,52 +3720,6 @@ as table of TY_COMP_INP_BELEGE_ALL_2;
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
---------------------------------------------------------
---  DDL for Table D
---------------------------------------------------------
-
-  CREATE TABLE "COMPANY"."D" 
-   (	"PK_TXT_REPLACE_CONTEXT" NUMBER, 
-	"FK_TXT_REPLACE" VARCHAR2(4000 BYTE), 
-	"FROM_TXT" CLOB, 
-	"TO_TXT" CLOB, 
-	"DATUM" DATE, 
-	"CONTEXT" VARCHAR2(4000 BYTE), 
-	"CONTEXT_TYPE" VARCHAR2(255 BYTE), 
-	"FK_TXT_REPLACE_CONTEXT_PREVIOUS" NUMBER, 
-	"VIEW_HEADER" CLOB, 
-	"VIEW_SQL" CLOB
-   ) SEGMENT CREATION IMMEDIATE 
-  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
- NOCOMPRESS LOGGING
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" 
- LOB ("FROM_TXT") STORE AS SECUREFILE (
-  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
-  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
-  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
- LOB ("TO_TXT") STORE AS SECUREFILE (
-  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
-  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
-  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
- LOB ("VIEW_HEADER") STORE AS SECUREFILE (
-  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
-  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
-  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
- LOB ("VIEW_SQL") STORE AS SECUREFILE (
-  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
-  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
-  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) ;
 --------------------------------------------------------
 --  DDL for Table DEMO_CONSTRAINT_LOOKUP
 --------------------------------------------------------
@@ -6273,7 +6227,19 @@ Liegenschaftsnutzer
 	"FK_STD_APEX_OBJ_STATUS" NUMBER, 
 	"PAGE_NAME" VARCHAR2(4000 CHAR), 
 	"PAGE_GROUP" VARCHAR2(4000 CHAR), 
-	"PAGE_MODE" VARCHAR2(4000 CHAR)
+	"PAGE_MODE" VARCHAR2(4000 CHAR), 
+	"COLUMN_NAME" VARCHAR2(4000 CHAR), 
+	"DATA_TYPE" VARCHAR2(4000 CHAR), 
+	"DATA_LENGTH" NUMBER, 
+	"DATA_PRECISION" NUMBER, 
+	"NULLABLE" VARCHAR2(20 BYTE), 
+	"COLUMN_ID" NUMBER, 
+	"DATA_DEFAULT" VARCHAR2(4000 CHAR), 
+	"CREATED_BY" VARCHAR2(4000 CHAR), 
+	"CREATED_ON" DATE, 
+	"LAST_UPDATED_BY" VARCHAR2(4000 CHAR), 
+	"LAST_UPDATED_ON" DATE, 
+	"PAGE_COMMENT" VARCHAR2(4000 CHAR)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -7419,7 +7385,7 @@ Liegenschaftsnutzer
 	"UMSATZART" VARCHAR2(26 BYTE), 
 	"BUCHUNGSDETAILS" VARCHAR2(1024 BYTE), 
 	"AUFTRAGGEBER" VARCHAR2(26 BYTE), 
-	"EMPFÄNGER" VARCHAR2(128 BYTE), 
+	"EMPFAENGER" VARCHAR2(128 BYTE), 
 	"BETRAG" VARCHAR2(26 BYTE), 
 	"SALDO" VARCHAR2(26 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
@@ -7991,7 +7957,9 @@ Liegenschaftsnutzer
 	"BRUTTO_BETRAG" NUMBER, 
 	"FK_KTO_BUCHUNG" NUMBER, 
 	"MWST" NUMBER, 
-	"VERTRAGSNUMMER" VARCHAR2(4000 CHAR)
+	"VERTRAGSNUMMER" VARCHAR2(4000 CHAR), 
+	"FK_BAS_KAL_RECHNUNGSDATUM" NUMBER, 
+	"FK_BAS_KAL_DATUM_DETAIL_OK" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -8022,7 +7990,8 @@ Liegenschaftsnutzer
 	"MWSTSATZ" NUMBER(4,0), 
 	"BETRAG" NUMBER(8,4), 
 	"PK_IMP_TEL_MOBILCOM_RECH_DET" NUMBER, 
-	"FK_IMP_TEL_MOBILCOM_RECH" NUMBER
+	"FK_IMP_TEL_MOBILCOM_RECH" NUMBER, 
+	"KATEGORIE_HAUPT" VARCHAR2(4000 CHAR)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -11032,7 +11001,7 @@ Liegenschaftsnutzer
 --------------------------------------------------------
 
   CREATE TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" 
-   (	"PK_REL_KONTO_AUSZUG_GIR" NUMBER, 
+   (	"PK_REL_KTO_KONTO_AUSZUG_GIR" NUMBER, 
 	"FK_KTO_KONTO_AUSZUG" NUMBER, 
 	"FK_KTO_GIROKONTO_OLD" NUMBER, 
 	"FK_MAIN_KEY" NUMBER, 
@@ -12396,6 +12365,52 @@ Liegenschaftsnutzer
   PCTINCREASE 0
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
  LOB ("VIEW_SQL_NEW") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) ;
+--------------------------------------------------------
+--  DDL for Table T_TXT_REPLACE_LOG
+--------------------------------------------------------
+
+  CREATE TABLE "COMPANY"."T_TXT_REPLACE_LOG" 
+   (	"PK_TXT_REPLACE_CONTEXT" NUMBER, 
+	"FK_TXT_REPLACE" VARCHAR2(4000 BYTE), 
+	"FROM_TXT" CLOB, 
+	"TO_TXT" CLOB, 
+	"DATUM" DATE, 
+	"CONTEXT" VARCHAR2(4000 BYTE), 
+	"CONTEXT_TYPE" VARCHAR2(255 BYTE), 
+	"FK_TXT_REPLACE_CONTEXT_PREVIOUS" NUMBER, 
+	"VIEW_HEADER" CLOB, 
+	"VIEW_SQL" CLOB
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" 
+ LOB ("FROM_TXT") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
+ LOB ("TO_TXT") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
+ LOB ("VIEW_HEADER") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) 
+ LOB ("VIEW_SQL") STORE AS SECUREFILE (
   TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
   NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
   STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -19473,7 +19488,7 @@ from lin_
 --  DDL for Index T_REL_KONTO_AUSZUG_GIR_PK
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "COMPANY"."T_REL_KONTO_AUSZUG_GIR_PK" ON "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" ("PK_REL_KONTO_AUSZUG_GIR") 
+  CREATE UNIQUE INDEX "COMPANY"."T_REL_KONTO_AUSZUG_GIR_PK" ON "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" ("PK_REL_KTO_KONTO_AUSZUG_GIR") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -20930,7 +20945,7 @@ from lin_
 --  DDL for Index T_TXT_REPLACED_PK
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "COMPANY"."T_TXT_REPLACED_PK" ON "COMPANY"."D" ("PK_TXT_REPLACE_CONTEXT") 
+  CREATE UNIQUE INDEX "COMPANY"."T_TXT_REPLACED_PK" ON "COMPANY"."T_TXT_REPLACE_LOG" ("PK_TXT_REPLACE_CONTEXT") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -23528,21 +23543,6 @@ END;
 /
 ALTER TRIGGER "COMPANY"."IMP_KONTENBLATT_2018_TRG8" ENABLE;
 --------------------------------------------------------
---  DDL for Trigger IMP_KONTENBLATT_2018_TRG9
---------------------------------------------------------
-
-  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."IMP_KONTENBLATT_2018_TRG9" 
-BEFORE INSERT ON "T_LEX_KONTENBLATT" 
-FOR EACH ROW 
-BEGIN
-  <<COLUMN_SEQUENCES>>
-  BEGIN
-    NULL;
-  END COLUMN_SEQUENCES;
-END;
-/
-ALTER TRIGGER "COMPANY"."IMP_KONTENBLATT_2018_TRG9" ENABLE;
---------------------------------------------------------
 --  DDL for Trigger IMP_LEX_SUSA_TRG
 --------------------------------------------------------
 
@@ -25435,13 +25435,28 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_DB_OBJ_OBJECT_LIST_TRG1" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_DB_OBJ_OBJECT_LIST_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_DB_OBJ_OBJECT_LIST_TRG2" 
+BEFORE INSERT ON T_DB_OBJ_OBJECT_LIST 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
     IF INSERTING AND :NEW.PK_DB_OBJ_OBJECT_LIST IS NULL THEN
       SELECT T_DB_OBJ_OBJECT_LIST_SEQ.NEXTVAL INTO :NEW.PK_DB_OBJ_OBJECT_LIST FROM SYS.DUAL;
     END IF;
   END COLUMN_SEQUENCES;
 END;
 /
-ALTER TRIGGER "COMPANY"."T_DB_OBJ_OBJECT_LIST_TRG1" ENABLE;
+ALTER TRIGGER "COMPANY"."T_DB_OBJ_OBJECT_LIST_TRG2" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger T_DB_RENAME_TRG
 --------------------------------------------------------
@@ -26356,6 +26371,23 @@ END;
 /
 ALTER TRIGGER "COMPANY"."T_KTO_GIROKONTO_TRG1" ENABLE;
 --------------------------------------------------------
+--  DDL for Trigger T_KTO_GIROKONTO_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_KTO_GIROKONTO_TRG2" 
+BEFORE INSERT ON T_KTO_GIROKONTO 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.ID IS NULL THEN
+      SELECT T_KTO_GIROKONTO_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_KTO_GIROKONTO_TRG2" ENABLE;
+--------------------------------------------------------
 --  DDL for Trigger T_KTO_KAS_KASSE_TRG
 --------------------------------------------------------
 
@@ -26484,39 +26516,22 @@ END;
 /
 ALTER TRIGGER "COMPANY"."T_LEX_BANK_KONTO_TRG" ENABLE;
 --------------------------------------------------------
---  DDL for Trigger T_LEX_KONTENBLATT_TRG
+--  DDL for Trigger T_LEX_KONTENBLATT_TRG2
 --------------------------------------------------------
 
-  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG" 
-BEFORE INSERT ON T_LEX_KONTENBLATT 
-FOR EACH ROW 
-BEGIN
-  <<COLUMN_SEQUENCES>>
-  BEGIN
-    IF INSERTING AND :NEW.BUCHUNGSNUMMER IS NULL THEN
-      SELECT T_LEX_KONTENBLATT_SEQ.NEXTVAL INTO :NEW.BUCHUNGSNUMMER FROM SYS.DUAL;
-    END IF;
-  END COLUMN_SEQUENCES;
-END;
-/
-ALTER TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG" ENABLE;
---------------------------------------------------------
---  DDL for Trigger T_LEX_KONTENBLATT_TRG1
---------------------------------------------------------
-
-  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG1" 
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG2" 
 BEFORE INSERT ON T_LEX_KONTENBLATT 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
     IF INSERTING AND :NEW.ID IS NULL THEN
-      SELECT T_LEX_KONTENBLATT_SEQ.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
+      SELECT T_LEX_KONTENBLATT_SEQ2.NEXTVAL INTO :NEW.ID FROM SYS.DUAL;
     END IF;
   END COLUMN_SEQUENCES;
 END;
 /
-ALTER TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG1" ENABLE;
+ALTER TRIGGER "COMPANY"."T_LEX_KONTENBLATT_TRG2" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger T_LEX_LONG_COMM_TRG
 --------------------------------------------------------
@@ -27773,13 +27788,28 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
-    IF INSERTING AND :NEW.PK_REL_KONTO_AUSZUG_GIR IS NULL THEN
-      SELECT T_REL_KONTO_AUSZUG_GIR_SEQ.NEXTVAL INTO :NEW.PK_REL_KONTO_AUSZUG_GIR FROM SYS.DUAL;
-    END IF;
+    NULL;
   END COLUMN_SEQUENCES;
 END;
 /
 ALTER TRIGGER "COMPANY"."T_REL_KONTO_AUSZUG_GIR_TRG6" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger T_REL_KTO_KONTO_AUSZUG_GIR_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR_TRG" 
+BEFORE INSERT ON T_REL_KTO_KONTO_AUSZUG_GIR 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.PK_REL_KTO_KONTO_AUSZUG_GIR IS NULL THEN
+      SELECT T_REL_KTO_KONTO_AUSZUG_GIR_SEQ.NEXTVAL INTO :NEW.PK_REL_KTO_KONTO_AUSZUG_GIR FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR_TRG" ENABLE;
 --------------------------------------------------------
 --  DDL for Trigger T_REL_LAGERORT_ARTIKEL_TRG
 --------------------------------------------------------
@@ -29128,7 +29158,7 @@ ALTER TRIGGER "COMPANY"."T_TERMINE_TRG3" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_TXT_REPLACE_CONTEXT_TRG" 
-BEFORE INSERT ON "D" 
+BEFORE INSERT ON "T_TXT_REPLACE_LOG" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -29143,7 +29173,7 @@ ALTER TRIGGER "COMPANY"."T_TXT_REPLACE_CONTEXT_TRG" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_TXT_REPLACE_CONTEXT_TRG1" 
-BEFORE INSERT ON "D" 
+BEFORE INSERT ON "T_TXT_REPLACE_LOG" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -29222,7 +29252,7 @@ ALTER TRIGGER "COMPANY"."T_TXT_REPLACE_CONTEXT_TRG5" ENABLE;
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "COMPANY"."T_TXT_REPLACED_TRG" 
-BEFORE INSERT ON "D" 
+BEFORE INSERT ON "T_TXT_REPLACE_LOG" 
 FOR EACH ROW 
 BEGIN
   <<COLUMN_SEQUENCES>>
@@ -40609,6 +40639,7 @@ END PKG_IMP_GIR;
   
   
   
+  
 insert into t_KTO_GIROKONTO
         (
             "Buchungstag",
@@ -40616,13 +40647,13 @@ insert into t_KTO_GIROKONTO
             "Umsatzart",
             "Buchungstext",
             "Betrag",
-            "Währung",
+            Waehrung,
             "Auftraggeberkonto",
             "Bankleitzahl Auftraggeberkonto",
             IBAN_Auftraggeberkonto,
             Kategorie,
             fk_kto_bankkonto, 
-            FK_bas_Kontotyp
+            FK_std_kto_Kontotyp
 
         )
         select 
@@ -40631,10 +40662,10 @@ insert into t_KTO_GIROKONTO
             UMSATZART,
             BUCHUNGSTEXT,
             BETRAG,
-            WÄHRUNG,
+            WAEHRUNG,
             AUFTRAGGEBERKONTO,
-            BANKLEITZAHL_AUFTRAGGEBERKONTO,
-            IBAN_AUFTRAGGEBERKONTO,
+            BANKLEITZAHL,
+            IBAN,
             KATEGORIE,
            2,
             1
@@ -40642,6 +40673,7 @@ insert into t_KTO_GIROKONTO
       -- where to_date(Buchungstag,'DD.MM.YYYY') > to_date(p_buchungsdatum,'DD.MM.YYYY') --'14.08.2019'
         order by  to_date(Buchungstag,'DD.MM.YYYY');
         commit;
+        
         
         
         
@@ -40765,7 +40797,7 @@ insert into t_KTO_GIROKONTO
             empfaenger,
               fk_kto_bankkonto,
             --  "Verwendungszweck",
-            FK_bas_kto_Kontotyp
+            FK_std_kto_Kontotyp
 
         )
 
@@ -40795,7 +40827,8 @@ insert into t_KTO_GIROKONTO
 
 procedure p_imp_new_gir_post (p_buchungsdatum date) AS
 begin
-     insert into KTO_Girokonto
+         
+             insert into t_KTO_Girokonto
         (
             "Buchungstag",
             "Wertstellung",
@@ -40803,13 +40836,13 @@ begin
             "Buchungstext",
             "Betrag",
             saldo,
-            "Währung",
+            Waehrung,
 
 
-            "IBAN Auftraggeberkonto",
+            IBAN_Auftraggeberkonto,
               auftraggeber,
-            empfänger,
-              fk_konto
+            empfaenger,
+              fk_kto_bankkonto
 
 
         )
@@ -40826,13 +40859,12 @@ begin
            'EUR',
            'DE11100100100932999122',
               auftraggeber,
-            empfänger,
+            empfaenger,
             6
 
-        from IMP_gir_post
+        from t_IMP_kto_gir_post
               where  buchungsdatum >= '01.11.2019';
         commit;
-        
 
 
 
@@ -40846,7 +40878,7 @@ update t_KTO_Girokonto set FK_MAIN_KEY = KTO_KONTO_SEQ.nextval where fk_main_key
 commit;
 
 
-update t_kto_girokonto set fk_konto = 6 where    "IBAN Auftraggeberkonto" =   'DE11100100100932999122' and fk_konto is null;
+update t_kto_girokonto set fk_kto_bankkonto = 6 where    IBAN Auftraggeberkonto =   'DE11100100100932999122' and fk_kto_bankkonto is null;
 commit;
  
 
@@ -40856,8 +40888,7 @@ commit;
  begin
   
 
-
-update KTO_Girokonto set FK_MAIN_KEY = KTO_KONTO_SEQ.nextval where fk_main_key is null;
+update t_KTO_Girokonto set FK_MAIN_KEY = KTO_KONTO_SEQ.nextval where fk_main_key is null;
         commit;
         
     end  p_update_fk_main_key ;
@@ -40865,7 +40896,7 @@ update KTO_Girokonto set FK_MAIN_KEY = KTO_KONTO_SEQ.nextval where fk_main_key i
     procedure p_add_buchungstext as 
     begin
     
-update kto_girokonto set     Buchungstext =    "Buchungstext" where buchungstext is null;
+update t_kto_girokonto set     Buchungstext =    "Buchungstext" where buchungstext is null;
 commit;
 end p_add_buchungstext;
 
@@ -41459,7 +41490,7 @@ END PKG_IMP_PAYPAL;
   procedure p_imp_tel_rech as
   
   begin
-   insert into imp_tel_mobilcom_rech
+   insert into t_imp_tel_mobilcom_rech
         (
         ZAEHLER,
         RECHNUNGSNUMMER,
@@ -41496,7 +41527,7 @@ END PKG_IMP_PAYPAL;
         DATUMBIS,
         MWSTSATZ,
         BETRAG
-        from imp_tel_mobilcom_rech_det
+        from t_imp_tel_mobilcom_rech_det
         where detail in (
         'Nettosumme')
         ;
@@ -41509,19 +41540,26 @@ END PKG_IMP_PAYPAL;
 
   begin
 
-  for i in (select betrag, rechnungsnummer from imp_tel_mobilcom_rech_det
+  for i in (select betrag, rechnungsnummer from t_imp_tel_mobilcom_rech_det
         where detail in (
         'Nettosumme')) loop
 
-        update imp_tel_mobilcom_rech set brutto_betrag = i.betrag where rechnungsnummer = i.rechnungsnummer;
+        update t_imp_tel_mobilcom_rech set brutto_betrag = i.betrag where rechnungsnummer = i.rechnungsnummer;
         commit;
 
   end  loop;
+  
+  
+    update t_imp_tel_mobilcom_rech_det set kategorie_haupt = 'Gesamtsummen' where kategorie ='Gesamtsummen';
+  commit;
+  
+  
+  update t_imp_tel_mobilcom_rech_det set kategorie_haupt = 'Detail' where kategorie !='Gesamtsummen';
+  commit;
 
   end p_upd_tel_rech_brutto_betrag;
 
 END PKG_IMP_TEL;
-
 
 /
 --------------------------------------------------------
@@ -42354,7 +42392,6 @@ procedure p_add_sachkonto_2018 as
 
  begin
 
-    
     insert into t_lex_kontenblatt (
     BUCHUNGSNUMMER,
     KONTONUMMER,
@@ -42374,24 +42411,25 @@ procedure p_add_sachkonto_2018 as
     )
     
     select
-    BUCHUNGSNUMMER,
+    to_number(BUCHUNGSNUMMER),
     KONTONUMMER,
     KONTOBEZEICHNUNG,
-    to_date(belegdatum,'YYYY-MM-DD HH24:MI:SS'),
-    BELEGNUMMER,
+   -- belegdatum,
+ 
+    substr(to_date(belegdatum,'DD.MM:YYYY HH24:MI:SS'),1,6) || '2020',
+    to_number(BELEGNUMMER),
     BUCHUNGSTEXT,
     GEGENKONTO,
     to_number(replace(SOLLBETRAG_EUR,'.','')),
-    HABENBETRAG_EUR,
+    to_number(replace(HABENBETRAG_EUR,'.','')),
     USTKONTO,
     UST
     ,
-    2018,
+    2020,
     kst,
     ktr
-    from imp_kontenblatt_2018_2;
+    from t_imp_lex_kontenblatt_2020;
     commit;
-    
     p_upd_kontenblatt ;
 end p_add_sachkonto_2018;
 
@@ -42475,12 +42513,10 @@ end p_susa_upd_susa;
 procedure p_set_relation_initial as
 
 begin
- update t_lex_kontenblatt set fk_relation = jahr || '/' || buchungsnummer ||'/0' where fk_relation is null;
+ update t_lex_kontenblatt set fk_lex_relation = jahr || '/' || buchungsnummer ||'/0' where fk_lex_relation is null;
  commit;
-  update t_lex_kontenblatt set fk_relation_sub = jahr || '/' || buchungsnummer ||'/0' where fk_relation_sub is null;
+  update t_lex_kontenblatt set fk_lex_relation_sub = jahr || '/' || buchungsnummer ||'/0' where fk_lex_relation_sub is null;
  commit;
- 
-
 end p_set_relation_initial ;
 
 procedure p_set_storno_from_lex as 
@@ -44984,6 +45020,7 @@ end p_calc_nächste_zahlung ;
 procedure p_add_objects as 
 
 begin
+--objects
 insert into t_db_obj_object_list (object_type, object_name)
 select object_type, object_name from all_objects where object_type in ('TABLE','PROCEDURE','PACKAGE', 'PACKAGE_BODY', 'VIEW','FUNCTION') and owner = 'COMPANY';
 commit;
@@ -44996,6 +45033,21 @@ where obj.object_type in ('TABLE','PROCEDURE','PACKAGE', 'PACKAGE_BODY', 'VIEW',
 and ol.object_name is null;
 commit;
 
+
+--columns
+insert into t_db_obj_object_list (object_type, object_name, column_name, data_type, data_length, data_precision, nullable, column_id, data_default, create_at)
+select 'COLUMN', table_name, column_name, data_type, data_length, data_precision, nullable, column_id, null data_default, sysdate
+from user_tab_cols;
+commit;
+
+ insert into t_db_obj_object_list (object_type, object_name, column_name, data_type, data_length, data_precision, nullable, column_id, data_default, create_at, created_on, last_updated_on)
+select 'COLUMN', ut.table_name, ut.column_name, ut.data_type, ut.data_length, ut.data_precision, ut.nullable, ut.column_id, null data_default, sysdate, sysdate sd, sysdate
+from user_tab_cols ut
+ left join t_db_obj_object_list obj on ut.column_name = obj.column_name and ut.data_type = obj.data_type and obj.object_name = ut.table_name
+where obj.object_name is null;
+commit;
+
+--apex pages
 insert into t_db_obj_object_list (object_type , application_id, page_id, create_at, page_name, page_group, page_mode)
 select 'APEX_APPLICATION_PAGE' ,ap.application_id, ap.page_id, sysdate , ap.page_name, ap.page_group, ap.page_mode
 from apex_application_pages ap
@@ -45018,6 +45070,20 @@ update set t1.page_name = t2.page_name,
  t1.page_mode = t2.page_mode,
  t1.page_group  = t2.page_group;
  commit;
+ 
+ merge into t_db_obj_object_list t1
+ using (
+ select distinct ap.application_id, ap.page_id, ap.created_on, ap.created_by, ap.last_updated_by, ap.last_updated_on
+ from t_db_obj_object_list obj
+  join apex_application_pages ap on obj.application_id = ap.application_id and obj.page_id = ap.page_id
+) t2 on (t1.application_id = t2.application_id and t1.page_id = t2.page_id)
+when matched then 
+ update set t1.created_by = t2.created_by,
+ t1.created_on = t2.created_on,
+ t1.last_updated_by = t2.last_updated_by,
+ t1.last_updated_on = t2.last_updated_on;
+ commit;
+ 
 end p_add_objects;
 
 END PKG_SERVICES_NEU;
@@ -49119,13 +49185,13 @@ END;
 --  Constraints for Table T_REL_KTO_KONTO_AUSZUG_GIR
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" ADD CONSTRAINT "T_REL_KONTO_AUSZUG_GIR_PK" PRIMARY KEY ("PK_REL_KONTO_AUSZUG_GIR")
+  ALTER TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" ADD CONSTRAINT "T_REL_KONTO_AUSZUG_GIR_PK" PRIMARY KEY ("PK_REL_KTO_KONTO_AUSZUG_GIR")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" MODIFY ("PK_REL_KONTO_AUSZUG_GIR" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" MODIFY ("PK_REL_KTO_KONTO_AUSZUG_GIR" NOT NULL ENABLE);
   ALTER TABLE "COMPANY"."T_REL_KTO_KONTO_AUSZUG_GIR" ADD CONSTRAINT "T_REL_KONTO_AUSZUG_GIR_UK3" UNIQUE ("FK_MAIN_KEY")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -49694,22 +49760,22 @@ END;
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   TABLESPACE "USERS"  ENABLE;
 --------------------------------------------------------
---  Constraints for Table D
+--  Constraints for Table T_CONTR_DUPLIKAT_CHECK
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."D" MODIFY ("PK_TXT_REPLACE_CONTEXT" NOT NULL ENABLE);
-  ALTER TABLE "COMPANY"."D" ADD CONSTRAINT "T_TXT_REPLACED_PK" PRIMARY KEY ("PK_TXT_REPLACE_CONTEXT")
+  ALTER TABLE "COMPANY"."T_CONTR_DUPLIKAT_CHECK" MODIFY ("PK_DUPLIKAT_CHECK" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_CONTR_DUPLIKAT_CHECK" ADD CONSTRAINT "T_DUPLIKAT_CHECK_PK" PRIMARY KEY ("PK_DUPLIKAT_CHECK")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
 --------------------------------------------------------
---  Constraints for Table T_CONTR_DUPLIKAT_CHECK
+--  Constraints for Table T_TXT_REPLACE_LOG
 --------------------------------------------------------
 
-  ALTER TABLE "COMPANY"."T_CONTR_DUPLIKAT_CHECK" MODIFY ("PK_DUPLIKAT_CHECK" NOT NULL ENABLE);
-  ALTER TABLE "COMPANY"."T_CONTR_DUPLIKAT_CHECK" ADD CONSTRAINT "T_DUPLIKAT_CHECK_PK" PRIMARY KEY ("PK_DUPLIKAT_CHECK")
+  ALTER TABLE "COMPANY"."T_TXT_REPLACE_LOG" MODIFY ("PK_TXT_REPLACE_CONTEXT" NOT NULL ENABLE);
+  ALTER TABLE "COMPANY"."T_TXT_REPLACE_LOG" ADD CONSTRAINT "T_TXT_REPLACED_PK" PRIMARY KEY ("PK_TXT_REPLACE_CONTEXT")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1

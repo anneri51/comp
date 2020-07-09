@@ -1,0 +1,181 @@
+docker pull araczkowski/oracle-apex-ords
+docker images
+docker ps 
+docker ps -a
+docker start a89fbe2b57d0
+docker start wordpress
+docker push anneri51/anne1
+docker login  --username anneri51 --password Sommer17
+docker tag wordpress anneri51/anne1
+
+ALTER USER <user> quota unlimited on <tablespace name>;
+
+
+https://cloud.docker.com/repository/docker/anneri51/anne1/general
+https://cloud.digitalocean.com/projects/e2a44efa-84a1-4ee4-bf1d-c412e7342311/resources?i=435a79
+
+atom
+https://github.com/OraOpenSource/OXAR
+
+http://192.168.99.101:32768/wp-admin/setup-config.php?step=0
+docker pull 32321421/oracle18cxe_08
+docker push anneri51/anne2:test
+
+docker tag araczkowski/oracle-apex-ords anneri51/anne2:test
+docker run -d --name con_flight -p 49160:22 -p 8088:8080 -p 1522:1521    oraclelinux:7-slim
+docker run -d --name con_flight5 -p 49166:22 -p 8089:8080 -p 1523:1521   oraclelinux:7-slim -v /directory_on_host_pc_to_share_with_docker/:/mnt/ -e ORACLE_DOCKER_INSTALL=true oraclelinux
+docker run -d --name con_flight3 -p 49160:22 -p 8088:8080 -p 1522:1521 container-registry.oracle.com/os/oraclelinux:7-slim
+docker run -d --name con_flight4 -p 49164:22  container-registry.oracle.com/os/oraclelinux:7-slim
+docker create -i -t --name con2 -p  49162:22 -e ORACLEPWD=secret oraclelinux:7-
+docker create -i -t --name con3 -p 49163:22 -e ORACEPWD=secret 2a471136de28
+docker exec -i -t con2 bash
+cat /etc/oracle-release 
+cd ~
+
+a03d2feb25002089492eab7253acef0f271153003a87d8cdd73a857e09521b42 
+
+sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo apt-get install docker.io
+
+cd /home
+docker logs con_flight1
+sudo systemctl start docker.service
+sudo systemctl status docker.service
+sudo systemctl enable docker
+sudo systemctl start docker
+
+sudo apt-get update
+sudo apt-get install yum
+snap install docker
+docker pull araczkowski/oracle-apex-ords
+docker run -d --name con_flight -p 49160:22 -p 8088:8080 -p 1522:1521 araczkowski/oracle-apex-ords
+docker run -d --name con_flight -p 49160:22 -p 8088:8080 -p 1522:1521 araczkowski/oracle-apex-ords
+docker run -d -it --rm --name con_flight8 -p 49166:22 -p 8093:8080 -p 1527:1521 -v /u01/app/oracle/oradata dockerhelp/docker-oracle-ee-18c  
+docker exec -it con_flight9 sh -c 'gosu oracle sqlplus "sys as sysdba"'
+
+docker inspect con_flight9
+
+/home/myuser/Docker/myxedb/oradata
+docker run -d -it --rm --name con_flight9 -p 49167:22 -p 8094:8080 -p 1528:1521 
+ -v /home/Docker/con_flight9/oradata:/u01/app/oracle/oradata 
+    -v /home/Docker/con_flight9/scripts/setup:/u01/app/oracle/scripts/setup 
+    -v /home/Docker/con_flight9/scripts/startup:/u01/app/oracle/scripts/startup     
+-e ORACLE_SID=ORCL18 -e ORACLE_PWD=secret -e ORACLE_CONTAINERDB=false dockerhelp/docker-oracle-ee-18c 
+
+docker run -d -it --rm --name con_flight9 -p 49167:22 -p 8094:8080 -p 1528:1521  -v /home/Docker/con_flight9/oradata:/u01/app/oracle/oradata     -v /home/Docker/con_flight9/scripts/setup:/u01/app/oracle/scripts/setup     -v /home/Docker/con_flight9/scripts/startup:/u01/app/oracle/scripts/startup   -e ORACLE_SID=ORCL18 -e ORACLE_PWD=secret -e ORACLE_CONTAINERDB=false dockerhelp/docker-oracle-ee-18c 
+
+
+docker run -d -it --rm --name con_flight9 -p 49167:22 -p 8094:8080 -p 1528:1521 -p 5501:5500    -e ORACLE_SID=ORCL18 -e ORACLE_PWD=secret -e ORACLE_CONTAINERDB=false dockerhelp/docker-oracle-ee-18c 
+
+
+docker run -d --name con_flight2 -p 49163:22 -p 8090:8080 -p 1524:1521 oracle/database:18.4.0-xe
+docker run -d --name con_flight3 -p 49164:22 -p 8091:8080 -p 1525:1521 --privileged oracle/database:18.3.0-ee
+docker run -it --rm --entrypoint sh oracle/database:18.3.0-ee
+docker run -it --rm --entrypoint sh dockerhelp/docker-oracle-ee-18c
+docker start con_flight
+docker login  --username anneri51 --password Sommer17
+docker ps 
+docker ps -a
+;
+gosu oracle bash
+docker run -it dockerhelp/docker-oracle-ee-18c
+docker network ls
+/@
+chown oracle:oinstall $ORACLE_HOME/network/admin/tnsnames.ora
+
+ORCL18
+PDB$SEED
+PDB18C
+v$instance;
+
+$ORACLE_HOME export ORACLE_HOME=/u01/app/oracle/product/18.0.0/dbhome_1
+$ORACLE_BIN export ORACLE_BIN=/u01/app/oracle/product/18.0.0/dbhome_1/bin
+$ORACLE_SID export ORACLE_SID=ORCL18
+$ORACLE_BASIS export ORACLE_BASIS=/u01/app/oracle
+$PATH export PATH=$PATH:$ORACLE_BIN
+/home/oracle
+/home/oracle/./scr.sh
+
+source ~/.bashrc
+source ~/.bash_profile
+vi ./.bashrc
+vi ./.bash_profile
+vi ./root/.bashrc
+/usr/bin/
+
+/home/myuser/Docker/myxedb/oradata
+mkdir -p /home/Docker/con_flight9/oradata
+chmod 777 /home/Docker/con_flight9/oradata
+chown 54321:54321 /home/Docker/con_flight9/oradata;
+
+putty 138.68.91.232:49160
+root / secret
+http://138.68.91.232:8088/ords/apex  internal / admin / secret
+Sqldeveloper: 138.68.91.232 1522 XE system secret
+
+
+/etc/default/ufw allow 22
+|
+docker history dockerhelp/docker-oracle-ee-18c
+docker image prune -a --alte images löschen
+fuzziebrain
+/
+docker-oracle-xe
+sudo systemctl is-active docker
+
+git clone https://github.com/oracle/docker-images/tree/master/OracleDatabase/SingleInstance/dockerfiles
+anneri51@gmx.de
+apt install yum
+apt install -y git
+$ git clone https://github.com/oracle/docker-images.git
+ https://github.com/oracle/docker-images/OracleDatabase/SingleInstance/dockerfiles/19.3.0
+/home
+cd ~/docker-images/OracleDatabase/SingleInstance/dockerfiles/18.4.0
+curl -o oracle-database-xe-18c-1.0-1.x86_64.rpm https://www.oracle.com/database/technologies/xe-downloads.html
+curl -o oracle-database-ee-18c-1.0-1.x86_64.rpm https://www.oracle.com/database/technologies/xe-downloads.html
+--cp oracle-database-xe-18c-1.0-1.x86_64.rpm  ~/docker-images/OracleDatabase/SingleInstance/dockerfiles/18.4.0
+wget https://www.oracle.com/database/technologies/xe-downloads.html/oracle-database-xe-18c-1.0-1.x86_64.rpm
+yum install wget
+./buildDockerImage.sh -v 18.4.0 -x -i
+
+ssh sammy@your_server_ip_or_remote_hostname
+exit
+sftp sammy@your_server_ip_or_remote_hostname
+pwd
+lpwd
+get remoteFile
+
+alter session set container=PDB18C;
+show con_name;
+
+wget --http-user=anneri51@gmx.de --http-password=Sommer17 -o apex_20.1.1.zip https://www.oracle.com/tools/downloads/apex-downloads.html/apex_20.1.zip
+
+docker rmi $(docker images -f "dangling=true" -q)
+docker images
+docker run --name myxedb \
+    -d 
+    -p 51521:1521 \
+    -p 55500:5500 \
+    -e ORACLE_PWD=mysecurepassword \
+    -e ORACLE_CHARACTERSET=AL32UTF8 \
+    oracle/database:18.4.0-xe
+vi /root/.vnc/xstartup
+'yum install -y -q yum-utils'
+docker pull dockerhelp/docker-oracle-ee-18c
+
+/mnt/vol
+
+docker tag  <none>/myname:0.1
+[root@host ~]# docker create -i -t --name newguest oraclelinux:7-slim
+b4c224f83e35927f67b973febb006b0af4d037f41c30e1f4bdcc4b822e12fd0f
+[root@host ~]# docker start -a -i newguest
+
+yum -y install tigervnc-server tigervnc-server-minimal
+
+yum -y install oracle-database-preinstall-18c
+curl -o oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm
+yum -y localinstall oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm
+rm oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm

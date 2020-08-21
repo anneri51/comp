@@ -28,14 +28,14 @@ prompt APPLICATION 100 - Company_neu
 -- Application Export:
 --   Application:     100
 --   Name:            Company_neu
---   Date and Time:   06:52 Friday August 21, 2020
+--   Date and Time:   08:57 Friday August 21, 2020
 --   Exported By:     ANNE
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      4
---       Items:                    3
+--       Items:                    4
 --       Processes:                4
---       Regions:                  5
+--       Regions:                  6
 --       Buttons:                  1
 --     Shared Components:
 --       Logic:
@@ -113,7 +113,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Company_neu'
 ,p_last_updated_by=>'ANNE'
-,p_last_upd_yyyymmddhh24miss=>'20200821064628'
+,p_last_upd_yyyymmddhh24miss=>'20200821065952'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -128,6 +128,1282 @@ wwv_flow_api.create_list(
 ,p_list_status=>'PUBLIC'
 );
 wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6612092682246233)
+,p_list_item_display_sequence=>5
+,p_list_item_link_text=>'1 - Schnellzugriff'
+,p_list_item_link_target=>'f?p=&APP_ID.:1:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_display_sequence=>10
+,p_list_item_link_text=>'2 - Home'
+,p_list_item_link_target=>'f?p=&APP_ID.:1:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'1,2,3,7,9,14,16,18,20,22,24,26,31,32,33,38,48,6,5,12,28,40,58,61,63,65,60,69,71,68,75,77,78,79,80,82,83,84,85,43,87,88,89,90,91,92,93,94,95,96,97,104,105,106,108,109,110,114,116,86,100,102,109,113,119,121,123,125,127,129,131,133,135,137,139,141,145,1'
+||'47,149,151,153,155,157,159,161,163,166,167,170,171,172,173,174,119,120,122,161,93,165,176,178,92,182,184,185,180,181,187,141,176,203,205,211,220,221,222,223,224,227,314,346,401,404,423,427,16,119,120,142,151'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42936307478776916)
+,p_list_item_display_sequence=>150
+,p_list_item_link_text=>'01 - Einkauf'
+,p_list_item_link_target=>'f?p=&APP_ID.:414:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'414'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6365143066843942)
+,p_list_item_display_sequence=>80
+,p_list_item_link_text=>'Artikel'
+,p_list_item_link_target=>'f?p=&APP_ID.:18:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42936307478776916)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'18,19'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1213531270912860)
+,p_list_item_display_sequence=>430
+,p_list_item_link_text=>'Artikeltyp'
+,p_list_item_link_target=>'f?p=&APP_ID.:73:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6365143066843942)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'73,74'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1236740221378609)
+,p_list_item_display_sequence=>440
+,p_list_item_link_text=>'Artikeltypenhierarchie'
+,p_list_item_link_target=>'f?p=&APP_ID.:75:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6365143066843942)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'75'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_display_sequence=>160
+,p_list_item_link_text=>'02 - Buchhaltung'
+,p_list_item_link_target=>'f?p=&APP_ID.:415:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'415'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10710219775502955)
+,p_list_item_display_sequence=>1520
+,p_list_item_link_text=>'31 - Beleg'
+,p_list_item_link_target=>'f?p=&APP_ID.:228:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'228,229'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(15515815972289277)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'311 - Input Belege (Liste - kategorisieren)'
+,p_list_item_link_target=>'f?p=&APP_ID.:358:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(10710219775502955)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'358'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6160525249122387)
+,p_list_item_display_sequence=>1120
+,p_list_item_link_text=>'V_Belege_Zus'
+,p_list_item_link_target=>'f?p=&APP_ID.:180:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(15515815972289277)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'180'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10736323201528243)
+,p_list_item_display_sequence=>1530
+,p_list_item_link_text=>'BELEG_POS_ALL'
+,p_list_item_link_target=>'f?p=&APP_ID.:232:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(15515815972289277)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'232'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(17276818252348080)
+,p_list_item_display_sequence=>2100
+,p_list_item_link_text=>'inp_belege_all1'
+,p_list_item_link_target=>'f?p=&APP_ID.:371:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(15515815972289277)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'371,372'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(17300139243527950)
+,p_list_item_display_sequence=>2110
+,p_list_item_link_text=>'inp_beleg_all_vergl'
+,p_list_item_link_target=>'f?p=&APP_ID.:373:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(15515815972289277)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'373'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_display_sequence=>100
+,p_list_item_link_text=>'312 - Alte Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:22:&SESSION.::&DEBUG.::P23_CH_FLAG:0:'
+,p_parent_list_item_id=>wwv_flow_api.id(10710219775502955)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'22,23'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(128819524433262)
+,p_list_item_display_sequence=>200
+,p_list_item_link_text=>unistr('Kalender\00FCbersicht')
+,p_list_item_link_target=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'5'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6639639843034850)
+,p_list_item_display_sequence=>210
+,p_list_item_link_text=>'Beleg /Location'
+,p_list_item_link_target=>'f?p=&APP_ID.:31:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'31'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6671295851223436)
+,p_list_item_display_sequence=>220
+,p_list_item_link_text=>'Beleg / Stundenzettel'
+,p_list_item_link_target=>'f?p=&APP_ID.:32:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'32'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6960009727567302)
+,p_list_item_display_sequence=>330
+,p_list_item_link_text=>'Belegart'
+,p_list_item_link_target=>'f?p=&APP_ID.:55:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'55,56'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(620486989150330)
+,p_list_item_display_sequence=>350
+,p_list_item_link_text=>'automatische Belegartzuordnungstabelle'
+,p_list_item_link_target=>'f?p=&APP_ID.:41:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6960009727567302)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'41,42'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(584470068750986)
+,p_list_item_display_sequence=>340
+,p_list_item_link_text=>'Gruppierung Belegart'
+,p_list_item_link_target=>'f?p=&APP_ID.:28:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'28,29'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(667623541338815)
+,p_list_item_display_sequence=>360
+,p_list_item_link_text=>'Belegposition'
+,p_list_item_link_target=>'f?p=&APP_ID.:49:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'49,50'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1256019502722637)
+,p_list_item_display_sequence=>450
+,p_list_item_link_text=>'Bankbelege'
+,p_list_item_link_target=>'f?p=&APP_ID.:76:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'76'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1776977803465815)
+,p_list_item_display_sequence=>550
+,p_list_item_link_text=>'Belege_chart'
+,p_list_item_link_target=>'f?p=&APP_ID.:87:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'87'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1782092359470815)
+,p_list_item_display_sequence=>560
+,p_list_item_link_text=>'Belege_Belegart'
+,p_list_item_link_target=>'f?p=&APP_ID.:88:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'88'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(9389434448216646)
+,p_list_item_display_sequence=>1500
+,p_list_item_link_text=>'Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:224:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6407261917474114)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'224'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_display_sequence=>1300
+,p_list_item_link_text=>'313 - Allgemeine Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:196:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(10710219775502955)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6613066679263353)
+,p_list_item_display_sequence=>1310
+,p_list_item_link_text=>'Allgemeine Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:184:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'184'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(7379902782712905)
+,p_list_item_display_sequence=>1390
+,p_list_item_link_text=>'Compare_allg_Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:209:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'209'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44307977888281341)
+,p_list_item_display_sequence=>2700
+,p_list_item_link_text=>'Hotelbelege'
+,p_list_item_link_target=>'f?p=&APP_ID.:137:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44308464520292372)
+,p_list_item_display_sequence=>2710
+,p_list_item_link_text=>'Telefon'
+,p_list_item_link_target=>'f?p=&APP_ID.:177:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(53860037540031003)
+,p_list_item_display_sequence=>2810
+,p_list_item_link_text=>'Mobilcom - IMP_TEL_MOBILCOM'
+,p_list_item_link_target=>'f?p=&APP_ID.:16:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44308464520292372)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'16'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44309355714318917)
+,p_list_item_display_sequence=>2740
+,p_list_item_link_text=>'Textilreinigung'
+,p_list_item_link_target=>'f?p=&APP_ID.:159:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6612581415257182)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_display_sequence=>1530
+,p_list_item_link_text=>'32 - Kontoauszug'
+,p_list_item_link_target=>'f?p=&APP_ID.:94:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'94'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(39008127374852149)
+,p_list_item_display_sequence=>620
+,p_list_item_link_text=>'321 - Kontoauszug Abstimmung'
+,p_list_item_link_target=>'f?p=&APP_ID.:396:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'396'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12801465112016714)
+,p_list_item_display_sequence=>650
+,p_list_item_link_text=>'321 - Kontoauszug'
+,p_list_item_link_target=>'f?p=&APP_ID.:247:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(39008127374852149)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'247'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1862220743519165)
+,p_list_item_display_sequence=>640
+,p_list_item_link_text=>'Buchungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:96:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12801465112016714)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'96'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2365004604709717)
+,p_list_item_display_sequence=>740
+,p_list_item_link_text=>'Buchungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:110:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1862220743519165)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'110'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(5371160786337594)
+,p_list_item_display_sequence=>1180
+,p_list_item_link_text=>unistr('\00DCberweisung eigenes Konto Zuordnen')
+,p_list_item_link_target=>'f?p=&APP_ID.:164:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1862220743519165)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'164'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10222005266300453)
+,p_list_item_display_sequence=>1740
+,p_list_item_link_text=>'Kasse'
+,p_list_item_link_target=>'f?p=&APP_ID.:314:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1862220743519165)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'314,315'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44003268067810458)
+,p_list_item_display_sequence=>760
+,p_list_item_link_text=>'322 - Girokonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:424:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'424'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2223066202080633)
+,p_list_item_display_sequence=>700
+,p_list_item_link_text=>'3221 - Girokonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44003268067810458)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'105'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11341662956207531)
+,p_list_item_display_sequence=>725
+,p_list_item_link_text=>'3222 - Girokonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:320:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44003268067810458)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'320,321'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(868513746344922)
+,p_list_item_display_sequence=>1650
+,p_list_item_link_text=>'3223 - Girokonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:256:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44003268067810458)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2554933750232470)
+,p_list_item_display_sequence=>1680
+,p_list_item_link_text=>'3224 - Girokonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:265:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44003268067810458)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'265'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11473725770491858)
+,p_list_item_display_sequence=>1780
+,p_list_item_link_text=>'323 - Kreditkarte'
+,p_list_item_link_target=>'f?p=&APP_ID.:322:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'322,323'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2238791901197083)
+,p_list_item_display_sequence=>710
+,p_list_item_link_text=>'Kreditkartenkonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:106:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11473725770491858)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'106'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2558437239804051)
+,p_list_item_display_sequence=>760
+,p_list_item_link_text=>'Kreditkarte'
+,p_list_item_link_target=>'f?p=&APP_ID.:114:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2238791901197083)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'114'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(15877256309971403)
+,p_list_item_display_sequence=>2090
+,p_list_item_link_text=>'ing_diba_kreditkarte'
+,p_list_item_link_target=>'f?p=&APP_ID.:359:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11473725770491858)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'359'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2245551073201512)
+,p_list_item_display_sequence=>1790
+,p_list_item_link_text=>'324 - Tagesgeldkonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:107:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'107'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2749884474384859)
+,p_list_item_display_sequence=>790
+,p_list_item_link_text=>'Tagesgeldkonto'
+,p_list_item_link_target=>'f?p=&APP_ID.:116:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2245551073201512)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'116'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2924174103164364)
+,p_list_item_display_sequence=>1800
+,p_list_item_link_text=>'325 - Paypal Buchung'
+,p_list_item_link_target=>'f?p=&APP_ID.:86:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'86'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2251877767205456)
+,p_list_item_display_sequence=>730
+,p_list_item_link_text=>'Paypal'
+,p_list_item_link_target=>'f?p=&APP_ID.:108:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2924174103164364)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'108'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2637231383043142)
+,p_list_item_display_sequence=>780
+,p_list_item_link_text=>'Vorgang'
+,p_list_item_link_target=>'f?p=&APP_ID.:115:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2251877767205456)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'115'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2598196627861691)
+,p_list_item_display_sequence=>770
+,p_list_item_link_text=>'Paypal_Vorgang'
+,p_list_item_link_target=>'f?p=&APP_ID.:77:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2637231383043142)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'77'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3805443048327153)
+,p_list_item_display_sequence=>1100
+,p_list_item_link_text=>'Paypalzuordnung'
+,p_list_item_link_target=>'f?p=&APP_ID.:171:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(2924174103164364)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'171'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(13280964613833897)
+,p_list_item_display_sequence=>1975
+,p_list_item_link_text=>'326 - Kasse'
+,p_list_item_link_target=>'f?p=&APP_ID.:314:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_display_sequence=>1980
+,p_list_item_link_text=>'327 - Kontobuchungen (v_konten_zus)'
+,p_list_item_link_target=>'f?p=&APP_ID.:245:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'245'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3950134493341030)
+,p_list_item_display_sequence=>1110
+,p_list_item_link_text=>'Kontenzus'
+,p_list_item_link_target=>'f?p=&APP_ID.:172:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'172'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6664699140760110)
+,p_list_item_display_sequence=>1120
+,p_list_item_link_text=>'Buchung_Kategorie'
+,p_list_item_link_target=>'f?p=&APP_ID.:198:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'198'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(7096728622331101)
+,p_list_item_display_sequence=>1125
+,p_list_item_link_text=>'Buchung Verwendungszweck'
+,p_list_item_link_target=>'f?p=&APP_ID.:195:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'195'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6713029782152406)
+,p_list_item_display_sequence=>1130
+,p_list_item_link_text=>'Auslandsbuchungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:199:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'199'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(7224581935879694)
+,p_list_item_display_sequence=>1135
+,p_list_item_link_text=>unistr('n\00E4chste_Zahlung')
+,p_list_item_link_target=>'f?p=&APP_ID.:204:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'204'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(4225698763773319)
+,p_list_item_display_sequence=>1150
+,p_list_item_link_text=>'Buchung'
+,p_list_item_link_target=>'f?p=&APP_ID.:174:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'174'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6960260727524160)
+,p_list_item_display_sequence=>1360
+,p_list_item_link_text=>'Buchung_Beleg'
+,p_list_item_link_target=>'f?p=&APP_ID.:176:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'176,202'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8762742408314103)
+,p_list_item_display_sequence=>1730
+,p_list_item_link_text=>'Kontoauszug_check_no_zuord'
+,p_list_item_link_target=>'f?p=&APP_ID.:309:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'309'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10411035961867347)
+,p_list_item_display_sequence=>1750
+,p_list_item_link_text=>'Buchungszuordnung'
+,p_list_item_link_target=>'f?p=&APP_ID.:316:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'316'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(21723355228177264)
+,p_list_item_display_sequence=>2170
+,p_list_item_link_text=>unistr('kontenzus_\00FCbersicht')
+,p_list_item_link_target=>'f?p=&APP_ID.:384:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12726328620446595)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'384'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8103678739924179)
+,p_list_item_display_sequence=>2005
+,p_list_item_link_text=>'329 - Bankdaten'
+,p_list_item_link_target=>'f?p=&APP_ID.:212:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1836064424511614)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6437808669485048)
+,p_list_item_display_sequence=>1660
+,p_list_item_link_text=>'33 - Rechnungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:24:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'24,25'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6683494135510759)
+,p_list_item_display_sequence=>230
+,p_list_item_link_text=>'Rechnung / Beleg'
+,p_list_item_link_target=>'f?p=&APP_ID.:33:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6437808669485048)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'33'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(5401838360420358)
+,p_list_item_display_sequence=>1190
+,p_list_item_link_text=>'Rechnung_Zahlung'
+,p_list_item_link_target=>'f?p=&APP_ID.:165:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6437808669485048)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'165'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(40436940994823277)
+,p_list_item_display_sequence=>2290
+,p_list_item_link_text=>'Lexware Rechnungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:403:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6437808669485048)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'403,406'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42960051485199772)
+,p_list_item_display_sequence=>1725
+,p_list_item_link_text=>'34 - Lexware / Buchungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:420:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'420'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_display_sequence=>1620
+,p_list_item_link_text=>'342 - Lexwarebuchungen (neu)'
+,p_list_item_link_target=>'f?p=&APP_ID.:246:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42960051485199772)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'246'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8481324342830606)
+,p_list_item_display_sequence=>1440
+,p_list_item_link_text=>'Buchung_Steuer'
+,p_list_item_link_target=>'f?p=&APP_ID.:211:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'211'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8560709670672043)
+,p_list_item_display_sequence=>1460
+,p_list_item_link_text=>'Lexwarebuchungen (alt)'
+,p_list_item_link_target=>'f?p=&APP_ID.:221:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'221'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8822181056419939)
+,p_list_item_display_sequence=>1470
+,p_list_item_link_text=>'lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:219:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'219'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(13281901670844503)
+,p_list_item_display_sequence=>1970
+,p_list_item_link_text=>'Konto_Geldtransit'
+,p_list_item_link_target=>'f?p=&APP_ID.:346:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'346'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(39470250629110850)
+,p_list_item_display_sequence=>2250
+,p_list_item_link_text=>'Relations'
+,p_list_item_link_target=>'f?p=&APP_ID.:398:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12742939918654419)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'398'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8070071217546422)
+,p_list_item_display_sequence=>1720
+,p_list_item_link_text=>'343 - Kontenblatt'
+,p_list_item_link_target=>'f?p=&APP_ID.:304:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42960051485199772)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'304'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(13662105631299955)
+,p_list_item_display_sequence=>1990
+,p_list_item_link_text=>'kontenabgleich'
+,p_list_item_link_target=>'f?p=&APP_ID.:347:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(8070071217546422)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'347'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(14884794420513578)
+,p_list_item_display_sequence=>2020
+,p_list_item_link_text=>'kontenabgleich_2017'
+,p_list_item_link_target=>'f?p=&APP_ID.:356:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(13662105631299955)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'356'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(36248483373173589)
+,p_list_item_display_sequence=>2220
+,p_list_item_link_text=>'Kontenabgleich_2020'
+,p_list_item_link_target=>'f?p=&APP_ID.:393:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(13662105631299955)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'393'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(14542366513691613)
+,p_list_item_display_sequence=>2000
+,p_list_item_link_text=>'splitbuchung'
+,p_list_item_link_target=>'f?p=&APP_ID.:351:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(8070071217546422)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'351'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(14570030089175592)
+,p_list_item_display_sequence=>2010
+,p_list_item_link_text=>'splitbuchung'
+,p_list_item_link_target=>'f?p=&APP_ID.:352:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(14542366513691613)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'352'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(15020927770058886)
+,p_list_item_display_sequence=>2050
+,p_list_item_link_text=>'storno'
+,p_list_item_link_target=>'f?p=&APP_ID.:353:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(8070071217546422)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'353'
+);
+end;
+/
+begin
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8296069499227046)
+,p_list_item_display_sequence=>1745
+,p_list_item_link_text=>'344 - Kontenplan'
+,p_list_item_link_target=>'f?p=&APP_ID.:214:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42960051485199772)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8307936184411394)
+,p_list_item_display_sequence=>1430
+,p_list_item_link_text=>'Kontenplan_konten_Kat_zuord'
+,p_list_item_link_target=>'f?p=&APP_ID.:218:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(8296069499227046)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'218'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12198586231341120)
+,p_list_item_display_sequence=>1590
+,p_list_item_link_text=>'Konto'
+,p_list_item_link_target=>'f?p=&APP_ID.:248:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(8296069499227046)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'248'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11865499167974195)
+,p_list_item_display_sequence=>1790
+,p_list_item_link_text=>'35 - Verpflegungsmehraufwand'
+,p_list_item_link_target=>'f?p=&APP_ID.:326:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'326,327'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11894964326075060)
+,p_list_item_display_sequence=>1800
+,p_list_item_link_text=>'Verpflegungsmehraufwand_Detail'
+,p_list_item_link_target=>'f?p=&APP_ID.:328:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11865499167974195)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'328,329'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12174294632688856)
+,p_list_item_display_sequence=>1940
+,p_list_item_link_text=>'map_verpfl'
+,p_list_item_link_target=>'f?p=&APP_ID.:341:&SESSION.::&DEBUG.::::'
+,p_list_item_disp_cond_type=>'NEVER'
+,p_parent_list_item_id=>wwv_flow_api.id(11894964326075060)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'341'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3505251399992906)
+,p_list_item_display_sequence=>1800
+,p_list_item_link_text=>'36 - Steuer'
+,p_list_item_link_target=>'f?p=&APP_ID.:151:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'151,152'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1940167974533957)
+,p_list_item_display_sequence=>120
+,p_list_item_link_text=>'Steuer_Gesamt'
+,p_list_item_link_target=>'f?p=&APP_ID.:98:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(3505251399992906)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'98'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1151817074238033)
+,p_list_item_display_sequence=>115
+,p_list_item_link_text=>'Umsatzsteuervoranmeldung'
+,p_list_item_link_target=>'f?p=&APP_ID.:68:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1940167974533957)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'68'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1956472262754943)
+,p_list_item_display_sequence=>670
+,p_list_item_link_text=>'Vorsteuer'
+,p_list_item_link_target=>'f?p=&APP_ID.:99:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1940167974533957)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'99,103'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2163017031148502)
+,p_list_item_display_sequence=>680
+,p_list_item_link_text=>'Vorsteuer_Rechnungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:103:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1956472262754943)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'103'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2175985522399192)
+,p_list_item_display_sequence=>690
+,p_list_item_link_text=>'Vorsteuer_Belege'
+,p_list_item_link_target=>'f?p=&APP_ID.:104:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1956472262754943)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'104'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(5799561593438766)
+,p_list_item_display_sequence=>1220
+,p_list_item_link_text=>'Lohnsteuer'
+,p_list_item_link_target=>'f?p=&APP_ID.:92:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1940167974533957)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'92,168'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3520472115996935)
+,p_list_item_display_sequence=>1010
+,p_list_item_link_text=>'Steuer 2016'
+,p_list_item_link_target=>'f?p=&APP_ID.:153:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(3505251399992906)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'153,154'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_display_sequence=>1810
+,p_list_item_link_text=>'361 - Vorsteueranmeldung_Monate'
+,p_list_item_link_target=>'f?p=&APP_ID.:331:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(3505251399992906)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'331,332'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(7561309812379013)
+,p_list_item_display_sequence=>1710
+,p_list_item_link_text=>'Kontoauszug_Vorsteuer'
+,p_list_item_link_target=>'f?p=&APP_ID.:303:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11957398134481855)
+,p_list_item_display_sequence=>1820
+,p_list_item_link_text=>'Vorsteueranmeldung'
+,p_list_item_link_target=>'f?p=&APP_ID.:333:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'333,334'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(13354527878906353)
+,p_list_item_display_sequence=>1980
+,p_list_item_link_text=>'Konto 1460 - Geldtransit'
+,p_list_item_link_target=>'f?p=&APP_ID.:346:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(15484305793702463)
+,p_list_item_display_sequence=>2070
+,p_list_item_link_text=>'Susa'
+,p_list_item_link_target=>'f?p=&APP_ID.:310:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19474000768517238)
+,p_list_item_display_sequence=>2150
+,p_list_item_link_text=>unistr('Kontenzusammenf\00FChrung')
+,p_list_item_link_target=>'f?p=&APP_ID.:381:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1332526541938739)
+,p_list_item_display_sequence=>2840
+,p_list_item_link_text=>unistr('Vorsteuer \00DCbersicht')
+,p_list_item_link_target=>'f?p=&APP_ID.:120:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11933978494474299)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'120'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42961641610226789)
+,p_list_item_display_sequence=>1900
+,p_list_item_link_text=>'37 - Zuordnungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:421:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'421'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6613420277265176)
+,p_list_item_display_sequence=>1320
+,p_list_item_link_text=>'V_Belege_Zus'
+,p_list_item_link_target=>'f?p=&APP_ID.:180:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42961641610226789)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'180'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12877894560380291)
+,p_list_item_display_sequence=>1640
+,p_list_item_link_text=>'kto'
+,p_list_item_link_target=>'f?p=&APP_ID.:251:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42961641610226789)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'251,252'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(38438061596184180)
+,p_list_item_display_sequence=>2230
+,p_list_item_link_text=>'relcheck inp_belege Kontobuchungen lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:394:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42961641610226789)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'394'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(43757345558072122)
+,p_list_item_display_sequence=>2620
+,p_list_item_link_text=>'filter_inp_kto_lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:423:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(42961641610226789)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'423'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(12725526303389282)
+,p_list_item_display_sequence=>1905
+,p_list_item_link_text=>'38 - Jahreskontrollen'
+,p_list_item_link_target=>'f?p=&APP_ID.:244:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'244'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(9018922169002259)
+,p_list_item_display_sequence=>1480
+,p_list_item_link_text=>'381 - Steuermonat'
+,p_list_item_link_target=>'f?p=&APP_ID.:222:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12725526303389282)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'222'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11996252795924542)
+,p_list_item_display_sequence=>1850
+,p_list_item_link_text=>'382 - Steuerjahr'
+,p_list_item_link_target=>'f?p=&APP_ID.:335:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12725526303389282)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'335,336'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(15484024715699336)
+,p_list_item_display_sequence=>2060
+,p_list_item_link_text=>'SuSa'
+,p_list_item_link_target=>'f?p=&APP_ID.:310:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11996252795924542)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(18317070228351574)
+,p_list_item_display_sequence=>2130
+,p_list_item_link_text=>'dupl_lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:376:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11996252795924542)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'376'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19166005773845161)
+,p_list_item_display_sequence=>2140
+,p_list_item_link_text=>'dupl_check_kontrolle_ov'
+,p_list_item_link_target=>'f?p=&APP_ID.:380:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(18317070228351574)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'380'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(35555465522709622)
+,p_list_item_display_sequence=>2210
+,p_list_item_link_text=>'abgleich_kontoauszug_lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:385:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(11996252795924542)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'385'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6414783183431641)
+,p_list_item_display_sequence=>1920
+,p_list_item_link_text=>'383 - Laufende Kontrolle'
+,p_list_item_link_target=>'f?p=&APP_ID.:295:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(12725526303389282)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'295'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2311937106168433)
+,p_list_item_display_sequence=>1910
+,p_list_item_link_text=>'v_rel_lex'
+,p_list_item_link_target=>'f?p=&APP_ID.:263:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6414783183431641)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(14906600769510088)
+,p_list_item_display_sequence=>1910
+,p_list_item_link_text=>'39 - Todo / Todo Grp'
+,p_list_item_link_target=>'f?p=&APP_ID.:360:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42937437138786124)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'360,361'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(14915854797516661)
+,p_list_item_display_sequence=>2040
+,p_list_item_link_text=>'todo'
+,p_list_item_link_target=>'f?p=&APP_ID.:362:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(14906600769510088)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'362,363'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(18249840455098388)
+,p_list_item_display_sequence=>2120
+,p_list_item_link_text=>'steuer_monat_todo'
+,p_list_item_link_target=>'f?p=&APP_ID.:370:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(14906600769510088)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'370,375'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(329536703758645)
+,p_list_item_display_sequence=>170
+,p_list_item_link_text=>'03 - Projekt'
+,p_list_item_link_target=>'f?p=&APP_ID.:12:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'12,13'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6504662778071901)
+,p_list_item_display_sequence=>120
+,p_list_item_link_text=>'Stundenzettel'
+,p_list_item_link_target=>'f?p=&APP_ID.:26:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(329536703758645)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'26,27'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(962512584754339)
+,p_list_item_display_sequence=>420
+,p_list_item_link_text=>'Rechnung_Stundenzettel'
+,p_list_item_link_target=>'f?p=&APP_ID.:60:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6504662778071901)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'60'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3337187429170535)
+,p_list_item_display_sequence=>1690
+,p_list_item_link_text=>'33 - Projekt - Location'
+,p_list_item_link_target=>'f?p=&APP_ID.:267:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(329536703758645)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'267'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6787686330304576)
+,p_list_item_display_sequence=>190
+,p_list_item_link_text=>'04 - Inventar'
+,p_list_item_link_target=>'f?p=&APP_ID.:38:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'38,39'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6827111894526327)
+,p_list_item_display_sequence=>280
+,p_list_item_link_text=>'Komponenten'
+,p_list_item_link_target=>'f?p=&APP_ID.:44:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6787686330304576)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'44,45'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6844162749532262)
+,p_list_item_display_sequence=>290
+,p_list_item_link_text=>'Konponentenzuordnung'
+,p_list_item_link_target=>'f?p=&APP_ID.:46:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6827111894526327)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'46,47'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6885876718354296)
+,p_list_item_display_sequence=>300
+,p_list_item_link_text=>'Inventarzuordnung'
+,p_list_item_link_target=>'f?p=&APP_ID.:48:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6787686330304576)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'48'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1761697783451833)
+,p_list_item_display_sequence=>540
+,p_list_item_link_text=>'Inventartyp'
+,p_list_item_link_target=>'f?p=&APP_ID.:43:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(6787686330304576)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'43'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44305621602170280)
+,p_list_item_display_sequence=>2650
+,p_list_item_link_text=>'041 - Fahrzeuge'
+,p_list_item_link_target=>'f?p=&APP_ID.:163:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6787686330304576)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44305935201175017)
+,p_list_item_display_sequence=>2660
+,p_list_item_link_text=>'Autoersatzteile'
+,p_list_item_link_target=>'f?p=&APP_ID.:123:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44305621602170280)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44306277500183250)
+,p_list_item_display_sequence=>2670
+,p_list_item_link_text=>'Autovermietung'
+,p_list_item_link_target=>'f?p=&APP_ID.:129:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44305621602170280)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44306541926199683)
+,p_list_item_display_sequence=>2680
+,p_list_item_link_text=>'Finanzierung'
+,p_list_item_link_target=>'f?p=&APP_ID.:121:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44305621602170280)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44309002461312108)
+,p_list_item_display_sequence=>2730
+,p_list_item_link_text=>'Autoversicherungen'
+,p_list_item_link_target=>'f?p=&APP_ID.:139:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44305621602170280)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44390299476607903)
+,p_list_item_display_sequence=>2600
+,p_list_item_link_text=>'05 - Abrechnung'
+,p_list_item_link_target=>'f?p=&APP_ID.:435:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'435'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44307635260278553)
+,p_list_item_display_sequence=>2690
+,p_list_item_link_text=>'Heizungsablesung'
+,p_list_item_link_target=>'f?p=&APP_ID.:136:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44390299476607903)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44361979090563019)
+,p_list_item_display_sequence=>2750
+,p_list_item_link_text=>'Stromablesung'
+,p_list_item_link_target=>'f?p=&APP_ID.:433:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44390299476607903)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'433,434'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42992892034748392)
+,p_list_item_display_sequence=>2610
+,p_list_item_link_text=>'06 - Unterlagen'
+,p_list_item_link_target=>'f?p=&APP_ID.:410:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2220177627159054)
+,p_list_item_display_sequence=>2870
+,p_list_item_link_text=>unistr('07 Beitr\00E4ge')
+,p_list_item_link_target=>'f?p=&APP_ID.:143:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(2488547788028353)
+,p_list_item_display_sequence=>2880
+,p_list_item_link_text=>'Lex_check'
+,p_list_item_link_target=>'f?p=&APP_ID.:151:&APP_SESSION.::&DEBUG.:::'
+,p_parent_list_item_id=>wwv_flow_api.id(6267742329136087)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'151'
+);
+wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(7297754586999346)
 ,p_list_item_display_sequence=>10
 ,p_list_item_link_text=>'Home'
@@ -136,11 +1412,503 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(7299208700999348)
-,p_list_item_display_sequence=>20
-,p_list_item_link_text=>'Home'
-,p_list_item_link_target=>'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:'
-,p_list_item_icon=>'fa-home'
+ p_id=>wwv_flow_api.id(12177316820742667)
+,p_list_item_display_sequence=>1950
+,p_list_item_link_text=>'Beleg'
+,p_list_item_link_target=>'f?p=&APP_ID.:343:&SESSION.::&DEBUG.::::'
+,p_list_item_disp_cond_type=>'NEVER'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'343'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(41886365196276306)
+,p_list_item_display_sequence=>2300
+,p_list_item_link_text=>'3 - Termine'
+,p_list_item_link_target=>'f?p=&APP_ID.:407:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'407,408'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6335324883743873)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'Arbeitstage'
+,p_list_item_link_target=>'f?p=&APP_ID.:14:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(41886365196276306)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'14,15'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6349509415797222)
+,p_list_item_display_sequence=>70
+,p_list_item_link_text=>'Arbeitszeiten'
+,p_list_item_link_target=>'f?p=&APP_ID.:16:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(41886365196276306)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'16,17'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42933775023750716)
+,p_list_item_display_sequence=>2320
+,p_list_item_link_text=>'4 - Kontakte'
+,p_list_item_link_target=>'f?p=&APP_ID.:412:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'412'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1800301902493279)
+,p_list_item_display_sequence=>580
+,p_list_item_link_text=>unistr('Gesch\00E4ftspartner')
+,p_list_item_link_target=>'f?p=&APP_ID.:90:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42933775023750716)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'90'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1807152231497355)
+,p_list_item_display_sequence=>590
+,p_list_item_link_text=>unistr('Gesch\00E4ftspartnertyp')
+,p_list_item_link_target=>'f?p=&APP_ID.:91:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1800301902493279)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'91'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3693457096992490)
+,p_list_item_display_sequence=>1080
+,p_list_item_link_text=>unistr('Gesh\00E4ftspartnertyp')
+,p_list_item_link_target=>'f?p=&APP_ID.:167:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1807152231497355)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'167'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3684940646986319)
+,p_list_item_display_sequence=>1070
+,p_list_item_link_text=>unistr('Gesch\00E4ftspartner')
+,p_list_item_link_target=>'f?p=&APP_ID.:166:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(1800301902493279)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'166'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(3708456264305218)
+,p_list_item_display_sequence=>1090
+,p_list_item_link_text=>unistr('Gesch\00E4ftspartner_Kontakt')
+,p_list_item_link_target=>'f?p=&APP_ID.:170:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(3684940646986319)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'170'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(40085217413243919)
+,p_list_item_display_sequence=>2270
+,p_list_item_link_text=>'Person'
+,p_list_item_link_target=>'f?p=&APP_ID.:401:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42933775023750716)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'401,402'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(40117544961265810)
+,p_list_item_display_sequence=>2280
+,p_list_item_link_text=>'Kontakt'
+,p_list_item_link_target=>'f?p=&APP_ID.:404:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42933775023750716)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'404,405'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6295901426365080)
+,p_list_item_display_sequence=>2330
+,p_list_item_link_text=>'5 - Adressen / Location'
+,p_list_item_link_target=>'f?p=&APP_ID.:7:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'7,8'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6321196104406276)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'Location_Type'
+,p_list_item_link_target=>'f?p=&APP_ID.:9:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6295901426365080)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'9,10'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6280335261155564)
+,p_list_item_display_sequence=>53
+,p_list_item_link_text=>'Adressen'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6295901426365080)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'3,4'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1099015788995522)
+,p_list_item_display_sequence=>52
+,p_list_item_link_text=>'PLZ_Ort'
+,p_list_item_link_target=>'f?p=&APP_ID.:71:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6280335261155564)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'71,72'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6727210039585088)
+,p_list_item_display_sequence=>250
+,p_list_item_link_text=>'Ort'
+,p_list_item_link_target=>'f?p=&APP_ID.:36:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6280335261155564)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'36,37'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(11515327864318095)
+,p_list_item_display_sequence=>1580
+,p_list_item_link_text=>'Land'
+,p_list_item_link_target=>'f?p=&APP_ID.:227:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6280335261155564)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'227,231'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19689652018789042)
+,p_list_item_display_sequence=>2160
+,p_list_item_link_text=>'Kontinent_land'
+,p_list_item_link_target=>'f?p=&APP_ID.:387:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6280335261155564)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1789141959484818)
+,p_list_item_display_sequence=>570
+,p_list_item_link_text=>'Auswertung_Location'
+,p_list_item_link_target=>'f?p=&APP_ID.:89:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(6295901426365080)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'89'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44272656592101706)
+,p_list_item_display_sequence=>2340
+,p_list_item_link_text=>'6 - Vertragsverwaltung'
+,p_list_item_link_target=>'f?p=&APP_ID.:427:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'427,428,429,37'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44301399758148138)
+,p_list_item_display_sequence=>2630
+,p_list_item_link_text=>unistr('101 - Mietvertr\00E4ge')
+,p_list_item_link_target=>'f?p=&APP_ID.:429:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44272656592101706)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'429,430'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44305084172161966)
+,p_list_item_display_sequence=>2640
+,p_list_item_link_text=>unistr('102 - Finanzierungsvertr\00E4ge')
+,p_list_item_link_target=>'f?p=&APP_ID.:121:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44272656592101706)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(44308750744306970)
+,p_list_item_display_sequence=>2720
+,p_list_item_link_text=>unistr('103 - Versicherungsvertr\00E4ge')
+,p_list_item_link_target=>'f?p=&APP_ID.:139:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(44272656592101706)
+,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(936788823301496)
+,p_list_item_display_sequence=>2830
+,p_list_item_link_text=>unistr('104 - Telefonvertr\00E4ge')
+,p_list_item_link_target=>'f?p=&APP_ID.:37:&APP_SESSION.::&DEBUG.:::'
+,p_parent_list_item_id=>wwv_flow_api.id(44272656592101706)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'37'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(54240744417412614)
+,p_list_item_display_sequence=>2820
+,p_list_item_link_text=>'Mobilcom_det'
+,p_list_item_link_target=>'f?p=&APP_ID.:17:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(936788823301496)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'17'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42938495475801163)
+,p_list_item_display_sequence=>2350
+,p_list_item_link_text=>'7 - Routen'
+,p_list_item_link_target=>'f?p=&APP_ID.:416:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'416'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_display_sequence=>470
+,p_list_item_link_text=>'Route'
+,p_list_item_link_target=>'f?p=&APP_ID.:78:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42938495475801163)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'78'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1732306001289999)
+,p_list_item_display_sequence=>480
+,p_list_item_link_text=>'map'
+,p_list_item_link_target=>'f?p=&APP_ID.:79:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'79'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1735870212295542)
+,p_list_item_display_sequence=>490
+,p_list_item_link_text=>'Route_FLEX'
+,p_list_item_link_target=>'f?p=&APP_ID.:80:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'80'
+);
+end;
+/
+begin
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1740669003364785)
+,p_list_item_display_sequence=>500
+,p_list_item_link_text=>'Route Zwischenzielen'
+,p_list_item_link_target=>'f?p=&APP_ID.:82:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'82'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1745308899371861)
+,p_list_item_display_sequence=>510
+,p_list_item_link_text=>'Route new'
+,p_list_item_link_target=>'f?p=&APP_ID.:83:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'83'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1750117223394400)
+,p_list_item_display_sequence=>520
+,p_list_item_link_text=>'Route zoom'
+,p_list_item_link_target=>'f?p=&APP_ID.:84:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'84'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(1754735043399887)
+,p_list_item_display_sequence=>530
+,p_list_item_link_text=>'Route_zoom_neu'
+,p_list_item_link_target=>'f?p=&APP_ID.:85:&SESSION.::&DEBUG.'
+,p_parent_list_item_id=>wwv_flow_api.id(1727853968268534)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'85'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42939160374803824)
+,p_list_item_display_sequence=>2360
+,p_list_item_link_text=>'8 - Wetter'
+,p_list_item_link_target=>'f?p=&APP_ID.:417:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'417'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(39704119437078313)
+,p_list_item_display_sequence=>2260
+,p_list_item_link_text=>'Niederschlagsmenge'
+,p_list_item_link_target=>'f?p=&APP_ID.:399:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42939160374803824)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'399,400'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(5806801638062156)
+,p_list_item_display_sequence=>2365
+,p_list_item_link_text=>'9 - Lehrgang'
+,p_list_item_link_target=>'f?p=&APP_ID.:6:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'6,11'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(752935159471778)
+,p_list_item_display_sequence=>370
+,p_list_item_link_text=>'BUCH'
+,p_list_item_link_target=>'f?p=&APP_ID.:40:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(5806801638062156)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'40,57'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(775949057481360)
+,p_list_item_display_sequence=>380
+,p_list_item_link_text=>'EINSENDEAUFGABE'
+,p_list_item_link_target=>'f?p=&APP_ID.:58:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(5806801638062156)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'58,59'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(823383810582770)
+,p_list_item_display_sequence=>400
+,p_list_item_link_text=>'FRAGEN'
+,p_list_item_link_target=>'f?p=&APP_ID.:63:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(5806801638062156)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'63,64'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(791544753488800)
+,p_list_item_display_sequence=>390
+,p_list_item_link_text=>unistr('L\00D6SUNG')
+,p_list_item_link_target=>'f?p=&APP_ID.:61:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(823383810582770)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'61,62'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(843413090894703)
+,p_list_item_display_sequence=>410
+,p_list_item_link_text=>unistr('L\00F6sungs\00FCbersicht')
+,p_list_item_link_target=>'f?p=&APP_ID.:65:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(5806801638062156)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'65'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42942072424847783)
+,p_list_item_display_sequence=>2400
+,p_list_item_link_text=>'20 - Daten'
+,p_list_item_link_target=>'f?p=&APP_ID.:419:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'419'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(42939769682807706)
+,p_list_item_display_sequence=>2450
+,p_list_item_link_text=>'80 - Test'
+,p_list_item_link_target=>'f?p=&APP_ID.:418:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'418'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8290409463126281)
+,p_list_item_display_sequence=>1410
+,p_list_item_link_text=>'Tree Page'
+,p_list_item_link_target=>'f?p=&APP_ID.:216:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42939769682807706)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'216'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(8515866747910160)
+,p_list_item_display_sequence=>1450
+,p_list_item_link_text=>'Tree Page'
+,p_list_item_link_target=>'f?p=&APP_ID.:220:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42939769682807706)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'220'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(25573509386515205)
+,p_list_item_display_sequence=>2200
+,p_list_item_link_text=>'eee'
+,p_list_item_link_target=>'f?p=&APP_ID.:391:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(42939769682807706)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'391'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(25527306347505753)
+,p_list_item_display_sequence=>2190
+,p_list_item_link_text=>'tesst'
+,p_list_item_link_target=>'f?p=&APP_ID.:390:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(25573509386515205)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'390'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(25480493421416160)
+,p_list_item_display_sequence=>2180
+,p_list_item_link_text=>'test'
+,p_list_item_link_target=>'f?p=&APP_ID.:389:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(25527306347505753)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'389'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6269284950144689)
+,p_list_item_display_sequence=>2500
+,p_list_item_link_text=>'98 - Basisdaten'
+,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'2'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6380723823896752)
+,p_list_item_display_sequence=>90
+,p_list_item_link_text=>unistr('B\00FCndelung')
+,p_list_item_link_target=>'f?p=&APP_ID.:20:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6269284950144689)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'20,21'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(5305871434144430)
+,p_list_item_display_sequence=>1170
+,p_list_item_link_text=>'Kategorie'
+,p_list_item_link_target=>'f?p=&APP_ID.:93:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6269284950144689)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'93,162'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10898885020684938)
+,p_list_item_display_sequence=>1550
+,p_list_item_link_text=>'Steuersatz'
+,p_list_item_link_target=>'f?p=&APP_ID.:238:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6269284950144689)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'238'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(10975550950601484)
+,p_list_item_display_sequence=>1560
+,p_list_item_link_text=>unistr('W\00E4hrung')
+,p_list_item_link_target=>'f?p=&APP_ID.:239:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6269284950144689)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'239'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6925171994392902)
+,p_list_item_display_sequence=>2600
+,p_list_item_link_text=>'99 - Stammdatengruppe'
+,p_list_item_link_target=>'f?p=&APP_ID.:51:&SESSION.::&DEBUG.::::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'51,52'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(6942758272398217)
+,p_list_item_display_sequence=>320
+,p_list_item_link_text=>'Stammdaten'
+,p_list_item_link_target=>'f?p=&APP_ID.:53:&SESSION.::&DEBUG.::::'
+,p_parent_list_item_id=>wwv_flow_api.id(6925171994392902)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'53,54'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(46232599761379877)
+,p_list_item_display_sequence=>2800
+,p_list_item_link_text=>'100 - Datenbankadministration'
+,p_list_item_link_target=>'http://localhost:9090/apex/f?p=100:2:&APP_SESSION.::NO:::'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 end;
@@ -10756,6 +12524,36 @@ wwv_flow_api.create_page(
 ,p_protection_level=>'D'
 ,p_last_updated_by=>'ANNE'
 ,p_last_upd_yyyymmddhh24miss=>'20200821064628'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(31645786430261368)
+,p_plug_name=>'New'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(6232786070135999)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(11172099801093977)
+,p_name=>'P0_ADR_ADRESSE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(31645786430261368)
+,p_item_default=>'&P229_COMM_ADRESSE.'
+,p_prompt=>'Adr Adresse'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_display_when=>'8,229'
+,p_display_when_type=>'CURRENT_PAGE_IN_CONDITION'
+,p_field_template=>wwv_flow_api.id(6255059252136028)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
 );
 end;
 /

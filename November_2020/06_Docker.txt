@@ -168,7 +168,12 @@ vi /root/.vnc/xstartup
 docker pull dockerhelp/docker-oracle-ee-18c
 
 @apexins SYSAUX SYSAUX TEMP /i/;
-exec dbms_xdb.sethttpport(9090);
+exec dbms_xdb.sethttpport(8080);
+@apxchpwd;
+@apex_epg_config;
+alter user ANONYMOUS account unlock identified by ANONYMOUS;
+alter user XDB account unlock identified by XDB;
+alter user apex_listener account unlock identified by apex_listener;
 
 /mnt/vol
 

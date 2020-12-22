@@ -1,0 +1,57 @@
+I. Kostenstatistik 
+	Saldo	%	%	%	Aufschl.	Saldo	%	%	%	Aufschl.
+		Ges.-Leistung	Ges.-Kosten	Pers.-Kosten			Ges.-Leistung	Ges.-Kosten	Pers.-Kosten
+Umsatzerlöse	57.398,57	100,00				57.398,57	100,00			
+Bestandsveränderung F/U Erz										
+Aktivierte Eigenleistungen										
+Gesamtleistung	57.398,57	100,00	294,45			57.398,57	100,00	294,45		
+Mat./Warenverbr.										
+Rohertrag	57.398,57	100,00	294,45			57.398,57	100,00	294,45		
+So. betr. Erlöse										
+Betriebl. Rohertrag	57.398,57	100,00	294,45			57.398,57	100,00	294,45		
+Personalkosten										
+Betriebl. Steuern										
+Versicherungen/Beiträge	69,00	0,12	0,35			69,00	0,12	0,35		
+Telefonkosten	1.626,70	2,83	8,34			1.626,70	2,83	8,34		
+Fahrzeugkosten	1.118,54	1,95	5,74			1.118,54	1,95	5,74		
+Reisekosten	7.524,40	13,11	38,60			7.524,40	13,11	38,60		
+Geschenke	4.506,76	7,85	23,12			4.506,76	7,85	23,12		
+Bewirtungskosten										
+Kosten Warenabgabe										
+Abschreibungen										
+Reparatur/Instandhaltung										
+sonstige Kosten										
+Gesamtkosten	4.648,37	8,10	23,85			4.648,37	8,10	23,85		
+Betriebsergebnis	19.493,77	33,96				19.493,77	33,96			
+Zinsaufwand	37.904,80	66,04				37.904,80	66,04			
+Sonst. neutr. Aufwand										
+Neutr. Aufwand Ges										
+Zinserträge										
+Sonst. neutr.Erträge										
+Neutr. Ertrag Ges										
+Ergebnis vor Steuern										
+Steuern Einkommen und Ertrag										
+Vorl. Ergebnis	37.904,80	66,04				37.904,80	66,04			
+
+
+II. Bewegungsbilanz 
+	Mittelverwendung		Mittelherkunft
+	erh. Aktiva		erh. Passiva
+	min. Passiva	%	min. Aktiva	%
+Anlagevermögen					
+Imm. Vermögensgegenstände					
+Sachanlagen	602,05	1,30			
+Finanzanlagen					
+Umlaufvermögen					
+Vorräte					
+Finanzkonten	5.618,56	12,09	4.207,91	9,05	
+Forderungen	7.364,97	15,85			
+Verbindlichkeiten	301,13	0,65			
+Vorsteuer/Umsatzsteuer	5.649,76	12,16			
+Wertb./ Rückst. / RAP					
+Kapital					
+Privat	26.936,69	57,96	4.360,45	9,38	
+Verlust					
+Gewinn					
+Summe Mittelverwendung					
+Summe Mittelherkunft			37.904,80	81,56	

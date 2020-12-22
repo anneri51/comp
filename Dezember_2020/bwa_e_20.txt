@@ -1,0 +1,57 @@
+I. Kostenstatistik 
+	Saldo	%	%	%	Aufschl.	Saldo	%	%	%	Aufschl.
+		Ges.-Leistung	Ges.-Kosten	Pers.-Kosten			Ges.-Leistung	Ges.-Kosten	Pers.-Kosten
+Umsatzerlöse										
+Bestandsveränderung F/U Erz										
+Aktivierte Eigenleistungen										
+Gesamtleistung										
+Mat./Warenverbr.										
+Rohertrag										
+So. betr. Erlöse						5.000,00		25,91		
+Betriebl. Rohertrag						5.000,00		25,91		
+Personalkosten										
+Betriebl. Steuern						0,03				
+Versicherungen/Beiträge										
+Telefonkosten						1.932,53		10,01		
+Fahrzeugkosten	127,40		7,59			1.936,89		10,04		
+Reisekosten	490,87		29,24			5.257,35		27,24		
+Geschenke	736,57		43,87			3.933,95		20,38		
+Bewirtungskosten										
+Kosten Warenabgabe										
+Abschreibungen										
+Reparatur/Instandhaltung										
+sonstige Kosten										
+Gesamtkosten	324,16		19,31			6.240,12		32,33		
+Betriebsergebnis	1.679,00					19.300,87				
+Zinsaufwand	-1.679,00					-14.300,87				
+Sonst. neutr. Aufwand										
+Neutr. Aufwand Ges										
+Zinserträge										
+Sonst. neutr.Erträge										
+Neutr. Ertrag Ges										
+Ergebnis vor Steuern										
+Steuern Einkommen und Ertrag										
+Vorl. Ergebnis	-1.679,00					-14.300,87				
+
+
+II. Bewegungsbilanz 
+	Mittelverwendung		Mittelherkunft
+	erh. Aktiva		erh. Passiva
+	min. Passiva	%	min. Aktiva	%
+Anlagevermögen					
+Imm. Vermögensgegenstände					
+Sachanlagen	509,40	1,73			
+Finanzanlagen					
+Umlaufvermögen					
+Vorräte					
+Finanzkonten			18.579,29	62,92	
+Forderungen					
+Verbindlichkeiten					
+Vorsteuer/Umsatzsteuer	66,49	0,23			
+Wertb./ Rückst. / RAP					
+Kapital					
+Privat	14.652,73	49,62	10.950,20	37,08	
+Verlust					
+Gewinn					
+Summe Mittelverwendung	14.300,87	48,43			
+Summe Mittelherkunft					

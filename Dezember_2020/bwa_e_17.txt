@@ -1,0 +1,57 @@
+I. Kostenstatistik 
+	Saldo	%	%	%	Aufschl.	Saldo	%	%	%	Aufschl.
+		Ges.-Leistung	Ges.-Kosten	Pers.-Kosten			Ges.-Leistung	Ges.-Kosten	Pers.-Kosten
+Umsatzerlöse	45.443,33	100,00				45.443,33	100,00			
+Bestandsveränderung F/U Erz										
+Aktivierte Eigenleistungen										
+Gesamtleistung	45.443,33	100,00	504,57	-408,20		45.443,33	100,00	504,57	-408,20	
+Mat./Warenverbr.										
+Rohertrag	45.443,33	100,00	504,57	-408,20		45.443,33	100,00	504,57	-408,20	
+So. betr. Erlöse										
+Betriebl. Rohertrag	45.443,33	100,00	504,57	-408,20		45.443,33	100,00	504,57	-408,20	
+Personalkosten	-11.132,62	-24,50	-123,61	100,00		-11.132,62	-24,50	-123,61	100,00	
+Betriebl. Steuern										
+Versicherungen/Beiträge	121,03	0,27	1,34	-1,09		121,03	0,27	1,34	-1,09	
+Telefonkosten	308,00	0,68	3,42	-2,77		308,00	0,68	3,42	-2,77	
+Fahrzeugkosten	1.991,10	4,38	22,11	-17,89		1.991,10	4,38	22,11	-17,89	
+Reisekosten	4.453,17	9,80	49,44	-40,00		4.453,17	9,80	49,44	-40,00	
+Geschenke	1.886,01	4,15	20,94	-16,94		1.886,01	4,15	20,94	-16,94	
+Bewirtungskosten										
+Kosten Warenabgabe										
+Abschreibungen										
+Reparatur/Instandhaltung										
+sonstige Kosten										
+Gesamtkosten	11.379,63	25,04	126,35	-102,22		11.379,63	25,04	126,35	-102,22	
+Betriebsergebnis	9.006,32	19,82				9.006,32	19,82			
+Zinsaufwand	36.437,01	80,18				36.437,01	80,18			
+Sonst. neutr. Aufwand										
+Neutr. Aufwand Ges										
+Zinserträge										
+Sonst. neutr.Erträge										
+Neutr. Ertrag Ges										
+Ergebnis vor Steuern										
+Steuern Einkommen und Ertrag										
+Vorl. Ergebnis	36.437,01	80,18				36.437,01	80,18			
+
+
+II. Bewegungsbilanz 
+	Mittelverwendung		Mittelherkunft
+	erh. Aktiva		erh. Passiva
+	min. Passiva	%	min. Aktiva	%
+Anlagevermögen					
+Imm. Vermögensgegenstände					
+Sachanlagen					
+Finanzanlagen					
+Umlaufvermögen					
+Vorräte					
+Finanzkonten	47.834,19	52,48			
+Forderungen					
+Verbindlichkeiten			505,55	0,55	
+Vorsteuer/Umsatzsteuer			1.715,47	1,88	
+Wertb./ Rückst. / RAP					
+Kapital					
+Privat	43.321,06	47,52	52.497,22	57,59	
+Verlust					
+Gewinn					
+Summe Mittelverwendung					
+Summe Mittelherkunft			36.437,01	39,97	

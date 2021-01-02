@@ -1,0 +1,44 @@
+
+    public static List<int> dynamicArray(int n, List<List<int>> queries)
+    {
+        
+         int lans = 0;
+         int erg1 = 0;
+         int erg2 = 0;
+         int lind0 =0;
+         int lind1 = 0;
+         List<int> arr= new List<int>();
+         int[,] test =new int[n,queries.Count];
+         int[] erg_dm = new int[queries.Count];
+         
+         for (int i=0; i< queries.Count; i++)
+         {
+             
+             //Query Type 1
+             if (queries[i][0]== 1)
+             {
+                 erg1 = ((queries[i][1]^lans)%n);             
+                               
+                 
+                test[erg1,erg_dm[erg1]]= queries[i][2];
+                erg_dm[erg1] = erg_dm[erg1]+1;
+                 
+             }
+             
+             //Query Type 2
+             if (queries[i][0]== 2)
+             {
+                 erg1 = ((queries[i][1]^lans)%n); 
+                 test[erg1,erg_dm[erg1]]=queries[i][2];
+                 erg_dm[erg1] = erg_dm[erg1]+1;
+                 lans = queries[i][2];
+                 arr.Add(queries[i][2]);
+                 
+             }
+            
+            
+
+        }
+      
+        return arr;
+   }

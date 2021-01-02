@@ -1,0 +1,78 @@
+public static List<int> dynamicArray(int n, List<List<int>> queries)
+    {
+         int lans = 0;
+         int erg1 = 0;
+         int erg2 = 0;
+         int lind0 =0;
+         int lind1 = 0;
+         List<int> arr= new List<int>();
+         int[,] test =new int[n,queries.Count]   ;
+         
+         for (int i=0; i<= queries.Count; i++)
+         {
+             
+             //Query Type 1
+             if (queries[0][i]= 1)
+             {
+                 erg1 = ((queries[1][i]^lans)%n);                 
+                 
+                 if (erg1 = 0)
+                 {
+                     test[erg1][lind0]=queries[2][i];
+                     lind0 = lind0+1;
+                 }
+                 else {
+                    test[erg1][lind1]=queries[2][i];
+                    lind1 = lind1 +1;   
+                 }
+             }
+             
+             //Query Type 2
+              if (queries[0][i]= 2)
+             {
+                 erg1 = ((queries[1][i]^lans)%n); 
+                 if (erg1 = 0)
+                 {
+                     test[erg1][lind0]=queries[2][i];
+                     lind0 = lind0+1;
+                 }
+                 else {
+                    test[erg1][lind1]=queries[2][i];
+                    lind1 = lind1 +1;   
+                 }
+                 lans = queries[2][i];
+                 arr.Add(queries[2][i]);
+                 
+             }
+         }
+         /*
+         //Query 0
+         erg1 = ((erg1^ lans)%n);
+         lans = erg1;
+         test[erg1,0]=queries[0][2];
+         //Query 1
+         erg1 = ((erg1^ lans)%n);
+         test[erg1,0]=queries[1][2];
+         //Query 2
+         erg1 = ((erg1^ lans)%n);
+         lans = erg1;
+         test[erg1,1]=queries[2][2];
+         //Query 3
+         erg1 = ((erg1^ lans)%n);
+         lans = erg1;
+         arr.Add(queries[1][2]);
+         //Query 4
+         erg2=((erg1^ lans)%n);
+         lans = queries[2][2];
+         arr.Add(test[0,1])       ;
+         */         
+         /*
+         arr.Add(queries.Count)      ;
+         arr.Add(erg1)       ;
+         arr.Add(erg2);
+         */
+         
+         return arr;
+    }
+
+}

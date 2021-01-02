@@ -28,7 +28,7 @@ prompt APPLICATION 101 - DATABASE_ADMINISTRATION
 -- Application Export:
 --   Application:     101
 --   Name:            DATABASE_ADMINISTRATION
---   Date and Time:   14:41 Monday December 21, 2020
+--   Date and Time:   19:56 Samstag Dezember 19, 2020
 --   Exported By:     ANNE
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -845,6 +845,10 @@ end;
 prompt --application/pages/page_groups
 begin
 wwv_flow_api.create_page_group(
+ p_id=>wwv_flow_api.id(47577226753610168)
+,p_group_name=>'Administration'
+);
+wwv_flow_api.create_page_group(
  p_id=>wwv_flow_api.id(16632727252605008)
 ,p_group_name=>'1  - 1 - DB Work - Database Objects'
 );
@@ -875,10 +879,6 @@ wwv_flow_api.create_page_group(
 wwv_flow_api.create_page_group(
  p_id=>wwv_flow_api.id(27926975161811394)
 ,p_group_name=>'99999 - Unasigned'
-);
-wwv_flow_api.create_page_group(
- p_id=>wwv_flow_api.id(47577226753610168)
-,p_group_name=>'Administration'
 );
 end;
 /
